@@ -1,15 +1,62 @@
 ---
+import "@fontsource/space-grotesk";
+import About from "../components/About.astro";
+import Header from "../components/Header.astro";
+import Home from "../components/Home.astro";
+import Knowledge from "../components/Knowledge.astro";
+import Projects from "../components/Projects.astro";
+import "./../main.css";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<style>
+  body > main > section {
+    word-break: break-word;
+  }
+
+  body > main > section[id] {
+    scroll-margin-top: 10vh;
+  }
+
+  body > main {
+    display: grid;
+    gap: 1rem;
+  }
+</style>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Portafolio &bull; Sebastian Cortes</title>
+  </head>
+
+  <body>
+    <Header />
+
+    <main>
+      <Home />
+      <About />
+      <Knowledge />
+      <Projects />
+    </main>
+  </body>
 </html>
+
+<script>
+  const HEADER = document.querySelector("header");
+  const SECTIONS = document.querySelectorAll("body > main > section[id]");
+
+  const ScrollMarginTopCalculation = () => {
+    // function for control the "scroll-margin-top" style value when the header change their height
+    Object.values(SECTIONS).forEach((elm) => {
+      elm.style.scrollMarginTop =
+        parseInt(window.getComputedStyle(HEADER).height) + 20 + "px";
+    });
+  };
+
+  ["resize", "click", "touchend"].forEach((elm) => {
+    window.addEventListener(elm, ScrollMarginTopCalculation);
+  });
+</script>

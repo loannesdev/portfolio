@@ -1,0 +1,22 @@
+<style>
+  section[id="about"] {
+    background-color: gray.5;
+    height: 100vh;
+  }
+
+  section[id="about"] {
+    background-color: gray.5;
+    height: 100vh;
+  }
+</style>
+
+<section id="about">
+  <span id="age"></span>
+</section>
+
+<script>
+  const myAge = new Date("1999/09/10");
+  const yearsCalc = new Date().getFullYear() - myAge.getFullYear();
+  document.getElementById("age").innerHTML = `${yearsCalc} años`;
+  console.log("FLAG");
+</script>

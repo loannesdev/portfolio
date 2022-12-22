@@ -1,0 +1,131 @@
+---
+import { Icon } from "astro-icon";
+import Bull from "../components/Bull.astro";
+
+const socialMedia = [
+  {
+    link: "https://www.linkedin.com/in/sebastian-c-130476121",
+    icon: "linkedin",
+  },
+  {
+    link: "https://github.com/loannesdev",
+    icon: "github",
+  },
+];
+
+const navLinks = [
+  {
+    href: "#home",
+    text: "Inicio",
+  },
+  {
+    href: "#about",
+    text: "Sobre mi",
+  },
+  {
+    href: "#knowledge",
+    text: "Tecnologías conocidas",
+  },
+  {
+    href: "#proyects",
+    text: "Proyectos personales",
+  },
+];
+---
+
+<style>
+  header {
+    display: flex;
+    font-size: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #202124;
+    flex-wrap: wrap-reverse;
+    position: sticky;
+    top: 0;
+    background-color: #fafafa;
+  }
+
+  header a {
+    text-decoration: none;
+    color: #202124;
+  }
+
+  header a:hover {
+    text-decoration-line: underline;
+  }
+
+  .contact {
+    display: flex;
+    align-items: center;
+  }
+
+  .contact > article {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+  }
+
+  .social {
+    display: flex;
+    gap: 0.3rem;
+  }
+
+  .social svg {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+  .index-list > ul {
+    list-style: none;
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+</style>
+
+<header>
+  <section class="contact">
+    <Icon name="sun" />
+
+    <article>
+      <div class="social">
+        {
+          socialMedia.map((elm) => {
+            return (
+              <a href={elm.link} target="_blank" rel="noreferrer noopener">
+                <Icon name={elm.icon} />
+              </a>
+            );
+          })
+        }
+      </div>
+
+      <Bull />
+
+      <a href="/src/assets/CV.pdf" download="CV - Sebastian Cortes.pdf">
+        Descargar CV
+      </a>
+    </article>
+  </section>
+
+  <nav class="index-list">
+    <ul>
+      {
+        navLinks.map((elm, index, arr) => {
+          return (
+            <>
+              <li>
+                <a href={elm.href}>{elm.text}</a>
+              </li>
+
+              {index + 1 === arr.length ? null : <Bull />}
+            </>
+          );
+        })
+      }
+    </ul>
+  </nav>
+</header>
