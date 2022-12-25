@@ -58,6 +58,7 @@ const navLinks = [
 
   .contact {
     display: flex;
+    gap: 2rem;
     align-items: center;
   }
 
@@ -72,6 +73,10 @@ const navLinks = [
     gap: 0.3rem;
   }
 
+  .social > a {
+    display: flex;
+  }
+
   .social svg {
     height: 1.5rem;
     width: 1.5rem;
@@ -84,11 +89,58 @@ const navLinks = [
     align-items: center;
     flex-wrap: wrap;
   }
+
+  #darkModeButton {
+    display: block;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  [astro-icon="ph:sun-duotone"],
+  [astro-icon="ph:moon-duotone"] {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  [astro-icon="ph:sun-duotone"] {
+    display: none;
+  }
+
+  [astro-icon="ph:moon-duotone"] {
+    color: #202124;
+  }
+
+  :global(.dark) > body header {
+    border-bottom: 1px solid #fafafa;
+    background-color: #202124;
+  }
+
+  :global(.dark) > body,
+  :global(.dark) > body a {
+    color: #fafafa;
+  }
+
+  :global(.dark) > body .social > a {
+    fill: #fafafa;
+  }
+
+  :global(.dark) [astro-icon="ph:sun-duotone"] {
+    color: yellow;
+    display: block;
+  }
+  :global(.dark) [astro-icon="ph:moon-duotone"] {
+    display: none;
+  }
 </style>
 
 <header>
   <section class="contact">
-    <Icon name="sun" />
+    <button id="darkModeButton">
+      <Icon name="ph:sun-duotone" />
+      <Icon name="ph:moon-duotone" />
+    </button>
 
     <article>
       <div class="social">
@@ -127,3 +179,36 @@ const navLinks = [
     </ul>
   </nav>
 </header>
+
+<script>
+  const valueName = "theme";
+  const darkModeValue = localStorage.getItem(valueName);
+  const ELM = document.documentElement;
+
+  const theme = () => {
+    if (darkModeValue === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.removeAttribute("class");
+    }
+
+    if (!darkModeValue) {
+      localStorage.setItem(valueName, "light");
+    }
+  };
+
+  const toggleTheme = () => {
+    ELM.classList.toggle("dark");
+
+    const isDark = ELM.className.includes("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  };
+
+  document
+    .getElementById("darkModeButton")
+    .addEventListener("click", toggleTheme);
+
+  window.onload = () => {
+    theme();
+  };
+</script>

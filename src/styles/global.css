@@ -10,6 +10,11 @@ html {
 body {
   margin: 0;
   background-color: #fafafa;
+  transition: .3s all ease;
+}
+
+.dark>body {
+  background-color: #202124;
 }
 
 header,
