@@ -91,11 +91,18 @@ const navLinks = [
   }
 
   #darkModeButton {
-    display: block;
+    display: flex;
     border: none;
     outline: none;
     background-color: transparent;
     cursor: pointer;
+    border-radius: 0.5rem;
+    padding: 0.3rem 0.5rem;
+  }
+
+  #darkModeButton:hover,
+  #darkModeButton:active {
+    outline: 1px solid grey;
   }
 
   [astro-icon="ph:sun-duotone"],
@@ -130,8 +137,14 @@ const navLinks = [
     color: yellow;
     display: block;
   }
+
   :global(.dark) [astro-icon="ph:moon-duotone"] {
     display: none;
+  }
+
+  :global(.dark) #darkModeButton:hover,
+  :global(.dark) #darkModeButton:active {
+    outline: 1px solid grey;
   }
 </style>
 
