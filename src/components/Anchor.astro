@@ -1,0 +1,19 @@
+---
+const { url, external = false } = Astro.props;
+---
+
+{
+  external && (
+    <a href={url} target="_blank" rel="noreferrer noopener">
+      <slot />
+    </a>
+  )
+}
+
+{
+  !external && (
+    <a href={url}>
+      <slot />
+    </a>
+  )
+}

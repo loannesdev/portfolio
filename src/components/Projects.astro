@@ -1,8 +1,106 @@
+---
+import Anchor from "../components/Anchor.astro";
+import { github } from "../utils/info.json";
+
+const PROJECTS = await fetch(github.repos).then((res) => res.json());
+---
+
 <style>
-  section[id="proyects"] {
-    background-color: indigo.3;
-    height: 100vh;
+  section[id="projects"]::before {
+    content: "Proyectos personales";
+  }
+
+  [data-class="container-projects"] {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+    margin-top: 0.5rem;
+  }
+
+  [data-class="card-projects"] > h4 {
+    margin: 0;
+    text-align: center;
+  }
+
+  [data-class="topics"] {
+    display: flex;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+  }
+
+  [data-class="topics"] > small {
+    background-color: #6565652e;
+    padding: 0.1rem 0.5rem;
+    border-radius: 0.5rem;
+    margin: 0;
+  }
+
+  [data-class="topics-container-projects"] {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  [data-class="card-projects"] {
+    border-radius: 0.5rem;
+    border: 1px solid grey;
+    padding: 0.5rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: min-content;
+  }
+
+  [data-class="desc"] {
+    margin: 0;
+  }
+
+  [data-class="footer-card-projects"] {
+    display: flex;
+    gap: 1rem;
+  }
+
+  [data-class="title-card-projects"] {
+    font-size: 1.1em;
   }
 </style>
 
-<section id="proyects"></section>
+<section id="projects">
+  <div data-class="container-projects">
+    {
+      PROJECTS.map((elm) => {
+        if (elm.name !== "portfolio") {
+          return (
+            <>
+              <article data-class="card-projects">
+                <h4 data-class="title-card-projects">{elm.name}</h4>
+                <p data-class="desc">{elm.description}</p>
+
+                {elm.topics && elm.topics.length && (
+                  <div data-class="topics-container-projects">
+                    <span>Hecho con:</span>
+
+                    <div data-class="topics">
+                      {elm.topics.map((tech) => {
+                        return <small>{tech}</small>;
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                <footer data-class="footer-card-projects">
+                  <Anchor url={elm.html_url} external={true}>
+                    Repositorio
+                  </Anchor>
+                  <Anchor url={elm.homepage} external={true}>
+                    Ver sitio
+                  </Anchor>
+                </footer>
+              </article>
+            </>
+          );
+        }
+      })
+    }
+  </div>
+</section>

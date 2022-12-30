@@ -1,36 +1,8 @@
 ---
 import { Icon } from "astro-icon";
 import Bull from "../components/Bull.astro";
-
-const socialMedia = [
-  {
-    link: "https://www.linkedin.com/in/sebastian-c-130476121",
-    icon: "linkedin",
-  },
-  {
-    link: "https://github.com/loannesdev",
-    icon: "github",
-  },
-];
-
-const navLinks = [
-  {
-    href: "#home",
-    text: "Inicio",
-  },
-  {
-    href: "#about",
-    text: "Sobre mi",
-  },
-  {
-    href: "#knowledge",
-    text: "Tecnologías conocidas",
-  },
-  {
-    href: "#proyects",
-    text: "Proyectos personales",
-  },
-];
+import { navLinks, socialMedia } from "../utils/info.json";
+import Anchor from "./Anchor.astro";
 ---
 
 <style>
@@ -45,14 +17,15 @@ const navLinks = [
     position: sticky;
     top: 0;
     background-color: #fafafa;
+    z-index: 1;
   }
 
-  header a {
+  header :global(a) {
     text-decoration: none;
     color: #202124;
   }
 
-  header a:hover {
+  header :global(a:hover) {
     text-decoration-line: underline;
   }
 
@@ -73,7 +46,7 @@ const navLinks = [
     gap: 0.3rem;
   }
 
-  .social > a {
+  .social > :global(a) {
     display: flex;
   }
 
@@ -105,18 +78,29 @@ const navLinks = [
     outline: 1px solid grey;
   }
 
-  [astro-icon="ph:sun-duotone"],
-  [astro-icon="ph:moon-duotone"] {
+  [astro-icon="sun"],
+  [astro-icon="moon"] {
     height: 2rem;
     width: 2rem;
   }
 
-  [astro-icon="ph:sun-duotone"] {
+  [astro-icon="sun"] {
     display: none;
   }
 
-  [astro-icon="ph:moon-duotone"] {
+  [astro-icon="moon"] {
     color: #202124;
+    animation: 3s infinite alternate moon-shadow;
+  }
+
+  @keyframes moon-shadow {
+    from {
+      filter: none;
+    }
+
+    to {
+      filter: drop-shadow(1px 1px 2px #202124);
+    }
   }
 
   :global(.dark) > body header {
@@ -125,20 +109,31 @@ const navLinks = [
   }
 
   :global(.dark) > body,
-  :global(.dark) > body a {
+  :global(.dark) > body :global(a) {
     color: #fafafa;
   }
 
-  :global(.dark) > body .social > a {
+  :global(.dark) > body .social > :global(a) {
     fill: #fafafa;
   }
 
-  :global(.dark) [astro-icon="ph:sun-duotone"] {
+  :global(.dark) [astro-icon="sun"] {
     color: yellow;
     display: block;
+    animation: 3s infinite alternate sun-shadow;
   }
 
-  :global(.dark) [astro-icon="ph:moon-duotone"] {
+  @keyframes sun-shadow {
+    from {
+      filter: none;
+    }
+
+    to {
+      filter: drop-shadow(1px 1px 2px yellow);
+    }
+  }
+
+  :global(.dark) [astro-icon="moon"] {
     display: none;
   }
 
@@ -151,8 +146,8 @@ const navLinks = [
 <header>
   <section class="contact">
     <button id="darkModeButton">
-      <Icon name="ph:sun-duotone" />
-      <Icon name="ph:moon-duotone" />
+      <Icon name="sun" />
+      <Icon name="moon" />
     </button>
 
     <article>
@@ -160,9 +155,9 @@ const navLinks = [
         {
           socialMedia.map((elm) => {
             return (
-              <a href={elm.link} target="_blank" rel="noreferrer noopener">
+              <Anchor url={elm.link} external={true}>
                 <Icon name={elm.icon} />
-              </a>
+              </Anchor>
             );
           })
         }
@@ -181,7 +176,7 @@ const navLinks = [
           return (
             <>
               <li>
-                <a href={elm.href}>{elm.text}</a>
+                <Anchor url={elm.href}>{elm.text}</Anchor>
               </li>
 
               {index + 1 === arr.length ? null : <Bull />}

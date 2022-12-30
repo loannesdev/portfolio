@@ -1,8 +1,23 @@
+---
+import KnowledgeContent from "./KnowledgeContent";
+---
+
 <style>
   section[id="knowledge"] {
-    background-color: green.5;
-    height: 100vh;
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  section[id="knowledge"]::before {
+    content: "Tecnologías conocidas";
+  }
+
+  :global(.dark) :global([data-class="see-more-button-knowledge"]),
+  :global(.dark) :global([data-class="favorites-button-knowledge"]) {
+    color: #fafafa;
   }
 </style>
 
-<section id="knowledge"></section>
+<section id="knowledge">
+  <KnowledgeContent client:only="react" />
+</section>

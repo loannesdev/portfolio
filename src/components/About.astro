@@ -1,17 +1,47 @@
 <style>
-  section[id="about"] {
-    background-color: gray.5;
-    height: 100vh;
+  section[id="about"]::before {
+    content: "Sobre mi";
   }
 
-  section[id="about"] {
-    background-color: gray.5;
-    height: 100vh;
+  section[id="about"] > p {
+    margin: 0;
+    line-height: 1.5rem;
+  }
+
+  section[id="about"] > p > a {
+    text-decoration: none;
+    color: #202124;
+  }
+
+  :global(.dark) :global(section[id="about"] > p > a) {
+    color: #fafafa;
+  }
+
+  section[id="about"] > p > a:hover,
+  section[id="about"] > p > a:active {
+    text-decoration: underline;
   }
 </style>
 
 <section id="about">
-  <span id="age"></span>
+  <p>
+    Soy alguien mayormente autodidacta en la programación, que busca solucionar
+    problemas por si solo cuando se enfrenta a alguno pero que se adapta bien a
+    entornos colaborativos y/o equipos de trabajo, tolerante, respetuoso,
+    resiliente y también con intensión de compartir su experiencia y ayudar al
+    progimo en lo que se pueda. Tengo <b id="age"></b> y soy de <b
+      >Cali, Colombia</b
+    >, egresado del <a
+      href="https://www.sena.edu.co"
+      target="_blank"
+      rel="noreferrer noopener"
+      ><b>SENA (Servicio Nacional de Aprendizaje)</b>
+    </a> de la tecnología/carrera
+    <b>Análisis y desarrollo de sistemas de información</b> (aquí fue donde empezó
+    mi historia en la programación). Me gusta jugar videojuegos, montar bicicleta,
+    hacer ejercicio, investigar sobre temas que me interesen. Papá de una familia
+    de periquitos australianos.
+  </p>
 </section>
 
 <script>

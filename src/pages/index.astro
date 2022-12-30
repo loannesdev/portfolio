@@ -9,17 +9,13 @@ import "../styles/global.css";
 ---
 
 <style>
-  body > main > section {
-    word-break: break-word;
-  }
-
   body > main > section[id] {
     scroll-margin-top: 10vh;
   }
 
   body > main {
     display: grid;
-    gap: 1rem;
+    gap: 4xl;
   }
 </style>
 
@@ -48,7 +44,7 @@ import "../styles/global.css";
   const HEADER = document.querySelector("header");
   const SECTIONS = document.querySelectorAll("body > main > section[id]");
 
-  const ScrollMarginTopCalculation = () => {
+  const scrollMarginTopCalculation = () => {
     // function for control the "scroll-margin-top" style value when the header change their height
     Object.values(SECTIONS).forEach((elm) => {
       elm.style.scrollMarginTop =
@@ -56,7 +52,7 @@ import "../styles/global.css";
     });
   };
 
-  ["resize", "click", "touchend"].forEach((elm) => {
-    window.addEventListener(elm, ScrollMarginTopCalculation);
+  ["resize", "click", "touchend", "load"].forEach((elm) => {
+    window.addEventListener(elm, scrollMarginTopCalculation);
   });
 </script>
