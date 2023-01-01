@@ -74,7 +74,7 @@ const PROJECTS = await fetch(github.repos).then((res) => res.json());
             <>
               <article data-class="card-projects">
                 <h4 data-class="title-card-projects">{elm.name}</h4>
-                {elm.description && elm.length && (
+                {elm.description && elm.description.length && (
                   <p data-class="desc">{elm.description}</p>
                 )}
 
