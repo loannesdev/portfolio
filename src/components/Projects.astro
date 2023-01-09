@@ -1,6 +1,6 @@
 ---
-import Anchor from "../components/Anchor.astro";
 import { github } from "../utils/info.json";
+import Anchor from "./Anchor.astro";
 
 const PROJECTS = await fetch(github.repos).then((res) => res.json());
 ---
