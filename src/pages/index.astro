@@ -31,7 +31,6 @@ import Projects from "../components/Projects.astro";
   body {
     margin: 0;
     background-color: #fafafa;
-    transition: 0.3s all ease;
     padding-bottom: 5rem;
   }
 
@@ -39,9 +38,14 @@ import Projects from "../components/Projects.astro";
     background-color: #202124;
   }
 
+  body,
+  body > header,
+  body > main {
+    transition: 0.15s all ease;
+  }
+
   header,
   main {
-    transition: 0.3s all ease;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
@@ -120,6 +124,9 @@ import Projects from "../components/Projects.astro";
   const HEADER = document.querySelector("header");
   const SECTIONS = document.querySelectorAll("body > main > section[id]");
   const CONTENT_READY = document.readyState === "interactive";
+  const valueName = "theme";
+  const darkModeValue = localStorage.getItem(valueName);
+  const ELM = document.documentElement;
 
   const scrollMarginTopCalculation = () => {
     // function for control the "scroll-margin-top" style value when the header change their height
@@ -132,10 +139,6 @@ import Projects from "../components/Projects.astro";
   ["resize", "click", "touchend", "load"].forEach((elm) => {
     window.addEventListener(elm, scrollMarginTopCalculation);
   });
-
-  const valueName = "theme";
-  const darkModeValue = localStorage.getItem(valueName);
-  const ELM = document.documentElement;
 
   // Dark mode
   const theme = () => {
