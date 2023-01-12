@@ -80,7 +80,7 @@ const PROJECTS = await fetch(github.repos).then((res) => res.json());
 
                 {elm.topics && elm.topics.length && (
                   <div data-class="topics-container-projects">
-                    <span>Hecho con:</span>
+                    <span>Tecnologías usadas:</span>
 
                     <div data-class="topics">
                       {elm.topics.map((tech) => {
