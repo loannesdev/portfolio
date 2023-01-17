@@ -102,7 +102,7 @@
     {
       "name": "GitHub",
       "fav": true,
-      "icon_name": "github-2",
+      "icon_name": "github",
       "website": "https://github.com"
     },
     {
@@ -183,7 +183,7 @@
       "website": "https://learn.microsoft.com/en-us/dotnet/csharp"
     },
     {
-      "name": "Visual basic \nfor applications (VBA)",
+      "name": "Visual basic for applications (VBA)",
       "fav": false,
       "website": "https://learn.microsoft.com/en-us/office/vba",
       "icon_name": "VBA"
@@ -221,7 +221,7 @@
     {
       "name": "HTML",
       "fav": false,
-      "icon_name": "html5",
+      "icon_name": "html",
       "website": "https://html.spec.whatwg.org/multipage"
     },
     {
@@ -251,7 +251,7 @@
     {
       "name": "Vite",
       "fav": true,
-      "icon_name": "vitejs",
+      "icon_name": "vite",
       "website": "https://vitejs.dev"
     },
     {

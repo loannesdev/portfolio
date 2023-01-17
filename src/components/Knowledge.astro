@@ -1,8 +1,4 @@
----
-import KnowledgeContent from "./KnowledgeContent";
----
-
-<style>
+<style is:global>
   section[id="knowledge"] {
     display: grid;
     gap: 1.5rem;
@@ -12,12 +8,166 @@ import KnowledgeContent from "./KnowledgeContent";
     content: "Tecnologías conocidas";
   }
 
-  :global(.dark) :global([data-class="see-more-button-knowledge"]),
-  :global(.dark) :global([data-class="favorites-button-knowledge"]) {
+  .dark [data-class="see-more-button-knowledge"],
+  .dark [data-class="favorites-button-knowledge"] {
     color: #fafafa;
+  }
+
+  [data-class="img-icon-knowledge"] {
+    height: 3rem;
+    width: 3rem;
+  }
+
+  [data-class="card-container-knowledge"] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  [data-class="see-more-button-knowledge"],
+  [data-class="favorites-button-knowledge"] {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.5rem;
+    font-weight: semibold;
+    color: #202124;
+  }
+
+  [data-class="see-more-button-knowledge"]:hover,
+  [data-class="see-more-button-knowledge"]:active,
+  [data-class="favorites-button-knowledge"]:hover,
+  [data-class="favorites-button-knowledge"]:active {
+    outline: 1px solid grey;
+  }
+
+  [data-class="filters-knowledge"] {
+    display: flex;
+    justify-self: center;
+  }
+
+  [data-class="card-knowledge"] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: #202124;
+    border-radius: 0.5rem;
+    padding: 0.3rem;
+  }
+
+  [data-class="card-knowledge"]:hover {
+    outline: 1px solid grey;
+  }
+
+  [data-class="card-knowledge"]:active {
+    outline: 1px solid transparent;
+    background-color: #6565651f;
+    color: #fafafa;
+    text-shadow: 1px 2px 2px rgba(32, 33, 36, 0.56);
+  }
+
+  [data-class="card-title-knowledge"] {
+    word-break: break-word;
   }
 </style>
 
 <section id="knowledge">
-  <KnowledgeContent client:only="react" />
+  <div data-class="filters-knowledge">
+    <button type="button" data-class="see-more-button-knowledge">Ver más</button
+    >
+    <button type="button" data-class="favorites-button-knowledge"
+      >Favoritos</button
+    >
+  </div>
+
+  <techs-container data-class="card-container-knowledge"></techs-container>
 </section>
+
+<script>
+  import { technologies } from "../utils/info.json";
+  import { $ } from "../utils/myScripts";
+
+  const SEE_MORE_BUTTON = $("[data-class='see-more-button-knowledge']");
+  const FAVORITES_BUTTON = $("[data-class='favorites-button-knowledge']");
+  technologies.reverse();
+
+  // Custom web component
+  class TechsContainer extends HTMLElement {
+    constructor() {
+      super();
+      this.render();
+    }
+
+    render() {
+      let STATES = {
+        seeFavorites: false,
+        seeAll: false,
+      };
+      let DATA = technologies.slice(0, 14);
+      // Proxy for detect change of "STATES" object
+      const SWITCHER = new Proxy(STATES, {
+        set: (target, key, value) => {
+          target[key] = value;
+
+          DATA = STATES.seeAll ? technologies : technologies.slice(0, 14);
+          DATA = STATES.seeFavorites
+            ? DATA.filter((elm) => elm.fav === true)
+            : DATA;
+          MyRender();
+
+          return true;
+        },
+      });
+
+      const MyRender = () => {
+        this.textContent = "";
+
+        DATA.forEach((elm, index) => {
+          const ANCHOR = document.createElement("a");
+          ANCHOR.setAttribute("href", elm.website);
+          ANCHOR.setAttribute("target", "_blank");
+          ANCHOR.setAttribute("rel", "noreferrer noopener");
+          ANCHOR.setAttribute("key", `${index}`);
+          ANCHOR.setAttribute("data-class", "card-knowledge");
+
+          if (elm.icon_name) {
+            const IMG = document.createElement("img");
+            IMG.setAttribute("src", `/icons/${elm.icon_name}.svg`);
+            IMG.setAttribute("data-class", "img-icon-knowledge");
+
+            ANCHOR.appendChild(IMG);
+          }
+
+          const SPAN = document.createElement("span");
+          SPAN.setAttribute("data-class", "card-title-knowledge");
+          SPAN.textContent = elm.name;
+          ANCHOR.appendChild(SPAN);
+
+          this.appendChild(ANCHOR);
+        });
+      };
+
+      SEE_MORE_BUTTON.addEventListener("click", (elm) => {
+        SWITCHER.seeAll = !STATES.seeAll;
+        elm.target.textContent = !STATES.seeAll ? "Ver más" : "Ver menos";
+      });
+
+      FAVORITES_BUTTON.addEventListener("click", (elm) => {
+        SWITCHER.seeFavorites = !STATES.seeFavorites;
+        elm.target.textContent = !STATES.seeFavorites
+          ? "Favoritos"
+          : "Dejar de ver favoritos";
+      });
+
+      MyRender();
+    }
+  }
+
+  customElements.define("techs-container", TechsContainer);
+  // End custom web component
+</script>
