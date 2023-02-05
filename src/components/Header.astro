@@ -73,7 +73,7 @@ import Anchor from "./Anchor.astro";
 
     &:hover,
     &:active {
-      outline: 1px solid palette.grey;
+      outline: 0.15rem solid var(--color-palette-grey);
     }
   }
 
@@ -122,24 +122,17 @@ import Anchor from "./Anchor.astro";
         & [astro-icon="moon"] {
           display: none;
         }
-
-        & #darkModeButton {
-          &:hover,
-          active {
-            outline: 1px solid grey;
-          }
-        }
       }
     }
+  }
 
-    & @keyframes sun-shadow {
-      from {
-        filter: none;
-      }
+  @keyframes sun-shadow {
+    from {
+      filter: none;
+    }
 
-      to {
-        filter: drop-shadow(1px 1px 2px yellow);
-      }
+    to {
+      filter: drop-shadow(1px 1px 2px yellow);
     }
   }
 </style>
