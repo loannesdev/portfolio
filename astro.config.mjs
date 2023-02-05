@@ -5,10 +5,5 @@ import tokencss from "@tokencss/astro";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tokencss()],
-  vite: {
-    ssr: {
-      external: ["svgo"]
-    },
-  }
+  integrations: [tokencss()]
 });

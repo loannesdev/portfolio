@@ -12,55 +12,55 @@ import Anchor from "./Anchor.astro";
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem 0;
-    border-bottom: 1px solid #202124;
+    border-bottom: 0.1rem solid var(--color-palette-grey);
     flex-wrap: wrap-reverse;
     position: sticky;
     top: 0;
-    background-color: #fafafa;
     z-index: 1;
-  }
 
-  header :global(a) {
-    text-decoration: none;
-    color: #202124;
-  }
+    & :global(a) {
+      text-decoration: none;
 
-  header :global(a:hover) {
-    text-decoration-line: underline;
+      &:hover {
+        text-decoration-line: underline;
+      }
+    }
   }
 
   .contact {
     display: flex;
     gap: 2rem;
     align-items: center;
-  }
 
-  .contact > article {
-    display: flex;
-    gap: 0.3rem;
-    align-items: center;
+    & article {
+      display: flex;
+      gap: 0.3rem;
+      align-items: center;
+    }
   }
 
   .social {
     display: flex;
     gap: 0.3rem;
+
+    & :global(a) {
+      display: flex;
+    }
+
+    & svg {
+      height: 1.5rem;
+      width: 1.5rem;
+    }
   }
 
-  .social > :global(a) {
-    display: flex;
-  }
-
-  .social svg {
-    height: 1.5rem;
-    width: 1.5rem;
-  }
-
-  .index-list > ul {
-    list-style: none;
-    display: flex;
-    gap: 0.3rem;
-    align-items: center;
-    flex-wrap: wrap;
+  .index-list {
+    & ul {
+      list-style: none;
+      display: flex;
+      gap: 0.3rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
   }
 
   #darkModeButton {
@@ -69,13 +69,12 @@ import Anchor from "./Anchor.astro";
     outline: none;
     background-color: transparent;
     cursor: pointer;
-    border-radius: 0.5rem;
-    padding: 0.3rem 0.5rem;
-  }
+    padding: 0.3rem;
 
-  #darkModeButton:hover,
-  #darkModeButton:active {
-    outline: 1px solid grey;
+    &:hover,
+    &:active {
+      outline: 1px solid palette.grey;
+    }
   }
 
   [astro-icon="sun"],
@@ -89,7 +88,7 @@ import Anchor from "./Anchor.astro";
   }
 
   [astro-icon="moon"] {
-    color: #202124;
+    color: palette.black;
     animation: 3s infinite alternate moon-shadow;
   }
 
@@ -99,47 +98,49 @@ import Anchor from "./Anchor.astro";
     }
 
     to {
-      filter: drop-shadow(1px 1px 2px #202124);
+      filter: drop-shadow(1px 1px 2px var(--color-palette-black));
     }
   }
 
-  :global(.dark) > body header {
-    border-bottom: 1px solid #fafafa;
-    background-color: #202124;
-  }
-
-  :global(.dark) > body,
-  :global(.dark) > body :global(a) {
-    color: #fafafa;
-  }
-
-  :global(.dark) > body .social > :global(a) {
-    fill: #fafafa;
-  }
-
-  :global(.dark) [astro-icon="sun"] {
-    color: yellow;
-    display: block;
-    animation: 3s infinite alternate sun-shadow;
-  }
-
-  @keyframes sun-shadow {
-    from {
-      filter: none;
+  :global(.dark) {
+    & [astro-icon="sun"] {
+      color: yellow;
+      display: block;
+      animation: 3s infinite alternate sun-shadow;
     }
 
-    to {
-      filter: drop-shadow(1px 1px 2px yellow);
+    & body {
+      & .social {
+        & :global(a) {
+          fill: #fafafa;
+        }
+      }
+
+      & header {
+        border-color: 0.1rem solid palette.white;
+
+        & [astro-icon="moon"] {
+          display: none;
+        }
+
+        & #darkModeButton {
+          &:hover,
+          active {
+            outline: 1px solid grey;
+          }
+        }
+      }
     }
-  }
 
-  :global(.dark) [astro-icon="moon"] {
-    display: none;
-  }
+    & @keyframes sun-shadow {
+      from {
+        filter: none;
+      }
 
-  :global(.dark) #darkModeButton:hover,
-  :global(.dark) #darkModeButton:active {
-    outline: 1px solid grey;
+      to {
+        filter: drop-shadow(1px 1px 2px yellow);
+      }
+    }
   }
 </style>
 

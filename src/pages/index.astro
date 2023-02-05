@@ -19,83 +19,120 @@ import Projects from "../components/Projects.astro";
     visibility: hidden;
   }
 
-  body > main > section[id] {
-    scroll-margin-top: 10vh;
-  }
-
-  body > main {
-    display: grid;
-    gap: 6xl;
-  }
-
-  body {
-    margin: 0;
-    background-color: #fafafa;
-    padding-bottom: 5rem;
-  }
-
-  .dark > body {
-    background-color: #202124;
-  }
-
   body,
   body > header,
   body > main {
     transition: 0.15s all ease;
   }
 
-  header,
-  main {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
+  body {
+    margin: 0;
+    background-color: palette.white;
+    padding-bottom: 5rem;
 
-  @media (sm) {
-    header,
-    main {
-      padding-left: 5rem;
-      padding-right: 5rem;
+    & main,
+    & header {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+
+    & main {
+      display: grid;
+      gap: 6xl;
+
+      & section[id] {
+        scroll-margin-top: 10vh;
+      }
+    }
+
+    & a,
+    & button,
+    & span,
+    & p,
+    & h4,
+    & h1,
+    & h2,
+    & section[id]::before,
+    & small {
+      color: palette.black;
+    }
+
+    & header {
+      background-color: palette.white;
+    }
+
+    @media (sm) {
+      & header,
+      & main {
+        padding-left: 5rem;
+        padding-right: 5rem;
+      }
+    }
+
+    @media (md) {
+      & header,
+      & main {
+        padding-left: 10rem;
+        padding-right: 10rem;
+      }
+    }
+
+    @media (lg) {
+      & header,
+      & main {
+        padding-left: 15rem;
+        padding-right: 15rem;
+      }
+    }
+
+    @media (xl) {
+      & header,
+      & main {
+        padding-left: 20rem;
+        padding-right: 20rem;
+      }
     }
   }
 
-  @media (md) {
-    header,
-    main {
-      padding-left: 10rem;
-      padding-right: 10rem;
+  .dark {
+    & body,
+    & header {
+      background-color: palette.black;
     }
-  }
 
-  @media (lg) {
-    header,
-    main {
-      padding-left: 15rem;
-      padding-right: 15rem;
-    }
-  }
-
-  @media (xl) {
-    header,
-    main {
-      padding-left: 20rem;
-      padding-right: 20rem;
+    & a,
+    & button,
+    & span,
+    & p,
+    & h4,
+    & h1,
+    & h2,
+    & section[id]::before,
+    & small,
+    & header {
+      color: palette.white;
     }
   }
 
   section[id] {
     word-break: break-word;
+
+    &::before {
+      font-weight: bold;
+      font-size: 2xl;
+      display: block;
+      font-family: mono;
+    }
   }
 
-  section[id]::before {
-    color: #202124;
-    font-weight: bold;
-    font-size: 2xl;
-    display: block;
-    font-family: mono;
-  }
-
-  .dark section[id]::before {
-    color: #fafafa;
+  button,
+  a,
+  [data-class="card-projects"],
+  [data-class="see-more-button-knowledge"],
+  [data-class="favorites-button-knowledge"],
+  [data-class="card-knowledge"],
+  #darkModeButton {
+    border-radius: 0.25rem;
   }
 </style>
 

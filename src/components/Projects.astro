@@ -1,8 +1,10 @@
 ---
-import { github } from "../utils/info.json";
+//import { github } from "../utils/info.json";
+import { projects } from "../utils/info.json";
 import Anchor from "./Anchor.astro";
 
-const PROJECTS = await fetch(github.repos).then((res) => res.json());
+//const PROJECTS = await fetch(github.repos).then((res) => res.json());
+const PROJECTS = projects;
 ---
 
 <style>
@@ -17,9 +19,11 @@ const PROJECTS = await fetch(github.repos).then((res) => res.json());
     margin-top: 0.5rem;
   }
 
-  [data-class="card-projects"] > h4 {
-    margin: 0;
-    text-align: center;
+  [data-class="card-projects"] {
+    & h4 {
+      margin: 0;
+      text-align: center;
+    }
   }
 
   [data-class="topics"] {
@@ -28,22 +32,29 @@ const PROJECTS = await fetch(github.repos).then((res) => res.json());
     flex-wrap: wrap;
   }
 
-  [data-class="topics"] > small {
-    background-color: #6565652e;
-    padding: 0.1rem 0.5rem;
-    border-radius: 0.5rem;
-    margin: 0;
+  [data-class="topics"] {
+    & small {
+      background-color: #6565652e;
+      padding: 0.1rem 0.5rem;
+      border-radius: 0.2rem;
+      margin: 0;
+    }
   }
-
   [data-class="topics-container-projects"] {
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
   }
 
+  [data-class="topics-container-projects"] {
+    & span {
+      font-size: sm;
+      font-weight: bold;
+    }
+  }
+
   [data-class="card-projects"] {
-    border-radius: 0.5rem;
-    border: 1px solid grey;
+    border: 0.1rem solid palette.grey;
     padding: 0.5rem 0.8rem;
     display: flex;
     flex-direction: column;
@@ -58,6 +69,37 @@ const PROJECTS = await fetch(github.repos).then((res) => res.json());
   [data-class="footer-card-projects"] {
     display: flex;
     gap: 1rem;
+  }
+
+  [data-class="footer-card-projects"] {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    word-break: keep-all;
+    background-color: var(--palette-black);
+
+    & :global(a) {
+      padding: 0.2rem 0.6rem;
+      border: 0.1rem solid palette.grey;
+      text-decoration: none;
+      transition: 0.2s all ease;
+
+      &:hover,
+      &:active {
+        border-color: palette.black;
+        background-color: palette.black;
+        color: palette.white;
+      }
+
+      @nest :global(.dark) & {
+        &:hover, &:active {
+          border-color: palette.white;
+          background-color: palette.white;
+          color: palette.black;
+        }
+      }
+    }
   }
 
   [data-class="title-card-projects"] {
@@ -80,7 +122,7 @@ const PROJECTS = await fetch(github.repos).then((res) => res.json());
 
                 {elm.topics && elm.topics.length && (
                   <div data-class="topics-container-projects">
-                    <span>Tecnologías usadas:</span>
+                    <span>Tecnologías usadas</span>
 
                     <div data-class="topics">
                       {elm.topics.map((tech) => {
