@@ -1,10 +1,8 @@
 ---
-//import { github } from "../utils/info.json";
-import { projects } from "../utils/info.json";
+import { github } from "../utils/info.json";
 import Anchor from "./Anchor.astro";
 
-//const PROJECTS = await fetch(github.repos).then((res) => res.json());
-const PROJECTS = projects;
+const PROJECTS = await fetch(github.repos).then((res) => res.json());
 ---
 
 <style>
