@@ -12,9 +12,9 @@ const PROJECTS = await fetch(github.repos).then((res) => res.json());
 
   [data-class="container-projects"] {
     display: grid;
+    margin-top: 0.5rem;
     gap: 0.5rem;
     grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
-    margin-top: 0.5rem;
   }
 
   [data-class="card-projects"] {
