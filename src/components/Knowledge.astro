@@ -78,11 +78,20 @@
 
 <section id="knowledge">
   <div data-class="filters-knowledge">
-    <button type="button" data-class="see-more-button-knowledge">Ver más</button
+    <button
+      type="button"
+      data-class="see-more-button-knowledge"
+      aria-label="See more knowledge"
     >
-    <button type="button" data-class="favorites-button-knowledge"
-      >Favoritos</button
+      Ver más
+    </button>
+    <button
+      type="button"
+      data-class="favorites-button-knowledge"
+      aria-label="See favorites knowledge"
     >
+      Favoritos
+    </button>
   </div>
 
   <techs-container data-class="card-container-knowledge"></techs-container>
@@ -134,11 +143,13 @@
           ANCHOR.setAttribute("rel", "noreferrer noopener");
           ANCHOR.setAttribute("key", `${index}`);
           ANCHOR.setAttribute("data-class", "card-knowledge");
+          ANCHOR.setAttribute("aria-label", `Sitio web de ${elm.name}`);
 
           if (elm.icon_name) {
             const IMG = document.createElement("img");
             IMG.setAttribute("src", `/icons/${elm.icon_name}.svg`);
             IMG.setAttribute("data-class", "img-icon-knowledge");
+            IMG.setAttribute("alt", `imagen de ${elm.name}`);
 
             ANCHOR.appendChild(IMG);
           }

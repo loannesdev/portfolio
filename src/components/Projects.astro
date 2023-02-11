@@ -18,7 +18,7 @@ const PROJECTS = await fetch(github.repos).then((res) => res.json());
   }
 
   [data-class="card-projects"] {
-    & h4 {
+    & h1 {
       margin: 0;
       text-align: center;
     }
@@ -65,17 +65,14 @@ const PROJECTS = await fetch(github.repos).then((res) => res.json());
   }
 
   [data-class="footer-card-projects"] {
-    display: flex;
-    gap: 1rem;
-  }
-
-  [data-class="footer-card-projects"] {
     width: 100%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     word-break: keep-all;
     background-color: var(--palette-black);
+    gap: 1rem;
+    margin-top: 1rem;
 
     & :global(a) {
       padding: 0.2rem 0.6rem;
@@ -113,7 +110,7 @@ const PROJECTS = await fetch(github.repos).then((res) => res.json());
           return (
             <>
               <article data-class="card-projects">
-                <h4 data-class="title-card-projects">{elm.name}</h4>
+                <h1 data-class="title-card-projects">{elm.name}</h1>
                 {elm.description && elm.description.length && (
                   <p data-class="desc">{elm.description}</p>
                 )}
