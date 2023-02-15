@@ -282,6 +282,18 @@
       "fav": true,
       "icon_name": "tailwindcss",
       "website": "https://tailwindcss.com/"
+    },
+    {
+      "name": "Netlify",
+      "fav": true,
+      "icon_name": "netlify",
+      "website": "https://www.netlify.com/"
+    },
+    {
+      "name": "Markdown",
+      "fav": true,
+      "icon_name": "markdown",
+      "website": "https://www.markdownguide.org/"
     }
   ],
   "projects": [
