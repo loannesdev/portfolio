@@ -2,7 +2,8 @@
 import { github } from "../utils/info.json";
 import Anchor from "./Anchor.astro";
 
-const PROJECTS = await fetch(github.repos).then((res) => res.json());
+const DATA = await fetch(github.repos).then((res) => res.json());
+const PROJECTS = DATA.filter((elm) => elm.name !== "portfolio");
 ---
 
 <style>
@@ -106,44 +107,42 @@ const PROJECTS = await fetch(github.repos).then((res) => res.json());
   <div data-class="container-projects">
     {
       PROJECTS.map((elm) => {
-        if (elm.name !== "portfolio") {
-          return (
-            <>
-              <article data-class="card-projects">
-                <h1 data-class="title-card-projects">{elm.name}</h1>
-                {elm.description && elm.description.length && (
-                  <p data-class="desc">{elm.description}</p>
-                )}
+        return (
+          <>
+            <article data-class="card-projects">
+              <h1 data-class="title-card-projects">{elm.name}</h1>
+              {elm.description && elm.description.length && (
+                <p data-class="desc">{elm.description}</p>
+              )}
 
-                {elm.topics && elm.topics.length && (
-                  <div data-class="topics-container-projects">
-                    <span>Tecnologías usadas</span>
+              {elm.topics.length ? (
+                <section data-class="topics-container-projects">
+                  <span>Tecnologías usadas</span>
 
-                    <div data-class="topics">
-                      {elm.topics.map((tech) => {
-                        return <small>{tech}</small>;
-                      })}
-                    </div>
+                  <div data-class="topics">
+                    {elm.topics.map((tech) => {
+                      return <small>{tech}</small>;
+                    })}
                   </div>
+                </section>
+              ) : null}
+
+              <footer data-class="footer-card-projects">
+                {elm.html_url && elm.html_url.length && (
+                  <Anchor url={elm.html_url} external={true}>
+                    Repositorio
+                  </Anchor>
                 )}
 
-                <footer data-class="footer-card-projects">
-                  {elm.html_url && elm.html_url.length && (
-                    <Anchor url={elm.html_url} external={true}>
-                      Repositorio
-                    </Anchor>
-                  )}
-
-                  {elm.homepage && elm.homepage.length && (
-                    <Anchor url={elm.homepage} external={true}>
-                      Ver sitio
-                    </Anchor>
-                  )}
-                </footer>
-              </article>
-            </>
-          );
-        }
+                {elm.homepage && elm.homepage.length && (
+                  <Anchor url={elm.homepage} external={true}>
+                    Ver sitio
+                  </Anchor>
+                )}
+              </footer>
+            </article>
+          </>
+        );
       })
     }
   </div>

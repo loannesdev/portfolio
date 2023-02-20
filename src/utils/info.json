@@ -329,7 +329,7 @@
     {
       "id": 560662429,
       "name": "voice-translator",
-      "description": "Sitio web que hace uso de la API SpeechRecognition y SpeechSynthesis de la web.",
+      "description": null,
       "topics": [
         "openmoji",
         "preact",
@@ -349,6 +349,17 @@
         "markdown"
       ],
       "html_url": "https://github.com/loannesdev/adventJS-2021",
+      "homepage": ""
+    },
+    {
+      "id": 101,
+      "name": "portfolio",
+      "description": "???",
+      "topics": [
+        "javascript",
+        "markdown"
+      ],
+      "html_url": "",
       "homepage": ""
     }
   ]
