@@ -2,8 +2,7 @@
 import { github } from "../utils/info.json";
 import Anchor from "./Anchor.astro";
 
-const DATA = await fetch(github.repos).then((res) => res.json());
-const PROJECTS = DATA.filter((elm) => elm.name !== "portfolio");
+const PROJECTS = await fetch(github.repos).then((res) => res.json());
 ---
 
 <style>
@@ -106,7 +105,7 @@ const PROJECTS = DATA.filter((elm) => elm.name !== "portfolio");
 <section id="projects">
   <div data-class="container-projects">
     {
-      PROJECTS.map((elm) => {
+      PROJECTS.filter((elm) => elm.name !== "portfolio").map((elm) => {
         return (
           <>
             <article data-class="card-projects">
