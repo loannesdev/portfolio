@@ -21,17 +21,13 @@ import Projects from "../components/Projects.astro";
 
     & main,
     & header {
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
 
     & main {
       display: grid;
       gap: 6xl;
-
-      & section[id] {
-        scroll-margin-top: 10vh;
-      }
     }
 
     & a,
@@ -41,13 +37,9 @@ import Projects from "../components/Projects.astro";
     & h4,
     & h1,
     & h2,
-    & section[id]::before,
+    & [data-class="section-title"],
     & small {
       color: palette.black;
-    }
-
-    & header {
-      background-color: palette.white;
     }
 
     @media (sm) {
@@ -56,30 +48,52 @@ import Projects from "../components/Projects.astro";
         padding-left: 5rem;
         padding-right: 5rem;
       }
+
+      /*    & section[id="projects"] {
+        & [data-class="container-projects"] {
+          column-count: 2;
+        }
+      } */
     }
 
     @media (md) {
       & header,
       & main {
-        padding-left: 10rem;
-        padding-right: 10rem;
+        padding-left: 8rem;
+        padding-right: 8rem;
       }
     }
 
     @media (lg) {
       & header,
       & main {
-        padding-left: 15rem;
-        padding-right: 15rem;
+        padding-left: 11rem;
+        padding-right: 11rem;
       }
+
+      /*     & section[id="projects"] {
+        & [data-class="container-projects"] {
+          column-count: 3;
+        }
+      } */
     }
 
     @media (xl) {
       & header,
       & main {
-        padding-left: 20rem;
-        padding-right: 20rem;
+        padding-left: 14rem;
+        padding-right: 14rem;
       }
+
+      & header {
+        justify-content: space-between;
+      }
+
+      /*       & section[id="projects"] {
+        & [data-class="container-projects"] {
+          column-count: 4;
+        }
+      } */
     }
   }
 
@@ -96,7 +110,7 @@ import Projects from "../components/Projects.astro";
     & h4,
     & h1,
     & h2,
-    & section[id]::before,
+    & [data-class="section-title"],
     & small,
     & header {
       color: palette.white;
@@ -106,11 +120,12 @@ import Projects from "../components/Projects.astro";
   section[id] {
     word-break: break-word;
 
-    &::before {
+    & [data-class="section-title"] {
       font-weight: bold;
       font-size: 2xl;
       display: block;
       font-family: mono;
+      margin: 0;
     }
   }
 
@@ -169,16 +184,16 @@ import Projects from "../components/Projects.astro";
   const DARK_MODE_VALUE = localStorage.getItem("theme");
   const ELM = document.documentElement;
 
-  const scrollMarginTopCalculation = () => {
-    // function for control the "scroll-margin-top" style value when the header change their height
-    Object.values(SECTIONS).forEach((elm) => {
-      elm.style.scrollMarginTop =
-        parseInt(window.getComputedStyle(HEADER).height) + 20 + "px";
-    });
-  };
-
   ["resize", "click", "touchend", "load"].forEach((elm) => {
-    window.addEventListener(elm, scrollMarginTopCalculation);
+    window.addEventListener(elm, () => {
+      // Control the "scroll-margin-top" style value when the header change their height
+      Object.values(SECTIONS).forEach((elm) => {
+        const header_height = getComputedStyle(HEADER).height;
+        const newScrollMarginTop = parseInt(header_height) + 20 + "px";
+
+        elm.style.scrollMarginTop = newScrollMarginTop;
+      });
+    });
   });
 
   // Dark mode

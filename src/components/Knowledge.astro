@@ -1,11 +1,18 @@
+---
+import { sections } from "../utils/info.json";
+---
+
 <style>
+  [data-class="title"] {
+    color: palette.black;
+    font-weight: bold;
+    font-size: 2xl;
+    display: block;
+    font-family: mono;
+  }
   section[id="knowledge"] {
     display: grid;
     gap: 1.5rem;
-
-    &::before {
-      content: "Tecnologías conocidas";
-    }
   }
 
   [data-class="card-container-knowledge"] {
@@ -77,6 +84,8 @@
 </style>
 
 <section id="knowledge">
+  <h3 data-class="section-title">{sections?.knowledge?.text}</h3>
+
   <div data-class="filters-knowledge">
     <button
       type="button"

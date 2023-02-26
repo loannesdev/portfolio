@@ -1,12 +1,9 @@
 ---
+import { sections } from "../utils/info.json";
 import Anchor from "./Anchor.astro";
 ---
 
 <style>
-  section[id="about"]::before {
-    content: "Sobre mi";
-  }
-
   section[id="about"] {
     & p {
       margin: 0;
@@ -17,6 +14,8 @@ import Anchor from "./Anchor.astro";
 </style>
 
 <section id="about">
+  <h3 data-class="section-title">{sections?.about?.text}</h3>
+
   <p>
     Soy alguien mayormente autodidacta en la programación, que busca solucionar
     problemas por si solo cuando se enfrenta a alguno pero que se adapta bien a

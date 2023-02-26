@@ -1,7 +1,6 @@
 ---
 import { Icon } from "astro-icon";
-import Bull from "../components/Bull.astro";
-import { navLinks, socialMedia } from "../utils/info.json";
+import { sections, socialMedia } from "../utils/info.json";
 import Anchor from "./Anchor.astro";
 ---
 
@@ -9,7 +8,7 @@ import Anchor from "./Anchor.astro";
   header {
     display: flex;
     font-size: 1rem;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 0.5rem 0;
     border-bottom: 0.1rem solid var(--color-palette-grey);
@@ -17,6 +16,8 @@ import Anchor from "./Anchor.astro";
     position: sticky;
     top: 0;
     z-index: 1;
+    background-color: palette.white;
+    gap: 0.5rem;
 
     & :global(a) {
       text-decoration: none;
@@ -97,7 +98,7 @@ import Anchor from "./Anchor.astro";
     }
 
     to {
-      filter: drop-shadow(1px 1px 2px var(--color-palette-black));
+      filter: drop-shadow(1px 1px 5px var(--color-palette-black));
     }
   }
 
@@ -131,7 +132,7 @@ import Anchor from "./Anchor.astro";
     }
 
     to {
-      filter: drop-shadow(1px 1px 2px yellow);
+      filter: drop-shadow(1px 1px 5px yellow);
     }
   }
 </style>
@@ -156,7 +157,7 @@ import Anchor from "./Anchor.astro";
         }
       </div>
 
-      <Bull />
+      <>&bull;</>
 
       <a href="/CV.pdf" download="CV - Sebastian Cortes.pdf"> Descargar CV</a>
     </article>
@@ -165,18 +166,14 @@ import Anchor from "./Anchor.astro";
   <nav class="index-list">
     <ul>
       {
-        navLinks.map((elm, index, arr) => {
+        Object.values(sections).map((elm, index, arr) => {
           return (
             <>
               <li>
                 <Anchor url={elm.href}>{elm.text}</Anchor>
               </li>
 
-              {index + 1 === arr.length ? null : (
-                <li>
-                  <Bull />
-                </li>
-              )}
+              {index + 1 === arr.length ? null : <>&bull;</>}
             </>
           );
         })

@@ -1,23 +1,24 @@
 ---
-import { github } from "../utils/info.json";
+import { github, sections } from "../utils/info.json";
 import Anchor from "./Anchor.astro";
 
 const PROJECTS = await fetch(github.repos).then((res) => res.json());
 ---
 
 <style>
-  section[id="projects"]::before {
-    content: "Proyectos personales";
+  section[id="projects"] {
+    display: grid;
+    gap: 0.2rem;
   }
 
   [data-class="container-projects"] {
-    display: grid;
-    margin-top: 0.5rem;
-    gap: 0.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+    column-gap: 0.5rem;
   }
 
   [data-class="card-projects"] {
+    margin-bottom: 0.5rem;
+    break-inside: avoid;
+
     & h1 {
       margin: 0;
       text-align: center;
@@ -38,13 +39,12 @@ const PROJECTS = await fetch(github.repos).then((res) => res.json());
       margin: 0;
     }
   }
+
   [data-class="topics-container-projects"] {
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
-  }
 
-  [data-class="topics-container-projects"] {
     & span {
       font-size: sm;
       font-weight: bold;
@@ -103,13 +103,21 @@ const PROJECTS = await fetch(github.repos).then((res) => res.json());
 </style>
 
 <section id="projects">
+  <h3 data-class="section-title">{sections?.projects?.text}</h3>
+
   <div data-class="container-projects">
     {
-      PROJECTS.filter((elm) => elm.name !== "portfolio").map((elm) => {
+      PROJECTS.filter(
+        (elm) =>
+          elm.name !== "portfolio" &&
+          elm.name !== "manfred" &&
+          elm.name !== "loannesdev"
+      ).map((elm) => {
         return (
           <>
             <article data-class="card-projects">
               <h1 data-class="title-card-projects">{elm.name}</h1>
+
               {elm.description && elm.description.length && (
                 <p data-class="desc">{elm.description}</p>
               )}
@@ -135,7 +143,7 @@ const PROJECTS = await fetch(github.repos).then((res) => res.json());
 
                 {elm.homepage && elm.homepage.length && (
                   <Anchor url={elm.homepage} external={true}>
-                    Ver sitio
+                    Ver página
                   </Anchor>
                 )}
               </footer>
@@ -146,3 +154,24 @@ const PROJECTS = await fetch(github.repos).then((res) => res.json());
     }
   </div>
 </section>
+
+<script>
+  const container_projects = document.querySelector(
+    "[data-class='container-projects']"
+  );
+
+  const computedColumnCount = () => {
+    let screen_width = getComputedStyle(document.documentElement).width;
+    let screen_width_formated = parseFloat(screen_width.split("px")[0]);
+    let aux = 0;
+
+    for (let index = 1; screen_width_formated / index > 300; index++) {
+      aux = index - 1;
+    }
+
+    container_projects.style.columnCount = aux ? aux : 1;
+  };
+
+  window.addEventListener("load", () => computedColumnCount());
+  window.addEventListener("resize", () => computedColumnCount());
+</script>

@@ -9,24 +9,24 @@
       "icon": "github"
     }
   ],
-  "navLinks": [
-    {
+  "sections": {
+    "home": {
       "href": "#home",
       "text": "Inicio"
     },
-    {
+    "about": {
       "href": "#about",
       "text": "Sobre mi"
     },
-    {
+    "knowledge": {
       "href": "#knowledge",
-      "text": "Tecnologías conocidas"
+      "text": "Conocimientos"
     },
-    {
+    "projects": {
       "href": "#projects",
       "text": "Proyectos personales"
     }
-  ],
+  },
   "github": {
     "user": "https://api.github.com/users/loannesdev",
     "repos": "https://api.github.com/users/loannesdev/repos"
@@ -296,7 +296,7 @@
       "website": "https://www.markdownguide.org/"
     }
   ],
-  "projects": [
+  "myProjects": [
     {
       "id": 449877560,
       "name": "media-platform-react",
