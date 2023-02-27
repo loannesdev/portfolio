@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon";
-import { sections, socialMedia } from "../utils/info.json";
+import { lookingForAJob, sections, socialMedia } from "../utils/info.json";
 import Anchor from "./Anchor.astro";
 ---
 
@@ -157,9 +157,17 @@ import Anchor from "./Anchor.astro";
         }
       </div>
 
-      <>&bull;</>
+      {
+        lookingForAJob && (
+          <>
+            <>&bull;</>
 
-      <a href="/CV.pdf" download="CV - Sebastian Cortes.pdf"> Descargar CV</a>
+            <a href="/CV.pdf" download="CV - Sebastian Cortes.pdf">
+              Descargar CV
+            </a>
+          </>
+        )
+      }
     </article>
   </section>
 
