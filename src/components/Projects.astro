@@ -29,9 +29,7 @@ const PROJECTS = await fetch(github.repos).then((res) => res.json());
     display: flex;
     gap: 0.3rem;
     flex-wrap: wrap;
-  }
 
-  [data-class="topics"] {
     & small {
       background-color: #6565652e;
       padding: 0.1rem 0.5rem;

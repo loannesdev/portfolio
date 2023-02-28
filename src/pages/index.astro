@@ -4,13 +4,12 @@ import About from "../components/About.astro";
 import Header from "../components/Header.astro";
 import Home from "../components/Home.astro";
 import Knowledge from "../components/Knowledge.astro";
-import Projects from "../components/Projects.astro";
 ---
 
 <style is:global>
   body,
-  body > header,
-  body > main {
+  body > main,
+  body > header {
     transition: 0.15s all ease;
   }
 
@@ -19,10 +18,15 @@ import Projects from "../components/Projects.astro";
     background-color: palette.white;
     padding-bottom: 5rem;
 
-    & main,
-    & header {
+    & :is(main, header) {
       padding-left: 1rem;
       padding-right: 1rem;
+    }
+
+    & section[id],
+    & header > [data-class="header-container"] {
+      max-width: 80ch;
+      justify-self: center;
     }
 
     & main {
@@ -30,70 +34,20 @@ import Projects from "../components/Projects.astro";
       gap: 6xl;
     }
 
-    & a,
-    & button,
-    & span,
-    & p,
-    & h4,
-    & h1,
-    & h2,
-    & [data-class="section-title"],
-    & small {
+    &
+      :is(
+        a,
+        button,
+        span,
+        p,
+        h4,
+        h1,
+        h2,
+        [data-class="section-title"],
+        small,
+        header
+      ) {
       color: palette.black;
-    }
-
-    @media (sm) {
-      & header,
-      & main {
-        padding-left: 5rem;
-        padding-right: 5rem;
-      }
-
-      /*    & section[id="projects"] {
-        & [data-class="container-projects"] {
-          column-count: 2;
-        }
-      } */
-    }
-
-    @media (md) {
-      & header,
-      & main {
-        padding-left: 8rem;
-        padding-right: 8rem;
-      }
-    }
-
-    @media (lg) {
-      & header,
-      & main {
-        padding-left: 11rem;
-        padding-right: 11rem;
-      }
-
-      /*     & section[id="projects"] {
-        & [data-class="container-projects"] {
-          column-count: 3;
-        }
-      } */
-    }
-
-    @media (xl) {
-      & header,
-      & main {
-        padding-left: 14rem;
-        padding-right: 14rem;
-      }
-
-      & header {
-        justify-content: space-between;
-      }
-
-      /*       & section[id="projects"] {
-        & [data-class="container-projects"] {
-          column-count: 4;
-        }
-      } */
     }
   }
 
@@ -103,16 +57,19 @@ import Projects from "../components/Projects.astro";
       background-color: palette.black;
     }
 
-    & a,
-    & button,
-    & span,
-    & p,
-    & h4,
-    & h1,
-    & h2,
-    & [data-class="section-title"],
-    & small,
-    & header {
+    &
+      :is(
+        a,
+        button,
+        span,
+        p,
+        h4,
+        h1,
+        h2,
+        [data-class="section-title"],
+        small,
+        header
+      ) {
       color: palette.white;
     }
   }
@@ -173,7 +130,7 @@ import Projects from "../components/Projects.astro";
       <Home />
       <About />
       <Knowledge />
-      <Projects />
+      <!--  <Projects /> -->
     </main>
   </body>
 </html>
@@ -188,10 +145,7 @@ import Projects from "../components/Projects.astro";
     window.addEventListener(elm, () => {
       // Control the "scroll-margin-top" style value when the header change their height
       Object.values(SECTIONS).forEach((elm) => {
-        const header_height = getComputedStyle(HEADER).height;
-        const newScrollMarginTop = parseInt(header_height) + 20 + "px";
-
-        elm.style.scrollMarginTop = newScrollMarginTop;
+        elm.style.scrollMarginTop = getComputedStyle(HEADER).height;
       });
     });
   });
