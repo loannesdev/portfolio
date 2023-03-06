@@ -13,6 +13,8 @@ const PROJECTS = await fetch(github.repos).then((res) => res.json());
 
   [data-class="container-projects"] {
     column-gap: 0.5rem;
+    column-count: auto;
+    column-width: 20rem;
   }
 
   [data-class="card-projects"] {
@@ -152,24 +154,3 @@ const PROJECTS = await fetch(github.repos).then((res) => res.json());
     }
   </div>
 </section>
-
-<script>
-  const container_projects = document.querySelector(
-    "[data-class='container-projects']"
-  );
-
-  const computedColumnCount = () => {
-    let screen_width = getComputedStyle(document.documentElement).width;
-    let screen_width_formated = parseFloat(screen_width.split("px")[0]);
-    let aux = 0;
-
-    for (let index = 1; screen_width_formated / index > 300; index++) {
-      aux = index - 1;
-    }
-
-    container_projects.style.columnCount = aux ? aux : 1;
-  };
-
-  window.addEventListener("load", () => computedColumnCount());
-  window.addEventListener("resize", () => computedColumnCount());
-</script>
