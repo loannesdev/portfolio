@@ -13,6 +13,7 @@ import { sections } from "../utils/info.json";
   section[id="knowledge"] {
     display: grid;
     gap: 1.5rem;
+    width: 100%;
   }
 
   [data-class="card-container-knowledge"] {
@@ -110,11 +111,17 @@ import { sections } from "../utils/info.json";
   import { technologies } from "../utils/info.json";
   import { $ } from "../utils/myScripts";
 
-  const SEE_MORE_BUTTON = $("[data-class='see-more-button-knowledge']");
-  const FAVORITES_BUTTON = $("[data-class='favorites-button-knowledge']");
-  technologies.reverse();
+  const seeMoreButton = $("[data-class='see-more-button-knowledge']"),
+    favoritesButton = $("[data-class='favorites-button-knowledge']"),
+    techs = technologies.sort((a, b) => a.name.localeCompare(b.name));
 
-  // Custom web component
+  let data = techs.slice(0, 19),
+    state = {
+      seeFavorites: false,
+      seeAll: false,
+    };
+
+  // Custom element
   class TechsContainer extends HTMLElement {
     constructor() {
       super();
@@ -122,20 +129,12 @@ import { sections } from "../utils/info.json";
     }
 
     render() {
-      let STATES = {
-        seeFavorites: false,
-        seeAll: false,
-      };
-      let DATA = technologies.slice(0, 14);
-      // Proxy for detect change of "STATES" object
-      const SWITCHER = new Proxy(STATES, {
+      // Proxy for detect change of "state" object
+      const myProxy = new Proxy(state, {
         set: (target, key, value) => {
           target[key] = value;
-
-          DATA = STATES.seeAll ? technologies : technologies.slice(0, 14);
-          DATA = STATES.seeFavorites
-            ? DATA.filter((elm) => elm.fav === true)
-            : DATA;
+          data = state.seeAll ? techs : techs.slice(0, 19);
+          data = state.seeFavorites ? data.filter((elm) => elm.fav) : data;
           MyRender();
 
           return true;
@@ -145,43 +144,43 @@ import { sections } from "../utils/info.json";
       const MyRender = () => {
         this.textContent = "";
 
-        DATA.forEach((elm, index) => {
-          const ANCHOR = document.createElement("a");
-          ANCHOR.setAttribute("href", elm.website);
-          ANCHOR.setAttribute("target", "_blank");
-          ANCHOR.setAttribute("rel", "noreferrer noopener");
-          ANCHOR.setAttribute("key", `${index}`);
-          ANCHOR.setAttribute("data-class", "card-knowledge");
-          ANCHOR.setAttribute("aria-label", `Sitio web de ${elm.name}`);
+        data.forEach((elm, index) => {
+          const anchor = document.createElement("a");
+          anchor.setAttribute("href", elm.website);
+          anchor.setAttribute("target", "_blank");
+          anchor.setAttribute("rel", "noreferrer noopener");
+          anchor.setAttribute("key", `${index}`);
+          anchor.setAttribute("data-class", "card-knowledge");
+          anchor.setAttribute("aria-label", `Sitio web de ${elm.name}`);
 
           if (elm.icon_name) {
-            const IMG = document.createElement("img");
-            IMG.setAttribute("src", `/icons/${elm.icon_name}.svg`);
-            IMG.setAttribute("data-class", "img-icon-knowledge");
-            IMG.setAttribute("alt", `imagen de ${elm.name}`);
+            const img = document.createElement("img");
+            img.setAttribute("src", `/icons/${elm.icon_name}.svg`);
+            img.setAttribute("data-class", "img-icon-knowledge");
+            img.setAttribute("alt", `imagen de ${elm.name}`);
 
-            ANCHOR.appendChild(IMG);
+            anchor.appendChild(img);
           }
 
-          const SPAN = document.createElement("span");
-          SPAN.setAttribute("data-class", "card-title-knowledge");
-          SPAN.textContent = elm.name;
-          ANCHOR.appendChild(SPAN);
+          const span = document.createElement("span");
+          span.setAttribute("data-class", "card-title-knowledge");
+          span.textContent = elm.name;
+          anchor.appendChild(span);
 
-          this.appendChild(ANCHOR);
+          this.appendChild(anchor);
         });
       };
 
-      SEE_MORE_BUTTON.addEventListener("click", (elm) => {
-        SWITCHER.seeAll = !STATES.seeAll;
-        elm.target.textContent = !STATES.seeAll ? "Ver más" : "Ver menos";
+      seeMoreButton.addEventListener("click", (evt) => {
+        myProxy.seeAll = !state.seeAll;
+        evt.target.textContent = state.seeAll ? "Ver menos" : "Ver más";
       });
 
-      FAVORITES_BUTTON.addEventListener("click", (elm) => {
-        SWITCHER.seeFavorites = !STATES.seeFavorites;
-        elm.target.textContent = !STATES.seeFavorites
-          ? "Favoritos"
-          : "Dejar de ver favoritos";
+      favoritesButton.addEventListener("click", (evt) => {
+        myProxy.seeFavorites = !state.seeFavorites;
+        evt.target.textContent = state.seeFavorites
+          ? "Dejar de ver favoritos"
+          : "Favoritos";
       });
 
       MyRender();
@@ -189,5 +188,5 @@ import { sections } from "../utils/info.json";
   }
 
   customElements.define("techs-container", TechsContainer);
-  // End custom web component
+  // End custom element
 </script>
