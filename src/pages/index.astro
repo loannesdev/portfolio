@@ -1,10 +1,6 @@
 ---
 import "@fontsource/space-grotesk";
-import About from "../components/About.astro";
-import Header from "../components/Header.astro";
-import Home from "../components/Home.astro";
-import Knowledge from "../components/Knowledge.astro";
-import Projects from "../components/Projects.astro";
+import Layout from "../Layouts/Layout.astro";
 ---
 
 <style is:global>
@@ -19,7 +15,8 @@ import Projects from "../components/Projects.astro";
     background-color: palette.white;
     padding-bottom: 5rem;
 
-    & :is(main, header) {
+    & main,
+    header {
       padding-left: 1rem;
       padding-right: 1rem;
     }
@@ -108,60 +105,42 @@ import Projects from "../components/Projects.astro";
       "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
       "Helvetica Neue", sans-serif;
     scroll-behavior: smooth;
-    font-display: swap;
   }
 </style>
 
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="Portafolio • Sebastian Cortes" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Portafolio &bull; Sebastian Cortes</title>
-  </head>
-
-  <body>
-    <Header />
-
-    <main>
-      <Home />
-      <About />
-      <Knowledge />
-      <Projects />
-    </main>
-  </body>
-</html>
+<Layout />
 
 <script>
-  const HEADER = document.querySelector("header");
-  const SECTIONS = document.querySelectorAll("body > main > section[id]");
-  const DARK_MODE_VALUE = localStorage.getItem("theme");
-  const ELM = document.documentElement;
+  const header = document.querySelector("header");
+  const sections = document.querySelectorAll("body > main > section[id]");
+  const darkModeValue = localStorage.getItem("theme");
+  const docElement = document.documentElement;
 
   ["resize", "click", "touchend", "load"].forEach((elm) => {
     window.addEventListener(elm, () => {
       // Control the "scroll-margin-top" style value when the header change their height
-      Object.values(SECTIONS).forEach((elm) => {
-        elm.style.scrollMarginTop = getComputedStyle(HEADER).height;
+      console.log({ sections });
+      sections.forEach((evt) => {
+        console.log(getComputedStyle(evt));
+
+        // elm.style.scrollMarginTop = getComputedStyle(header).height;
       });
     });
   });
 
   // Dark mode
   document.getElementById("darkModeButton").addEventListener("click", () => {
-    const MODE = ELM.className.includes("dark") ? "light" : "dark";
+    const mode = docElement.className.includes("dark") ? "light" : "dark";
 
-    ELM.setAttribute("class", MODE);
-    localStorage.setItem("theme", MODE);
+    docElement.setAttribute("class", mode);
+    localStorage.setItem("theme", mode);
   });
 
   window.onload = () => {
-    document.getElementsByTagName("html")[0].setAttribute("lang", "es");
-    const VALUE = DARK_MODE_VALUE === "light" ? "light" : "dark";
+    const theme = darkModeValue === "light" ? "light" : "dark";
 
-    ELM.setAttribute("class", VALUE);
-    localStorage.setItem("theme", VALUE);
+    docElement.setAttribute("class", theme);
+    localStorage.setItem("theme", theme);
 
     document.styleSheets[0].deleteRule(0); // remove "visibility" prop style to "visible"
   };

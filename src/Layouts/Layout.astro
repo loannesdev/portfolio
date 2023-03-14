@@ -1,0 +1,29 @@
+---
+import About from "../components/About.astro";
+import Header from "../components/Header.astro";
+import Home from "../components/Home.astro";
+import Knowledge from "../components/Knowledge.astro";
+import Projects from "../components/Projects.astro";
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Portafolio • Sebastian Cortes" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Portafolio &bull; Sebastian Cortes</title>
+  </head>
+
+  <body>
+    <Header />
+
+    <main>
+      <Home />
+      <About />
+      <Knowledge />
+      <Projects />
+    </main>
+  </body>
+</html>
