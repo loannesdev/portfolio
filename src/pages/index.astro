@@ -1,6 +1,11 @@
 ---
 import "@fontsource/space-grotesk";
 import Layout from "../Layouts/Layout.astro";
+import About from "../components/About.astro";
+import Header from "../components/Header.astro";
+import Home from "../components/Home.astro";
+import Knowledge from "../components/Knowledge.astro";
+import Projects from "../components/Projects.astro";
 ---
 
 <style is:inline>
@@ -16,4 +21,13 @@ import Layout from "../Layouts/Layout.astro";
   }
 </style>
 
-<Layout />
+<Layout>
+  <Header />
+
+  <main>
+    <Home />
+    <About />
+    <Knowledge />
+    <Projects />
+  </main>
+</Layout>

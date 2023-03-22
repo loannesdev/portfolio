@@ -1,18 +1,23 @@
 ---
-const { url, external = false } = Astro.props;
+const { url, goToAnotherWeb = false } = Astro.props;
 ---
 
 {
-  external && (
-    <a href={url} target="_blank" rel="noreferrer noopener">
+  goToAnotherWeb && (
+    <a
+      href={url}
+      target="_blank"
+      rel="noreferrer noopener"
+      aria-label={Astro.props["aria-label"]}
+    >
       <slot />
     </a>
   )
 }
 
 {
-  !external && (
-    <a href={url}>
+  !goToAnotherWeb && (
+    <a href={url} aria-label={Astro.props["aria-label"]}>
       <slot />
     </a>
   )

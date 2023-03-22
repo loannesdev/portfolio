@@ -1,10 +1,17 @@
----
-import About from "../components/About.astro";
-import Header from "../components/Header.astro";
-import Home from "../components/Home.astro";
-import Knowledge from "../components/Knowledge.astro";
-import Projects from "../components/Projects.astro";
----
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Portafolio • Sebastian Cortes" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Portafolio &bull; Sebastian Cortes</title>
+  </head>
+
+  <body>
+    <slot />
+  </body>
+</html>
 
 <style is:global>
   body,
@@ -28,8 +35,7 @@ import Projects from "../components/Projects.astro";
       padding-right: 1rem;
     }
 
-    & section[id],
-    & header > [data-class="header-container"] {
+    & :is(section[id], header > [data-class="header-container"]) {
       max-width: 75ch;
       justify-self: center;
     }
@@ -97,28 +103,6 @@ import Projects from "../components/Projects.astro";
   }
 </style>
 
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="Portafolio • Sebastian Cortes" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Portafolio &bull; Sebastian Cortes</title>
-  </head>
-
-  <body>
-    <Header />
-
-    <main>
-      <Home />
-      <About />
-      <Knowledge />
-      <Projects />
-    </main>
-  </body>
-</html>
-
 <script>
   const header = document.querySelector("header"),
     darkModeValue = localStorage.getItem("theme"),
@@ -156,6 +140,6 @@ import Projects from "../components/Projects.astro";
     docElement.setAttribute("class", theme);
     localStorage.setItem("theme", theme);
 
-    document.styleSheets[0].deleteRule(0); // remove "visibility" prop style to "visible"
+    document.styleSheets[0].deleteRule(0); // remove visibility style
   };
 </script>

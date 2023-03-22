@@ -4,6 +4,69 @@ import { lookingForAJob, sections, socialMedia } from "../utils/info.json";
 import Anchor from "./Anchor.astro";
 ---
 
+<header>
+  <div data-class="header-container">
+    <section class="contact">
+      <button id="darkModeButton" type="button" aria-label="Dark mode">
+        <Icon name="sun" />
+        <Icon name="moon" />
+      </button>
+
+      <article>
+        <div class="social">
+          {
+            socialMedia.map((elm) => {
+              return (
+                <Anchor
+                  url={elm.link}
+                  goToAnotherWeb={true}
+                  aria-label={`Ver cuenta en ${elm.name}`}
+                >
+                  <Icon name={elm.icon} />
+                </Anchor>
+              );
+            })
+          }
+        </div>
+
+        {
+          lookingForAJob && (
+            <>
+              <>&bull;</>
+
+              <a
+                href="/CV.pdf"
+                download="CV - Sebastian Cortes.pdf"
+                aria-label="Descargar curriculum vitae"
+              >
+                Descargar CV
+              </a>
+            </>
+          )
+        }
+      </article>
+    </section>
+
+    <nav class="index-list">
+      <ul>
+        {
+          Object.values(sections).map((elm, index, arr) => {
+            return (
+              <>
+                <li>
+                  <Anchor url={elm.href}>{elm.text}</Anchor>
+                </li>
+
+                {index + 1 === arr.length ? null : <li>&bull;</li>}
+              </>
+            );
+          })
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+
 <style>
   header {
     display: grid;
@@ -152,58 +215,3 @@ import Anchor from "./Anchor.astro";
     width: 100%;
   }
 </style>
-
-<header>
-  <div data-class="header-container">
-    <section class="contact">
-      <button id="darkModeButton" type="button" aria-label="Dark mode">
-        <Icon name="sun" />
-        <Icon name="moon" />
-      </button>
-
-      <article>
-        <div class="social">
-          {
-            socialMedia.map((elm) => {
-              return (
-                <Anchor url={elm.link} external={true}>
-                  <Icon name={elm.icon} />
-                </Anchor>
-              );
-            })
-          }
-        </div>
-
-        {
-          lookingForAJob && (
-            <>
-              <>&bull;</>
-
-              <a href="/CV.pdf" download="CV - Sebastian Cortes.pdf">
-                Descargar CV
-              </a>
-            </>
-          )
-        }
-      </article>
-    </section>
-
-    <nav class="index-list">
-      <ul>
-        {
-          Object.values(sections).map((elm, index, arr) => {
-            return (
-              <>
-                <li>
-                  <Anchor url={elm.href}>{elm.text}</Anchor>
-                </li>
-
-                {index + 1 === arr.length ? null : <li>&bull;</li>}
-              </>
-            );
-          })
-        }
-      </ul>
-    </nav>
-  </div>
-</header>

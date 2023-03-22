@@ -2,6 +2,29 @@
 import { sections } from "../utils/info.json";
 ---
 
+<section id="knowledge">
+  <h1 data-class="section-title">{sections?.knowledge?.text}</h1>
+
+  <div data-class="filters-knowledge">
+    <button
+      type="button"
+      data-class="see-more-button-knowledge"
+      aria-label="See more knowledge"
+    >
+      Ver más
+    </button>
+    <button
+      type="button"
+      data-class="favorites-button-knowledge"
+      aria-label="See favorites knowledge"
+    >
+      Favoritos
+    </button>
+  </div>
+
+  <techs-container data-class="card-container-knowledge"></techs-container>
+</section>
+
 <style>
   [data-class="title"] {
     color: palette.black;
@@ -83,29 +106,6 @@ import { sections } from "../utils/info.json";
     word-break: break-word;
   }
 </style>
-
-<section id="knowledge">
-  <h3 data-class="section-title">{sections?.knowledge?.text}</h3>
-
-  <div data-class="filters-knowledge">
-    <button
-      type="button"
-      data-class="see-more-button-knowledge"
-      aria-label="See more knowledge"
-    >
-      Ver más
-    </button>
-    <button
-      type="button"
-      data-class="favorites-button-knowledge"
-      aria-label="See favorites knowledge"
-    >
-      Favoritos
-    </button>
-  </div>
-
-  <techs-container data-class="card-container-knowledge"></techs-container>
-</section>
 
 <script>
   import { technologies } from "../utils/info.json";

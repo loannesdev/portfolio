@@ -3,18 +3,8 @@ import { sections } from "../utils/info.json";
 import Anchor from "./Anchor.astro";
 ---
 
-<style>
-  section[id="about"] {
-    & p {
-      margin: 0;
-      line-height: 1.5rem;
-      font-size: lg;
-    }
-  }
-</style>
-
 <section id="about">
-  <h3 data-class="section-title">{sections?.about?.text}</h3>
+  <h1 data-class="section-title">{sections?.about?.text}</h1>
 
   <p>
     Soy alguien mayormente autodidacta en la programación, que busca solucionar
@@ -24,7 +14,7 @@ import Anchor from "./Anchor.astro";
     prójimo en lo que se pueda. <br /><br />
 
     Tengo <b id="age"></b> y soy de <b>Cali, Colombia</b>, egresado del
-    <Anchor url="https://www.sena.edu.co" external={true}>
+    <Anchor url="https://www.sena.edu.co" goToAnotherWeb={true}>
       SENA (Servicio Nacional de Aprendizaje)
     </Anchor>
     de la tecnología/carrera <b
@@ -33,6 +23,16 @@ import Anchor from "./Anchor.astro";
     montar bicicleta, hacer ejercicio e investigar sobre temas que me interesen.
   </p>
 </section>
+
+<style>
+  section[id="about"] {
+    & p {
+      margin: 0;
+      line-height: 1.5rem;
+      font-size: lg;
+    }
+  }
+</style>
 
 <script>
   const CURRENT_DATE = new Date();
