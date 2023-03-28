@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon";
 import { sections } from "../utils/info.json";
 import Anchor from "./Anchor.astro";
 ---
@@ -7,29 +8,36 @@ import Anchor from "./Anchor.astro";
   <h1 data-class="section-title">{sections?.about?.text}</h1>
 
   <p>
-    Soy alguien mayormente autodidacta en la programación, que busca solucionar
-    problemas por si solo cuando se enfrenta a alguno, pero que se adapta bien a
-    entornos colaborativos y/o equipos de trabajo, tolerante, respetuoso,
-    resiliente y también con intensión de compartir su experiencia y ayudar al
-    prójimo en lo que se pueda. <br /><br />
+    Soy alguien mayormente autodidacta, que busca solucionar problemas por si
+    solo cuando se enfrenta a alguno, pero que se adapta bien a entornos
+    colaborativos y/o equipos de trabajo, tolerante, respetuoso, resiliente y
+    también con intensión de compartir su experiencia y ayudar al prójimo en lo
+    que se pueda.
+  </p>
 
-    Tengo <b id="age"></b> y soy de <b>Cali, Colombia</b>, egresado del
+  <p>
+    Tengo <b id="age"></b>y soy de <b>Cali, Colombia</b>
+    <Icon name="colombia-flag" />
+    , egresado del
     <Anchor url="https://www.sena.edu.co" goToAnotherWeb={true}>
       SENA (Servicio Nacional de Aprendizaje)
-    </Anchor>
-    de la tecnología/carrera <b
-      >Análisis y desarrollo de sistemas de información</b
-    > (aquí fue donde empezó mi historia en la programación). Me gusta jugar videojuegos,
-    montar bicicleta, hacer ejercicio e investigar sobre temas que me interesen.
+    </Anchor> de la tecnología/carrera
+    <b>Análisis y desarrollo de sistemas de información</b>
+    (aquí fue donde empezó mi historia en la programación).
   </p>
 </section>
 
 <style>
   section[id="about"] {
     & p {
-      margin: 0;
+      margin-top: 0;
       line-height: 1.5rem;
       font-size: lg;
+
+      & [astro-icon="colombia-flag"] {
+        height: 1.5rem;
+        width: 1.5rem;
+      }
     }
   }
 </style>
