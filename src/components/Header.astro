@@ -115,11 +115,12 @@ import Anchor from "./Anchor.astro";
 
         & :global(a) {
           display: flex;
-        }
 
-        & svg {
-          height: 1.5rem;
-          width: 1.5rem;
+          & [astro-icon] {
+            height: 2rem;
+            width: 2rem;
+            fill: var(--color-palette-white);
+          }
         }
       }
     }
@@ -184,12 +185,6 @@ import Anchor from "./Anchor.astro";
     }
 
     & body {
-      & .social {
-        & :global(a) {
-          fill: #fafafa;
-        }
-      }
-
       & header {
         border-color: 0.1rem solid palette.white;
 

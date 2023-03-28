@@ -23,6 +23,17 @@
     & h1 {
       font-size: 6xl;
       font-family: mono;
+      animation: 2s infinite alternate wave;
+    }
+  }
+
+  @keyframes wave {
+    from {
+      transform: translateY(0);
+    }
+
+    to {
+      transform: translateY(0.5rem);
     }
   }
 </style>

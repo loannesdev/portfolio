@@ -1,8 +1,13 @@
 ---
-import { github, sections } from "../utils/info.json";
+/* import { github, sections } from "../utils/info.json";
 import Anchor from "./Anchor.astro";
 
-const PROJECTS = await fetch(github.repos).then((res) => res.json());
+const PROJECTS = await fetch(github.repos).then((res) => res.json()); */
+
+import { myProjects, sections } from "../utils/info.json";
+import Anchor from "./Anchor.astro";
+
+const PROJECTS = myProjects; // await fetch(github.repos).then((res) => res.json());
 ---
 
 <section id="projects">
@@ -20,7 +25,7 @@ const PROJECTS = await fetch(github.repos).then((res) => res.json());
         return (
           <>
             <article data-class="card-projects">
-              <h1 data-class="title-card-projects">{elm.name}</h1>
+              <h2 data-class="title-card-projects">{elm.name}</h2>
 
               {elm.description && elm.description.length && (
                 <p data-class="desc">{elm.description}</p>
@@ -63,6 +68,7 @@ const PROJECTS = await fetch(github.repos).then((res) => res.json());
   section[id="projects"] {
     display: grid;
     gap: 0.2rem;
+    width: 100%;
   }
 
   [data-class="container-projects"] {
