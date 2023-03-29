@@ -1,13 +1,8 @@
 ---
-/* import { github, sections } from "../utils/info.json";
+import { github, sections } from "../utils/info.json";
 import Anchor from "./Anchor.astro";
 
-const PROJECTS = await fetch(github.repos).then((res) => res.json()); */
-
-import { myProjects, sections } from "../utils/info.json";
-import Anchor from "./Anchor.astro";
-
-const PROJECTS = myProjects; // await fetch(github.repos).then((res) => res.json());
+const PROJECTS = await fetch(github.repos).then((res) => res.json());
 ---
 
 <section id="projects">
