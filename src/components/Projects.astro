@@ -2,36 +2,36 @@
 import { github, sections } from "../utils/info.json";
 import Anchor from "./Anchor.astro";
 
-const PROJECTS = await fetch(github.repos).then((res) => res.json());
+const dontShow = ["portfolio", "manfred", "loannesdev"];
+const githubData = await fetch(github.repos).then((res) => res.json());
+
+const projects = githubData.filter(
+  ({ name, fork }) => !dontShow.find((value) => value === name) && !fork
+);
+
+console.log(import.meta.env);
 ---
 
 <section id="projects">
   <h1 data-class="section-title">{sections?.projects?.text}</h1>
-
   <div data-class="container-projects">
     {
-      PROJECTS.filter(
-        (elm) =>
-          elm.name !== "portfolio" &&
-          elm.name !== "manfred" &&
-          elm.name !== "loannesdev" &&
-          !elm.fork
-      ).map((elm) => {
+      projects.map(({ name, description, topics, html_url, homepage }) => {
         return (
           <>
             <article data-class="card-projects">
-              <h2 data-class="title-card-projects">{elm.name}</h2>
+              <h2 data-class="title-card-projects">{name}</h2>
 
-              {elm.description && elm.description.length && (
-                <p data-class="desc">{elm.description}</p>
+              {description && description.length && (
+                <p data-class="desc">{description}</p>
               )}
 
-              {elm.topics.length ? (
+              {topics.length ? (
                 <section data-class="topics-container-projects">
                   <span>Tecnologías usadas</span>
 
                   <div data-class="topics">
-                    {elm.topics.map((tech) => {
+                    {topics.map((tech) => {
                       return <small>{tech}</small>;
                     })}
                   </div>
@@ -39,14 +39,14 @@ const PROJECTS = await fetch(github.repos).then((res) => res.json());
               ) : null}
 
               <footer data-class="footer-card-projects">
-                {elm.html_url && elm.html_url.length && (
-                  <Anchor url={elm.html_url} goToAnotherWeb={true}>
+                {html_url && html_url.length && (
+                  <Anchor url={html_url} goToAnotherWeb={true}>
                     Repositorio
                   </Anchor>
                 )}
 
-                {elm.homepage && elm.homepage.length && (
-                  <Anchor url={elm.homepage} goToAnotherWeb={true}>
+                {homepage && homepage.length && (
+                  <Anchor url={homepage} goToAnotherWeb={true}>
                     Ver página
                   </Anchor>
                 )}
