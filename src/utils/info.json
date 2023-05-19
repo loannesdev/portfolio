@@ -1,5 +1,5 @@
 {
-  "lookingForAJob": true,
+  "lookingForAJob": false,
   "socialMedia": [
     {
       "link": "https://www.linkedin.com/in/sebastian-cc/",
@@ -31,8 +31,13 @@
     }
   },
   "github": {
-    "user": "https://api.github.com/users/loannesdev",
-    "repos": "https://api.github.com/users/loannesdev/repos"
+    "api": "https://api.github.com",
+    "user": "loannesdev",
+    "path": {
+      "users": "/users",
+      "repos": "/repos",
+      "contents": "/contents"
+    }
   },
   "technologies": [
     {

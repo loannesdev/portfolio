@@ -1,15 +1,15 @@
 ---
-import { github, sections } from "../utils/info.json";
+import { readRepos } from "../services/github";
+import { sections } from "../utils/info.json";
 import Anchor from "./Anchor.astro";
 
 const dontShow = ["portfolio", "manfred", "loannesdev"];
-const githubData = await fetch(github.repos).then((res) => res.json());
+const githubData = await readRepos();
 
 const projects = githubData.filter(
-  ({ name, fork }) => !dontShow.find((value) => value === name) && !fork
+  ({ name, fork }) =>
+    !Boolean(dontShow.find((value) => value === name)) && !fork
 );
-
-console.log(import.meta.env);
 ---
 
 <section id="projects">
