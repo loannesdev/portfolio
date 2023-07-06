@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@fontsource/space-grotesk": "4.5.13",
-    "astro": "1.6.14",
+    "astro": "2.8.0",
     "astro-icon": "0.8.1"
   },
   "engines": {
