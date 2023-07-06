@@ -214,7 +214,6 @@ import Anchor from "./Anchor.astro";
     const heightComputed = Number(height.replace(/[A-z]/g, ""));
     const widthComputed = Number(width.replace(/[A-z]/g, ""));
 
-    console.log(heightComputed, auxHeight);
     if (!auxHeight) auxHeight = heightComputed;
     if (auxHeight && auxHeight > heightComputed) auxHeight = heightComputed;
 
