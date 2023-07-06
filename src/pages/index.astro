@@ -6,20 +6,8 @@ import Home from "../components/Home.astro";
 import Knowledge from "../components/Knowledge.astro";
 import Projects from "../components/Projects.astro";
 import Layout from "../layouts/Layout.astro";
+import "../styles/css_reset.css";
 ---
-
-<style is:inline>
-  html {
-    visibility: hidden;
-  }
-
-  * {
-    font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont,
-      "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
-      "Helvetica Neue", sans-serif;
-    scroll-behavior: smooth;
-  }
-</style>
 
 <Layout>
   <Header />
@@ -31,3 +19,54 @@ import Layout from "../layouts/Layout.astro";
     <Projects />
   </main>
 </Layout>
+
+<style>
+  :root {
+    --palette-black: #202124;
+    --palette-white: #fafafa;
+    --palette-grey: #6565652e;
+    --font-family-text: "Space Grotesk";
+    --font-family-title: monospace;
+    --transition-one-milisecond: 0.1s all ease;
+    --transition-two-milisecond: 0.2s all ease;
+    --transition-half-second: 0.5s all ease;
+    --border-radius-min: 0.25rem;
+    --border-radius-med: 1rem;
+    --border-radius-max: 2rem;
+  }
+
+  * {
+    font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+      "Helvetica Neue", sans-serif;
+  }
+
+  body {
+    display: grid;
+    background-color: var(--palette-white);
+    transition: var(--transition-one-milisecond);
+
+    :is(.dark) & {
+      background-color: var(--palette-black);
+    }
+  }
+
+  :global(header > .header-container),
+  main {
+    max-width: 80ch;
+    justify-self: center;
+    width: 100%;
+  }
+
+  & main,
+  :global(header) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  main {
+    display: grid;
+    gap: 10rem;
+    padding-bottom: 5rem;
+  }
+</style>

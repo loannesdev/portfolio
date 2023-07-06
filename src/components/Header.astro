@@ -5,14 +5,14 @@ import Anchor from "./Anchor.astro";
 ---
 
 <header>
-  <div data-class="header-container">
+  <div class="header-container">
     <section class="contact">
       <button id="darkModeButton" type="button" aria-label="Dark mode">
         <Icon name="sun" />
         <Icon name="moon" />
       </button>
 
-      <article>
+      <article class="social-container">
         <div class="social">
           {
             socialMedia.map((elm) => {
@@ -32,12 +32,12 @@ import Anchor from "./Anchor.astro";
         {
           lookingForAJob && (
             <>
-              <>&bull;</>
-
+              &bull;
               <a
                 href="/CV/CV_es.pdf"
                 download="CV - Sebastian Cortes.pdf"
                 aria-label="Descargar curriculum vitae"
+                class="download-cv"
               >
                 Descargar CV
               </a>
@@ -57,7 +57,7 @@ import Anchor from "./Anchor.astro";
                   <Anchor url={elm.href}>{elm.text}</Anchor>
                 </li>
 
-                {index + 1 === arr.length ? null : <li>&bull;</li>}
+                {index + 1 === arr.length ? null : <>&bull;</>}
               </>
             );
           })
@@ -69,49 +69,47 @@ import Anchor from "./Anchor.astro";
 
 <style>
   header {
-    display: grid;
+    display: flex;
     top: 0;
     z-index: 1;
     position: sticky;
-    background-color: palette.white;
-    border-bottom: 0.1rem solid var(--color-palette-grey);
+    background-color: var(--palette-white);
+    border-bottom: 0.1rem solid currentColor;
+    transition: var(--transition-one-milisecond);
+    justify-content: center;
 
-    & [data-class="header-container"] {
+    :is(.dark) & {
+      background-color: var(--palette-black);
+    }
+
+    & .header-container {
       display: flex;
-      font-size: 1rem;
-      align-items: center;
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
+      column-gap: 3rem;
+      row-gap: 0.75rem;
+      justify-content: space-between;
+      padding: 1rem 0rem;
+      font-family: var(--font-family-text);
       flex-wrap: wrap;
-      background-color: transparent;
+    }
+
+    .header-container.wrapped {
       justify-content: center;
-      width: 100%;
-
-      & :global(a) {
-        text-decoration: none;
-
-        &:hover {
-          text-decoration-line: underline;
-        }
-      }
     }
   }
 
   .contact {
     display: flex;
     align-items: center;
-    gap: 2rem;
-    width: 100%;
-    justify-content: center;
+    gap: 1rem;
 
-    & article {
+    & .social-container {
       display: flex;
       gap: 0.5rem;
       align-items: center;
 
       & .social {
         display: flex;
-        gap: 0.5rem;
+        gap: 0.3rem;
 
         & :global(a) {
           display: flex;
@@ -119,15 +117,30 @@ import Anchor from "./Anchor.astro";
           & [astro-icon] {
             height: 2rem;
             width: 2rem;
-            fill: var(--color-palette-white);
+            fill: var(--palette-white);
           }
+        }
+      }
+
+      & .download-cv {
+        transition: var(--transition-two-milisecond);
+        border: 1px dashed currentColor;
+        border-radius: var(--border-radius-min);
+        padding: 0.3rem 0.5rem;
+        text-decoration: none;
+
+        &:hover {
+          border: 1px solid currentColor;
+          font-weight: bold;
+          text-shadow: 0 0 1rem currentColor;
         }
       }
     }
   }
 
   .index-list {
-    width: 100%;
+    display: flex;
+    align-items: center;
 
     & ul {
       list-style: none;
@@ -135,7 +148,18 @@ import Anchor from "./Anchor.astro";
       gap: 0.5rem;
       flex-wrap: wrap;
       padding: 0;
-      justify-content: center;
+
+      & li > :global(a) {
+        text-decoration: none;
+
+        :is(&:hover, &:active) {
+          text-decoration: underline;
+        }
+      }
+
+      :is(.header-container.wrapped) & {
+        justify-content: center;
+      }
     }
   }
 
@@ -145,68 +169,62 @@ import Anchor from "./Anchor.astro";
     outline: none;
     background-color: transparent;
     padding: 0.3rem;
+    border-radius: var(--border-radius-min);
+
+    & [astro-icon] {
+      height: 2rem;
+      width: 2rem;
+    }
 
     &:hover,
     &:active {
-      outline: 0.15rem solid var(--color-palette-grey);
-    }
-  }
-
-  [astro-icon="sun"],
-  [astro-icon="moon"] {
-    height: 2rem;
-    width: 2rem;
-  }
-
-  [astro-icon="sun"] {
-    display: none;
-  }
-
-  [astro-icon="moon"] {
-    color: palette.black;
-    animation: 3s infinite alternate moon-shadow;
-  }
-
-  @keyframes moon-shadow {
-    from {
-      filter: none;
+      outline: 0.15rem solid var(--palette-grey);
     }
 
-    to {
-      filter: drop-shadow(1px 1px 5px var(--color-palette-black));
-    }
-  }
-
-  :global(.dark) {
     & [astro-icon="sun"] {
-      color: yellow;
-      display: block;
-      animation: 3s infinite alternate sun-shadow;
+      display: none;
     }
 
-    & body {
-      & header {
-        border-color: 0.1rem solid palette.white;
+    & [astro-icon="moon"] {
+      color: var(--palette-black);
+    }
 
-        & [astro-icon="moon"] {
-          display: none;
-        }
+    :is(.dark) & {
+      & [astro-icon="sun"] {
+        color: yellow;
+        display: block;
+      }
+
+      & [astro-icon="moon"] {
+        display: none;
       }
     }
   }
-
-  @keyframes sun-shadow {
-    from {
-      filter: none;
-    }
-
-    to {
-      filter: drop-shadow(1px 1px 5px yellow);
-    }
-  }
-
-  .wrapped {
-    justify-content: center;
-    width: 100%;
-  }
 </style>
+
+<script>
+  import { $ } from "../utils/my_scripts";
+
+  const $headerContainer = $(".header-container");
+  let auxHeight = 0;
+
+  // Adjusts the justify-content CSS prop of the header
+  const adjustAligment = () => {
+    const { height, width } = getComputedStyle($headerContainer);
+    const heightComputed = Number(height.replace(/[A-z]/g, ""));
+    const widthComputed = Number(width.replace(/[A-z]/g, ""));
+
+    console.log(heightComputed, auxHeight);
+    if (!auxHeight) auxHeight = heightComputed;
+    if (auxHeight && auxHeight > heightComputed) auxHeight = heightComputed;
+
+    if (auxHeight < heightComputed || widthComputed <= 680) {
+      $headerContainer.classList.add("wrapped");
+    } else {
+      $headerContainer.classList.remove("wrapped");
+    }
+  };
+
+  window.addEventListener("resize", adjustAligment);
+  window.addEventListener("load", adjustAligment);
+</script>

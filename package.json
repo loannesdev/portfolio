@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@fontsource/space-grotesk": "4.5.13",
-    "@tokencss/astro": "0.0.4",
     "astro": "1.6.14",
     "astro-icon": "0.8.0"
   }

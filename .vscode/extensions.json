@@ -1,7 +1,5 @@
 {
   "recommendations": [
-    "astro-build.astro-vscode",
-    "tokencss.tokencss-vscode"
+    "astro-build.astro-vscode"
   ],
-  "unwantedRecommendations": []
 }

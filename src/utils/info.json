@@ -32,7 +32,7 @@
   },
   "github": {
     "api": "https://api.github.com",
-    "user": "loannesdev",
+    "myUser": "loannesdev",
     "path": {
       "users": "/users",
       "repos": "/repos",

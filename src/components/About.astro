@@ -1,11 +1,10 @@
 ---
-import { Icon } from "astro-icon";
 import { sections } from "../utils/info.json";
 import Anchor from "./Anchor.astro";
 ---
 
 <section id="about">
-  <h2 data-class="section-title">{sections?.about?.text}</h2>
+  <h2 class="section-title">{sections?.about?.text}</h2>
 
   <p>
     Soy alguien mayormente autodidacta, que busca solucionar problemas por si
@@ -15,10 +14,10 @@ import Anchor from "./Anchor.astro";
     que se pueda.
   </p>
 
+  <br />
+
   <p>
-    Tengo <b id="age"></b>y soy de <b>Cali, Colombia</b>
-    <Icon name="colombia-flag" />
-    , egresado del
+    Tengo <b id="age"></b>y soy de <b>Cali, Colombia</b>, egresado del
     <Anchor url="https://www.sena.edu.co" goToAnotherWeb={true}>
       SENA (Servicio Nacional de Aprendizaje)
     </Anchor> de la tecnología/carrera
@@ -30,14 +29,11 @@ import Anchor from "./Anchor.astro";
 <style>
   section[id="about"] {
     & p {
-      margin-top: 0;
-      line-height: 1.5rem;
-      font-size: lg;
+      font-size: 1.2rem;
+    }
 
-      & [astro-icon="colombia-flag"] {
-        height: 1.5rem;
-        width: 1.5rem;
-      }
+    & a {
+      color: currentColor;
     }
   }
 </style>

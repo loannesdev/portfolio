@@ -3,119 +3,112 @@ import { sections } from "../utils/info.json";
 ---
 
 <section id="knowledge">
-  <h2 data-class="section-title">{sections?.knowledge?.text}</h2>
+  <h2 class="section-title">{sections?.knowledge?.text}</h2>
 
-  <div data-class="filters-knowledge">
+  <div class="filters">
     <button
       type="button"
-      data-class="see-more-button-knowledge"
+      class="see-more-button"
       aria-label="See more knowledge"
     >
       Ver más
     </button>
     <button
       type="button"
-      data-class="favorites-button-knowledge"
+      class="favorites-button"
       aria-label="See favorites knowledge"
     >
       Favoritos
     </button>
   </div>
 
-  <techs-container data-class="card-container-knowledge"></techs-container>
+  <techs-container class="card-container"></techs-container>
 </section>
 
 <style>
-  [data-class="title"] {
-    color: palette.black;
-    font-weight: bold;
-    font-size: 2xl;
-    display: block;
-    font-family: mono;
-  }
   section[id="knowledge"] {
     display: grid;
     gap: 1.5rem;
     width: 100%;
-  }
 
-  [data-class="card-container-knowledge"] {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    & .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
 
-    & a {
-      padding: 0.5rem 0.3rem;
-    }
-  }
-
-  [data-class="filters-knowledge"] {
-    display: flex;
-    justify-self: center;
-    gap: 1rem;
-
-    & button {
-      transition: 0.1s all ease;
-      background-color: transparent;
-      border: none;
-      outline: none;
-      padding: 0.25rem 0.5rem;
-      font-weight: semibold;
-      border: 0.1rem solid transparent;
-
-      &:hover,
-      &:active {
-        border-color: palette.black;
+      & a {
+        padding: 0.5rem 0.3rem;
       }
+    }
 
-      @nest :global(.dark) & {
-        &:hover, &:active {
-          border-color: palette.white;
+    .filters {
+      display: flex;
+      justify-self: center;
+      gap: 1rem;
+
+      & button {
+        transition: var(--transition-one-milisecond);
+        background-color: transparent;
+        border: none;
+        outline: none;
+        padding: 0.25rem 0.5rem;
+        font-weight: 600;
+        border: 0.1rem solid transparent;
+        border-radius: var(--border-radius-min);
+        font-size: 14px;
+        color: currentColor;
+
+        &:hover,
+        &:active {
+          border-color: var(--palette-black);
+
+          :is(.dark) & {
+            border-color: var(--palette-white);
+          }
         }
       }
     }
-  }
 
-  :global([data-class="img-icon-knowledge"]) {
-    height: 3rem;
-    width: 3rem;
-  }
+    & .card-container {
+      & .card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        text-decoration: none;
+        padding: 0.3rem;
+        transition: var(--transition-one-milisecond);
+        border: 0.1rem solid transparent;
+        border-radius: var(--border-radius-min);
 
-  :global([data-class="card-knowledge"]) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    text-decoration: none;
-    padding: 0.3rem;
-    transition: 0.1s all ease;
-    border: 0.1rem solid transparent;
+        &:hover {
+          border-color: var(--palette-grey);
+          text-shadow: 1px 1.5px 2px var(--palette-grey);
+        }
 
-    &:hover {
-      border-color: palette.grey;
-      text-shadow: 1px 1.5px 2px var(--color-palette-grey);
+        &:active {
+          background-color: var(--palette-grey);
+        }
+
+        & .img-icon {
+          height: 3rem;
+          width: 3rem;
+        }
+      }
     }
-
-    &:active {
-      background-color: palette.grey;
-    }
-  }
-
-  [data-class="card-title-knowledge"] {
-    word-break: break-word;
   }
 </style>
 
 <script>
   import { technologies } from "../utils/info.json";
-  import { $ } from "../utils/myScripts";
+  import { $ } from "../utils/my_scripts";
 
-  const seeMoreButton = $("[data-class='see-more-button-knowledge']"),
-    favoritesButton = $("[data-class='favorites-button-knowledge']"),
+  const seeMoreButton = $(".see-more-button"),
+    favoritesButton = $(".favorites-button"),
     techs = technologies.sort((a, b) => a.name.localeCompare(b.name));
 
-  let data = techs.slice(0, 19),
+  let data = techs.slice(0, 24),
     state = {
       seeFavorites: false,
       seeAll: false,
@@ -133,7 +126,7 @@ import { sections } from "../utils/info.json";
       const myProxy = new Proxy(state, {
         set: (target, key, value) => {
           target[key] = value;
-          data = state.seeAll ? techs : techs.slice(0, 19);
+          data = state.seeAll ? techs : techs.slice(0, 24);
           data = state.seeFavorites ? data.filter((elm) => elm.fav) : data;
           MyRender();
 
@@ -150,22 +143,25 @@ import { sections } from "../utils/info.json";
           anchor.setAttribute("target", "_blank");
           anchor.setAttribute("rel", "noreferrer noopener");
           anchor.setAttribute("key", `${index}`);
-          anchor.setAttribute("data-class", "card-knowledge");
+          anchor.setAttribute("class", "card");
           anchor.setAttribute("aria-label", `Sitio web de ${elm.name}`);
 
           if (elm.icon_name) {
             const img = document.createElement("img");
             img.setAttribute("src", `/icons/${elm.icon_name}.svg`);
-            img.setAttribute("data-class", "img-icon-knowledge");
+            img.setAttribute("class", "img-icon");
             img.setAttribute("alt", `imagen de ${elm.name}`);
 
             anchor.appendChild(img);
           }
 
           const span = document.createElement("span");
-          span.setAttribute("data-class", "card-title-knowledge");
+          span.setAttribute("data-class", "card-title");
           span.textContent = elm.name;
-          anchor.appendChild(span);
+
+          const footerCard = document.createElement("footer");
+          footerCard.appendChild(span);
+          anchor.appendChild(footerCard);
 
           this.appendChild(anchor);
         });

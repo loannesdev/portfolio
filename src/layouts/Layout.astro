@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content="Portafolio • Sebastian Cortes" />
     <link rel="icon" type="image/svg+xml" href="/man-technologist.svg" />
@@ -14,112 +14,39 @@
 </html>
 
 <style is:global>
-  body,
-  body > main,
-  body > header {
-    transition: 0.15s all ease;
+  * {
+    scroll-behavior: smooth;
   }
 
-  body {
-    margin: 0;
-    background-color: palette.white;
-    padding-bottom: 5rem;
-
-    & main {
-      display: grid;
-      gap: 6xl;
-    }
-
-    & :is(main, header) {
-      padding-left: 1rem;
-      padding-right: 1rem;
-    }
-
-    & :is(section[id], header > [data-class="header-container"]) {
-      max-width: 75ch;
-      justify-self: center;
-    }
-
-    &
-      :is(
-        a,
-        button,
-        span,
-        p,
-        h4,
-        h1,
-        h2,
-        [data-class="section-title"],
-        small,
-        header
-      ) {
-      color: palette.black;
-    }
+  .section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: var(--font-family-title);
   }
 
-  .dark {
-    & body,
-    & header {
-      background-color: palette.black;
+  section[id],
+  header {
+    color: var(--palette-black);
+
+    :is(.dark) & {
+      color: var(--palette-white);
     }
-
-    &
-      :is(
-        a,
-        button,
-        span,
-        p,
-        h4,
-        h1,
-        h2,
-        [data-class="section-title"],
-        small,
-        header
-      ) {
-      color: palette.white;
-    }
-  }
-
-  section[id] {
-    word-break: break-word;
-
-    & [data-class="section-title"] {
-      font-weight: bold;
-      display: block;
-      font-family: mono;
-      margin: 0;
-    }
-  }
-
-  button,
-  a,
-  [data-class="card-projects"],
-  [data-class="see-more-button-knowledge"],
-  [data-class="favorites-button-knowledge"],
-  [data-class="card-knowledge"],
-  #darkModeButton {
-    border-radius: 0.25rem;
   }
 </style>
 
 <script>
-  const header = document.querySelector("header"),
-    darkModeValue = localStorage.getItem("theme"),
-    docElement = document.documentElement;
+  const $header = document.querySelector("header");
+  const darkModeValue = localStorage.getItem("theme");
+  const $docElement = document.documentElement;
 
   ["resize", "click", "touchend", "load"].forEach((elm) => {
     window.addEventListener(elm, () => {
       // Control the "scroll-margin-top" style value when the header change their height
-      const { height } = getComputedStyle(header);
-      const newHeight = parseInt(height.split("px")[0]) + 16;
+      const { height } = getComputedStyle($header);
       const [firstSheet] = document.styleSheets;
 
       firstSheet.insertRule(
-        `
-          section[id] {
-            scroll-margin-top: ${newHeight}px
-          }
-          `,
+        `section[id] { scroll-margin-top: ${height} }`,
         firstSheet.cssRules.length
       );
     });
@@ -127,16 +54,16 @@
 
   // Dark mode
   document.getElementById("darkModeButton").addEventListener("click", () => {
-    const mode = docElement.className.includes("dark") ? "light" : "dark";
+    const mode = $docElement.className.includes("dark") ? "light" : "dark";
 
-    docElement.setAttribute("class", mode);
+    $docElement.setAttribute("class", mode);
     localStorage.setItem("theme", mode);
   });
 
   window.onload = () => {
     const theme = darkModeValue === "light" ? "light" : "dark";
 
-    docElement.setAttribute("class", theme);
+    $docElement.setAttribute("class", theme);
     localStorage.setItem("theme", theme);
 
     document.styleSheets[0].deleteRule(0); // remove visibility style

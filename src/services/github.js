@@ -1,7 +1,7 @@
 import { github } from "../utils/info.json";
 
 const token = import.meta.env.PUBLIC_GITHUB_TOKEN;
-const { api, path, user } = github;
+const { api, path, myUser } = github;
 const myHeaders = {
   headers: {
     "Authorization": `Bearer ${token}`,
@@ -11,7 +11,7 @@ const myHeaders = {
 
 export const readRepos = async () => {
   try {
-    const res = await fetch(`${api}${path.users}/${user}${path.repos}`, { ...myHeaders })
+    const res = await fetch(`${api}${path.users}/${myUser}${path.repos}`, { ...myHeaders })
     return res.json();
   }
 

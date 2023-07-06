@@ -13,46 +13,45 @@ const projects = githubData.filter(
 ---
 
 <section id="projects">
-  <h1 data-class="section-title">{sections?.projects?.text}</h1>
-  <div data-class="container-projects">
+  <h1 class="section-title">{sections?.projects?.text}</h1>
+
+  <div class="container">
     {
       projects.map(({ name, description, topics, html_url, homepage }) => {
         return (
-          <>
-            <article data-class="card-projects">
-              <h2 data-class="title-card-projects">{name}</h2>
+          <fieldset class="card">
+            <legend class="title-card">{name}</legend>
 
-              {description && description.length && (
-                <p data-class="desc">{description}</p>
+            {description && description.length && (
+              <p class="description-card">{description}</p>
+            )}
+
+            {topics.length ? (
+              <section class="topics-container">
+                <h4 class="topics-title">Tecnologías usadas</h4>
+
+                <div class="topics-group">
+                  {topics.map((tech) => {
+                    return <span class="topic">{tech}</span>;
+                  })}
+                </div>
+              </section>
+            ) : null}
+
+            <footer class="footer-card">
+              {html_url && html_url.length && (
+                <Anchor url={html_url} goToAnotherWeb={true}>
+                  Repositorio
+                </Anchor>
               )}
 
-              {topics.length ? (
-                <section data-class="topics-container-projects">
-                  <span>Tecnologías usadas</span>
-
-                  <div data-class="topics">
-                    {topics.map((tech) => {
-                      return <small>{tech}</small>;
-                    })}
-                  </div>
-                </section>
-              ) : null}
-
-              <footer data-class="footer-card-projects">
-                {html_url && html_url.length && (
-                  <Anchor url={html_url} goToAnotherWeb={true}>
-                    Repositorio
-                  </Anchor>
-                )}
-
-                {homepage && homepage.length && (
-                  <Anchor url={homepage} goToAnotherWeb={true}>
-                    Ver página
-                  </Anchor>
-                )}
-              </footer>
-            </article>
-          </>
+              {homepage && homepage.length && (
+                <Anchor url={homepage} goToAnotherWeb={true}>
+                  Ver página
+                </Anchor>
+              )}
+            </footer>
+          </fieldset>
         );
       })
     }
@@ -64,86 +63,85 @@ const projects = githubData.filter(
     display: grid;
     gap: 0.2rem;
     width: 100%;
-  }
 
-  [data-class="container-projects"] {
-    column-gap: 0.5rem;
-    column-count: auto;
-    column-width: 20rem;
+    & .container {
+      column-gap: 0.5rem;
+      column-count: auto;
+      column-width: 20rem;
 
-    & [data-class="card-projects"] {
-      border: 0.1rem solid palette.grey;
-      padding: 0.5rem 0.8rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      height: min-content;
-      margin-bottom: 0.5rem;
-      break-inside: avoid;
+      & .card {
+        border: 0.1rem solid var(--palette-grey);
+        padding: 0.5rem 0.8rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        height: min-content;
+        margin-bottom: 0.5rem;
+        break-inside: avoid;
+        border-radius: var(--border-radius-min);
 
-      & [data-class="title-card-projects"] {
-        font-size: 1.1em;
-        margin: 0;
-        text-align: center;
-      }
+        & .title-card {
+          font-size: 1.3rem;
+          margin-left: 5rem;
+          text-align: center;
+          font-weight: 600;
+        }
 
-      & [data-class="desc"] {
-        margin: 0;
-      }
-    }
-  }
+        & .description-card {
+          font-size: 1.125rem;
+          word-break: break-word;
+        }
 
-  [data-class="topics"] {
-    display: flex;
-    gap: 0.3rem;
-    flex-wrap: wrap;
+        & .topics-container {
+          display: flex;
+          flex-direction: column;
+          gap: 0.3rem;
 
-    & small {
-      background-color: #6565652e;
-      padding: 0.1rem 0.5rem;
-      border-radius: 0.2rem;
-      margin: 0;
-    }
-  }
+          & .topics-title {
+            font-size: 1.15rem;
+            font-weight: bold;
+          }
 
-  [data-class="topics-container-projects"] {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
+          & .topics-group {
+            display: flex;
+            gap: 0.3rem;
+            flex-wrap: wrap;
 
-    & span {
-      font-size: sm;
-      font-weight: bold;
-    }
-  }
+            & .topic {
+              background-color: var(--palette-grey);
+              padding: 0.15rem 0.5rem;
+              border-radius: 0.2rem;
+              margin: 0;
+            }
+          }
+        }
 
-  [data-class="footer-card-projects"] {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    word-break: keep-all;
-    background-color: var(--palette-black);
-    gap: 1rem;
-    margin-top: 1rem;
+        & .footer-card {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          word-break: keep-all;
+          gap: 1rem;
 
-    & :global(a) {
-      padding: 0.2rem 0.6rem;
-      border: 0.1rem solid palette.grey;
-      text-decoration: none;
-      transition: 0.2s all ease;
+          & :global(a) {
+            padding: 0.3rem 0.6rem;
+            border: 0.1rem solid var(--palette-grey);
+            text-decoration: none;
+            transition: 0.2s all ease;
+            border-radius: var(--border-radius-min);
 
-      &:is(:hover, :active) {
-        border-color: palette.black;
-        background-color: palette.black;
-        color: palette.white;
-      }
+            :is(&:hover, &:active) {
+              border-color: var(--palette-black);
+              background-color: var(--palette-black);
+              color: var(--palette-white);
 
-      @nest :global(.dark) & {
-        &:is(:hover, :active) {
-          border-color: palette.white;
-          background-color: palette.white;
-          color: palette.black;
+              :is(.dark) & {
+                border-color: var(--palette-white);
+                background-color: var(--palette-white);
+                color: var(--palette-black);
+              }
+            }
+          }
         }
       }
     }
