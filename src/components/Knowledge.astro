@@ -107,10 +107,6 @@ import { sections } from "../utils/info.json";
   const seeMoreButton = $(".see-more-button");
   const favoritesButton = $(".favorites-button");
   const sortedData = technologies.sort((a, b) => a.name.localeCompare(b.name));
-  const state = {
-    seeFavorites: false,
-    seeAll: false,
-  };
   const slicedData = sortedData.slice(0, 24);
 
   let data = slicedData;
@@ -119,70 +115,71 @@ import { sections } from "../utils/info.json";
   class TechsContainer extends HTMLElement {
     constructor() {
       super();
-      this.render();
-    }
-
-    render() {
-      const generateHtml = () => {
-        this.textContent = "";
-
-        data.forEach(({ website, name, icon_name }) => {
-          const anchor = document.createElement("a");
-          anchor.setAttribute("href", website);
-          anchor.setAttribute("target", "_blank");
-          anchor.setAttribute("rel", "noreferrer noopener");
-          anchor.setAttribute("class", "card");
-          anchor.setAttribute(
-            "aria-label",
-            `Sitio web de ${name.toLowerCase()}`
-          );
-
-          if (icon_name) {
-            const img = document.createElement("img");
-            img.setAttribute("src", `/icons/${icon_name}.svg`);
-            img.setAttribute("class", "img-icon");
-            img.setAttribute("alt", `imagen de ${name}`);
-
-            anchor.appendChild(img);
-          }
-
-          const span = document.createElement("span");
-          span.setAttribute("data-class", "card-title");
-          span.textContent = name;
-
-          const footerCard = document.createElement("footer");
-          footerCard.appendChild(span);
-          anchor.appendChild(footerCard);
-
-          this.appendChild(anchor);
-        });
-      };
 
       // Proxy for detect change of "state" object
-      const proxy = new Proxy(state, {
-        set: (target, key, value) => {
-          target[key] = value;
-          data = state.seeAll ? sortedData : slicedData;
-          data = state.seeFavorites ? data.filter((elm) => elm.fav) : data;
-          generateHtml();
-
-          return true;
+      const state = new Proxy(
+        {
+          seeFavorites: false,
+          seeAll: false,
         },
-      });
+        {
+          set: (target, key, value) => {
+            target[key] = value;
+            data = target.seeAll ? sortedData : slicedData;
+            data = target.seeFavorites ? data.filter((elm) => elm.fav) : data;
+
+            this.render();
+
+            return true;
+          },
+        }
+      );
 
       seeMoreButton.addEventListener("click", ({ target }) => {
-        proxy.seeAll = !state.seeAll;
+        state.seeAll = !state.seeAll;
         target.textContent = state.seeAll ? "Ver menos" : "Ver más";
       });
 
       favoritesButton.addEventListener("click", ({ target }) => {
-        proxy.seeFavorites = !state.seeFavorites;
+        state.seeFavorites = !state.seeFavorites;
         target.textContent = state.seeFavorites
           ? "Dejar de ver favoritos"
           : "Favoritos";
       });
 
-      generateHtml();
+      this.render();
+    }
+
+    render() {
+      this.textContent = "";
+
+      data.forEach(({ website, name, icon_name }) => {
+        const anchor = document.createElement("a");
+        anchor.setAttribute("href", website);
+        anchor.setAttribute("target", "_blank");
+        anchor.setAttribute("rel", "noreferrer noopener");
+        anchor.setAttribute("class", "card");
+        anchor.setAttribute("aria-label", `Sitio web de ${name.toLowerCase()}`);
+
+        if (icon_name) {
+          const img = document.createElement("img");
+          img.setAttribute("src", `/icons/${icon_name}.svg`);
+          img.setAttribute("class", "img-icon");
+          img.setAttribute("alt", `imagen de ${name}`);
+
+          anchor.appendChild(img);
+        }
+
+        const span = document.createElement("span");
+        span.setAttribute("data-class", "card-title");
+        span.textContent = name;
+
+        const footerCard = document.createElement("footer");
+        footerCard.appendChild(span);
+        anchor.appendChild(footerCard);
+
+        this.appendChild(anchor);
+      });
     }
   }
 
