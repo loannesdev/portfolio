@@ -18,12 +18,12 @@
     scroll-behavior: smooth;
   }
 
-  .section-title {
+  section[id].section-title {
     font-size: 2rem;
     font-weight: bold;
     font-family: var(--font-family-title);
   }
-
+  /* 
   section[id],
   header {
     color: var(--palette-black);
@@ -31,13 +31,11 @@
     :is(.dark) & {
       color: var(--palette-white);
     }
-  }
+  } */
 </style>
 
 <script>
   const $header = document.querySelector("header");
-  const darkModeValue = localStorage.getItem("theme");
-  const $docElement = document.documentElement;
 
   ["resize", "click", "touchend", "load"].forEach((elm) => {
     window.addEventListener(elm, () => {
@@ -51,21 +49,4 @@
       );
     });
   });
-
-  // Dark mode
-  document.getElementById("darkModeButton").addEventListener("click", () => {
-    const mode = $docElement.className.includes("dark") ? "light" : "dark";
-
-    $docElement.setAttribute("class", mode);
-    localStorage.setItem("theme", mode);
-  });
-
-  window.onload = () => {
-    const theme = darkModeValue === "light" ? "light" : "dark";
-
-    $docElement.setAttribute("class", theme);
-    localStorage.setItem("theme", theme);
-
-    document.styleSheets[0].deleteRule(0); // remove visibility style
-  };
 </script>

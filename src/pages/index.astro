@@ -6,7 +6,7 @@ import Home from "../components/Home.astro";
 import Knowledge from "../components/Knowledge.astro";
 import Projects from "../components/Projects.astro";
 import Layout from "../layouts/Layout.astro";
-import "../styles/css_reset.css";
+import "../styles/global.css";
 ---
 
 <Layout>
@@ -43,11 +43,13 @@ import "../styles/css_reset.css";
 
   body {
     display: grid;
-    background-color: var(--palette-white);
     transition: var(--transition-one-milisecond);
+    background-color: var(--palette-white);
+    color: var(--palette-black);
 
     :is(.dark) & {
       background-color: var(--palette-black);
+      color: var(--palette-white);
     }
   }
 
@@ -70,3 +72,21 @@ import "../styles/css_reset.css";
     padding-bottom: 5rem;
   }
 </style>
+
+<script is:inline>
+// Dark mode
+const theme = (() => {
+  const darkModeValue = localStorage.getItem("theme");
+
+  if (darkModeValue) {
+    document.documentElement.classList.add(
+      darkModeValue === "light" ? "light" : "dark"
+    );
+    return localStorage.getItem("theme");
+  }
+
+  return "light";
+})();
+
+  localStorage.setItem("theme", theme);
+</script>
