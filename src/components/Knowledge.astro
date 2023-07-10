@@ -122,18 +122,6 @@ import { sections } from "../utils/info.json";
     }
 
     render() {
-      // Proxy for detect change of "state" object
-      const myProxy = new Proxy(state, {
-        set: (target, key, value) => {
-          target[key] = value;
-          data = state.seeAll ? techs : techs.slice(0, 24);
-          data = state.seeFavorites ? data.filter((elm) => elm.fav) : data;
-          MyRender();
-
-          return true;
-        },
-      });
-
       const MyRender = () => {
         this.textContent = "";
 
@@ -167,17 +155,33 @@ import { sections } from "../utils/info.json";
         });
       };
 
-      seeMoreButton.addEventListener("click", (evt) => {
-        myProxy.seeAll = !state.seeAll;
-        evt.target.textContent = state.seeAll ? "Ver menos" : "Ver más";
+      // Proxy for detect change of "state" object
+      const proxy = new Proxy(state, {
+        set: (target, key, value) => {
+          target[key] = value;
+          data = state.seeAll ? techs : techs.slice(0, 24);
+          data = state.seeFavorites ? data.filter((elm) => elm.fav) : data;
+          MyRender();
+          console.log(state);
+
+          return true;
+        },
       });
 
-      favoritesButton.addEventListener("click", (evt) => {
-        myProxy.seeFavorites = !state.seeFavorites;
-        evt.target.textContent = state.seeFavorites
-          ? "Dejar de ver favoritos"
-          : "Favoritos";
+      seeMoreButton.addEventListener("click", ({ target: { textContent } }) => {
+        proxy.seeAll = !state.seeAll;
+        textContent = state.seeAll ? "Ver menos" : "Ver más";
       });
+
+      favoritesButton.addEventListener(
+        "click",
+        ({ target: { textContent } }) => {
+          proxy.seeFavorites = !state.seeFavorites;
+          textContent = state.seeFavorites
+            ? "Dejar de ver favoritos"
+            : "Favoritos";
+        }
+      );
 
       MyRender();
     }
