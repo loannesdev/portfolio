@@ -104,15 +104,16 @@ import { sections } from "../utils/info.json";
   import { technologies } from "../utils/info.json";
   import { $ } from "../utils/my_scripts";
 
-  const seeMoreButton = $(".see-more-button"),
-    favoritesButton = $(".favorites-button"),
-    techs = technologies.sort((a, b) => a.name.localeCompare(b.name));
+  const seeMoreButton = $(".see-more-button");
+  const favoritesButton = $(".favorites-button");
+  const sortedData = technologies.sort((a, b) => a.name.localeCompare(b.name));
+  const state = {
+    seeFavorites: false,
+    seeAll: false,
+  };
+  const slicedData = sortedData.slice(0, 24);
 
-  let data = techs.slice(0, 24),
-    state = {
-      seeFavorites: false,
-      seeAll: false,
-    };
+  let data = slicedData;
 
   // Custom element
   class TechsContainer extends HTMLElement {
@@ -122,30 +123,32 @@ import { sections } from "../utils/info.json";
     }
 
     render() {
-      const MyRender = () => {
+      const generateHtml = () => {
         this.textContent = "";
 
-        data.forEach((elm, index) => {
+        data.forEach(({ website, name, icon_name }) => {
           const anchor = document.createElement("a");
-          anchor.setAttribute("href", elm.website);
+          anchor.setAttribute("href", website);
           anchor.setAttribute("target", "_blank");
           anchor.setAttribute("rel", "noreferrer noopener");
-          anchor.setAttribute("key", `${index}`);
           anchor.setAttribute("class", "card");
-          anchor.setAttribute("aria-label", `Sitio web de ${elm.name}`);
+          anchor.setAttribute(
+            "aria-label",
+            `Sitio web de ${name.toLowerCase()}`
+          );
 
-          if (elm.icon_name) {
+          if (icon_name) {
             const img = document.createElement("img");
-            img.setAttribute("src", `/icons/${elm.icon_name}.svg`);
+            img.setAttribute("src", `/icons/${icon_name}.svg`);
             img.setAttribute("class", "img-icon");
-            img.setAttribute("alt", `imagen de ${elm.name}`);
+            img.setAttribute("alt", `imagen de ${name}`);
 
             anchor.appendChild(img);
           }
 
           const span = document.createElement("span");
           span.setAttribute("data-class", "card-title");
-          span.textContent = elm.name;
+          span.textContent = name;
 
           const footerCard = document.createElement("footer");
           footerCard.appendChild(span);
@@ -159,31 +162,27 @@ import { sections } from "../utils/info.json";
       const proxy = new Proxy(state, {
         set: (target, key, value) => {
           target[key] = value;
-          data = state.seeAll ? techs : techs.slice(0, 24);
+          data = state.seeAll ? sortedData : slicedData;
           data = state.seeFavorites ? data.filter((elm) => elm.fav) : data;
-          MyRender();
-          console.log(state);
+          generateHtml();
 
           return true;
         },
       });
 
-      seeMoreButton.addEventListener("click", ({ target: { textContent } }) => {
+      seeMoreButton.addEventListener("click", ({ target }) => {
         proxy.seeAll = !state.seeAll;
-        textContent = state.seeAll ? "Ver menos" : "Ver más";
+        target.textContent = state.seeAll ? "Ver menos" : "Ver más";
       });
 
-      favoritesButton.addEventListener(
-        "click",
-        ({ target: { textContent } }) => {
-          proxy.seeFavorites = !state.seeFavorites;
-          textContent = state.seeFavorites
-            ? "Dejar de ver favoritos"
-            : "Favoritos";
-        }
-      );
+      favoritesButton.addEventListener("click", ({ target }) => {
+        proxy.seeFavorites = !state.seeFavorites;
+        target.textContent = state.seeFavorites
+          ? "Dejar de ver favoritos"
+          : "Favoritos";
+      });
 
-      MyRender();
+      generateHtml();
     }
   }
 

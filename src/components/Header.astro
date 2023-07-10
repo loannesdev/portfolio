@@ -50,17 +50,11 @@ import Anchor from "./Anchor.astro";
     <nav class="index-list">
       <ul>
         {
-          Object.values(sections).map((elm, index, arr) => {
-            return (
-              <>
-                <li>
-                  <Anchor url={elm.href}>{elm.text}</Anchor>
-                </li>
-
-                {index + 1 === arr.length ? null : <>&bull;</>}
-              </>
-            );
-          })
+          Object.values(sections).map(({ href, text }) => (
+            <li>
+              <Anchor url={href}>{text}</Anchor>
+            </li>
+          ))
         }
       </ul>
     </nav>
@@ -145,7 +139,7 @@ import Anchor from "./Anchor.astro";
     & ul {
       list-style: none;
       display: flex;
-      gap: 0.5rem;
+      gap: 1rem;
       flex-wrap: wrap;
       padding: 0;
 
@@ -224,8 +218,8 @@ import Anchor from "./Anchor.astro";
     }
   };
 
-  window.addEventListener("resize", adjustAligment);
   window.addEventListener("load", adjustAligment);
+  window.addEventListener("resize", adjustAligment);
 
   // Dark mode
   document.getElementById("darkModeButton").addEventListener("click", () => {
