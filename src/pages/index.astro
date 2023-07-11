@@ -1,5 +1,4 @@
 ---
-import "@fontsource/space-grotesk";
 import About from "../components/About.astro";
 import Header from "../components/Header.astro";
 import Home from "../components/Home.astro";
@@ -26,7 +25,7 @@ import "../styles/global.css";
     --palette-white: #fafafa;
     --palette-grey: #6565652e;
     --font-family-text: "Space Grotesk";
-    --font-family-title: monospace;
+    --font-family-title: "Nunito Sans";
     --transition-one-milisecond: 0.1s all ease;
     --transition-two-milisecond: 0.2s all ease;
     --transition-half-second: 0.5s all ease;
@@ -88,5 +87,5 @@ const theme = (() => {
   return "light";
 })();
 
-  localStorage.setItem("theme", theme);
+localStorage.setItem("theme", theme);
 </script>

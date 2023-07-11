@@ -15,9 +15,22 @@
     }
 
     & .title-two {
-      font-size: 3.5rem;
+      font-size: 3.75rem;
       font-family: var(--font-family-title);
-      font-weight: bold;
+      font-weight: 900;
+      animation: wave 12s infinite ease;
+    }
+  }
+
+  @keyframes wave {
+    0% {
+      text-shadow: 0px 0px 64px currentColor;
+    }
+    50% {
+      text-shadow: 16px 16px 16px currentColor;
+    }
+    100% {
+      text-shadow: 0px 0px 64px currentColor;
     }
   }
 </style>

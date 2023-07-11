@@ -1,13 +1,10 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
 
 settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
 dependencies:
-  '@fontsource/space-grotesk':
-    specifier: 4.5.13
-    version: 4.5.13
   astro:
     specifier: 2.8.0
     version: 2.8.0
@@ -746,10 +743,6 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
-
-  /@fontsource/space-grotesk@4.5.13:
-    resolution: {integrity: sha512-HYjs3C/ME3N55+9la5FGH3NebpBqyCP03DJzDLYlQ/fpnYOoQcEEoojtMyqDr8kBlQtrB6FSoa3vy84Wh0ZFqw==}
-    dev: false
 
   /@jridgewell/gen-mapping@0.3.3:
     resolution: {integrity: sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==}
