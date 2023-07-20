@@ -1,5 +1,5 @@
 ---
-import { sections } from "../utils/info.json";
+import { sections } from "../utils/info";
 import Anchor from "./Anchor.astro";
 ---
 
@@ -17,12 +17,14 @@ import Anchor from "./Anchor.astro";
   <br />
 
   <p>
-    Tengo <b id="age"></b> y soy de <b>Cali, Colombia</b>, egresado del
-    <Anchor url="https://www.sena.edu.co" goToAnotherWeb={true}>
+    Tengo <b id="age"></b> y soy de <b>Cali, Colombia</b>, egresado del<Anchor
+      url="https://www.sena.edu.co"
+      goToAnotherWeb={true}
+    >
       SENA (Servicio Nacional de Aprendizaje)
-    </Anchor> de la tecnología/carrera
-    <b>Análisis y desarrollo de sistemas de información</b>
-    (aquí fue donde empezó mi historia en la programación).
+    </Anchor> de la tecnología/carrera<b
+      >Análisis y desarrollo de sistemas de información</b
+    >(aquí fue donde empezó mi historia en la programación).
   </p>
 </section>
 

@@ -1,4 +1,4 @@
-import { github } from "../utils/info.json";
+import { github } from "../utils/info";
 
 const token = import.meta.env.PUBLIC_GITHUB_TOKEN;
 const { api, path, myUser } = github;
@@ -16,6 +16,6 @@ export const readRepos = async () => {
   }
 
   catch {
-    console.log("Ocurrio un problema");
+    return [];
   }
 }
