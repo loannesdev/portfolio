@@ -4,56 +4,61 @@ import { sections } from "../utils/const";
 import Anchor from "./Anchor.astro";
 
 const projects = await readRepos();
+const {
+  projects: { text, name },
+} = sections;
 ---
 
-<section id="projects">
-  <h1 class="section-title">{sections?.projects?.text}</h1>
+<section id={name}>
+  <h1 class="section-title">{text}</h1>
 
   <div class="container">
     {
-      projects.map(({ name, description, topics, html_url, homepage }) => {
-        return (
-          <fieldset class="card">
-            <legend class="title-card">{name}</legend>
+      projects.map(
+        ({ name, description, topics, html_url: htmlUrl, homepage }) => {
+          return (
+            <fieldset class="card">
+              <legend class="title-card">{name}</legend>
 
-            {description && description.length && (
-              <p class="description-card">{description}</p>
-            )}
-
-            {topics.length ? (
-              <section class="topics-container">
-                <h4 class="topics-title">Tecnologías usadas</h4>
-
-                <div class="topics-group">
-                  {topics.map((tech) => {
-                    return <span class="topic">{tech}</span>;
-                  })}
-                </div>
-              </section>
-            ) : null}
-
-            <footer class="footer-card">
-              {html_url && html_url.length && (
-                <Anchor url={html_url} goToAnotherWeb={true}>
-                  Repositorio
-                </Anchor>
+              {description && description.length && (
+                <p class="description-card">{description}</p>
               )}
 
-              {homepage && homepage.length && (
-                <Anchor url={homepage} goToAnotherWeb={true}>
-                  Ver página
-                </Anchor>
-              )}
-            </footer>
-          </fieldset>
-        );
-      })
+              {topics.length ? (
+                <section class="topics-container">
+                  <h4 class="topics-title">Tecnologías usadas</h4>
+
+                  <div class="topics-group">
+                    {topics.map((tech) => {
+                      return <span class="topic">{tech}</span>;
+                    })}
+                  </div>
+                </section>
+              ) : null}
+
+              <footer class="footer-card">
+                {htmlUrl && htmlUrl.length && (
+                  <Anchor url={htmlUrl} goToAnotherWeb={true}>
+                    Repositorio
+                  </Anchor>
+                )}
+
+                {homepage && homepage.length && (
+                  <Anchor url={homepage} goToAnotherWeb={true}>
+                    Ver página
+                  </Anchor>
+                )}
+              </footer>
+            </fieldset>
+          );
+        }
+      )
     }
   </div>
 </section>
 
 <style>
-  section[id="projects"] {
+  section[id] {
     display: grid;
     gap: 0.2rem;
     width: 100%;

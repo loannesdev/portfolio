@@ -1,9 +1,14 @@
 ---
 import { sections } from "../utils/const";
+
+const {
+  knowledge: { name, text },
+} = sections;
+const { skills } = Astro.props;
 ---
 
-<section id="knowledge">
-  <h2 class="section-title">{sections?.knowledge?.text}</h2>
+<section id={name}>
+  <h2 class="section-title">{text}</h2>
 
   <div class="filters">
     <button
@@ -26,7 +31,7 @@ import { sections } from "../utils/const";
 </section>
 
 <style>
-  section[id="knowledge"] {
+  section[id] {
     display: grid;
     gap: 1.5rem;
     width: 100%;
@@ -100,89 +105,89 @@ import { sections } from "../utils/const";
   }
 </style>
 
-<script>
-  import { technologies } from "../utils/const";
-  import { $ } from "../utils/my_scripts";
+<script define:vars={{ skills }}>
+const seeMoreButton = document.querySelector(".see-more-button");
+const favoritesButton = document.querySelector(".favorites-button");
+const sortedData = skills.sort((a, b) => a.name.localeCompare(b.name));
+const slicedData = sortedData.slice(0, 24);
 
-  const seeMoreButton = $(".see-more-button");
-  const favoritesButton = $(".favorites-button");
-  const sortedData = technologies.sort((a, b) => a.name.localeCompare(b.name));
-  const slicedData = sortedData.slice(0, 24);
+let data = slicedData;
 
-  let data = slicedData;
+// Custom element
+class TechsContainer extends HTMLElement {
+  constructor() {
+    super();
 
-  // Custom element
-  class TechsContainer extends HTMLElement {
-    constructor() {
-      super();
+    // Proxy for detect change of "state" object
+    const state = new Proxy(
+      {
+        seeFavorites: false,
+        seeAll: false,
+      },
+      {
+        set: (target, key, value) => {
+          target[key] = value;
+          data = target.seeAll ? sortedData : slicedData;
+          data = target.seeFavorites
+            ? data.filter((elm) => elm.isFavorite)
+            : data;
 
-      // Proxy for detect change of "state" object
-      const state = new Proxy(
-        {
-          seeFavorites: false,
-          seeAll: false,
+          this.render();
+
+          return true;
         },
-        {
-          set: (target, key, value) => {
-            target[key] = value;
-            data = target.seeAll ? sortedData : slicedData;
-            data = target.seeFavorites ? data.filter((elm) => elm.fav) : data;
+      }
+    );
 
-            this.render();
+    seeMoreButton.addEventListener("click", ({ target }) => {
+      state.seeAll = !state.seeAll;
+      target.textContent = state.seeAll ? "Ver menos" : "Ver más";
+    });
 
-            return true;
-          },
-        }
-      );
+    favoritesButton.addEventListener("click", ({ target }) => {
+      state.seeFavorites = !state.seeFavorites;
+      target.textContent = state.seeFavorites
+        ? "Dejar de ver favoritos"
+        : "Favoritos";
+    });
 
-      seeMoreButton.addEventListener("click", ({ target }) => {
-        state.seeAll = !state.seeAll;
-        target.textContent = state.seeAll ? "Ver menos" : "Ver más";
-      });
-
-      favoritesButton.addEventListener("click", ({ target }) => {
-        state.seeFavorites = !state.seeFavorites;
-        target.textContent = state.seeFavorites
-          ? "Dejar de ver favoritos"
-          : "Favoritos";
-      });
-
-      this.render();
-    }
-
-    render() {
-      this.textContent = "";
-
-      data.forEach(({ website, name, icon_name }) => {
-        const anchor = document.createElement("a");
-        anchor.setAttribute("href", website);
-        anchor.setAttribute("target", "_blank");
-        anchor.setAttribute("rel", "noreferrer noopener");
-        anchor.setAttribute("class", "card");
-        anchor.setAttribute("aria-label", `Sitio web de ${name.toLowerCase()}`);
-
-        if (icon_name) {
-          const img = document.createElement("img");
-          img.setAttribute("src", `/icons/${icon_name}.svg`);
-          img.setAttribute("class", "img-icon");
-          img.setAttribute("alt", `imagen de ${name}`);
-
-          anchor.appendChild(img);
-        }
-
-        const span = document.createElement("span");
-        span.setAttribute("data-class", "card-title");
-        span.textContent = name;
-
-        const footerCard = document.createElement("footer");
-        footerCard.appendChild(span);
-        anchor.appendChild(footerCard);
-
-        this.appendChild(anchor);
-      });
-    }
+    this.render();
   }
 
-  customElements.define("techs-container", TechsContainer);
+  render() {
+    this.textContent = "";
+
+    data.forEach(({ website, name, iconName }) => {
+      const anchor = document.createElement("a");
+      anchor.setAttribute("href", website);
+      anchor.setAttribute("target", "_blank");
+      anchor.setAttribute("rel", "noreferrer noopener");
+      anchor.setAttribute("class", "card");
+      anchor.setAttribute("aria-label", `Sitio web de ${name.toLowerCase()}`);
+
+      if (iconName) {
+        const img = document.createElement("img");
+
+        img.setAttribute("src", `/icons/${iconName}.svg`);
+        img.setAttribute("class", "img-icon");
+        img.setAttribute("alt", `imagen de ${name}`);
+
+        anchor.appendChild(img);
+      }
+
+      const span = document.createElement("span");
+      span.setAttribute("data-class", "card-title");
+      span.textContent = name;
+
+      const footerCard = document.createElement("footer");
+      footerCard.appendChild(span);
+      anchor.appendChild(footerCard);
+
+      this.appendChild(anchor);
+    });
+  }
+}
+
+customElements.define("techs-container", TechsContainer);
   // End custom element
 </script>

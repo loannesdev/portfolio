@@ -1,3 +1,5 @@
+import { envVars } from "./my_scripts";
+
 export const lookingForAJob = false;
 
 export const socialMedia = [
@@ -15,30 +17,34 @@ export const socialMedia = [
 
 export const sections = {
   home: {
-    href: "#home",
+    name: "home",
     text: "Inicio"
   },
   about: {
-    href: "#about",
+    name: "about",
     text: "Sobre mí"
   },
   knowledge: {
-    href: "#knowledge",
+    name: "knowledge",
     text: "Conocimientos"
   },
   projects: {
-    href: "#projects",
+    name: "projects",
     text: "Proyectos personales"
   }
 }
 
 export const github = {
   api: "https://api.github.com",
-  myUser: "loannesdev",
+  user: "loannesdev",
   path: {
     users: "/users",
     repos: "/repos",
     contents: "/contents"
+  },
+  cv: {
+    name: envVars.PUBLIC_CV_NAME,
+    file: envVars.PUBLIC_CV_FILE
   }
 }
 
@@ -51,25 +57,25 @@ export const technologies = [
   {
     name: "Redux",
     fav: false,
-    icon_name: "redux",
+    iconName: "redux",
     website: "https://redux.js.org"
   },
   {
     name: "Sass",
     fav: true,
-    icon_name: "sass",
+    iconName: "sass",
     website: "https://sass-lang.com"
   },
   {
     name: "Jquery",
     fav: false,
-    icon_name: "jquery",
+    iconName: "jquery",
     website: "https://jquery.com"
   },
   {
     name: "Wordpress",
     fav: false,
-    icon_name: "wordpress",
+    iconName: "wordpress",
     website: "https://wordpress.com"
   },
   {
@@ -90,7 +96,7 @@ export const technologies = [
   {
     name: "React",
     fav: false,
-    icon_name: "react",
+    iconName: "react",
     website: "https://reactjs.org"
   },
   {
@@ -101,25 +107,25 @@ export const technologies = [
   {
     name: "Materialize",
     fav: false,
-    icon_name: "materializecss",
+    iconName: "materializecss",
     website: "https://materializecss.com"
   },
   {
     name: "Git",
     fav: true,
-    icon_name: "git",
+    iconName: "git",
     website: "https://git-scm.com/"
   },
   {
     name: "GitHub",
     fav: true,
-    icon_name: "github",
+    iconName: "github",
     website: "https://github.com"
   },
   {
     name: "Sublime Text",
     fav: false,
-    icon_name: "sublime-text",
+    iconName: "sublime-text",
     website: "https://www.sublimetext.com"
   },
   {
@@ -130,151 +136,151 @@ export const technologies = [
   {
     name: "Android studio",
     fav: false,
-    icon_name: "android-studio",
+    iconName: "android-studio",
     website: "https://developer.android.com/studio"
   },
   {
     name: "Visual studio",
     fav: false,
-    icon_name: "visual-studio",
+    iconName: "visual-studio",
     website: "https://visualstudio.microsoft.com/es/#vs-section"
   },
   {
     name: "Visual studio code",
     fav: true,
-    icon_name: "vscode",
+    iconName: "vscode",
     website: "https://visualstudio.microsoft.com/es/#vscode-section"
   },
   {
     name: "Pg admin",
     fav: false,
     website: "https://www.pgadmin.org",
-    icon_name: "pgadmin"
+    iconName: "pgadmin"
   },
   {
     name: "PostGreSQL",
     fav: false,
-    icon_name: "postgresql",
+    iconName: "postgresql",
     website: "https://www.postgresql.org"
   },
   {
     name: "MongoDB",
     fav: false,
-    icon_name: "mongodb",
+    iconName: "mongodb",
     website: "https://www.mongodb.com"
   },
   {
     name: "MySQL",
     fav: false,
-    icon_name: "mysql",
+    iconName: "mysql",
     website: "https://www.mysql.com"
   },
   {
     name: "phpMyAdmin",
     fav: false,
     website: "https://www.phpmyadmin.net",
-    icon_name: "phpmyadmin"
+    iconName: "phpmyadmin"
   },
   {
     name: "Oracle",
     fav: false,
-    icon_name: "oracle",
+    iconName: "oracle",
     website: "https://www.oracle.com"
   },
   {
     name: "Python",
     fav: false,
-    icon_name: "python",
+    iconName: "python",
     website: "https://www.python.org"
   },
   {
     name: "C Sharp (C#)",
     fav: false,
-    icon_name: "c-sharp",
+    iconName: "c-sharp",
     website: "https://learn.microsoft.com/en-us/dotnet/csharp"
   },
   {
     name: "Visual basic for applications (VBA)",
     fav: false,
     website: "https://learn.microsoft.com/en-us/office/vba",
-    icon_name: "VBA"
+    iconName: "VBA"
   },
   {
     name: "Java",
     fav: false,
-    icon_name: "java",
+    iconName: "java",
     website: "https://www.java.com"
   },
   {
     name: "Node",
     fav: true,
-    icon_name: "nodejs",
+    iconName: "nodejs",
     website: "https://nodejs.org"
   },
   {
     name: "CSS",
     fav: true,
-    icon_name: "css",
+    iconName: "css",
     website: "https://www.w3.org/Style/CSS"
   },
   {
     name: "JavaScript",
     fav: true,
-    icon_name: "javascript",
+    iconName: "javascript",
     website: "https://developer.mozilla.org/es/docs/Web/JavaScript"
   },
   {
     name: "PHP",
     fav: false,
-    icon_name: "php",
+    iconName: "php",
     website: "https://www.php.net"
   },
   {
     name: "HTML",
     fav: false,
-    icon_name: "html",
+    iconName: "html",
     website: "https://html.spec.whatwg.org/multipage"
   },
   {
     name: "Supabase",
     fav: true,
-    icon_name: "supabase",
+    iconName: "supabase",
     website: "https://supabase.com"
   },
   {
     name: "Cypress",
     fav: true,
-    icon_name: "cypress",
+    iconName: "cypress",
     website: "https://www.cypress.io"
   },
   {
     name: "Vitest",
     fav: false,
-    icon_name: "vitest",
+    iconName: "vitest",
     website: "https://vitest.dev"
   },
   {
     name: "Vercel",
     fav: true,
-    icon_name: "vercel",
+    iconName: "vercel",
     website: "https://vercel.com"
   },
   {
     name: "Vite",
     fav: true,
-    icon_name: "vite",
+    iconName: "vite",
     website: "https://vitejs.dev"
   },
   {
     name: "React router dom",
     fav: false,
-    icon_name: "react-router",
+    iconName: "react-router",
     website: "https://reactrouter.com"
   },
   {
     name: "Preact",
     fav: true,
-    icon_name: "preact",
+    iconName: "preact",
     website: "https://preactjs.com"
   },
   {
@@ -285,25 +291,25 @@ export const technologies = [
   {
     name: "Astro",
     fav: true,
-    icon_name: "astro",
+    iconName: "astro",
     website: "https://astro.build"
   },
   {
     name: "Tailwind",
     fav: true,
-    icon_name: "tailwindcss",
+    iconName: "tailwindcss",
     website: "https://tailwindcss.com/"
   },
   {
     name: "Netlify",
     fav: true,
-    icon_name: "netlify",
+    iconName: "netlify",
     website: "https://www.netlify.com/"
   },
   {
     name: "Markdown",
     fav: true,
-    icon_name: "markdown",
+    iconName: "markdown",
     website: "https://www.markdownguide.org/"
   }
 ]

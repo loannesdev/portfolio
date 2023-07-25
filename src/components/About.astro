@@ -1,35 +1,29 @@
 ---
 import { sections } from "../utils/const";
-import Anchor from "./Anchor.astro";
+
+const { summary } = Astro.props;
+const {
+  about: { name, text },
+} = sections;
 ---
 
-<section id="about">
-  <h2 class="section-title">{sections?.about?.text}</h2>
+<section id={name}>
+  <h2 class="section-title">{text}</h2>
 
-  <p>
-    Soy alguien mayormente autodidacta, que busca solucionar problemas por si
-    solo cuando se enfrenta a alguno, pero que se adapta bien a entornos
-    colaborativos y/o equipos de trabajo, tolerante, respetuoso, resiliente y
-    también con intensión de compartir su experiencia y ayudar al prójimo en lo
-    que se pueda.
-  </p>
-
-  <br />
-
-  <p>
-    Tengo <b id="age"></b> y soy de <b>Cali, Colombia</b>, egresado del<Anchor
-      url="https://www.sena.edu.co"
-      goToAnotherWeb={true}
-    >
-      SENA (Servicio Nacional de Aprendizaje)
-    </Anchor> de la tecnología/carrera<b
-      >Análisis y desarrollo de sistemas de información</b
-    >(aquí fue donde empezó mi historia en la programación).
-  </p>
+  {
+    summary.map((text, index) => {
+      return (
+        <>
+          <p>{text}</p>
+          {index + 1 !== summary.length ? <br /> : null}
+        </>
+      );
+    })
+  }
 </section>
 
 <style>
-  section[id="about"] {
+  section[id] {
     & p {
       font-size: 1.2rem;
     }
@@ -39,11 +33,3 @@ import Anchor from "./Anchor.astro";
     }
   }
 </style>
-
-<script>
-  const CURRENT_DATE = new Date();
-  const MY_DATE = new Date("1999/09/10");
-  const YEARS = new Date(+CURRENT_DATE - +MY_DATE).getFullYear() - 1970;
-
-  document.getElementById("age").textContent = `${YEARS} años`;
-</script>

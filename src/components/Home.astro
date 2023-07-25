@@ -1,10 +1,18 @@
-<section id="home">
+---
+import { sections } from "../utils/const";
+
+const {
+  home: { name },
+} = sections;
+---
+
+<section id={name}>
   <h2 class="title-one">Soy<br />Sebastian Cortes,</h2>
   <h1 class="title-two">Programador web front-end</h1>
 </section>
 
 <style>
-  section[id="home"] {
+  section[id] {
     display: grid;
     place-content: center;
     height: 80vh;

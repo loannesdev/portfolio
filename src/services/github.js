@@ -1,7 +1,8 @@
 import { github } from "../utils/const";
+import { envVars } from "../utils/my_scripts";
 
-const token = import.meta.env.PUBLIC_GITHUB_TOKEN;
-const { api, path, myUser } = github;
+const token = envVars.PUBLIC_GITHUB_TOKEN;
+const { api, path, user, cv } = github;
 const headers = {
   "Authorization": `Bearer ${token}`,
   "X-GitHub-Api-Version": "2022-11-28",
@@ -11,7 +12,7 @@ const headers = {
 const dontShow = ["portfolio", "manfred", "loannesdev"];
 
 export const readRepos = async () => {
-  const url = `${api}${path.users}/${myUser}${path.repos}`
+  const url = `${api}${path.users}/${user}${path.repos}`
 
   try {
     const res = await fetch(url, { headers })
@@ -23,5 +24,23 @@ export const readRepos = async () => {
 
   catch {
     return [];
+  }
+}
+
+export const readResume = async () => {
+  const url = `${api}/repos/${user}/${cv.name}/contents/${cv.file}`
+
+  try {
+    const res = await fetch(url, { headers })
+    const { content } = await res.json();
+    const base64Decode = atob(content);
+    const utf8Encode = Buffer.from(base64Decode, "latin1").toString("utf8")
+    const data = JSON.parse(utf8Encode)
+
+    return data
+  }
+
+  catch (error) {
+    throw Error(error)
   }
 }

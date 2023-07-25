@@ -50,9 +50,9 @@ import Anchor from "./Anchor.astro";
     <nav class="index-list">
       <ul>
         {
-          Object.values(sections).map(({ href, text }) => (
+          Object.values(sections).map(({ name, text }) => (
             <li>
-              <Anchor url={href}>{text}</Anchor>
+              <Anchor url={"#" + name}>{text}</Anchor>
             </li>
           ))
         }
