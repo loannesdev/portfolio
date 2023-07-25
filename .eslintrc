@@ -4,18 +4,76 @@
   ],
   "overrides": [
     {
-      // Define the configuration for `.astro` file.
-      "files": ["*.astro"],
-      // Allows Astro components to be parsed.
+      "files": [
+        "*.astro"
+      ],
+      "plugins": [
+        "astro"
+      ],
+      "env": {
+        "node": true,
+        "astro/astro": true,
+        "es2020": true
+      },
       "parser": "astro-eslint-parser",
-      // Parse the script in `.astro` as TypeScript by adding the following configuration.
-      // It's the setting you need when using TypeScript.
       "parserOptions": {
-        "extraFileExtensions": [".astro"]
+        "extraFileExtensions": [
+          ".astro"
+        ],
+        "sourceType": "module"
       },
       "rules": {
-        // override/add rules settings here, such as:
-        // "astro/no-set-html-directive": "error"
+        "astro/no-conflict-set-directives": "error",
+        "astro/no-unused-define-vars-in-style": "error",
+        "quotes": [
+          "error",
+          "double"
+        ],
+        "space-before-function-paren": [
+          "error",
+          "never"
+        ],
+        "camelcase": [
+          "error",
+          {
+            "ignoreDestructuring": true
+          }
+        ],
+        "require-await": "off"
+      }
+    },
+    {
+      "files": [
+        "**/*.astro/*.js",
+        "*.astro/*.js"
+      ],
+      "env": {
+        "browser": true,
+        "es2020": true
+      },
+      "parserOptions": {
+        "sourceType": "module"
+      },
+      "rules": {
+        "quotes": [
+          "error",
+          "double"
+        ],
+        "space-before-function-paren": [
+          "error",
+          "never"
+        ],
+        "comma-dangle": [
+          "error",
+          "only-multiline"
+        ],
+        "camelcase": [
+          "error",
+          {
+            "ignoreDestructuring": true
+          }
+        ],
+        "require-await": "off"
       }
     }
   ]
