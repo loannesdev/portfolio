@@ -29,7 +29,7 @@ export const readResume = async () => {
   const url = `${api}/repos/${user}/${cv.name}/contents/${cv.file}`;
 
   try {
-    const res = await fetch(url, { cache: "max-age=30", headers });
+    const res = await fetch(url, { headers });
     const { content } = await res.json();
     const base64Decode = atob(content);
     const utf8Encode = Buffer.from(base64Decode, "latin1").toString("utf8");
