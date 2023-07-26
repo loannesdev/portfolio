@@ -13,7 +13,7 @@ export const socialMedia = [
     icon: "github-svgrepo-com",
     name: "github"
   }
-]
+];
 
 export const sections = {
   home: {
@@ -32,7 +32,7 @@ export const sections = {
     name: "projects",
     text: "Proyectos personales"
   }
-}
+};
 
 export const github = {
   api: "https://api.github.com",
@@ -46,7 +46,7 @@ export const github = {
     name: envVars.PUBLIC_CV_NAME,
     file: envVars.PUBLIC_CV_FILE
   }
-}
+};
 
 export const technologies = [
   {
@@ -312,7 +312,7 @@ export const technologies = [
     iconName: "markdown",
     website: "https://www.markdownguide.org/"
   }
-]
+];
 
 export const myProjects = [
   {
@@ -331,7 +331,7 @@ export const myProjects = [
       "vite",
       "vitest"
     ],
-    html_url: "https://github.com/loannesdev/media-platform-react",
+    htmlUrl: "https://github.com/loannesdev/media-platform-react",
     homepage: "https://media-platform.vercel.app"
   },
   {
@@ -341,7 +341,7 @@ export const myProjects = [
     topics: [
       "react"
     ],
-    html_url: "https://github.com/loannesdev/to-do-list-react",
+    htmlUrl: "https://github.com/loannesdev/to-do-list-react",
     homepage: "https://loannesdev.github.io/to-do-list-react"
   },
   {
@@ -355,7 +355,7 @@ export const myProjects = [
       "vercel",
       "vite"
     ],
-    html_url: "https://github.com/loannesdev/voice-translator",
+    htmlUrl: "https://github.com/loannesdev/voice-translator",
     homepage: "https://voice-translator.vercel.app/"
   },
   {
@@ -366,7 +366,7 @@ export const myProjects = [
       "javascript",
       "markdown"
     ],
-    html_url: "https://github.com/loannesdev/adventJS-2021",
+    htmlUrl: "https://github.com/loannesdev/adventJS-2021",
     homepage: ""
   },
   {
@@ -377,7 +377,7 @@ export const myProjects = [
       "javascript",
       "markdown"
     ],
-    html_url: "",
+    htmlUrl: "",
     homepage: ""
   }
-]
+];

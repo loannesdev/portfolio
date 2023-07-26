@@ -29,9 +29,9 @@ const {
                   <h4 class="topics-title">Tecnologías usadas</h4>
 
                   <div class="topics-group">
-                    {topics.map((tech) => {
-                      return <span class="topic">{tech}</span>;
-                    })}
+                    {topics.map((tech) => (
+                      <span class="topic">{tech}</span>
+                    ))}
                   </div>
                 </section>
               ) : null}

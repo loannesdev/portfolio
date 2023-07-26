@@ -15,7 +15,8 @@
   },
   "dependencies": {
     "astro": "2.8.0",
-    "astro-icon": "0.8.1"
+    "astro-icon": "0.8.1",
+    "eslint-config-standard": "17.1.0"
   },
   "engines": {
     "node": "18.16.1"
@@ -24,6 +25,7 @@
     "version": "8.6.1"
   },
   "devDependencies": {
+    "astro-eslint-parser": "0.14.0",
     "eslint": "8.45.0",
     "eslint-plugin-astro": "0.27.2"
   }

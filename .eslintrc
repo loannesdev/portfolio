@@ -1,80 +1,59 @@
 {
-  "extends": [
-    "plugin:astro/recommended"
-  ],
-  "overrides": [
-    {
-      "files": [
-        "*.astro"
-      ],
-      "plugins": [
-        "astro"
-      ],
-      "env": {
-        "node": true,
-        "astro/astro": true,
-        "es2020": true
-      },
-      "parser": "astro-eslint-parser",
-      "parserOptions": {
-        "extraFileExtensions": [
-          ".astro"
-        ],
-        "sourceType": "module"
-      },
-      "rules": {
-        "astro/no-conflict-set-directives": "error",
-        "astro/no-unused-define-vars-in-style": "error",
-        "quotes": [
-          "error",
-          "double"
-        ],
-        "space-before-function-paren": [
-          "error",
-          "never"
-        ],
-        "camelcase": [
-          "error",
-          {
-            "ignoreDestructuring": true
-          }
-        ],
-        "require-await": "off"
-      }
-    },
-    {
-      "files": [
-        "**/*.astro/*.js",
-        "*.astro/*.js"
-      ],
-      "env": {
-        "browser": true,
-        "es2020": true
-      },
-      "parserOptions": {
-        "sourceType": "module"
-      },
-      "rules": {
-        "quotes": [
-          "error",
-          "double"
-        ],
-        "space-before-function-paren": [
-          "error",
-          "never"
-        ],
-        "comma-dangle": [
-          "error",
-          "only-multiline"
-        ],
-        "camelcase": [
-          "error",
-          {
-            "ignoreDestructuring": true
-          }
-        ],
-        "require-await": "off"
-      }
-    }
-  ]
+	"extends": [
+		"eslint:recommended",
+		"plugin:astro/recommended",
+		"eslint-config-standard"
+	],
+	"overrides": [
+		{
+			"files": [
+				"*.astro"
+			],
+			"parser": "astro-eslint-parser",
+			"parserOptions": {
+				"extraFileExtensions": [
+					".astro"
+				]
+			}
+		}
+	],
+	"rules": {
+		"indent": [
+			"warn",
+			2
+		],
+		"quotes": [
+			"warn",
+			"double"
+		],
+		"space-before-function-paren": [
+			"warn",
+			{
+				"anonymous": "always",
+				"named": "never",
+				"asyncArrow": "always"
+			}
+		],
+		"comma-dangle": [
+			"warn",
+			"only-multiline"
+		],
+		"camelcase": [
+			"warn",
+			{
+				"ignoreDestructuring": true
+			}
+		],
+		"no-tabs": [
+			"warn",
+			{
+				"allowIndentationTabs": true
+			}
+		],
+		"multiline-ternary": "off",
+		"semi": [
+			"warn",
+			"always"
+		]
+	}
 }
