@@ -6,8 +6,7 @@ const { api, path, user, cv } = github;
 const headers = {
   Authorization: `Bearer ${token}`,
   "X-GitHub-Api-Version": "2022-11-28",
-  Accept: "application/vnd.github+json",
-  "Cache-Control": "max-age=60, must-revalidate"
+  Accept: "application/vnd.github+json"
 };
 
 const dontShow = ["portfolio", "manfred", "loannesdev"];
@@ -30,7 +29,7 @@ export const readResume = async () => {
   const url = `${api}/repos/${user}/${cv.name}/contents/${cv.file}`;
 
   try {
-    const res = await fetch(url, { headers });
+    const res = await fetch(url, { cache: "max-age=30", headers });
     const { content } = await res.json();
     const base64Decode = atob(content);
     const utf8Encode = Buffer.from(base64Decode, "latin1").toString("utf8");
