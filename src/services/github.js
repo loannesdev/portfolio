@@ -36,6 +36,7 @@ export const readResume = async () => {
     const utf8Encode = Buffer.from(base64Decode, "latin1").toString("utf8");
     const data = JSON.parse(utf8Encode);
 
+    console.log(data.basics.summary);
     return data;
   } catch (error) {
     throw Error(error);
