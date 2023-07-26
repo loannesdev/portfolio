@@ -12,7 +12,7 @@
     "astro": "astro",
     "phoenix:windows": "del /f pnpm-lock.yaml & rd /s /q node_modules & pnpm install",
     "host": "astro dev --host",
-    "build:netlify": "astro build && rm -Rf ./dist/index.html"
+    "build:netlify": "astro build && rm -Rf ./opt/build/cache"
   },
   "dependencies": {
     "astro": "2.9.3",
