@@ -7,7 +7,7 @@ const headers = {
   Authorization: `Bearer ${token}`,
   "X-GitHub-Api-Version": "2022-11-28",
   Accept: "application/vnd.github+json",
-  "Cache-Control": "no-cache"
+  "Cache-Control": "max-age=60, must-revalidate"
 };
 
 const dontShow = ["portfolio", "manfred", "loannesdev"];
