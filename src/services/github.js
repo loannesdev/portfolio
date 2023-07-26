@@ -6,7 +6,8 @@ const { api, path, user, cv } = github;
 const headers = {
   Authorization: `Bearer ${token}`,
   "X-GitHub-Api-Version": "2022-11-28",
-  Accept: "application/vnd.github+json"
+  Accept: "application/vnd.github+json",
+  cache: "no-cache"
 };
 
 const dontShow = ["portfolio", "manfred", "loannesdev"];
