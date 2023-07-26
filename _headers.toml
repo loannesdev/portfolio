@@ -1,4 +1,0 @@
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Cache-Control: "max-age=30, must-revalidate"
