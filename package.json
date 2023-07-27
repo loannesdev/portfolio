@@ -15,9 +15,11 @@
     "build:netlify": "astro build && rm -Rf ./opt/build/cache"
   },
   "dependencies": {
+    "@astrojs/svelte": "3.1.0",
     "astro": "2.9.3",
     "astro-icon": "0.8.1",
-    "eslint-config-standard": "17.1.0"
+    "eslint-config-standard": "17.1.0",
+    "svelte": "4.0.0"
   },
   "engines": {
     "node": "18.16.1"
