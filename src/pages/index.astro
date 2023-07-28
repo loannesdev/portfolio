@@ -1,15 +1,11 @@
 ---
-import About from "../components/About.astro";
+import About from "../components/About.svelte";
 import Header from "../components/Header.astro";
 import Home from "../components/Home.astro";
 import Knowledge from "../components/Knowledge.astro";
 import Projects from "../components/Projects.astro";
 import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
-import { readResume } from "../services/github";
-
-const { basics, skills } = await readResume();
-const { summary } = basics;
 ---
 
 <Layout>
@@ -17,8 +13,8 @@ const { summary } = basics;
 
   <main>
     <Home />
-    <About {summary} />
-    <Knowledge {skills} />
+    <About client:only="svelte" />
+    <Knowledge />
     <Projects />
   </main>
 </Layout>

@@ -31,7 +31,6 @@ export const readResume = async () => {
   try {
     const res = await fetch(url, { headers });
     const { content } = await res.json();
-
     const base64Decode = atob(content);
     const utf8Encode = new TextDecoder("utf8").decode(new Uint8Array([...base64Decode].map((c) => c.charCodeAt(0))));
     const data = JSON.parse(utf8Encode);
