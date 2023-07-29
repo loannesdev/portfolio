@@ -2,7 +2,7 @@
 import About from "../components/About.svelte";
 import Header from "../components/Header.astro";
 import Home from "../components/Home.astro";
-import Knowledge from "../components/Knowledge.astro";
+import Knowledge from "../components/Knowledge.svelte";
 import Projects from "../components/Projects.astro";
 import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
@@ -14,7 +14,7 @@ import "../styles/global.css";
   <main>
     <Home />
     <About client:only="svelte" />
-    <Knowledge />
+    <Knowledge client:only="svelte" />
     <Projects />
   </main>
 </Layout>
@@ -30,7 +30,7 @@ import "../styles/global.css";
     --transition-two-milisecond: 0.2s all ease;
     --transition-half-second: 0.5s all ease;
     --border-radius-min: 0.25rem;
-    --border-radius-med: 1rem;
+    --border-radius-med: 0.375rem;
     --border-radius-max: 2rem;
   }
 
@@ -78,12 +78,12 @@ const theme = (() => {
   const darkModeValue = localStorage.getItem("theme");
 
   if (darkModeValue) {
-    document.documentElement.classList.add(
+    document.documentElement.setAttribute(
+      "class",
       darkModeValue === "light" ? "light" : "dark"
     );
     return localStorage.getItem("theme");
   }
-
   return "light";
 })();
 

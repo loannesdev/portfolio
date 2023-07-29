@@ -25,7 +25,7 @@ export const readRepos = async () => {
   }
 };
 
-export const readResume = async () => {
+export const readCV = async (flag) => {
   const url = `${api}/repos/${user}/${cv.name}/contents/${cv.file}`;
 
   try {

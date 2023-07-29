@@ -1,4 +1,4 @@
-export const $ = string => {
+export const DOMSelector = string => {
   return document.querySelector(string);
 };
 

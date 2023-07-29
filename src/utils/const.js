@@ -51,264 +51,264 @@ export const github = {
 export const technologies = [
   {
     name: "Wouter",
-    fav: true,
+    isFavorite: true,
     website: "https://github.com/molefrog/wouter"
   },
   {
     name: "Redux",
-    fav: false,
+    isFavorite: false,
     iconName: "redux",
     website: "https://redux.js.org"
   },
   {
     name: "Sass",
-    fav: true,
+    isFavorite: true,
     iconName: "sass",
     website: "https://sass-lang.com"
   },
   {
     name: "Jquery",
-    fav: false,
+    isFavorite: false,
     iconName: "jquery",
     website: "https://jquery.com"
   },
   {
     name: "Wordpress",
-    fav: false,
+    isFavorite: false,
     iconName: "wordpress",
     website: "https://wordpress.com"
   },
   {
     name: "Boostrap",
-    fav: false,
+    isFavorite: false,
     website: "https://getbootstrap.com"
   },
   {
     name: "React native paper",
-    fav: false,
+    isFavorite: false,
     website: "https://reactnativepaper.com"
   },
   {
     name: "React native",
-    fav: false,
+    isFavorite: false,
     website: "https://reactnative.dev"
   },
   {
     name: "React",
-    fav: false,
+    isFavorite: false,
     iconName: "react",
     website: "https://reactjs.org"
   },
   {
     name: "Skeleton",
-    fav: false,
+    isFavorite: false,
     website: "hhttp://getskeleton.com"
   },
   {
     name: "Materialize",
-    fav: false,
+    isFavorite: false,
     iconName: "materializecss",
     website: "https://materializecss.com"
   },
   {
     name: "Git",
-    fav: true,
+    isFavorite: true,
     iconName: "git",
     website: "https://git-scm.com/"
   },
   {
     name: "GitHub",
-    fav: true,
+    isFavorite: true,
     iconName: "github",
     website: "https://github.com"
   },
   {
     name: "Sublime Text",
-    fav: false,
+    isFavorite: false,
     iconName: "sublime-text",
     website: "https://www.sublimetext.com"
   },
   {
     name: "NetBeans",
-    fav: false,
+    isFavorite: false,
     website: "https://netbeans.apache.org"
   },
   {
     name: "Android studio",
-    fav: false,
+    isFavorite: false,
     iconName: "android-studio",
     website: "https://developer.android.com/studio"
   },
   {
     name: "Visual studio",
-    fav: false,
+    isFavorite: false,
     iconName: "visual-studio",
     website: "https://visualstudio.microsoft.com/es/#vs-section"
   },
   {
     name: "Visual studio code",
-    fav: true,
+    isFavorite: true,
     iconName: "vscode",
     website: "https://visualstudio.microsoft.com/es/#vscode-section"
   },
   {
     name: "Pg admin",
-    fav: false,
+    isFavorite: false,
     website: "https://www.pgadmin.org",
     iconName: "pgadmin"
   },
   {
     name: "PostGreSQL",
-    fav: false,
+    isFavorite: false,
     iconName: "postgresql",
     website: "https://www.postgresql.org"
   },
   {
     name: "MongoDB",
-    fav: false,
+    isFavorite: false,
     iconName: "mongodb",
     website: "https://www.mongodb.com"
   },
   {
     name: "MySQL",
-    fav: false,
+    isFavorite: false,
     iconName: "mysql",
     website: "https://www.mysql.com"
   },
   {
     name: "phpMyAdmin",
-    fav: false,
+    isFavorite: false,
     website: "https://www.phpmyadmin.net",
     iconName: "phpmyadmin"
   },
   {
     name: "Oracle",
-    fav: false,
+    isFavorite: false,
     iconName: "oracle",
     website: "https://www.oracle.com"
   },
   {
     name: "Python",
-    fav: false,
+    isFavorite: false,
     iconName: "python",
     website: "https://www.python.org"
   },
   {
     name: "C Sharp (C#)",
-    fav: false,
+    isFavorite: false,
     iconName: "c-sharp",
     website: "https://learn.microsoft.com/en-us/dotnet/csharp"
   },
   {
     name: "Visual basic for applications (VBA)",
-    fav: false,
+    isFavorite: false,
     website: "https://learn.microsoft.com/en-us/office/vba",
     iconName: "VBA"
   },
   {
     name: "Java",
-    fav: false,
+    isFavorite: false,
     iconName: "java",
     website: "https://www.java.com"
   },
   {
     name: "Node",
-    fav: true,
+    isFavorite: true,
     iconName: "nodejs",
     website: "https://nodejs.org"
   },
   {
     name: "CSS",
-    fav: true,
+    isFavorite: true,
     iconName: "css",
     website: "https://www.w3.org/Style/CSS"
   },
   {
     name: "JavaScript",
-    fav: true,
+    isFavorite: true,
     iconName: "javascript",
     website: "https://developer.mozilla.org/es/docs/Web/JavaScript"
   },
   {
     name: "PHP",
-    fav: false,
+    isFavorite: false,
     iconName: "php",
     website: "https://www.php.net"
   },
   {
     name: "HTML",
-    fav: false,
+    isFavorite: false,
     iconName: "html",
     website: "https://html.spec.whatwg.org/multipage"
   },
   {
     name: "Supabase",
-    fav: true,
+    isFavorite: true,
     iconName: "supabase",
     website: "https://supabase.com"
   },
   {
     name: "Cypress",
-    fav: true,
+    isFavorite: true,
     iconName: "cypress",
     website: "https://www.cypress.io"
   },
   {
     name: "Vitest",
-    fav: false,
+    isFavorite: false,
     iconName: "vitest",
     website: "https://vitest.dev"
   },
   {
     name: "Vercel",
-    fav: true,
+    isFavorite: true,
     iconName: "vercel",
     website: "https://vercel.com"
   },
   {
     name: "Vite",
-    fav: true,
+    isFavorite: true,
     iconName: "vite",
     website: "https://vitejs.dev"
   },
   {
     name: "React router dom",
-    fav: false,
+    isFavorite: false,
     iconName: "react-router",
     website: "https://reactrouter.com"
   },
   {
     name: "Preact",
-    fav: true,
+    isFavorite: true,
     iconName: "preact",
     website: "https://preactjs.com"
   },
   {
     name: "Token CSS",
-    fav: false,
+    isFavorite: false,
     website: "https://tokencss.com"
   },
   {
     name: "Astro",
-    fav: true,
+    isFavorite: true,
     iconName: "astro",
     website: "https://astro.build"
   },
   {
     name: "Tailwind",
-    fav: true,
+    isFavorite: true,
     iconName: "tailwindcss",
     website: "https://tailwindcss.com/"
   },
   {
     name: "Netlify",
-    fav: true,
+    isFavorite: true,
     iconName: "netlify",
     website: "https://www.netlify.com/"
   },
   {
     name: "Markdown",
-    fav: true,
+    isFavorite: true,
     iconName: "markdown",
     website: "https://www.markdownguide.org/"
   }
@@ -318,7 +318,7 @@ export const myProjects = [
   {
     id: 449877560,
     name: "media-platform-react",
-    description: "Este sitio web permite ver películas, series y perfiles de personas que trabajan o trabajaron en el mundo del cine, también permite guardar medios en favoritos y verlos más tarde.",
+    description: "Este sitio web permite ver películas, series y perfiles de personas que trabajan o trabajaron en el mundo del cine, también permite guardar medios en isFavoriteoritos y verlos más tarde.",
     topics: [
       "cypress",
       "heroicons",
