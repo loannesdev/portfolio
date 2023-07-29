@@ -11,14 +11,12 @@
     "preview": "astro preview",
     "astro": "astro",
     "phoenix:windows": "del /f pnpm-lock.yaml & rd /s /q node_modules & pnpm install",
-    "host": "astro dev --host",
-    "build:netlify": "astro build && rm -Rf ./opt/build/cache"
+    "host": "astro dev --host"
   },
   "dependencies": {
     "@astrojs/svelte": "3.1.0",
     "astro": "2.9.3",
     "astro-icon": "0.8.1",
-    "eslint-config-standard": "17.1.0",
     "svelte": "4.0.0"
   },
   "engines": {
@@ -30,6 +28,7 @@
   "devDependencies": {
     "astro-eslint-parser": "0.14.0",
     "eslint": "8.45.0",
-    "eslint-plugin-astro": "0.27.2"
+    "eslint-plugin-astro": "0.27.2",
+    "eslint-config-standard": "17.1.0"
   }
 }
