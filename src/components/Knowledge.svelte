@@ -159,7 +159,7 @@
             border: 1px solid transparent;
             letter-spacing: 1px;
             line-height: normal;
-            font-weight: 500;
+            font-weight: 600;
           }
 
           & [data-level="básico" i] {
