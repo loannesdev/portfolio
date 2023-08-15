@@ -13,7 +13,7 @@
 </script>
 
 <section id={name}>
-  <h2 class="section-title">{text}</h2>
+  <h1 class="section-title">{text}</h1>
 
   {#await cv}
     <p>Cargando...</p>
@@ -161,7 +161,7 @@
           }
 
           & [data-level="básico" i] {
-            color: #1976d2;
+            color: #006dda;
             background-color: rgba(225, 245, 254, 0.3);
             border-color: #64b5f6;
           }
@@ -173,7 +173,7 @@
           }
 
           & [data-level="avanzado" i] {
-            color: #ff9800;
+            color: #8c5f1e;
             background-color: rgba(255, 236, 179, 0.3);
             border-color: #ffd54f;
           }

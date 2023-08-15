@@ -10,7 +10,7 @@
 </script>
 
 <section id={name}>
-  <h2 class="section-title">{text}</h2>
+  <h1 class="section-title">{text}</h1>
 
   {#await repo}
     <p>Cargando...</p>
@@ -27,7 +27,7 @@
       {#each interests as { name }, i}
         <small
           class="interest-tag"
-          style={`background-color: #${computedColor()}7a`}
+          style={`background-color: #${computedColor()}5b`}
         >
           {name}
         </small>
@@ -45,10 +45,10 @@
       font-size: 1.2rem;
 
       & .interest-tag {
-        background-color: red;
         padding: 0 0.5rem;
         text-wrap: nowrap;
         border-radius: var(--border-radius-min);
+        font-weight: 500;
       }
 
       & .interest-title {
