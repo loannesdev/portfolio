@@ -94,8 +94,9 @@
         padding: 0.25rem 0.5rem;
         border: 0.1rem solid transparent;
         border-radius: var(--border-radius-min);
-        font-size: 14px;
+        font-size: 0.938rem;
         color: currentColor;
+        font-weight: 500;
 
         &:hover,
         &:active {
@@ -158,22 +159,23 @@
             border: 1px solid transparent;
             letter-spacing: 1px;
             line-height: normal;
+            font-weight: 500;
           }
 
           & [data-level="básico" i] {
-            color: #006dda;
+            color: #0050a0;
             background-color: rgba(225, 245, 254, 0.3);
             border-color: #64b5f6;
           }
 
           & [data-level="intermedio" i] {
-            color: #00796b;
+            color: #105a51;
             background-color: hsla(177, 41%, 91%, 0.3);
             border-color: #4db6ac;
           }
 
           & [data-level="avanzado" i] {
-            color: #8c5f1e;
+            color: #6b4918;
             background-color: rgba(255, 236, 179, 0.3);
             border-color: #ffd54f;
           }
