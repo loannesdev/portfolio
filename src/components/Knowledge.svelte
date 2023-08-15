@@ -36,8 +36,7 @@
           target="_blank"
           rel="noreferrer noopener"
           class="card"
-          aria-label={`Sitio web de ${name.toLowerCase()}`}
-          title="Visitar sitio web"
+          aria-label={`Visitar sitio web de ${name.toLowerCase()}`}
         >
           {#if iconName}
             <img
