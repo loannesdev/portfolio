@@ -22,7 +22,7 @@
       <button
         type="button"
         class="see-favorites-button"
-        aria-label="See favorites knowledge"
+        aria-label="Ver favoritos"
         on:click={() => (state.seeFavorites = !state.seeFavorites)}
       >
         {state.seeFavorites ? "Dejar de ver favoritos" : "Ver favoritos"}
