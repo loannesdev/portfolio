@@ -2,7 +2,6 @@
   import { readCV } from "../services/github";
   import { sections } from "../utils/const";
 
-  const repo = readCV();
   const {
     about: { name, text },
   } = sections;
@@ -12,11 +11,11 @@
 <section id={name}>
   <h1 class="section-title">{text}</h1>
 
-  {#await repo}
+  {#await readCV()}
     <p>Cargando...</p>
   {:then { basics: { summary }, interests }}
     {#each summary as paragraph}
-      <p>{paragraph}</p>
+      <p>{@html paragraph}</p>
       <br />
     {/each}
 
