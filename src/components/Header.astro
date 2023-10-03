@@ -4,65 +4,63 @@ import { lookingForAJob, sections, socialMedia } from "../utils/const";
 import Anchor from "./Anchor.astro";
 ---
 
-<header>
-  <div class="header-container">
-    <section class="contact">
-      <button id="darkModeButton" type="button" aria-label="Dark mode">
-        <Icon name="sun" />
-        <Icon name="moon" />
-      </button>
+<header class="header-container">
+  <section class="contact">
+    <button id="darkModeButton" type="button" aria-label="Dark mode">
+      <Icon name="sun" />
+      <Icon name="moon" />
+    </button>
 
-      <article class="social-container">
-        <div class="social">
-          {
-            socialMedia.map((elm) => {
-              return (
-                <Anchor
-                  url={elm.link}
-                  goToAnotherWeb={true}
-                  aria-label={`Ver cuenta en ${elm.name}`}
-                >
-                  <Icon name={elm.icon} />
-                </Anchor>
-              );
-            })
-          }
-        </div>
-
+    <article class="social-container">
+      <div class="social">
         {
-          lookingForAJob && (
-            <>
-              &bull;
-              <a
-                href="/CV/CV_es.pdf"
-                download="CV - Sebastian Cortes.pdf"
-                aria-label="Descargar curriculum vitae"
-                class="download-cv"
+          socialMedia.map((elm) => {
+            return (
+              <Anchor
+                url={elm.link}
+                goToAnotherWeb={true}
+                aria-label={`Ver cuenta en ${elm.name}`}
               >
-                Descargar CV
-              </a>
-            </>
-          )
+                <Icon name={elm.icon} />
+              </Anchor>
+            );
+          })
         }
-      </article>
-    </section>
+      </div>
 
-    <nav class="index-list">
-      <ul>
-        {
-          Object.values(sections).map(({ name, text }) => (
-            <li>
-              <Anchor url={"#" + name}>{text}</Anchor>
-            </li>
-          ))
-        }
-      </ul>
-    </nav>
-  </div>
+      {
+        lookingForAJob && (
+          <>
+            &bull;
+            <a
+              href="/CV/CV_es.pdf"
+              download="CV - Sebastian Cortes.pdf"
+              aria-label="Descargar curriculum vitae"
+              class="download-cv"
+            >
+              Descargar CV
+            </a>
+          </>
+        )
+      }
+    </article>
+  </section>
+
+  <nav class="index-list">
+    <ul>
+      {
+        Object.values(sections).map(({ name, text }) => (
+          <li>
+            <Anchor url={"#" + name}>{text}</Anchor>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
 </header>
 
 <style>
-  header {
+  .header-container {
     display: flex;
     top: 0;
     z-index: 1;
@@ -70,40 +68,35 @@ import Anchor from "./Anchor.astro";
     background-color: var(--palette-white);
     border-bottom: 0.1rem solid currentColor;
     transition: var(--transition-one-milisecond);
-    justify-content: center;
+    column-gap: 3rem;
+    row-gap: 0.75rem;
+    justify-content: space-evenly;
+    padding: 1rem 0rem;
+    font-family: var(--font-family-text);
+    flex-wrap: wrap;
 
     :is(.dark) & {
       background-color: var(--palette-black);
     }
+  }
 
-    & .header-container {
-      display: flex;
-      column-gap: 3rem;
-      row-gap: 0.75rem;
-      justify-content: space-between;
-      padding: 1rem 0rem;
-      font-family: var(--font-family-text);
-      flex-wrap: wrap;
-    }
-
-    .header-container.wrapped {
-      justify-content: center;
-    }
+  .header-container.wrapped {
+    justify-content: center;
   }
 
   .contact {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 3rem;
 
     & .social-container {
       display: flex;
-      gap: 0.5rem;
+      gap: 1rem;
       align-items: center;
 
       & .social {
         display: flex;
-        gap: 0.3rem;
+        gap: 0.5rem;
 
         & :global(a) {
           display: flex;
@@ -122,6 +115,7 @@ import Anchor from "./Anchor.astro";
         border-radius: var(--border-radius-min);
         padding: 0.3rem 0.5rem;
         text-decoration: none;
+        text-align: center;
 
         &:hover {
           border: 1px solid currentColor;
