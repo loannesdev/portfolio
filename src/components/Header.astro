@@ -65,7 +65,6 @@ import Anchor from "./Anchor.astro";
     top: 0;
     z-index: 1;
     position: sticky;
-    background-color: var(--palette-white);
     transition: var(--transition-one-milisecond);
     column-gap: 3rem;
     row-gap: 0.75rem;
@@ -73,10 +72,8 @@ import Anchor from "./Anchor.astro";
     padding: 1rem 0rem;
     font-family: var(--font-family-text);
     flex-wrap: wrap;
-
-    :is(.dark) & {
-      background-color: var(--palette-black);
-    }
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
   }
 
   .header-container.wrapped {
