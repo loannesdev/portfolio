@@ -58,10 +58,7 @@
 
 <style>
   :global(.dark) section[id="knowledge"] .filters button {
-    &:hover,
-    &:active {
-      border-color: var(--palette-white);
-    }
+    border-color: var(--palette-white);
   }
 
   :global(.dark)
@@ -96,11 +93,7 @@
         font-size: 0.938rem;
         color: currentColor;
         font-weight: 500;
-
-        &:hover,
-        &:active {
-          border-color: var(--palette-black);
-        }
+        border-color: var(--palette-black);
       }
     }
 
@@ -126,9 +119,11 @@
         border: 0.1rem solid transparent;
         border-radius: var(--border-radius-min);
 
-        &:hover {
-          border-color: var(--palette-grey);
-          text-shadow: 1px 1.5px 2px var(--palette-grey);
+        @media (pointer: fine) {
+          &:hover {
+            border-color: var(--palette-grey);
+            text-shadow: 1px 1.5px 2px var(--palette-grey);
+          }
         }
 
         &:active {

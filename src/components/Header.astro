@@ -66,7 +66,6 @@ import Anchor from "./Anchor.astro";
     z-index: 1;
     position: sticky;
     background-color: var(--palette-white);
-    border-bottom: 0.1rem solid currentColor;
     transition: var(--transition-one-milisecond);
     column-gap: 3rem;
     row-gap: 0.75rem;
@@ -117,10 +116,20 @@ import Anchor from "./Anchor.astro";
         text-decoration: none;
         text-align: center;
 
-        &:hover {
-          border: 1px solid currentColor;
-          font-weight: bold;
-          text-shadow: 0 0 1rem currentColor;
+        @media (pointer: fine) {
+          &:hover {
+            border: 1px solid currentColor;
+            font-weight: bold;
+            text-shadow: 0 0 1rem currentColor;
+          }
+        }
+
+        @media (pointer: coarse) {
+          &:active {
+            border: 1px solid currentColor;
+            font-weight: bold;
+            text-shadow: 0 0 1rem currentColor;
+          }
         }
       }
     }
@@ -140,8 +149,16 @@ import Anchor from "./Anchor.astro";
       & li > :global(a) {
         text-decoration: none;
 
-        :is(&:hover, &:active) {
-          text-decoration: underline;
+        @media (pointer: fine) {
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        @media (pointer: coarse) {
+          &:active {
+            text-decoration: underline;
+          }
         }
       }
 
@@ -164,7 +181,6 @@ import Anchor from "./Anchor.astro";
       width: 2rem;
     }
 
-    &:hover,
     &:active {
       outline: 0.15rem solid var(--palette-grey);
     }

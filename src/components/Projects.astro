@@ -129,9 +129,21 @@ const {
             border-radius: var(--border-radius-min);
 
             :is(&:hover, &:active) {
-              border-color: var(--palette-black);
-              background-color: var(--palette-black);
-              color: var(--palette-white);
+              @media (pointer: fine) {
+                &:hover {
+                  border-color: var(--palette-black);
+                  background-color: var(--palette-black);
+                  color: var(--palette-white);
+                }
+              }
+
+              @media (pointer: coarse) {
+                &:active {
+                  border-color: var(--palette-black);
+                  background-color: var(--palette-black);
+                  color: var(--palette-white);
+                }
+              }
 
               :is(.dark) & {
                 border-color: var(--palette-white);
