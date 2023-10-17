@@ -5,7 +5,7 @@
   const {
     about: { name, text },
   } = sections;
-  let computedColor = () => Math.floor(Math.random() * 16777215).toString(16);
+  let computedColor = () => Math.floor(Math.random() * 255);
 </script>
 
 <section id={name}>
@@ -15,24 +15,23 @@
     <p>Cargando...</p>
   {:then { basics: { summary }, interests }}
     {#each summary as paragraph}
-      <p>{@html paragraph}</p>
+      <p class="paragraph">{@html paragraph}</p>
       <br />
     {/each}
 
-    <p>
-      <b class="interest-title">Algunos de mis intereses son:</b>
-      <br />
-
+    <h2 class="interests-title">Algunos de mis intereses son:</h2>
+    <div class="interests-container">
       {#each interests as { name }, i}
         <small
-          class="interest-tag"
-          style={`background-color: #${computedColor()}5b`}
+          class="tag"
+          style={`
+          background-color: rgba(${computedColor()}, ${computedColor()}, ${computedColor()}, 25%);
+          `}
         >
           {name}
         </small>
-        {interests.length !== i + 1 ? " " : ""}
       {/each}
-    </p>
+    </div>
   {/await}
 </section>
 
@@ -40,23 +39,26 @@
   section[id] {
     aspect-ratio: 78 / 23;
 
-    & p {
+    & .paragraph {
       font-size: 1.2rem;
-
-      & .interest-tag {
-        padding: 0 0.5rem;
-        text-wrap: nowrap;
-        border-radius: var(--border-radius-min);
-        font-weight: 500;
-      }
-
-      & .interest-title {
-        font-family: var(--font-family-title);
-      }
     }
 
-    & a {
-      color: currentColor;
+    & .interests-title {
+      font-family: var(--font-family-title);
+      font-size: large;
+    }
+
+    & .interests-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+
+      & .tag {
+        padding: 0.175rem 0.6rem;
+        border-radius: var(--border-radius-min);
+        line-height: normal;
+        font-size: 14.5px;
+      }
     }
   }
 </style>
