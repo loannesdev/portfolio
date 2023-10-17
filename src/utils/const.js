@@ -381,3 +381,5 @@ export const myProjects = [
     homepage: ""
   }
 ];
+
+export const urlDomain = "https://loannesdev.netlify.app";

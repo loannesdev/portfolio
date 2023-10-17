@@ -1,3 +1,7 @@
+---
+import { urlDomain } from "./../utils/const";
+---
+
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -13,64 +17,23 @@
       type="font/woff2"
       crossorigin
     />
-    <link
-      rel="preload"
-      href="/fonts/nunito_sans/NunitoSans10pt-Black.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/nunito_sans/NunitoSans10pt-Bold.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/space_grotesk/SpaceGrotesk-SemiBold.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/space_grotesk/SpaceGrotesk-Bold.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/nunito_sans/NunitoSans10pt-SemiBold.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link rel="canonical" href="https://loannesdev.netlify.app" />
-    <meta property="og:url" content="https://loannesdev.netlify.app" />
+    <link rel="canonical" href=`${urlDomain}` />
+    <meta property="og:url" content=`${urlDomain}` />
     <meta property="og:type" content="website" />
     <meta
       property="og:title"
       content="Sebastian Cortes • Desarrollador web front-end"
     />
     <meta property="og:description" content="Portafolio" />
-    <meta
-      property="og:image"
-      content="https://loannesdev.netlify.app/OG-image.webp"
-    />
+    <meta property="og:image" content=`${urlDomain}/OG-image.webp` />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://loannesdev.netlify.app" />
+    <meta property="twitter:url" content=`${urlDomain}` />
     <meta
       name="twitter:title"
       content="Sebastian Cortes • Desarrollador web front-end"
     />
     <meta name="twitter:description" content="Portafolio" />
-    <meta
-      name="twitter:image"
-      content="https://loannesdev.netlify.app/OG-image.webp"
-    />
+    <meta name="twitter:image" content=`${urlDomain}/OG-image.webp` />
   </head>
 
   <body>
