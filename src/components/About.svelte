@@ -25,7 +25,7 @@
         <small
           class="tag"
           style={`
-          background-color: rgba(${computedColor()}, ${computedColor()}, ${computedColor()}, 25%);
+          background-color: rgb(${computedColor()} ${computedColor()} ${computedColor()} / 40%);
           `}
         >
           {name}
