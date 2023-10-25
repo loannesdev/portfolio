@@ -45,6 +45,7 @@ import "../styles/global.css";
     transition: var(--transition-one-milisecond);
     background-color: var(--palette-white);
     color: var(--palette-black);
+    padding: 5rem 1rem;
 
     :is(.dark) & {
       background-color: var(--palette-black);
@@ -58,16 +59,9 @@ import "../styles/global.css";
     width: 100%;
   }
 
-  & main,
-  :global(header) {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
   main {
     display: grid;
     gap: 10rem;
-    padding-bottom: 5rem;
   }
 </style>
 

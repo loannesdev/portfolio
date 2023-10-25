@@ -16,7 +16,6 @@ const {
     display: grid;
     place-content: center;
     height: 80vh;
-    word-break: break-word;
 
     & .title-one {
       font-size: 2rem;
@@ -26,11 +25,8 @@ const {
       font-size: 3.75rem;
       font-family: var(--font-family-title);
       font-weight: black;
-      color: var(--palette-black);
-
-      :is(.dark) & {
-        color: var(--palette-white);
-      }
+      color: currentColor;
+      word-break: break-word;
     }
   }
 </style>

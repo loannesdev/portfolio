@@ -64,7 +64,6 @@ import Anchor from "./Anchor.astro";
     display: flex;
     top: 0;
     z-index: 1;
-    position: sticky;
     transition: var(--transition-one-milisecond);
     column-gap: 3rem;
     row-gap: 0.75rem;
@@ -73,7 +72,10 @@ import Anchor from "./Anchor.astro";
     font-family: var(--font-family-text);
     flex-wrap: wrap;
     backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
   }
 
   .header-container.wrapped {
