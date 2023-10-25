@@ -57,11 +57,11 @@
 </section>
 
 <style>
-  :global(.dark) section[id="knowledge"] .filters button {
+  :global([theme="dark"]) section[id="knowledge"] .filters button {
     border-color: var(--palette-white);
   }
 
-  :global(.dark)
+  :global([theme="dark"])
     section[id="knowledge"]
     .card-container
     .card
@@ -118,6 +118,7 @@
         transition: var(--transition-one-milisecond);
         border: 0.1rem solid transparent;
         border-radius: var(--border-radius-min);
+        text-align: center;
 
         @media (pointer: fine) {
           &:hover {
@@ -143,7 +144,7 @@
           gap: 3px;
 
           & .card-title {
-            font-family: var(--font-family-title);
+            font-family: var(--font-family-text);
             font-weight: 600;
           }
 

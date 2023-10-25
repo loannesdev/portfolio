@@ -200,7 +200,7 @@ import Anchor from "./Anchor.astro";
       color: var(--palette-black);
     }
 
-    :is(.dark) & {
+    :is([theme="dark"]) & {
       & [astro-icon="sun"] {
         color: yellow;
         display: block;
@@ -214,7 +214,7 @@ import Anchor from "./Anchor.astro";
 </style>
 
 <script>
-  import { DOMSelector } from "../utils/my_scripts";
+  import { DOMSelector } from "../utils/scripts";
 
   const $headerContainer = DOMSelector(".header-container");
   let auxHeight = 0;
@@ -241,9 +241,10 @@ import Anchor from "./Anchor.astro";
   // Dark mode
   document.getElementById("darkModeButton").addEventListener("click", () => {
     const element = document.documentElement;
-    const isDark = element.classList.contains("dark");
+    const isDark = element.getAttribute("theme").includes("dark");
+    const theme = isDark ? "light" : "dark";
 
-    element.classList.toggle("dark");
-    localStorage.setItem("theme", isDark ? "light" : "dark");
+    localStorage.setItem("theme", theme);
+    element.setAttribute("theme", theme);
   });
 </script>

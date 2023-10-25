@@ -1,4 +1,4 @@
-import { envVars } from "./my_scripts";
+import { envVars } from "./scripts";
 
 export const lookingForAJob = true;
 

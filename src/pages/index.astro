@@ -40,45 +40,11 @@ import "../styles/global.css";
       "Helvetica Neue", sans-serif;
   }
 
-  body {
-    display: grid;
-    transition: var(--transition-one-milisecond);
-    background-color: var(--palette-white);
-    color: var(--palette-black);
-    padding: 5rem 1rem;
-
-    :is(.dark) & {
-      background-color: var(--palette-black);
-      color: var(--palette-white);
-    }
-  }
-
   main {
     max-width: 80ch;
     justify-self: center;
     width: 100%;
-  }
-
-  main {
     display: grid;
     gap: 10rem;
   }
 </style>
-
-<script is:inline>
-// Dark mode
-const theme = (() => {
-  const darkModeValue = localStorage.getItem("theme");
-
-  if (darkModeValue) {
-    document.documentElement.setAttribute(
-      "class",
-      darkModeValue === "light" ? "light" : "dark"
-    );
-    return localStorage.getItem("theme");
-  }
-  return "light";
-})();
-
-localStorage.setItem("theme", theme);
-</script>

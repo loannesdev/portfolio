@@ -1,5 +1,5 @@
 import { github } from "../utils/const";
-import { envVars } from "../utils/my_scripts";
+import { envVars } from "../utils/scripts";
 
 const token = envVars.PUBLIC_GITHUB_TOKEN;
 const { api, path, user, cv } = github;

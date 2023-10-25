@@ -55,5 +55,8 @@
 			"warn",
 			"always"
 		]
+	},
+	"env": {
+		"browser": true
 	}
 }

@@ -72,21 +72,24 @@ import { urlDomain } from "./../utils/const";
     font-weight: bold;
     font-family: var(--font-family-title);
   }
+
+  body {
+    display: grid;
+    transition: var(--transition-one-milisecond);
+    background: var(--palette-white);
+    color: var(--palette-black);
+    padding: 5rem 1rem;
+
+    :is([theme="dark"]) & {
+      background: var(--palette-black);
+      color: var(--palette-white);
+    }
+  }
 </style>
 
 <script>
-  const $header = document.querySelector("header");
+  import { darkMode, scrollMarginTopChecker } from "../utils/scripts";
 
-  ["resize", "click", "touchend", "load"].forEach((elm) => {
-    window.addEventListener(elm, () => {
-      // Control the "scroll-margin-top" style value when the header change their height
-      const { height } = getComputedStyle($header);
-      const [firstSheet] = document.styleSheets;
-
-      firstSheet.insertRule(
-        `section[id] { scroll-margin-top: ${height} }`,
-        firstSheet.cssRules.length
-      );
-    });
-  });
+  scrollMarginTopChecker();
+  darkMode();
 </script>
