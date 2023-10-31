@@ -1,5 +1,4 @@
 ---
-import { Icon } from "astro-icon";
 import { lookingForAJob, sections, socialMedia } from "../utils/const";
 import Anchor from "./Anchor.astro";
 ---
@@ -7,8 +6,8 @@ import Anchor from "./Anchor.astro";
 <header class="header-container">
   <section class="contact">
     <button id="darkModeButton" type="button" aria-label="Alternar modo oscuro">
-      <Icon name="sun" />
-      <Icon name="moon" />
+      <svg-icon name="sun"></svg-icon>
+      <svg-icon name="moon"></svg-icon>
     </button>
 
     <article class="social-container">
@@ -18,10 +17,10 @@ import Anchor from "./Anchor.astro";
             return (
               <Anchor
                 url={elm.link}
-                goToAnotherWeb={true}
+                goToAnotherWeb
                 aria-label={`Ver cuenta en ${elm.name}`}
               >
-                <Icon name={elm.icon} />
+                <svg-icon name={elm.icon} />
               </Anchor>
             );
           })
@@ -62,7 +61,6 @@ import Anchor from "./Anchor.astro";
 <style>
   .header-container {
     display: flex;
-    top: 0;
     z-index: 1;
     transition: var(--transition-one-milisecond);
     column-gap: 3rem;
@@ -76,10 +74,10 @@ import Anchor from "./Anchor.astro";
     top: 0;
     left: 0;
     right: 0;
-  }
 
-  .header-container.wrapped {
-    justify-content: center;
+    & .wrapped {
+      justify-content: center;
+    }
   }
 
   .contact {
@@ -99,10 +97,10 @@ import Anchor from "./Anchor.astro";
         & :global(a) {
           display: flex;
 
-          & [astro-icon] {
-            height: 2rem;
-            width: 2rem;
-            fill: var(--palette-white);
+          :is([theme="dark"]) & {
+            [icon] {
+              fill: var(--palette-white);
+            }
           }
         }
       }
@@ -132,8 +130,12 @@ import Anchor from "./Anchor.astro";
         }
       }
     }
-  }
 
+    & :global([icon]) {
+      height: 2rem;
+      width: 2rem;
+    }
+  }
   .index-list {
     display: flex;
     align-items: center;
@@ -175,11 +177,6 @@ import Anchor from "./Anchor.astro";
     padding: 0.3rem;
     border-radius: var(--border-radius-min);
 
-    & [astro-icon] {
-      height: 2rem;
-      width: 2rem;
-    }
-
     @media (pointer: fine) {
       &:hover {
         outline: 0.15rem solid var(--palette-grey);
@@ -192,21 +189,21 @@ import Anchor from "./Anchor.astro";
       }
     }
 
-    & [astro-icon="sun"] {
+    [icon="sun"] {
       display: none;
     }
 
-    & [astro-icon="moon"] {
+    [icon="moon"] {
       color: var(--palette-black);
     }
 
     :is([theme="dark"]) & {
-      & [astro-icon="sun"] {
+      [icon="sun"] {
         color: yellow;
         display: block;
       }
 
-      & [astro-icon="moon"] {
+      [icon="moon"] {
         display: none;
       }
     }
@@ -214,6 +211,7 @@ import Anchor from "./Anchor.astro";
 </style>
 
 <script>
+  import "../components/Icon.js";
   import { DOMSelector } from "../utils/scripts";
 
   const $headerContainer = DOMSelector(".header-container");

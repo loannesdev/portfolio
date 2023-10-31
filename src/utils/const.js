@@ -5,12 +5,12 @@ export const lookingForAJob = true;
 export const socialMedia = [
   {
     link: "https://www.linkedin.com/in/sebastian-cc/",
-    icon: "linkedin-svgrepo-com",
+    icon: "linkedin",
     name: "linkedin"
   },
   {
     link: "https://github.com/loannesdev",
-    icon: "github-svgrepo-com",
+    icon: "github",
     name: "github"
   }
 ];

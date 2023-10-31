@@ -1,6 +1,7 @@
 <script>
   import { readCV } from "../services/github";
   import { sections } from "../utils/const";
+  import "./Icon.js";
 
   const {
     knowledge: { name, text },
@@ -39,11 +40,7 @@
           aria-label={`Visitar sitio web de ${name.toLowerCase()}`}
         >
           {#if iconName}
-            <img
-              src={`/icons/${iconName}.svg`}
-              class="img-icon"
-              alt={`imagen de ${name}`}
-            />
+            <svg-icon name={iconName} url="/icons/knowledge" />
           {/if}
 
           <footer class="card-footer">
@@ -57,7 +54,10 @@
 </section>
 
 <style>
-  :global([theme="dark"]) section[id="knowledge"] .filters button {
+  :global([theme="dark"])
+    section[id="knowledge"]
+    .filters
+    .see-favorites-button {
     border-color: var(--palette-white);
   }
 
@@ -103,10 +103,6 @@
       gap: 0.5rem;
       justify-content: center;
 
-      & a {
-        padding: 0.5rem 0.3rem;
-      }
-
       & .card {
         display: flex;
         flex-direction: column;
@@ -119,6 +115,7 @@
         border: 0.1rem solid transparent;
         border-radius: var(--border-radius-min);
         text-align: center;
+        padding: 0.75rem 1rem;
 
         @media (pointer: fine) {
           &:hover {
@@ -131,7 +128,7 @@
           background-color: var(--palette-grey);
         }
 
-        & .img-icon {
+        & [icon] {
           height: 3rem;
           width: 3rem;
         }
