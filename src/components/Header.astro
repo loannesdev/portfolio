@@ -50,7 +50,12 @@ import Anchor from "./Anchor.astro";
       {
         Object.values(sections).map(({ name, text }) => (
           <li>
-            <Anchor url={"#" + name}>{text}</Anchor>
+            <Anchor
+              url={"#" + name}
+              aria-label={`Ir a sección ${text.toLowerCase()}`}
+            >
+              {text}
+            </Anchor>
           </li>
         ))
       }
