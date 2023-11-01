@@ -1,10 +1,9 @@
 export class Icon extends HTMLElement {
-  name = this.getAttribute("name");
-  url = this.getAttribute("url") ?? "/icons";
-
   constructor() {
     super();
-    this.attachShadow({ mode: "open" });
+
+    this.name = this.getAttribute("name");
+    this.url = this.getAttribute("url") ?? "/icons";
   }
 
   async connectedCallback() {
@@ -14,7 +13,6 @@ export class Icon extends HTMLElement {
 
       const html = raw.replace("<svg", `<svg icon="${this.name}"`);
       this.outerHTML = html;
-
       return;
     }
 

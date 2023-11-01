@@ -9,8 +9,9 @@
   const state = { seeFavorites: false };
   const cv = readCV();
 
-  $: favoriteData = (data) =>
-    state.seeFavorites ? data.filter((elm) => elm.isFavorite) : data;
+  $: favoriteData = (data) => {
+    return state.seeFavorites ? data.filter((elm) => elm.isFavorite) : data;
+  };
 </script>
 
 <section id={name}>
