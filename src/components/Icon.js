@@ -3,20 +3,21 @@ export class Icon extends HTMLElement {
     super();
 
     this.name = this.getAttribute("name");
-    this.url = this.getAttribute("url") ?? "/icons";
+    this.url = this.getAttribute("url") ?? "../icons";
+    this.iconsFolder = import.meta.glob("../icons/**/*.svg", { as: "raw", eager: true });
   }
 
-  async connectedCallback() {
-    if (this.url && this.name) {
-      const path = `${this.url}/${this.name}.svg?raw`;
-      const { default: raw } = await import(path);
-
+  connectedCallback() {
+    try {
+      const partialPath = this.url || "../icons";
+      const path = `${partialPath}/${this.name}.svg`;
+      const raw = this.iconsFolder[path];
       const html = raw.replace("<svg", `<svg icon="${this.name}"`);
-      this.outerHTML = html;
-      return;
-    }
 
-    this.outerHTML = "";
+      this.outerHTML = html;
+    } catch {
+      this.outerHTML = "";
+    }
   }
 }
 
