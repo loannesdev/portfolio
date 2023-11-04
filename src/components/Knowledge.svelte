@@ -41,7 +41,9 @@
           aria-label={`Visitar sitio web de ${name.toLowerCase()}`}
         >
           {#if iconName}
-            <svg-icon name={iconName} url="../icons/knowledge" />
+            {#key iconName}
+              <svg-icon name={iconName} url="../icons/knowledge" />
+            {/key}
           {/if}
 
           <footer class="card-footer">
@@ -132,6 +134,12 @@
         & [icon] {
           height: 3rem;
           width: 3rem;
+        }
+
+        & [icon="github"],
+        [icon="vercel"],
+        [icon="markdown"] {
+          filter: drop-shadow(0px 0px 4px var(--palette-white));
         }
 
         & .card-footer {

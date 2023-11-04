@@ -1,7 +1,6 @@
 export class Icon extends HTMLElement {
   constructor() {
     super();
-
     this.name = this.getAttribute("name");
     this.url = this.getAttribute("url") ?? "../icons";
     this.iconsFolder = import.meta.glob("../icons/**/*.svg", { as: "raw", eager: true });
@@ -14,10 +13,13 @@ export class Icon extends HTMLElement {
       const raw = this.iconsFolder[path];
       const html = raw.replace("<svg", `<svg icon="${this.name}"`);
 
-      this.outerHTML = html;
+      this.innerHTML = html;
     } catch {
-      this.outerHTML = "";
+      this.innerHTML = "";
     }
+
+    this.removeAttribute("name");
+    this.removeAttribute("url");
   }
 }
 
