@@ -41,7 +41,7 @@
           aria-label={`Visitar sitio web de ${name.toLowerCase()}`}
         >
           {#if iconName}
-            <svg-icon name={iconName} url="/icons/knowledge" />
+            <svg-icon name={iconName} url="../icons/knowledge" />
           {/if}
 
           <footer class="card-footer">

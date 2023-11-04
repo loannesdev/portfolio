@@ -13,14 +13,14 @@ import Anchor from "./Anchor.astro";
     <article class="social-container">
       <div class="social">
         {
-          socialMedia.map((elm) => {
+          socialMedia.map(({ link, name, icon }) => {
             return (
               <Anchor
-                url={elm.link}
+                url={link}
                 goToAnotherWeb
-                aria-label={`Ver cuenta en ${elm.name}`}
+                aria-label={`Ver cuenta en ${name}`}
               >
-                <svg-icon name={elm.icon} />
+                <svg-icon name={icon} />
               </Anchor>
             );
           })
@@ -216,8 +216,8 @@ import Anchor from "./Anchor.astro";
 </style>
 
 <script>
-  import "../components/Icon.js";
   import { DOMSelector } from "../utils/scripts";
+  import "./Icon.js";
 
   const $headerContainer = DOMSelector(".header-container");
   let auxHeight = 0;
