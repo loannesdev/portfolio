@@ -80,7 +80,13 @@ import { urlDomain } from "./../utils/const";
     transition: var(--transition-one-milisecond);
     background: var(--palette-white);
     color: var(--palette-black);
-    padding: 5rem 1rem;
+    padding-top: 80px;
+    padding-bottom: 80px;
+
+    & > * {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
 
     :is([theme="dark"]) & {
       background: var(--palette-black);
@@ -90,8 +96,13 @@ import { urlDomain } from "./../utils/const";
 </style>
 
 <script>
-  import { darkMode, scrollMarginTopChecker } from "../utils/scripts";
+  import {
+    darkMode,
+    headerHeightChecker,
+    scrollMarginTopChecker,
+  } from "../utils/scripts";
 
   scrollMarginTopChecker();
   darkMode();
+  headerHeightChecker();
 </script>

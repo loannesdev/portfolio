@@ -30,7 +30,6 @@ import Anchor from "./Anchor.astro";
       {
         lookingForAJob && (
           <>
-            &bull;
             <a
               href="/CV/CV_es.pdf"
               download="CV - Sebastian Cortes.pdf"
@@ -68,10 +67,11 @@ import Anchor from "./Anchor.astro";
     display: flex;
     z-index: 1;
     transition: var(--transition-one-milisecond);
-    column-gap: 3rem;
-    row-gap: 0.75rem;
+    column-gap: 48px;
+    row-gap: 24px;
     justify-content: space-evenly;
-    padding: 1rem 0rem;
+    padding-top: 16px;
+    padding-bottom: 16px;
     font-family: var(--font-family-text);
     flex-wrap: wrap;
     backdrop-filter: blur(24px);
@@ -88,16 +88,23 @@ import Anchor from "./Anchor.astro";
   .contact {
     display: flex;
     align-items: center;
-    gap: 3rem;
+    column-gap: 48px;
+    row-gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
 
     & .social-container {
       display: flex;
-      gap: 1rem;
+      column-gap: 32px;
+      row-gap: 8px;
       align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
 
       & .social {
         display: flex;
         gap: 0.5rem;
+        justify-content: center;
 
         & :global(a) {
           display: flex;
@@ -144,6 +151,7 @@ import Anchor from "./Anchor.astro";
   .index-list {
     display: flex;
     align-items: center;
+    text-align: center;
 
     & ul {
       list-style: none;

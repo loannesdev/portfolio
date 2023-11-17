@@ -5,7 +5,7 @@ export const DOMSelector = string => {
 export const envVars = import.meta.env;
 
 export const scrollMarginTopChecker = () => {
-  const $header = document.querySelector("header");
+  const $header = DOMSelector(".header-container");
 
   ["resize", "click", "touchend", "load"].forEach((elm) => {
     window.addEventListener(elm, () => {
@@ -39,4 +39,18 @@ export const darkMode = () => {
     document.documentElement.setAttribute("theme", darkModeValue);
     localStorage.setItem("theme", darkModeValue);
   }
+};
+
+export const headerHeightChecker = () => {
+  const $header = DOMSelector(".header-container");
+  const $main = DOMSelector("main");
+
+  const resizeObserver = new ResizeObserver((items) => {
+    const [firstElement] = items;
+    const { contentRect: { height } } = firstElement;
+
+    $main.style.paddingTop = `${height / 2}px`;
+  });
+
+  resizeObserver.observe($header);
 };

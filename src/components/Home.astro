@@ -14,15 +14,15 @@ const {
 <style>
   section[id] {
     display: grid;
-    place-content: center;
+    align-content: center;
     height: 80vh;
 
     & .title-one {
-      font-size: 2rem;
+      font-size: clamp(1.2rem, 3vw, 2rem);
     }
 
     & .title-two {
-      font-size: 3.75rem;
+      font-size: clamp(2rem, 5vw, 3.75rem);
       font-family: var(--font-family-title);
       font-weight: extrabold;
       color: currentColor;
