@@ -75,10 +75,8 @@ import Anchor from "./Anchor.astro";
     font-family: var(--font-family-text);
     flex-wrap: wrap;
     backdrop-filter: blur(24px);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    position: sticky;
+    top: 0px;
 
     & .wrapped {
       justify-content: center;
@@ -184,21 +182,21 @@ import Anchor from "./Anchor.astro";
 
   #darkModeButton {
     display: flex;
-    border: transparent;
-    outline: none;
+    border-color: transparent;
+    border-width: 1px;
     background-color: transparent;
-    padding: 0.3rem;
+    padding: 4.8px;
     border-radius: var(--border-radius-min);
 
     @media (pointer: fine) {
       &:hover {
-        outline: 0.15rem solid var(--palette-grey);
+        border: 0.15rem solid var(--palette-grey);
       }
     }
 
     @media (pointer: coarse) {
       &:active {
-        outline: 0.15rem solid var(--palette-grey);
+        border: 0.15rem solid var(--palette-grey);
       }
     }
 

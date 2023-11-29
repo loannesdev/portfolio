@@ -13,7 +13,15 @@ export class Icon extends HTMLElement {
       const raw = this.iconsFolder[path];
       const html = raw.replace("<svg", `<svg icon="${this.name}"`);
 
-      this.innerHTML = html;
+      this.innerHTML = `
+      <style>
+        svg[icon="${this.name}"] {
+          display: flex;
+        }
+      </style>
+
+      ${html}
+      `;
     } catch {
       this.innerHTML = "";
     }

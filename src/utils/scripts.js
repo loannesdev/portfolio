@@ -40,17 +40,3 @@ export const darkMode = () => {
     localStorage.setItem("theme", darkModeValue);
   }
 };
-
-export const headerHeightChecker = () => {
-  const $header = DOMSelector(".header-container");
-  const $main = DOMSelector("main");
-
-  const resizeObserver = new ResizeObserver((items) => {
-    const [firstElement] = items;
-    const { contentRect: { height } } = firstElement;
-
-    $main.style.paddingTop = `${height / 2}px`;
-  });
-
-  resizeObserver.observe($header);
-};
