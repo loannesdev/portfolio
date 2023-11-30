@@ -184,19 +184,20 @@ import Anchor from "./Anchor.astro";
     display: flex;
     border-color: transparent;
     border-width: 1px;
+    border-style: solid;
     background-color: transparent;
     padding: 4.8px;
     border-radius: var(--border-radius-min);
 
     @media (pointer: fine) {
       &:hover {
-        border: 0.15rem solid var(--palette-grey);
+        border-color: var(--palette-grey);
       }
     }
 
     @media (pointer: coarse) {
       &:active {
-        border: 0.15rem solid var(--palette-grey);
+        border-color: var(--palette-grey);
       }
     }
 
