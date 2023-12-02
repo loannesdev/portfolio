@@ -1,7 +1,6 @@
 ---
 import { readRepos } from "../services/github";
 import { sections } from "../utils/const";
-import Anchor from "./Anchor.astro";
 
 const projects = await readRepos();
 const {
@@ -38,20 +37,20 @@ const {
 
               <footer class="footer-card">
                 {htmlUrl && htmlUrl.length && (
-                  <Anchor url={htmlUrl} goToAnotherWeb={true}>
+                  <custom-anchor href={htmlUrl} goToAnotherWeb={true}>
                     Repositorio
-                  </Anchor>
+                  </custom-anchor>
                 )}
 
                 {homepage && homepage.length && (
-                  <Anchor url={homepage} goToAnotherWeb={true}>
+                  <custom-anchor href={homepage} goToAnotherWeb={true}>
                     Ver página
-                  </Anchor>
+                  </custom-anchor>
                 )}
               </footer>
             </fieldset>
           );
-        }
+        },
       )
     }
   </div>
@@ -157,3 +156,7 @@ const {
     }
   }
 </style>
+
+<script>
+  import "./Anchor.js";
+</script>

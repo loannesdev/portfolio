@@ -1,6 +1,5 @@
 ---
 import { lookingForAJob, sections, socialMedia } from "../utils/const";
-import Anchor from "./Anchor.astro";
 ---
 
 <header class="header-container">
@@ -15,13 +14,13 @@ import Anchor from "./Anchor.astro";
         {
           socialMedia.map(({ link, name, icon }) => {
             return (
-              <Anchor
-                url={link}
-                goToAnotherWeb
+              <custom-anchor
+                href={link}
+                isExternaLink
                 aria-label={`Ver cuenta en ${name}`}
               >
                 <svg-icon name={icon} />
-              </Anchor>
+              </custom-anchor>
             );
           })
         }
@@ -29,16 +28,14 @@ import Anchor from "./Anchor.astro";
 
       {
         lookingForAJob && (
-          <>
-            <a
-              href="/CV/CV_es.pdf"
-              download="CV - Sebastian Cortes.pdf"
-              aria-label="Descargar curriculum vitae"
-              class="download-cv"
-            >
-              Descargar CV
-            </a>
-          </>
+          <custom-anchor
+            href="/CV/CV_es.pdf"
+            download="CV - Sebastian Cortes.pdf"
+            aria-label="Descargar curriculum vitae"
+            class="download-cv"
+          >
+            Descargar CV
+          </custom-anchor>
         )
       }
     </article>
@@ -49,12 +46,12 @@ import Anchor from "./Anchor.astro";
       {
         Object.values(sections).map(({ name, text }) => (
           <li>
-            <Anchor
-              url={"#" + name}
+            <custom-anchor
+              href={"#" + name}
               aria-label={`Ir a sección ${text.toLowerCase()}`}
             >
               {text}
-            </Anchor>
+            </custom-anchor>
           </li>
         ))
       }
@@ -142,8 +139,8 @@ import Anchor from "./Anchor.astro";
     }
 
     & :global([icon]) {
-      height: 2rem;
-      width: 2rem;
+      height: 32px;
+      width: 32px;
     }
   }
   .index-list {
@@ -188,6 +185,7 @@ import Anchor from "./Anchor.astro";
     background-color: transparent;
     padding: 4.8px;
     border-radius: var(--border-radius-min);
+    aspect-ratio: 1 / 1;
 
     @media (pointer: fine) {
       &:hover {
@@ -224,6 +222,7 @@ import Anchor from "./Anchor.astro";
 
 <script>
   import { DOMSelector } from "../utils/scripts";
+  import "./Anchor.js";
   import "./Icon.js";
 
   const $headerContainer = DOMSelector(".header-container");
