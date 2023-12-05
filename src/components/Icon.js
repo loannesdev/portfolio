@@ -1,4 +1,4 @@
-export class Icon extends HTMLElement {
+export default class SvgIcon extends HTMLElement {
   constructor() {
     super();
     this.name = this.getAttribute("name");
@@ -7,28 +7,36 @@ export class Icon extends HTMLElement {
   }
 
   connectedCallback() {
-    try {
-      const partialPath = this.url || "../icons";
-      const path = `${partialPath}/${this.name}.svg`;
-      const raw = this.iconsFolder[path];
-      const html = raw.replace("<svg", `<svg icon="${this.name}"`);
+    const partialPath = this.url || "../icons";
+    const path = `${partialPath}/${this.name}.svg`;
+    const raw = this.iconsFolder[path];
+
+    if (raw) {
+      const svg = document.createElement("svg");
+
+      svg.innerHTML = raw;
+
+      const [firstChild] = svg.children;
+      firstChild.setAttribute("icon", this.name);
 
       this.innerHTML = `
-      <style>
-        svg[icon="${this.name}"] {
-          display: flex;
-        }
-      </style>
+          <style>
+            svg[icon="${this.name}"] {
+              display: flex;
+            }
+          </style>
+    
+          ${svg.innerHTML}
+          `;
 
-      ${html}
-      `;
-    } catch {
-      this.innerHTML = "";
+      return;
     }
+
+    this.outerHTML = "";
 
     this.removeAttribute("name");
     this.removeAttribute("url");
   }
 }
 
-customElements.define("svg-icon", Icon);
+customElements.define("svg-icon", SvgIcon);

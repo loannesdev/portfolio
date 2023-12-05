@@ -40,11 +40,7 @@
           class="card"
           aria-label={`Visitar sitio web de ${name.toLowerCase()}`}
         >
-          {#if iconName}
-            {#key iconName}
-              <svg-icon name={iconName} url="../icons/knowledge" />
-            {/key}
-          {/if}
+          <svg-icon name={iconName} url="../icons/knowledge" />
 
           <footer class="card-footer">
             <span class="card-title">{name}</span>
