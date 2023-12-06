@@ -221,31 +221,8 @@ import { lookingForAJob, sections, socialMedia } from "../utils/const";
 </style>
 
 <script>
-  import { DOMSelector } from "../utils/scripts";
   import "./Anchor.js";
   import "./Icon.js";
-
-  const $headerContainer = DOMSelector(".header-container");
-  let auxHeight = 0;
-
-  // Adjusts the justify-content CSS prop of the header
-  const adjustAligment = () => {
-    const { height, width } = getComputedStyle($headerContainer);
-    const heightComputed = Number(height.replace(/[A-z]/g, ""));
-    const widthComputed = Number(width.replace(/[A-z]/g, ""));
-
-    if (!auxHeight) auxHeight = heightComputed;
-    if (auxHeight && auxHeight > heightComputed) auxHeight = heightComputed;
-
-    if (auxHeight < heightComputed || widthComputed <= 680) {
-      $headerContainer.classList.add("wrapped");
-    } else {
-      $headerContainer.classList.remove("wrapped");
-    }
-  };
-
-  window.addEventListener("load", adjustAligment);
-  window.addEventListener("resize", adjustAligment);
 
   // Dark mode
   document.getElementById("darkModeButton").addEventListener("click", () => {
