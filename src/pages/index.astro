@@ -4,20 +4,79 @@ import Header from "../components/Header.astro";
 import Home from "../components/Home.astro";
 import Knowledge from "../components/Knowledge.svelte";
 import Projects from "../components/Projects.astro";
-import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
+import { urlDomain } from "./../utils/const";
 ---
 
-<Layout>
-  <Header />
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portafolio • Sebastian Cortes" />
+    <title>&bull; Sebastian Cortes &bull;</title>
+    <link rel="icon" type="image/svg+xml" href="/man-technologist.svg" />
 
-  <main>
-    <Home />
-    <About client:only="svelte" />
-    <Knowledge client:only="svelte" />
-    <Projects />
-  </main>
-</Layout>
+    <link
+      rel="preload"
+      href="/fonts/space_grotesk/SpaceGrotesk-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/nunito_sans/NunitoSans10pt-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/nunito_sans/NunitoSans10pt-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/nunito_sans/NunitoSans10pt-Black.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <link rel="canonical" href=`${urlDomain}` />
+    <meta property="og:url" content=`${urlDomain}` />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Sebastian Cortes • Desarrollador web front-end"
+    />
+    <meta property="og:description" content="Portafolio" />
+    <meta property="og:image" content=`${urlDomain}/OG-image.webp` />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content=`${urlDomain}` />
+    <meta
+      name="twitter:title"
+      content="Sebastian Cortes • Desarrollador web front-end"
+    />
+    <meta name="twitter:description" content="Portafolio" />
+    <meta name="twitter:image" content=`${urlDomain}/OG-image.webp` />
+  </head>
+
+  <body>
+    <Header />
+
+    <main>
+      <Home />
+      <About client:only="svelte" />
+      <Knowledge client:only="svelte" />
+      <Projects />
+    </main>
+  </body>
+</html>
 
 <style>
   :root {
@@ -48,13 +107,45 @@ import "../styles/global.css";
       "Open Sans",
       "Helvetica Neue",
       sans-serif;
+    scroll-behavior: smooth;
   }
 
-  main {
-    max-width: 80ch;
-    justify-self: center;
-    width: 100%;
+  body {
     display: grid;
-    gap: 160px;
+    transition: var(--transition-one-milisecond);
+    background: var(--palette-white);
+    color: var(--palette-black);
+    padding-bottom: 80px;
+
+    & > * {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    :is([theme="dark"]) & {
+      background: var(--palette-black);
+      color: var(--palette-white);
+    }
+
+    & main {
+      max-width: 80ch;
+      justify-self: center;
+      width: 100%;
+      display: grid;
+      gap: 160px;
+
+      & section[id] > .section-title {
+        font-size: 2rem;
+        font-weight: bold;
+        font-family: var(--font-family-title);
+      }
+    }
   }
 </style>
+
+<script>
+  import { darkMode, scrollMarginTopChecker } from "../utils/scripts";
+
+  scrollMarginTopChecker();
+  darkMode();
+</script>
