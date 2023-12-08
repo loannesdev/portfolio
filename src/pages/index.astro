@@ -85,17 +85,14 @@ import { urlDomain } from "./../utils/const";
     --palette-grey: #6565652e;
     --palette-neon-green: #00ff00;
     --palette-neon-blue: #5b5bfa;
-    --font-family-text: "Space Grotesk", sans-serif;
+    --font-family-text: "Space Grotesk";
     --font-family-title: "Nunito Sans", sans-serif;
-    --transition-one-milisecond: 0.1s all ease;
-    --transition-two-milisecond: 0.2s all ease;
-    --transition-half-second: 0.5s all ease;
     --border-radius-min: 4px;
     --border-radius-med: 6px;
     --border-radius-max: 32px;
     --current-text-theme: var(--palette-black);
     --current-background-theme: var(--palette-white);
-    --current-neon-color: var(--palette-neon-blue);
+    --current-neon-theme: var(--palette-neon-blue);
   }
 
   html {
@@ -117,8 +114,10 @@ import { urlDomain } from "./../utils/const";
       "Helvetica Neue",
       sans-serif;
     display: grid;
-    transition: var(--transition-one-milisecond);
-    background: var(--current-background-theme);
+    transition-duration: 0.2s;
+    transition-property: color, background-color;
+    transition-timing-function: ease;
+    background-color: var(--current-background-theme);
     color: var(--current-text-theme);
     padding-bottom: 80px;
 
@@ -130,7 +129,7 @@ import { urlDomain } from "./../utils/const";
     :is([theme="dark"]) & {
       --current-text-theme: var(--palette-white);
       --current-background-theme: var(--palette-black);
-      --current-neon-color: var(--palette-neon-green);
+      --current-neon-theme: var(--palette-neon-green);
     }
 
     & main {

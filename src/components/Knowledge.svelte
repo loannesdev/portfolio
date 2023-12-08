@@ -85,16 +85,32 @@
       gap: 1rem;
 
       & button {
-        transition: var(--transition-one-milisecond);
+        transition-duration: 0.2s;
+        transition-property: background-color, color;
+        transition-timing-function: ease;
         background-color: transparent;
-        border: none;
         padding: 0.25rem 0.5rem;
-        border: 0.1rem solid transparent;
+        border-width: 1px;
+        border-color: var(--palette-black);
+        border-style: solid;
         border-radius: var(--border-radius-min);
         font-size: 0.938rem;
         color: currentColor;
         font-weight: 500;
-        border-color: var(--palette-black);
+
+        @media (pointer: fine) {
+          &:hover {
+            background-color: var(--current-text-theme);
+            color: var(--current-background-theme);
+          }
+        }
+
+        @media (pointer: coarse) {
+          &:active {
+            background-color: var(--current-text-theme);
+            color: var(--current-background-theme);
+          }
+        }
       }
     }
 
@@ -112,11 +128,13 @@
         gap: 0.5rem;
         text-decoration: none;
         padding: 0.3rem;
-        transition: var(--transition-one-milisecond);
-        border: 0.1rem solid transparent;
+        transition-duration: 0.15s;
+        transition-property: border;
+        transition-timing-function: ease;
+        border: 1px solid transparent;
         border-radius: var(--border-radius-min);
         text-align: center;
-        padding: 0.75rem 1rem;
+        padding: 12px 16px;
 
         @media (pointer: fine) {
           &:hover {
@@ -125,8 +143,10 @@
           }
         }
 
-        &:active {
-          background-color: var(--palette-grey);
+        @media (pointer: coarse) {
+          &:active {
+            background-color: var(--palette-grey);
+          }
         }
 
         & [icon] {
@@ -137,7 +157,7 @@
         & [icon="github"],
         [icon="vercel"],
         [icon="markdown"] {
-          filter: drop-shadow(0px 0px 4px var(--palette-white));
+          filter: drop-shadow(0px 0px 6px var(--palette-white));
         }
 
         & .card-footer {

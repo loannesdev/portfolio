@@ -63,7 +63,6 @@ import { lookingForAJob, sections, socialMedia } from "../utils/const";
   .header-container {
     display: flex;
     z-index: 1;
-    transition: var(--transition-one-milisecond);
     column-gap: 48px;
     row-gap: 24px;
     justify-content: space-evenly;
@@ -113,10 +112,11 @@ import { lookingForAJob, sections, socialMedia } from "../utils/const";
       }
 
       & .download-cv {
-        transition: var(--transition-two-milisecond);
-        border-width: 1px;
-        border-style: dashed;
-        border-color: currentColor;
+        transition-duration: 0.2s;
+        transition-property: color, border-style, border-color, font-weight,
+          text-shadow;
+        transition-timing-function: ease;
+        border: 1px dashed currentColor;
         border-radius: var(--border-radius-min);
         padding: 6px 12px;
         text-decoration: none;
@@ -124,19 +124,19 @@ import { lookingForAJob, sections, socialMedia } from "../utils/const";
 
         @media (pointer: fine) {
           &:hover {
-            color: var(--current-neon-color);
+            color: var(--current-neon-theme);
             border-style: solid;
             font-weight: bold;
-            text-shadow: 0 0 16px var(--current-neon-color);
+            text-shadow: 0 0 16px var(--current-neon-theme);
           }
         }
 
         @media (pointer: coarse) {
           &:active {
-            color: var(--current-neon-color);
+            color: var(--current-neon-theme);
             border-style: solid;
             font-weight: bold;
-            text-shadow: 0 0 16px var(--current-neon-color);
+            text-shadow: 0 0 16px var(--current-neon-theme);
           }
         }
       }
