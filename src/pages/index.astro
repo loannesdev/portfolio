@@ -83,17 +83,19 @@ import { urlDomain } from "./../utils/const";
     --palette-black: #202124;
     --palette-white: #fafafa;
     --palette-grey: #6565652e;
-    --palette-ligth-green: #1ed548;
-    --font-family-text: "Space Grotesk";
-    --font-family-title: "Nunito Sans";
+    --palette-neon-green: #00ff00;
+    --palette-neon-blue: #5b5bfa;
+    --font-family-text: "Space Grotesk", sans-serif;
+    --font-family-title: "Nunito Sans", sans-serif;
     --transition-one-milisecond: 0.1s all ease;
     --transition-two-milisecond: 0.2s all ease;
     --transition-half-second: 0.5s all ease;
-    --border-radius-min: 0.25rem;
-    --border-radius-med: 0.375rem;
-    --border-radius-max: 2rem;
+    --border-radius-min: 4px;
+    --border-radius-med: 6px;
+    --border-radius-max: 32px;
     --current-text-theme: var(--palette-black);
     --current-background-theme: var(--palette-white);
+    --current-neon-color: var(--palette-neon-blue);
   }
 
   html {
@@ -101,11 +103,6 @@ import { urlDomain } from "./../utils/const";
   }
 
   body {
-    :is([theme="dark"]) & {
-      --current-text-theme: var(--palette-white);
-      --current-background-theme: var(--palette-black);
-    }
-
     font-family:
       "Space Grotesk",
       system-ui,
@@ -128,6 +125,12 @@ import { urlDomain } from "./../utils/const";
     & > :global(*) {
       padding-left: 16px;
       padding-right: 16px;
+    }
+
+    :is([theme="dark"]) & {
+      --current-text-theme: var(--palette-white);
+      --current-background-theme: var(--palette-black);
+      --current-neon-color: var(--palette-neon-green);
     }
 
     & main {

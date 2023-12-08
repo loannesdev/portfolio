@@ -114,25 +114,29 @@ import { lookingForAJob, sections, socialMedia } from "../utils/const";
 
       & .download-cv {
         transition: var(--transition-two-milisecond);
-        border: 1px dashed currentColor;
+        border-width: 1px;
+        border-style: dashed;
+        border-color: currentColor;
         border-radius: var(--border-radius-min);
-        padding: 0.3rem 0.5rem;
+        padding: 6px 12px;
         text-decoration: none;
         text-align: center;
 
         @media (pointer: fine) {
           &:hover {
-            border: 1px solid currentColor;
+            color: var(--current-neon-color);
+            border-style: solid;
             font-weight: bold;
-            text-shadow: 0 0 1rem currentColor;
+            text-shadow: 0 0 16px var(--current-neon-color);
           }
         }
 
         @media (pointer: coarse) {
           &:active {
-            border: 1px solid currentColor;
+            color: var(--current-neon-color);
+            border-style: solid;
             font-weight: bold;
-            text-shadow: 0 0 1rem currentColor;
+            text-shadow: 0 0 16px var(--current-neon-color);
           }
         }
       }
