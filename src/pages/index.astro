@@ -83,6 +83,7 @@ import { urlDomain } from "./../utils/const";
     --palette-black: #202124;
     --palette-white: #fafafa;
     --palette-grey: #6565652e;
+    --palette-ligth-green: #1ed548;
     --font-family-text: "Space Grotesk";
     --font-family-title: "Nunito Sans";
     --transition-one-milisecond: 0.1s all ease;
@@ -91,6 +92,8 @@ import { urlDomain } from "./../utils/const";
     --border-radius-min: 0.25rem;
     --border-radius-med: 0.375rem;
     --border-radius-max: 2rem;
+    --current-text-theme: var(--palette-black);
+    --current-background-theme: var(--palette-white);
   }
 
   html {
@@ -98,6 +101,11 @@ import { urlDomain } from "./../utils/const";
   }
 
   body {
+    :is([theme="dark"]) & {
+      --current-text-theme: var(--palette-white);
+      --current-background-theme: var(--palette-black);
+    }
+
     font-family:
       "Space Grotesk",
       system-ui,
@@ -113,18 +121,13 @@ import { urlDomain } from "./../utils/const";
       sans-serif;
     display: grid;
     transition: var(--transition-one-milisecond);
-    background: var(--palette-white);
-    color: var(--palette-black);
+    background: var(--current-background-theme);
+    color: var(--current-text-theme);
     padding-bottom: 80px;
 
     & > :global(*) {
       padding-left: 16px;
       padding-right: 16px;
-    }
-
-    :is([theme="dark"]) & {
-      background: var(--palette-black);
-      color: var(--palette-white);
     }
 
     & main {
