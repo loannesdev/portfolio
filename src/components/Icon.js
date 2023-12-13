@@ -1,4 +1,4 @@
-export default class SvgIcon extends HTMLElement {
+class SvgIcon extends HTMLElement {
   constructor() {
     super();
     this.name = this.getAttribute("name");

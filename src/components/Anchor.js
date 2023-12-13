@@ -1,4 +1,4 @@
-export default class CustomAnchor extends HTMLElement {
+class CustomAnchor extends HTMLElement {
   #getParsedAttributes(attr = {}) {
     const attributesObject = Object.values(attr);
     const parsedAttributes = {};
