@@ -37,13 +37,13 @@ const {
 
               <footer class="footer-card">
                 {htmlUrl && htmlUrl.length && (
-                  <custom-anchor href={htmlUrl} goToAnotherWeb={true}>
+                  <custom-anchor href={htmlUrl} isExternaLink>
                     Repositorio
                   </custom-anchor>
                 )}
 
                 {homepage && homepage.length && (
-                  <custom-anchor href={homepage} goToAnotherWeb={true}>
+                  <custom-anchor href={homepage} isExternaLink>
                     Ver página
                   </custom-anchor>
                 )}
