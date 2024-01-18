@@ -12,31 +12,23 @@ import { lookingForAJob, sections, socialMedia } from "../utils/const";
     <article class="social-container">
       <div class="social">
         {
-          socialMedia.map(({ link, name, icon }) => {
-            return (
-              <custom-anchor
-                href={link}
-                isExternaLink
-                aria-label={`Ver cuenta en ${name}`}
-              >
-                <svg-icon name={icon} />
-              </custom-anchor>
-            );
-          })
+        socialMedia.map(({ link, name, icon }) => {
+        return (
+        <custom-anchor href={link} isExternaLink aria-label={`Ver cuenta en ${name}`}>
+          <svg-icon name={icon} />
+        </custom-anchor>
+        );
+        })
         }
       </div>
 
       {
-        lookingForAJob && (
-          <custom-anchor
-            href="/CV/CV_es.pdf"
-            download="CV - Sebastian Cortes.pdf"
-            aria-label="Descargar curriculum vitae"
-            class="download-cv"
-          >
-            Descargar CV
-          </custom-anchor>
-        )
+      lookingForAJob && (
+      <custom-anchor href="/CV/CV_es.pdf" download="CV - Sebastian Cortes.pdf" aria-label="Descargar curriculum vitae"
+        class="download-cv">
+        Descargar CV
+      </custom-anchor>
+      )
       }
     </article>
   </section>
@@ -44,16 +36,13 @@ import { lookingForAJob, sections, socialMedia } from "../utils/const";
   <nav class="index-list">
     <ul>
       {
-        Object.values(sections).map(({ name, text }) => (
-          <li>
-            <custom-anchor
-              href={"#" + name}
-              aria-label={`Ir a sección ${text.toLowerCase()}`}
-            >
-              {text}
-            </custom-anchor>
-          </li>
-        ))
+      Object.values(sections).map(({ name, text }) => (
+      <li>
+        <custom-anchor href={"#" + name} aria-label={`Ir a sección ${text.toLowerCase()}`}>
+          {text}
+        </custom-anchor>
+      </li>
+      ))
       }
     </ul>
   </nav>
@@ -73,6 +62,7 @@ import { lookingForAJob, sections, socialMedia } from "../utils/const";
     backdrop-filter: blur(24px);
     position: sticky;
     top: 0px;
+    align-items: center;
 
     & .wrapped {
       justify-content: center;
@@ -147,31 +137,48 @@ import { lookingForAJob, sections, socialMedia } from "../utils/const";
       width: 32px;
     }
   }
+
   .index-list {
     display: flex;
     align-items: center;
 
-    & ul {
-      list-style: none;
+    &>ul {
       display: flex;
       column-gap: 16px;
       row-gap: 12px;
       flex-wrap: wrap;
       justify-content: center;
+      border-radius: var(--border-radius-min);
+      background-color: var(--palette-grey);
+      padding: 8px 4px;
 
-      & li > :global(a) {
-        text-decoration: none;
-        word-break: break-all;
+      &>li {
+        &> :global(a) {
+          text-decoration: none;
+          word-break: break-all;
+          border-radius: var(--border-radius-min);
+          padding: 4px 8px;
+          transition-duration: 0.3s;
+          transition-property: color, background-color, linear-gradient;
+          transition-timing-function: ease;
+          --bg-color: rgb(91 91 250 / 10%);
 
-        @media (pointer: fine) {
-          &:hover {
-            text-decoration: underline;
+          :is([theme="dark"]) & {
+            --bg-color: rgb(0 255 0 / 10%);
           }
-        }
 
-        @media (pointer: coarse) {
-          &:active {
-            text-decoration: underline;
+          @media (pointer: fine) {
+            &:hover {
+              background-color: var(--bg-color);
+              color: var(--current-neon-theme);
+            }
+          }
+
+          @media (pointer: coarse) {
+            &:active {
+              background-color: var(--bg-color);
+              color: var(--current-background-theme);
+            }
           }
         }
       }
