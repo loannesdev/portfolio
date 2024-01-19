@@ -1,11 +1,11 @@
 <script>
   import { readCV } from "../services/github";
   import { sections } from "../utils/const";
+  import "./Colored-tag";
 
   const {
     about: { name, text },
   } = sections;
-  let computedColor = () => Math.floor(Math.random() * 255);
 </script>
 
 <section id={name}>
@@ -21,15 +21,8 @@
 
     <h2 class="interests-title">Algunos de mis intereses son:</h2>
     <div class="interests-container">
-      {#each interests as { name }, i}
-        <small
-          class="tag"
-          style={`
-          background-color: rgb(${computedColor()} ${computedColor()} ${computedColor()} / 40%);
-          `}
-        >
-          {name}
-        </small>
+      {#each interests as { name }}
+        <colored-tag>{name}</colored-tag>
       {/each}
     </div>
   {/await}
@@ -53,9 +46,8 @@
       flex-wrap: wrap;
       gap: 0.3rem;
 
-      & .tag {
-        padding: 0.175rem 0.6rem;
-        border-radius: var(--border-radius-min);
+      & colored-tag {
+        border-radius: var(--border-radius-med);
         line-height: normal;
         font-size: 14.5px;
       }

@@ -40,3 +40,15 @@ export const darkMode = () => {
     localStorage.setItem("theme", darkModeValue);
   }
 };
+
+export const getParsedAttributes = (attr = {}) => {
+  const attributesObject = Object.values(attr);
+  const parsedAttributes = {};
+
+  for (const iterator of attributesObject) {
+    const { name, value } = iterator;
+    Object.assign(parsedAttributes, { [name]: value });
+  }
+
+  return parsedAttributes;
+};
