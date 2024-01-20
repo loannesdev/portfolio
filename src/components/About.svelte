@@ -1,7 +1,7 @@
 <script>
   import { readCV } from "../services/github";
   import { sections } from "../utils/const";
-  import "./Colored-tag";
+  import "./ColoredTag";
 
   const {
     about: { name, text },
