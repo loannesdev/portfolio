@@ -383,3 +383,5 @@ export const myProjects = [
 ];
 
 export const urlDomain = "https://loannesdev.netlify.app";
+
+export const openGraphImage = "/og-image.webp";

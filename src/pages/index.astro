@@ -5,7 +5,7 @@ import Home from "../components/Home.astro";
 import Knowledge from "../components/Knowledge.svelte";
 import Projects from "../components/Projects.astro";
 import "../styles/global.css";
-import { urlDomain } from "./../utils/const";
+import { openGraphImage, urlDomain } from "./../utils/const";
 ---
 
 <!doctype html>
@@ -54,7 +54,7 @@ import { urlDomain } from "./../utils/const";
       content="Sebastian Cortes • Desarrollador web front-end"
     />
     <meta property="og:description" content="Portafolio" />
-    <meta property="og:image" content=`${urlDomain}/OG-image.webp` />
+    <meta property="og:image" content={openGraphImage} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content=`${urlDomain}` />
@@ -63,7 +63,7 @@ import { urlDomain } from "./../utils/const";
       content="Sebastian Cortes • Desarrollador web front-end"
     />
     <meta name="twitter:description" content="Portafolio" />
-    <meta name="twitter:image" content=`${urlDomain}/OG-image.webp` />
+    <meta name="twitter:image" content={openGraphImage} />
   </head>
 
   <body>
