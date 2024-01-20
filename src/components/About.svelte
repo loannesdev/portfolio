@@ -1,5 +1,5 @@
 <script>
-  import { readCV } from "../services/github";
+  import { readCV } from "../services.js";
   import { sections } from "../utils/const";
   import "./ColoredTag";
 

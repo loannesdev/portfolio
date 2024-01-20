@@ -1,8 +1,9 @@
-import { github } from "../utils/const";
-import { envVars } from "../utils/scripts";
+import resume from "./resume.json";
+import { github } from "./utils/const";
+import { envVars } from "./utils/scripts";
 
 const token = envVars.PUBLIC_GITHUB_TOKEN;
-const { api, path, user, cv } = github;
+const { api, path, user } = github;
 const headers = {
   Authorization: `Bearer ${token}`,
   "X-GitHub-Api-Version": "2022-11-28",
@@ -25,18 +26,6 @@ export const readRepos = async () => {
   }
 };
 
-export const readCV = async (flag) => {
-  const url = `${api}/repos/${user}/${cv.name}/contents/${cv.file}`;
-
-  try {
-    const res = await fetch(url, { headers });
-    const { content } = await res.json();
-    const base64Decode = atob(content);
-    const utf8Encode = new TextDecoder("utf8").decode(new Uint8Array([...base64Decode].map((c) => c.charCodeAt(0))));
-    const data = JSON.parse(utf8Encode);
-
-    return data;
-  } catch (error) {
-    throw Error(error);
-  }
+export const readCV = async () => {
+  return new Response(JSON.stringify(resume)).json();
 };

@@ -1,0 +1,495 @@
+{
+  "basics": {
+    "name": "Sebastian Cortes",
+    "label": "Desarrollador web front-end",
+    "image": null,
+    "email": "zsevaxt@gmail.com",
+    "phone": null,
+    "url": "https://loannesdev.netlify.app",
+    "summary": [
+      "Me llama bastante la atención la programación y sus características; cómo son el testing, arquitectura, prácticas de codificación, lenguajes de programación, diseño, también la posibilidad de convertir una idea en un hecho y que esto pueda beneficiar a muchas personas de diferentes maneras. A menudo trato de estar al día con las nuevas tecnologías, aprendiendo de manera autodidacta la mayor parte del tiempo.",
+      "Mi enfoque actual es el <strong>desarrollo web front-end</strong> y su ecosistema (HTML semántico, CSS avanzado, maquetación, interacción, entre otras cosas) pero esto no significa que no pueda ser polivalente en algún momento, cómo puede ser la rama de desarrollo móvil, escritorio o el internet de las cosas (IoT)."
+    ],
+    "location": {
+      "city": "Cali",
+      "countryCode": "CO",
+      "region": "Valle del cauca",
+      "country": "Colombia"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "loannesdev",
+        "url": "https://github.com/loannesdev"
+      },
+      {
+        "network": "LikedIn",
+        "username": "sebastian-cc",
+        "url": "https://www.linkedin.com/in/sebastian-cc"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "EMCALI",
+      "position": "Practicante",
+      "url": "https://www.emcali.com.co",
+      "startDate": "08-04-2019",
+      "endDate": "09-08-2019",
+      "summary": "Servir de apoyo para el área de recaudo desarrollando diferentes tableros de control, haciendo uso de Excel (VBA) para permitir que personas el área pudieran contemplar con más claridad información de interés mes a mes.",
+      "highlights": [
+        "Visual basic for applications (VBA)",
+        "Excel avanzado"
+      ]
+    }
+  ],
+  "volunteer": null,
+  "education": [
+    {
+      "institution": "SENA",
+      "url": "https://www.sena.edu.co",
+      "area": "Análisis y desarrollo de sistemas de información",
+      "studyType": "Tecnólogo",
+      "startDate": "17-07-2017",
+      "endDate": "14-11-2019",
+      "score": null,
+      "courses": null
+    }
+  ],
+  "awards": null,
+  "certificates": [
+    {
+      "name": "Skill up en React",
+      "date": "25-11-2022",
+      "issuer": "Alkemy",
+      "url": null
+    },
+    {
+      "name": "Análisis y desarrollo de sistema de información",
+      "date": "29-11-2019",
+      "issuer": "SENA",
+      "url": null
+    }
+  ],
+  "publications": null,
+  "skills": [
+    {
+      "name": "Wouter",
+      "isFavorite": true,
+      "website": "https://github.com/molefrog/wouter",
+      "level": "Intermedio",
+      "keywords": null
+    },
+    {
+      "name": "Redux",
+      "isFavorite": false,
+      "website": "https://redux.js.org",
+      "level": "Intermedio",
+      "keywords": null,
+      "iconName": "redux"
+    },
+    {
+      "name": "Sass",
+      "isFavorite": true,
+      "website": "https://sass-lang.com",
+      "level": "Intermedio",
+      "keywords": null,
+      "iconName": "sass"
+    },
+    {
+      "name": "Jquery",
+      "isFavorite": false,
+      "website": "https://jquery.com",
+      "level": "Básico",
+      "keywords": null,
+      "iconName": "jquery"
+    },
+    {
+      "name": "Wordpress",
+      "isFavorite": false,
+      "website": "https://wordpress.com",
+      "level": "Básico",
+      "keywords": null,
+      "iconName": "wordpress"
+    },
+    {
+      "name": "Boostrap",
+      "isFavorite": false,
+      "website": "https://getbootstrap.com",
+      "level": "Básico",
+      "keywords": null
+    },
+    {
+      "name": "React native paper",
+      "isFavorite": false,
+      "website": "https://reactnativepaper.com",
+      "level": "Básico",
+      "keywords": null
+    },
+    {
+      "name": "React native",
+      "isFavorite": false,
+      "website": "https://reactnative.dev",
+      "level": "Básico",
+      "keywords": null
+    },
+    {
+      "name": "React",
+      "isFavorite": false,
+      "website": "https://reactjs.org",
+      "level": "Avanzado",
+      "keywords": null,
+      "iconName": "react"
+    },
+    {
+      "name": "Skeleton",
+      "isFavorite": false,
+      "website": "https://getskeleton.com",
+      "level": "Básico",
+      "keywords": null
+    },
+    {
+      "name": "Materialize",
+      "isFavorite": false,
+      "website": "https://materializecss.com",
+      "level": "Básico",
+      "keywords": null,
+      "iconName": "materialize"
+    },
+    {
+      "name": "Git",
+      "isFavorite": true,
+      "website": "https://git-scm.com/",
+      "level": "Intermedio",
+      "keywords": null,
+      "iconName": "git"
+    },
+    {
+      "name": "GitHub",
+      "isFavorite": true,
+      "website": "https://github.com",
+      "level": "Intermedio",
+      "keywords": null,
+      "iconName": "github"
+    },
+    {
+      "name": "Sublime Text",
+      "isFavorite": false,
+      "website": "https://www.sublimetext.com",
+      "level": "Básico",
+      "keywords": null,
+      "iconName": "sublime-text"
+    },
+    {
+      "name": "NetBeans",
+      "isFavorite": false,
+      "website": "https://netbeans.apache.org",
+      "level": "Básico",
+      "keywords": null
+    },
+    {
+      "name": "Android studio",
+      "isFavorite": false,
+      "website": "https://developer.android.com/studio",
+      "level": "Básico",
+      "keywords": null,
+      "iconName": "android-studio"
+    },
+    {
+      "name": "Visual studio",
+      "isFavorite": false,
+      "website": "https://visualstudio.microsoft.com/es/#vs-section",
+      "level": "Básico",
+      "keywords": null,
+      "iconName": "visual-studio"
+    },
+    {
+      "name": "Visual studio code",
+      "isFavorite": true,
+      "website": "https://visualstudio.microsoft.com/es/#vscode-section",
+      "level": "Intermedio",
+      "keywords": null,
+      "iconName": "visual-studio-code"
+    },
+    {
+      "name": "Pg admin",
+      "isFavorite": false,
+      "website": "https://www.pgadmin.org",
+      "level": "Intermedio",
+      "keywords": null,
+      "iconName": "pgadmin"
+    },
+    {
+      "name": "PostGreSQL",
+      "isFavorite": false,
+      "website": "https://www.postgresql.org",
+      "level": "Intermedio",
+      "keywords": null,
+      "iconName": "postgresql"
+    },
+    {
+      "name": "MongoDB",
+      "isFavorite": false,
+      "website": "https://www.mongodb.com",
+      "level": "Básico",
+      "keywords": null,
+      "iconName": "mongodb"
+    },
+    {
+      "name": "MySQL",
+      "isFavorite": false,
+      "website": "https://www.mysql.com",
+      "level": "Intermedio",
+      "keywords": null,
+      "iconName": "mysql"
+    },
+    {
+      "name": "phpMyAdmin",
+      "isFavorite": false,
+      "website": "https://www.phpmyadmin.net",
+      "level": "Intermedio",
+      "keywords": null,
+      "iconName": "phpmyadmin"
+    },
+    {
+      "name": "Oracle",
+      "isFavorite": false,
+      "website": "https://www.oracle.com",
+      "level": "Básico",
+      "keywords": null,
+      "iconName": "oracle"
+    },
+    {
+      "name": "Python",
+      "isFavorite": false,
+      "website": "https://www.python.org",
+      "level": "Básico",
+      "keywords": null,
+      "iconName": "python"
+    },
+    {
+      "name": "C Sharp (C#)",
+      "isFavorite": false,
+      "website": "https://learn.microsoft.com/en-us/dotnet/csharp",
+      "level": "Básico",
+      "keywords": null,
+      "iconName": "c-sharp"
+    },
+    {
+      "name": "Visual basic for applications (VBA)",
+      "isFavorite": false,
+      "website": "https://learn.microsoft.com/en-us/office/vba",
+      "level": "Intermedio",
+      "keywords": null,
+      "iconName": "vba"
+    },
+    {
+      "name": "Java",
+      "isFavorite": false,
+      "website": "https://www.java.com",
+      "level": "Básico",
+      "keywords": null,
+      "iconName": "java"
+    },
+    {
+      "name": "Node",
+      "isFavorite": true,
+      "website": "https://nodejs.org",
+      "level": "Intermedio",
+      "keywords": null,
+      "iconName": "node"
+    },
+    {
+      "name": "CSS",
+      "isFavorite": true,
+      "website": "https://www.w3.org/Style/CSS",
+      "level": "Avanzado",
+      "keywords": null,
+      "iconName": "css"
+    },
+    {
+      "name": "JavaScript",
+      "isFavorite": true,
+      "website": "https://developer.mozilla.org/es/docs/Web/JavaScript",
+      "level": "Avanzado",
+      "keywords": null,
+      "iconName": "javascript"
+    },
+    {
+      "name": "PHP",
+      "isFavorite": false,
+      "website": "https://www.php.net",
+      "level": "Básico",
+      "keywords": null,
+      "iconName": "php"
+    },
+    {
+      "name": "HTML",
+      "isFavorite": false,
+      "website": "https://html.spec.whatwg.org/multipage",
+      "level": "Avanzado",
+      "keywords": null,
+      "iconName": "html"
+    },
+    {
+      "name": "Supabase",
+      "isFavorite": true,
+      "website": "https://supabase.com",
+      "level": "Intermedio",
+      "keywords": null,
+      "iconName": "supabase"
+    },
+    {
+      "name": "Cypress",
+      "isFavorite": true,
+      "website": "https://www.cypress.io",
+      "level": "Intermedio",
+      "keywords": null,
+      "iconName": "cypress"
+    },
+    {
+      "name": "Vitest",
+      "isFavorite": false,
+      "website": "https://vitest.dev",
+      "level": "Intermedio",
+      "keywords": null,
+      "iconName": "vitest"
+    },
+    {
+      "name": "Vercel",
+      "isFavorite": true,
+      "website": "https://vercel.com",
+      "level": "Básico",
+      "keywords": null,
+      "iconName": "vercel"
+    },
+    {
+      "name": "Vite",
+      "isFavorite": true,
+      "website": "https://vitejs.dev",
+      "level": "Intermedio",
+      "keywords": null,
+      "iconName": "vite"
+    },
+    {
+      "name": "React router dom",
+      "isFavorite": false,
+      "website": "https://reactrouter.com",
+      "level": "Intermedio",
+      "keywords": null,
+      "iconName": "react-router"
+    },
+    {
+      "name": "Preact",
+      "isFavorite": true,
+      "website": "https://preactjs.com",
+      "level": "Intermedio",
+      "keywords": null,
+      "iconName": "preact"
+    },
+    {
+      "name": "Token CSS",
+      "isFavorite": false,
+      "website": "https://tokencss.com",
+      "level": "Básico",
+      "keywords": null
+    },
+    {
+      "name": "Astro",
+      "isFavorite": true,
+      "website": "https://astro.build",
+      "level": "Intermedio",
+      "keywords": null,
+      "iconName": "astro"
+    },
+    {
+      "name": "Tailwind",
+      "isFavorite": true,
+      "website": "https://tailwindcss.com/",
+      "level": "Intermedio",
+      "keywords": null,
+      "iconName": "tailwind"
+    },
+    {
+      "name": "Netlify",
+      "isFavorite": true,
+      "website": "https://www.netlify.com/",
+      "level": "Básico",
+      "keywords": null,
+      "iconName": "netlify"
+    },
+    {
+      "name": "Markdown",
+      "isFavorite": true,
+      "website": "https://www.markdownguide.org/",
+      "level": "Intermedio",
+      "keywords": null,
+      "iconName": "markdown"
+    },
+    {
+      "name": "Deno",
+      "isFavorite": true,
+      "website": "https://deno.com/",
+      "level": "Intermedio",
+      "keywords": null,
+      "iconName": "deno"
+    }
+  ],
+  "languages": [
+    {
+      "language": "Español",
+      "fluency": "Nativo"
+    },
+    {
+      "language": "Inglés",
+      "fluency": "Intermedio (B1 - B2)"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Ciclomontañismo",
+      "keywords": [
+        "MTB",
+        "Doble suspension",
+        "Downhill",
+        "Ejercicio"
+      ]
+    },
+    {
+      "name": "Videojuegos",
+      "keywords": [
+        "Jugador en PC",
+        "Steam",
+        "Discord",
+        "Origin",
+        "Epic games",
+        "Halo",
+        "Dead space",
+        "Dead island",
+        "Destiny 2",
+        "GTA V"
+      ]
+    },
+    {
+      "name": "Computación",
+      "keywords": [
+        "Armado de computadores",
+        "Pc master race",
+        "Mantenimiento de equipos de computo"
+      ]
+    },
+    {
+      "name": "Carrera espacial",
+      "keywords": [
+        "NASA",
+        "SpaceX",
+        "Agencia espacial europea",
+        "Estación espacial internacional (ISS)",
+        "Exploración espacial",
+        "Astronomía"
+      ]
+    }
+  ],
+  "references": null,
+  "projects": null
+}
