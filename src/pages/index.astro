@@ -1,8 +1,8 @@
 ---
-import About from "../components/About.svelte";
+import About from "../components/About.astro";
 import Header from "../components/Header.astro";
 import Home from "../components/Home.astro";
-import Knowledge from "../components/Knowledge.svelte";
+import Knowledge from "../components/Knowledge.astro";
 import Projects from "../components/Projects.astro";
 import "../styles/global.css";
 import { openGraphImage, urlDomain } from "./../utils/const";
@@ -64,6 +64,7 @@ import { openGraphImage, urlDomain } from "./../utils/const";
     />
     <meta name="twitter:description" content="Portafolio" />
     <meta name="twitter:image" content={openGraphImage} />
+    <meta http-equiv="Content-Encoding" content="gzip">
   </head>
 
   <body>
@@ -71,8 +72,8 @@ import { openGraphImage, urlDomain } from "./../utils/const";
 
     <main>
       <Home />
-      <About client:only="svelte" />
-      <Knowledge client:only="svelte" />
+      <About />
+      <Knowledge />
       <Projects />
     </main>
   </body>
@@ -85,7 +86,7 @@ import { openGraphImage, urlDomain } from "./../utils/const";
     --palette-grey: #6565652e;
     --palette-neon-green: #00ff00;
     --palette-neon-blue: #5b5bfa;
-    --font-family-text: "Space Grotesk";
+    --font-family-text: "Space Grotesk", sans-serif;
     --font-family-title: "Nunito Sans", sans-serif;
     --border-radius-min: 4px;
     --border-radius-med: 6px;

@@ -12,23 +12,31 @@ import { lookingForAJob, sections, socialMedia } from "../utils/const";
     <article class="social-container">
       <div class="social">
         {
-        socialMedia.map(({ link, name, icon }) => {
-        return (
-        <custom-anchor href={link} isExternaLink aria-label={`Ver cuenta en ${name}`}>
-          <svg-icon name={icon} />
-        </custom-anchor>
-        );
-        })
+          socialMedia.map(({ link, name, icon }) => {
+            return (
+              <custom-anchor
+                href={link}
+                isExternalLink
+                aria-label={`Ver cuenta en ${name}`}
+              >
+                <svg-icon name={icon} />
+              </custom-anchor>
+            );
+          })
         }
       </div>
 
       {
-      lookingForAJob && (
-      <custom-anchor href="/CV/CV_es.pdf" download="CV - Sebastian Cortes.pdf" aria-label="Descargar curriculum vitae"
-        class="download-cv">
-        Descargar CV
-      </custom-anchor>
-      )
+        lookingForAJob && (
+          <custom-anchor
+            href="/CV/CV_es.pdf"
+            download="CV - Sebastian Cortes.pdf"
+            aria-label="Descargar CV"
+            class="download-cv"
+          >
+            Descargar CV
+          </custom-anchor>
+        )
       }
     </article>
   </section>
@@ -36,13 +44,16 @@ import { lookingForAJob, sections, socialMedia } from "../utils/const";
   <nav class="index-list">
     <ul>
       {
-      Object.values(sections).map(({ name, text }) => (
-      <li>
-        <custom-anchor href={"#" + name} aria-label={`Ir a sección ${text.toLowerCase()}`}>
-          {text}
-        </custom-anchor>
-      </li>
-      ))
+        Object.values(sections).map(({ name, text }) => (
+          <li>
+            <custom-anchor
+              href={"#" + name}
+              aria-label={`Ir a sección ${text.toLowerCase()}`}
+            >
+              {text}
+            </custom-anchor>
+          </li>
+        ))
       }
     </ul>
   </nav>
@@ -106,7 +117,7 @@ import { lookingForAJob, sections, socialMedia } from "../utils/const";
         transition-property: color, border-style, border-color, font-weight,
           text-shadow;
         transition-timing-function: ease;
-        border: 1px dashed currentColor;
+        border: 1px dashed var(--palette-grey);
         border-radius: var(--border-radius-min);
         padding: 6px 12px;
         text-decoration: none;
@@ -118,6 +129,7 @@ import { lookingForAJob, sections, socialMedia } from "../utils/const";
             border-style: solid;
             font-weight: bold;
             text-shadow: 0 0 16px var(--current-neon-theme);
+            border-color: var(--current-neon-theme);
           }
         }
 
@@ -127,6 +139,7 @@ import { lookingForAJob, sections, socialMedia } from "../utils/const";
             border-style: solid;
             font-weight: bold;
             text-shadow: 0 0 16px var(--current-neon-theme);
+            border-color: var(--current-neon-theme);
           }
         }
       }
@@ -142,7 +155,7 @@ import { lookingForAJob, sections, socialMedia } from "../utils/const";
     display: flex;
     align-items: center;
 
-    &>ul {
+    & > ul {
       display: flex;
       column-gap: 16px;
       row-gap: 12px;
@@ -151,9 +164,10 @@ import { lookingForAJob, sections, socialMedia } from "../utils/const";
       border-radius: var(--border-radius-min);
       background-color: var(--palette-grey);
       padding: 8px 4px;
+      aspect-ratio: 511 / 37;
 
-      &>li {
-        &> :global(a) {
+      & > li {
+        & > :global(a) {
           text-decoration: none;
           word-break: break-all;
           border-radius: var(--border-radius-min);

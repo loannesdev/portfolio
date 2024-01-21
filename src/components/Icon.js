@@ -4,6 +4,9 @@ class SvgIcon extends HTMLElement {
     this.name = this.getAttribute("name");
     this.url = this.getAttribute("url") ?? "../icons";
     this.iconsFolder = import.meta.glob("../icons/**/*.svg", { as: "raw", eager: true });
+
+    this.removeAttribute("name");
+    this.removeAttribute("url");
   }
 
   connectedCallback() {
@@ -23,6 +26,7 @@ class SvgIcon extends HTMLElement {
           <style>
             svg[icon="${this.name}"] {
               display: flex;
+              align-self: center;
             }
           </style>
     
@@ -33,9 +37,6 @@ class SvgIcon extends HTMLElement {
     }
 
     this.outerHTML = "";
-
-    this.removeAttribute("name");
-    this.removeAttribute("url");
   }
 }
 

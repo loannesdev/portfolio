@@ -1,22 +1,23 @@
 import { getParsedAttributes } from "../utils/scripts";
 
 class CustomAnchor extends HTMLElement {
-  connectedCallback() {
-    const anchor = document.createElement("a");
-    const { isexternalink, ...attr } = getParsedAttributes(this.attributes);
+  constructor() {
+    super();
+    this.anchor = document.createElement("a");
+    const { isexternallink, ...attr } = getParsedAttributes(this.attributes);
 
-    if (isexternalink) {
-      anchor.setAttribute("target", "_blank");
-      anchor.setAttribute("rel", "noreferrer noopener");
+    if (isexternallink) {
+      this.anchor.setAttribute("target", "_blank");
+      this.anchor.setAttribute("rel", "noreferrer noopener");
     }
 
     for (const key in attr) {
       const value = attr[key];
-      anchor.setAttribute(key, value);
+      this.anchor.setAttribute(key, value);
     }
 
-    anchor.innerHTML = this.innerHTML;
-    this.replaceWith(anchor);
+    this.anchor.innerHTML = this.innerHTML;
+    this.replaceWith(this.anchor);
   }
 }
 

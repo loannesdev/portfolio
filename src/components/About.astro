@@ -1,0 +1,76 @@
+---
+  import { readCV } from "../services.js";
+  import { sections } from "../utils/const";
+
+  const {
+    about: { name, text },
+  } = sections;
+
+  const { basics: { summary }, interests } = await readCV();
+---
+
+<section id={name}>
+  <h1 class="section-title">{text}</h1>
+
+  <article class="paragraph-container">
+    {
+      summary.map((paragraph)=>{
+        return <p class="paragraph" set:html={paragraph} />;
+      })
+    }
+  </article>
+
+  <article class="interests-container">
+    <h2 class="interests-title">Algunos de mis intereses son:</h2>
+
+    <div class="interests-tags">
+      {
+        interests.map(({ name })=>{
+          return <colored-tag>{name}</colored-tag>;
+        })
+      }
+    </div>
+  </article>
+</section>
+
+<style>
+  section[id] {
+    aspect-ratio: 78 / 23;
+    display: grid;
+    gap: 24px;
+
+    & .paragraph-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      & .paragraph {
+        font-size: 1.2rem;
+        text-wrap: pretty;
+      }
+    }
+
+    & .interests-container {    
+      & .interests-title {
+        font-family: var(--font-family-title);
+        font-size: large;
+      }
+
+      & .interests-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+
+        & colored-tag {
+          border-radius: var(--border-radius-med);
+          line-height: normal;
+          font-size: 14.5px;
+        }
+      }
+    }
+  }
+</style>
+
+<script>
+  import "./ColoredTag";
+</script>
