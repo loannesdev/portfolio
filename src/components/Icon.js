@@ -15,23 +15,17 @@ class SvgIcon extends HTMLElement {
     const raw = this.iconsFolder[path];
 
     if (raw) {
-      const svg = document.createElement("svg");
+      const svgDocument = new DOMParser().parseFromString(raw, "image/svg+xml");
+      svgDocument.documentElement.setAttribute("icon", this.name);
 
-      svg.innerHTML = raw;
-
-      const [firstChild] = svg.children;
-      firstChild.setAttribute("icon", this.name);
-
-      this.innerHTML = `
-          <style>
-            svg[icon="${this.name}"] {
-              display: flex;
-              align-self: center;
-            }
-          </style>
-    
-          ${svg.innerHTML}
-          `;
+      this.insertAdjacentHTML("beforebegin", `
+        <style>
+          svg[icon="${this.name}"] {
+            display: flex;
+          }
+        </style>
+      `);
+      this.appendChild(svgDocument.documentElement);
 
       return;
     }
