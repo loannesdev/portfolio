@@ -12,7 +12,7 @@ export const socialMedia = [
     link: "https://github.com/loannesdev",
     icon: "github",
     name: "github"
-  }
+  },
 ];
 
 export const sections = {

@@ -88,6 +88,50 @@ import { lookingForAJob, sections, socialMedia } from "../utils/const";
     flex-wrap: wrap;
     justify-content: center;
 
+    & #darkModeButton {
+      display: flex;
+      border: 1px solid transparent;
+      background-color: transparent;
+      padding: 4.8px;
+      border-radius: var(--border-radius-min);
+      aspect-ratio: 1 / 1;
+      min-height: 48px;
+      min-width: 48px;
+      justify-content: center;
+      align-items: center;
+
+      @media (pointer: fine) {
+        &:hover {
+          border-color: var(--palette-grey);
+        }
+      }
+
+      @media (pointer: coarse) {
+        &:active {
+          border-color: var(--palette-grey);
+        }
+      }
+
+      [icon="sun"] {
+        display: none;
+      }
+
+      [icon="moon"] {
+        color: var(--palette-black);
+      }
+
+      :is([theme="dark"]) & {
+        [icon="sun"] {
+          color: yellow;
+          display: block;
+        }
+
+        [icon="moon"] {
+          display: none;
+        }
+      }
+    }
+
     & .social-container {
       display: flex;
       column-gap: 32px;
@@ -100,6 +144,7 @@ import { lookingForAJob, sections, socialMedia } from "../utils/const";
         display: flex;
         gap: 0.5rem;
         justify-content: center;
+        align-items: center;
 
         & :global(a) {
           display: flex;
@@ -199,48 +244,6 @@ import { lookingForAJob, sections, socialMedia } from "../utils/const";
 
       :is(.header-container.wrapped) & {
         justify-content: center;
-      }
-    }
-  }
-
-  #darkModeButton {
-    display: flex;
-    border-color: transparent;
-    border-width: 1px;
-    border-style: solid;
-    background-color: transparent;
-    padding: 4.8px;
-    border-radius: var(--border-radius-min);
-    aspect-ratio: 1 / 1;
-
-    @media (pointer: fine) {
-      &:hover {
-        border-color: var(--palette-grey);
-      }
-    }
-
-    @media (pointer: coarse) {
-      &:active {
-        border-color: var(--palette-grey);
-      }
-    }
-
-    [icon="sun"] {
-      display: none;
-    }
-
-    [icon="moon"] {
-      color: var(--palette-black);
-    }
-
-    :is([theme="dark"]) & {
-      [icon="sun"] {
-        color: yellow;
-        display: block;
-      }
-
-      [icon="moon"] {
-        display: none;
       }
     }
   }
