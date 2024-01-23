@@ -45,7 +45,8 @@ export const github = {
   cv: {
     name: envVars.PUBLIC_CV_NAME,
     file: envVars.PUBLIC_CV_FILE
-  }
+  },
+  projects: "https://github.com/loannesdev?tab=repositories"
 };
 
 export const urlDomain = "https://loannesdev.netlify.app";

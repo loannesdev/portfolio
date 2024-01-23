@@ -3,80 +3,52 @@ import About from "../components/About.astro";
 import Header from "../components/Header.astro";
 import Home from "../components/Home.astro";
 import Knowledge from "../components/Knowledge.astro";
-import Projects from "../components/Projects.astro";
+import Projects from "../components/Projects.svelte";
 import "../styles/global.css";
 import { openGraphImage, urlDomain } from "./../utils/const";
 ---
 
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Portafolio • Sebastian Cortes" />
-    <title>&bull; Sebastian Cortes &bull;</title>
-    <link rel="icon" type="image/svg+xml" href="/man-technologist.svg" />
 
-    <link
-      rel="preload"
-      href="/fonts/space_grotesk/SpaceGrotesk-Regular.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/nunito_sans/NunitoSans10pt-Regular.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/nunito_sans/NunitoSans10pt-Bold.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/nunito_sans/NunitoSans10pt-Black.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portafolio • Sebastian Cortes" />
+  <title>&bull; Sebastian Cortes &bull;</title>
+  <link rel="icon" type="image/svg+xml" href="/man-technologist.svg" />
 
-    <link rel="canonical" href=`${urlDomain}` />
-    <meta property="og:url" content=`${urlDomain}` />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:title"
-      content="Sebastian Cortes • Desarrollador web front-end"
-    />
-    <meta property="og:description" content="Portafolio" />
-    <meta property="og:image" content={openGraphImage} />
+  <link rel="preload" href="/fonts/space_grotesk/SpaceGrotesk-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/nunito_sans/NunitoSans10pt-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/nunito_sans/NunitoSans10pt-Bold.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/nunito_sans/NunitoSans10pt-Black.woff2" as="font" type="font/woff2" crossorigin />
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content=`${urlDomain}` />
-    <meta
-      name="twitter:title"
-      content="Sebastian Cortes • Desarrollador web front-end"
-    />
-    <meta name="twitter:description" content="Portafolio" />
-    <meta name="twitter:image" content={openGraphImage} />
-    <meta http-equiv="Content-Encoding" content="gzip">
-  </head>
+  <link rel="canonical" href=`${urlDomain}` />
+  <meta property="og:url" content=`${urlDomain}` />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Sebastian Cortes • Desarrollador web front-end" />
+  <meta property="og:description" content="Portafolio" />
+  <meta property="og:image" content={openGraphImage} />
 
-  <body>
-    <Header />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content=`${urlDomain}` />
+  <meta name="twitter:title" content="Sebastian Cortes • Desarrollador web front-end" />
+  <meta name="twitter:description" content="Portafolio" />
+  <meta name="twitter:image" content={openGraphImage} />
+  <meta http-equiv="Content-Encoding" content="gzip" />
+</head>
 
-    <main>
-      <Home />
-      <About />
-      <Knowledge />
-      <Projects />
-    </main>
-  </body>
+<body>
+  <Header />
+
+  <main>
+    <Home />
+    <About />
+    <Knowledge />
+    <Projects client:visible={{rootMargin: "800px" }} />
+  </main>
+</body>
+
 </html>
 
 <style>
@@ -122,7 +94,7 @@ import { openGraphImage, urlDomain } from "./../utils/const";
     color: var(--current-text-theme);
     padding-bottom: 80px;
 
-    & > :global(*) {
+    &> :global(*) {
       padding-left: 16px;
       padding-right: 16px;
     }
@@ -140,7 +112,7 @@ import { openGraphImage, urlDomain } from "./../utils/const";
       display: grid;
       gap: 160px;
 
-      & section[id] > .section-title {
+      & section[id]>.section-title {
         font-size: 2rem;
         font-weight: bold;
         font-family: var(--font-family-title);
