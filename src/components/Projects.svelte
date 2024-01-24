@@ -74,7 +74,7 @@
       column-gap: 0.5rem;
       column-count: auto;
       column-width: 20rem;
-      aspect-ratio: 320 / 200;
+      aspect-ratio: 320 / 300;
 
       & .card {
         border: 0.1rem solid var(--palette-grey);
@@ -91,6 +91,7 @@
           font-size: 1.3rem;
           text-align: center;
           font-weight: 600;
+          font-family: var(--font-family-title);
         }
 
         & .description-card {
@@ -107,6 +108,7 @@
           & .topics-title {
             font-size: 1.15rem;
             font-weight: bold;
+            font-family: var(--font-family-title);
           }
 
           & .topics-group {
@@ -131,6 +133,7 @@
           gap: 1rem;
 
           & > a {
+            --button-text-shadow: 0px 0px 16px var(--current-neon-theme);
             padding: 0.3rem 0.6rem;
             border: 0.1rem solid var(--palette-grey);
             text-decoration: none;
@@ -138,20 +141,19 @@
             transition-property: color, background-color, border-color;
             transition-timing-function: ease;
             border-radius: var(--border-radius-min);
+            color: currentColor;
 
             @media (pointer: fine) {
               &:hover {
                 border-color: var(--current-neon-theme);
-                background-color: var(--palette-grey);
-                text-shadow: 0px 0px 8px var(--current-neon-theme);
+                color: var(--current-neon-theme);
               }
             }
 
             @media (pointer: coarse) {
               &:active {
                 border-color: var(--current-neon-theme);
-                background-color: var(--palette-grey);
-                text-shadow: 0px 0px 8px var(--current-neon-theme);
+                color: var(--current-neon-theme);
               }
             }
           }

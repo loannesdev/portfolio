@@ -167,12 +167,12 @@ import { lookingForAJob, sections, socialMedia } from "../utils/const";
         padding: 6px 12px;
         text-decoration: none;
         text-align: center;
+        color: currentColor;
 
         @media (pointer: fine) {
           &:hover {
             color: var(--current-neon-theme);
             border-style: solid;
-            font-weight: bold;
             text-shadow: 0 0 16px var(--current-neon-theme);
             border-color: var(--current-neon-theme);
           }
@@ -182,7 +182,6 @@ import { lookingForAJob, sections, socialMedia } from "../utils/const";
           &:active {
             color: var(--current-neon-theme);
             border-style: solid;
-            font-weight: bold;
             text-shadow: 0 0 16px var(--current-neon-theme);
             border-color: var(--current-neon-theme);
           }
@@ -221,6 +220,7 @@ import { lookingForAJob, sections, socialMedia } from "../utils/const";
           transition-property: color, background-color, linear-gradient;
           transition-timing-function: ease;
           --bg-color: rgb(91 91 250 / 10%);
+          color: currentColor;
 
           :is([theme="dark"]) & {
             --bg-color: rgb(0 255 0 / 10%);
