@@ -130,7 +130,7 @@
           word-break: keep-all;
           gap: 1rem;
 
-          & :has(a) {
+          & > a {
             padding: 0.3rem 0.6rem;
             border: 0.1rem solid var(--palette-grey);
             text-decoration: none;
@@ -141,24 +141,18 @@
 
             @media (pointer: fine) {
               &:hover {
-                border-color: var(--palette-black);
-                background-color: var(--palette-black);
-                color: var(--palette-white);
+                border-color: var(--current-neon-theme);
+                background-color: var(--palette-grey);
+                text-shadow: 0px 0px 8px var(--current-neon-theme);
               }
             }
 
             @media (pointer: coarse) {
               &:active {
-                border-color: var(--palette-black);
-                background-color: var(--palette-black);
-                color: var(--palette-white);
+                border-color: var(--current-neon-theme);
+                background-color: var(--palette-grey);
+                text-shadow: 0px 0px 8px var(--current-neon-theme);
               }
-            }
-
-            &:is([theme="dark"]) {
-              border-color: var(--palette-white);
-              background-color: var(--palette-white);
-              color: var(--palette-black);
             }
           }
         }
