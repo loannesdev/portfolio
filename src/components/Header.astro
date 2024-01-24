@@ -74,6 +74,9 @@ import { lookingForAJob, sections, socialMedia } from "../utils/const";
     position: sticky;
     top: 0px;
     align-items: center;
+    width: 100%;
+    max-width: 1280px;
+    justify-self: center;
 
     & .wrapped {
       justify-content: center;
@@ -162,7 +165,7 @@ import { lookingForAJob, sections, socialMedia } from "../utils/const";
         transition-property: color, border-style, border-color, font-weight,
           text-shadow;
         transition-timing-function: ease;
-        border: 1px dashed var(--palette-grey);
+        border: 1px dashed var(--current-text-theme);
         border-radius: var(--border-radius-min);
         padding: 6px 12px;
         text-decoration: none;
