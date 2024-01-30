@@ -1,5 +1,8 @@
 ---
-import { lookingForAJob, sections, socialMedia } from "../utils/const";
+import { lookingForAJob, sections } from "../utils/const";
+import resume from "../resume.json";
+
+const { basics: { profiles } } = resume;
 ---
 
 <header class="header-container">
@@ -12,14 +15,14 @@ import { lookingForAJob, sections, socialMedia } from "../utils/const";
     <article class="social-container">
       <div class="social">
         {
-          socialMedia.map(({ link, name, icon }) => {
+          profiles.map(({ network, url }) => {
             return (
               <custom-anchor
-                href={link}
+                href={url}
                 isExternalLink
-                aria-label={`Ver cuenta en ${name}`}
+                aria-label={`Ver cuenta en ${network}`}
               >
-                <svg-icon name={icon} />
+                <svg-icon name={network.toLowerCase()} />
               </custom-anchor>
             );
           })
