@@ -105,16 +105,21 @@ import { openGraphImage, urlDomain } from "./../utils/const";
     }
 
     & main {
+      --section-scroll-margin-top: 0px;
       max-width: 80ch;
       justify-self: center;
       width: 100%;
       display: grid;
       gap: 160px;
 
-      & section[id]>.section-title {
-        font-size: 2rem;
-        font-weight: bold;
-        font-family: var(--font-family-title);
+      & section[id] {
+        scroll-margin-top: var(--section-scroll-margin-top);
+
+        & > .section-title {
+          font-size: 2rem;
+          font-weight: bold;
+          font-family: var(--font-family-title);
+        }
       }
     }
   }

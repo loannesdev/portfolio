@@ -5,20 +5,15 @@ export const DOMSelector = string => {
 export const envVars = import.meta.env;
 
 export const scrollMarginTopChecker = () => {
-  const $header = DOMSelector(".header-container");
+  const header = DOMSelector(".header-container");
+  const main = DOMSelector("body > main");
 
-  ["resize", "click", "touchend", "load"].forEach((elm) => {
-    window.addEventListener(elm, () => {
-      // Control the "scroll-margin-top" style value when the header change their height
-      const { height } = getComputedStyle($header);
-      const [firstSheet] = document.styleSheets;
+  new ResizeObserver(([headerEntry]) => {
+    const { contentRect: { top, bottom } } = headerEntry;
 
-      firstSheet.insertRule(
-        `section[id] { scroll-margin-top: ${height} }`,
-        firstSheet.cssRules.length
-      );
-    });
-  });
+    main.style = `--section-scroll-margin-top: ${Math.floor(top + bottom)}px`;
+  })
+    .observe(header);
 };
 
 export const darkMode = () => {
