@@ -13,12 +13,21 @@ const headers = {
 const dontShow = ["portfolio", "manfred", "loannesdev", "to-do-list"];
 
 export const readRepos = async () => {
-  const url = `${api}${path.users}/${user}${path.repos}`;
+  const url = `${api}${path.users}/${user}${path.repos}?type=public`;
 
   try {
     const res = await fetch(url, { headers });
     const json = await res.json();
-    const filteredData = json.filter(repo => !repo.fork && !dontShow.some((name) => name === repo.name));
+    const filteredData = json.filter((repo) => {
+      const { fork, name: repoName } = repo;
+      const repoExclude = !fork && !dontShow.some((excludeNameRepo) => excludeNameRepo === repoName);
+
+      if (repoExclude) {
+        return repo;
+      }
+
+      return null;
+    });
 
     return filteredData;
   } catch {

@@ -2,19 +2,6 @@ import { envVars } from "./scripts";
 
 export const lookingForAJob = true;
 
-export const socialMedia = [
-  {
-    link: "https://www.linkedin.com/in/sebastian-cc/",
-    icon: "linkedin",
-    name: "linkedin"
-  },
-  {
-    link: "https://github.com/loannesdev",
-    icon: "github",
-    name: "github"
-  },
-];
-
 export const sections = {
   home: {
     name: "home",
