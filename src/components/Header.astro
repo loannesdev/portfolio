@@ -68,7 +68,7 @@ const { basics: { profiles } } = resume;
     z-index: 1;
     column-gap: 48px;
     row-gap: 24px;
-    justify-content: space-evenly;
+    justify-content: space-around;
     padding-top: 16px;
     padding-bottom: 16px;
     font-family: var(--font-family-text);
@@ -80,10 +80,6 @@ const { basics: { profiles } } = resume;
     width: 100%;
     max-width: 1280px;
     justify-self: center;
-
-    & .wrapped {
-      justify-content: center;
-    }
   }
 
   .contact {
@@ -241,10 +237,6 @@ const { basics: { profiles } } = resume;
             }
           }
         }
-      }
-
-      :is(.header-container.wrapped) & {
-        justify-content: center;
       }
     }
   }
