@@ -16,13 +16,13 @@
 <section id={name}>
   <h1 class="section-title">{text}</h1>
 
-  <div class="container">
+  <section class="container">
     {#await projects}
       <p>Cargando...</p>
     {:then project}
       {#each project as { name, description, topics, html_url: htmlUrl, homepage }}
-        <fieldset class="card">
-          <legend class="title-card">{name}</legend>
+        <article class="card">
+          <h1 class="title-card">{name}</h1>
 
           {#if description && description.length}
             <p class="description-card">{description}</p>
@@ -49,7 +49,7 @@
               <a href={homepage} {...anchorPropsExternal}>Ver página</a>
             {/if}
           </footer>
-        </fieldset>
+        </article>
       {/each}
     {:catch}
       <p>
@@ -61,7 +61,7 @@
         .
       </p>
     {/await}
-  </div>
+  </section>
 </section>
 
 <style>
@@ -88,9 +88,9 @@
         border-radius: var(--border-radius-med);
 
         & .title-card {
-          font-size: 1.3rem;
+          font-size: 24px;
           text-align: center;
-          font-weight: 600;
+          font-weight: bold;
           font-family: var(--font-family-title);
         }
 
