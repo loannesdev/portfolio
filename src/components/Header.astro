@@ -224,12 +224,8 @@ const { basics: { profiles } } = resume;
           transition-duration: 0.3s;
           transition-property: color, background-color, linear-gradient;
           transition-timing-function: ease;
-          --bg-color: rgb(91 91 250 / 10%);
+          --bg-color: color-mix(in srgb, transparent 90%, var(--current-neon-theme));
           color: currentColor;
-
-          :is([theme="dark"]) & {
-            --bg-color: rgb(0 255 0 / 10%);
-          }
 
           @media (pointer: fine) {
             &:hover {

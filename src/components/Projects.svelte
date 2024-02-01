@@ -85,7 +85,7 @@
         height: min-content;
         margin-bottom: 0.5rem;
         break-inside: avoid;
-        border-radius: var(--border-radius-min);
+        border-radius: var(--border-radius-med);
 
         & .title-card {
           font-size: 1.3rem;
@@ -119,7 +119,7 @@
             & .topic {
               background-color: var(--palette-grey);
               padding: 0.15rem 0.5rem;
-              border-radius: 0.2rem;
+              border-radius: var(--border-radius-min);
               margin: 0;
             }
           }

@@ -2,10 +2,8 @@ class ColoredTag extends HTMLElement {
   constructor() {
     super();
 
-    this.uuid = window.crypto.randomUUID().replaceAll("-", "_");
     this.rawColor = `${this.#computedColor()} ${this.#computedColor()} ${this.#computedColor()}`;
-    this.rgbColor = `rgb(${this.rawColor} / 20%)`;
-    this.additionalColor = `rgb(${this.rawColor} / 100%)`;
+    this.rgbColor = `rgb(${this.rawColor})`;
   }
 
   #computedColor() {
@@ -14,13 +12,12 @@ class ColoredTag extends HTMLElement {
 
   #changeColor() {
     this.rawColor = `${this.#computedColor()} ${this.#computedColor()} ${this.#computedColor()}`;
-    this.rgbColor = `rgb(${this.rawColor} / 20%)`;
-    this.additionalColor = `rgb(${this.rawColor} / 100%)`;
+    this.rgbColor = `rgb(${this.rawColor})`;
   }
 
   #setStyles() {
-    this.style.backgroundColor = this.rgbColor;
-    this.style.borderColor = this.additionalColor;
+    this.style.backgroundColor = `color-mix(in srgb, transparent 90%, ${this.rgbColor})`;
+    this.style.borderColor = this.rgbColor;
   }
 
   #isMobileDevice() {
@@ -39,7 +36,9 @@ class ColoredTag extends HTMLElement {
     const styleTag = `
     <style>
       colored-tag {
-        transition: .3s background-color ease;
+        transition-duration: .2s;
+        transition-timing-function: linear;
+        transition-property: background-color, border-color;
         padding: 4px 12px;
         border-width: 1px;
         border-style: solid;
