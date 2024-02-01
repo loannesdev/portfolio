@@ -10,17 +10,17 @@
 ---
 
 <section id={name}>
-  <h1 class="section-title">{text}</h1>
+  <section class="paragraph-container">
+    <h1 class="section-title">{text}</h1>
 
-  <article class="paragraph-container">
     {
-      summary.map((paragraph)=>{
+      summary.map((paragraph) => {
         return <p class="paragraph" set:html={paragraph} />;
       })
     }
-  </article>
+  </section>
 
-  <article class="interests-container">
+  <section class="interests-container">
     <h2 class="interests-title">Algunos de mis intereses son:</h2>
 
     <div class="interests-tags">
@@ -30,19 +30,19 @@
         })
       }
     </div>
-  </article>
+  </section>
 </section>
 
 <style>
   section[id] {
     aspect-ratio: 78 / 23;
     display: grid;
-    gap: 24px;
+    gap: 12px;
 
     & .paragraph-container {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 24px;
 
       & .paragraph {
         font-size: 1.2rem;

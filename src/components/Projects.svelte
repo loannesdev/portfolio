@@ -67,7 +67,7 @@
 <style>
   section[id] {
     display: grid;
-    gap: 0.2rem;
+    gap: 24px;
     width: 100%;
 
     & .container {
