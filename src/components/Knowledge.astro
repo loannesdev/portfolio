@@ -1,6 +1,8 @@
 ---
 import { readCV } from "../services.js";
 import { sections } from "../utils/const.js";
+import Anchor from "./Anchor.astro";
+import Icon from "./Icon.astro";
 
 const {
   knowledge: { name, text },
@@ -12,27 +14,27 @@ const { skills } = await readCV();
   <h1 class="section-title">{text}</h1>
 
   <section class="card-container">
-      {
-        skills.map(({ website, name, iconName, level }) => {
-          return (
-            <custom-anchor
-              isExternalLink
-              class="card"
-              aria-label={`${name}, ${level}`}
-              href={website}
-            >
-              {
-                iconName && <svg-icon name={iconName} url="../icons/knowledge" />
-              }
+    {
+      skills.map(({ website, name, iconName, level }) => {
+        return (
+          <Anchor
+            isExternalLink
+            class="card"
+            aria-label={`${name}, ${level}`}
+            href={website}
+          >
+            {iconName && <Icon name={iconName} url="../icons/knowledge" />}
 
-              <footer class="card-footer">
-                <h1 class="card-title">{name}</h1>
-                <small class="card-level" data-level={level}>{level}</small>
-              </footer>
-            </custom-anchor>
-          )
-        })
-      }
+            <footer class="card-footer">
+              <h1 class="card-title">{name}</h1>
+              <small class="card-level" data-level={level}>
+                {level}
+              </small>
+            </footer>
+          </Anchor>
+        );
+      })
+    }
   </section>
 </section>
 
@@ -81,18 +83,14 @@ const { skills } = await readCV();
           }
         }
 
-        & svg-icon {
-          min-height: 48px;
-          min-width: 48px;
-          aspect-ratio: 1 / 1;
-        }
-
         [icon] {
           height: 48px;
           width: 48px;
         }
 
-        [icon="github"], [icon="vercel"], [icon="markdown"] {
+        [icon="github"],
+        [icon="vercel"],
+        [icon="markdown"] {
           filter: drop-shadow(0px 0px 4px var(--palette-white));
         }
 
@@ -117,7 +115,11 @@ const { skills } = await readCV();
             border: 1px solid var(--color-level);
             letter-spacing: 1px;
             line-height: normal;
-            background-color: color-mix(in srgb, transparent var(--color-transparency), var(--color-level));
+            background-color: color-mix(
+              in srgb,
+              transparent var(--color-transparency),
+              var(--color-level)
+            );
             font-family: var(--font-family-text);
           }
 
@@ -140,8 +142,3 @@ const { skills } = await readCV();
     }
   }
 </style>
-
-<script>
-  import "./Icon.js";
-  import "./Anchor.js"
-</script>

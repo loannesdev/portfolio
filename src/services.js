@@ -18,6 +18,7 @@ export const readRepos = async () => {
   try {
     const res = await fetch(url, { headers });
     const json = await res.json();
+
     const filteredData = json.filter((repo) => {
       const { fork, name: repoName } = repo;
       const repoExclude = !fork && !dontShow.some((excludeNameRepo) => excludeNameRepo === repoName);

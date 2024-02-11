@@ -11,15 +11,23 @@
     target: "_blank",
     rel: "noreferrer noopener",
   };
+
+  const errorMsg = `
+  <p id="error-message">
+      ¡Uy!, parece que hubo un error, aun así puedes visitar mi cuenta en <strong
+        ><a href=${github.projects} ${Object.entries(anchorPropsExternal)
+          .map(([key, value]) => `${key} = "${value}"`)
+          .join(" ")}>GitHub</a></strong
+      > para revizar mis proyectos.
+  </p>
+    `;
 </script>
 
 <section id={name}>
   <h1 class="section-title">{text}</h1>
 
-  <section class="container">
-    {#await projects}
-      <p>Cargando...</p>
-    {:then project}
+  {#await projects then project}
+    <section class="container">
       {#each project as { name, description, topics, html_url: htmlUrl, homepage }}
         <article class="card">
           <h1 class="title-card">{name}</h1>
@@ -51,17 +59,14 @@
           </footer>
         </article>
       {/each}
-    {:catch}
-      <p>
-        ¡Uy!, parece que hubo un error pero puedes ver mis proyectos en
-        {" "}
-        <strong>
-          <a href={github.projects} {...anchorPropsExternal}>GitHub</a>
-        </strong>
-        .
-      </p>
-    {/await}
-  </section>
+    </section>
+  {:catch}
+    {@html errorMsg}
+  {/await}
+
+  <noscript>
+    {@html errorMsg}
+  </noscript>
 </section>
 
 <style>
@@ -159,6 +164,13 @@
           }
         }
       }
+    }
+
+    & #error-message {
+      padding: 4px 8px;
+      border: 1px solid red;
+      border-radius: var(--border-radius-min);
+      background-color: color-mix(in srgb, transparent 90%, red);
     }
   }
 </style>

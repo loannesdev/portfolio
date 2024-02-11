@@ -1,23 +1,22 @@
 ---
-  import { readCV } from "../services.js";
-  import { sections } from "../utils/const";
+import { readCV } from "../services.js";
+import { sections } from "../utils/const";
 
-  const {
-    about: { name, text },
-  } = sections;
+const {
+  about: { name, text },
+} = sections;
 
-  const { basics: { summary }, interests } = await readCV();
+const {
+  basics: { summary },
+  interests,
+} = await readCV();
 ---
 
 <section id={name}>
   <section class="paragraph-container">
     <h1 class="section-title">{text}</h1>
 
-    {
-      summary.map((paragraph) => {
-        return <p class="paragraph" set:html={paragraph} />;
-      })
-    }
+    <Fragment set:html={summary} />
   </section>
 
   <section class="interests-container">
@@ -25,7 +24,7 @@
 
     <div class="interests-tags">
       {
-        interests.map(({ name })=>{
+        interests.map(({ name }) => {
           return <colored-tag>{name}</colored-tag>;
         })
       }
@@ -44,13 +43,13 @@
       flex-direction: column;
       gap: 24px;
 
-      & .paragraph {
+      &:has(> p) {
         font-size: 1.2rem;
         text-wrap: pretty;
       }
     }
 
-    & .interests-container {    
+    & .interests-container {
       & .interests-title {
         font-family: var(--font-family-title);
         font-size: large;
@@ -65,6 +64,13 @@
           border-radius: var(--border-radius-min);
           line-height: normal;
           font-size: 14.5px;
+          padding: 4px 12px;
+          border: 1px solid currentColor;
+          background-color: color-mix(
+            in srgb,
+            transparent 90%,
+            var(--current-text-theme)
+          );
         }
       }
     }

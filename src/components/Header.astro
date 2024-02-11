@@ -1,29 +1,34 @@
 ---
 import { lookingForAJob, sections } from "../utils/const";
 import resume from "../resume.json";
+import Icon from "./Icon.astro";
+import Anchor from "./Anchor.astro";
 
-const { basics: { profiles } } = resume;
+const {
+  basics: { profiles },
+} = resume;
 ---
 
 <header class="header-container">
   <section class="contact">
-    <button id="darkModeButton" type="button" aria-label="Alternar modo oscuro">
-      <svg-icon name="sun"></svg-icon>
-      <svg-icon name="moon"></svg-icon>
-    </button>
+    <label id="dark-mode-container">
+      <input id="dark-mode-button" type="checkbox" />
+      <Icon name="sun" />
+      <Icon name="moon" />
+    </label>
 
     <article class="social-container">
       <div class="social">
         {
           profiles.map(({ network, url }) => {
             return (
-              <custom-anchor
+              <Anchor
                 href={url}
                 isExternalLink
                 aria-label={`Ver cuenta en ${network}`}
               >
-                <svg-icon name={network.toLowerCase()} />
-              </custom-anchor>
+                <Icon name={network.toLowerCase()} />
+              </Anchor>
             );
           })
         }
@@ -31,14 +36,14 @@ const { basics: { profiles } } = resume;
 
       {
         lookingForAJob && (
-          <custom-anchor
+          <Anchor
             href="/CV/CV_es.pdf"
             download="CV - Sebastian Cortes.pdf"
             aria-label="Descargar CV"
             class="download-cv"
           >
             Descargar CV
-          </custom-anchor>
+          </Anchor>
         )
       }
     </article>
@@ -49,12 +54,12 @@ const { basics: { profiles } } = resume;
       {
         Object.values(sections).map(({ name, text }) => (
           <li>
-            <custom-anchor
+            <Anchor
               href={"#" + name}
               aria-label={`Ir a sección ${text.toLowerCase()}`}
             >
               {text}
-            </custom-anchor>
+            </Anchor>
           </li>
         ))
       }
@@ -90,15 +95,12 @@ const { basics: { profiles } } = resume;
     flex-wrap: wrap;
     justify-content: center;
 
-    & #darkModeButton {
+    & #dark-mode-container {
       display: flex;
       border: 1px solid transparent;
-      background-color: transparent;
+      background-color: var(--is-dark-mode);
       padding: 4.8px;
       border-radius: var(--border-radius-min);
-      aspect-ratio: 1 / 1;
-      min-height: 48px;
-      min-width: 48px;
       justify-content: center;
       align-items: center;
 
@@ -114,23 +116,49 @@ const { basics: { profiles } } = resume;
         }
       }
 
-      [icon="sun"] {
-        display: none;
+      svg[icon="sun"] {
+        color: yellow;
+        display: block;
       }
 
-      [icon="moon"] {
+      svg[icon="moon"] {
         color: var(--palette-black);
       }
 
-      :is([theme="dark"]) & {
-        [icon="sun"] {
-          color: yellow;
-          display: block;
-        }
-
-        [icon="moon"] {
+      @media (prefers-color-scheme: light) {
+        svg[icon="sun"] {
           display: none;
         }
+
+        #dark-mode-button:checked {
+          ~ svg[icon="moon"] {
+            display: none;
+          }
+
+          ~ svg[icon="sun"] {
+            display: block;
+          }
+        }
+      }
+
+      @media (prefers-color-scheme: dark) {
+        & svg[icon="moon"] {
+          display: none;
+        }
+
+        #dark-mode-button:checked {
+          ~ svg[icon="sun"] {
+            display: none;
+          }
+
+          ~ svg[icon="moon"] {
+            display: block;
+          }
+        }
+      }
+
+      & #dark-mode-button {
+        display: none;
       }
     }
 
@@ -151,10 +179,8 @@ const { basics: { profiles } } = resume;
         & :global(a) {
           display: flex;
 
-          :is([theme="dark"]) & {
-            [icon] {
-              fill: var(--palette-white);
-            }
+          [icon] {
+            fill: var(--palette-white);
           }
         }
       }
@@ -220,7 +246,11 @@ const { basics: { profiles } } = resume;
           transition-duration: 0.3s;
           transition-property: color, background-color, linear-gradient;
           transition-timing-function: ease;
-          --bg-color: color-mix(in srgb, transparent 90%, var(--current-neon-theme));
+          --bg-color: color-mix(
+            in srgb,
+            transparent 90%,
+            var(--current-neon-theme)
+          );
           color: currentColor;
 
           @media (pointer: fine) {
@@ -243,13 +273,10 @@ const { basics: { profiles } } = resume;
 </style>
 
 <script>
-  import "./Anchor.js";
-  import "./Icon.js";
-
   // Dark mode
-  document.getElementById("darkModeButton").addEventListener("click", () => {
+  document.getElementById("dark-mode-button").addEventListener("click", () => {
     const element = document.documentElement;
-    const isDark = element.getAttribute("theme").includes("dark");
+    const isDark = element.getAttribute("theme")?.includes("dark") ?? false;
     const theme = isDark ? "light" : "dark";
 
     localStorage.setItem("theme", theme);

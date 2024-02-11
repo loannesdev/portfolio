@@ -1,0 +1,10 @@
+---
+const { isExternalLink, ...attr } = Astro.props;
+---
+
+<a
+  {...attr}
+  {...(isExternalLink && { target: "_blank", rel: "noreferrer noopener" })}
+>
+  <slot />
+</a>

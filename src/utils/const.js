@@ -37,5 +37,3 @@ export const github = {
 };
 
 export const urlDomain = "https://loannesdev.netlify.app";
-
-export const openGraphImage = "/og-image.webp";
