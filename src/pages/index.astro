@@ -138,20 +138,27 @@ import { urlDomain } from "./../utils/const";
         sans-serif;
       display: grid;
       padding-bottom: 80px;
-      padding-inline: 16px;
       transition-duration: 0.2s;
       transition-property: color, background-color;
       transition-timing-function: ease;
       background-color: var(--current-background-theme);
       color: var(--current-text-theme);
 
+      & > :global(*) {
+        padding-inline: 16px;
+      }
+
       & main {
-        --section-scroll-margin-top: 48px;
+        --section-scroll-margin-top: 11rem;
         max-width: 80ch;
         justify-self: center;
         width: 100%;
         display: grid;
         gap: 160px;
+
+        @media (width >= 640px) {
+          --section-scroll-margin-top: 5rem;
+        }
 
         & :global(section[id]) {
           scroll-margin-top: var(--section-scroll-margin-top);

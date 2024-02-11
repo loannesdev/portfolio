@@ -74,6 +74,8 @@
     display: grid;
     gap: 24px;
     width: 100%;
+    min-height: 25rem;
+    place-content: baseline;
 
     & .container {
       column-gap: 0.5rem;
