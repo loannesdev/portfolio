@@ -14,7 +14,7 @@
 
   const errorMsg = `
   <p id="error-message">
-      ¡Uy!, parece que hubo un error, aun así puedes visitar mi cuenta en <strong
+      ¡Uy!, parece que algo falló, aun así puedes visitar mi cuenta en <strong
         ><a href=${github.projects} ${Object.entries(anchorPropsExternal)
           .map(([key, value]) => `${key} = "${value}"`)
           .join(" ")}>GitHub</a></strong
@@ -26,7 +26,9 @@
 <section id={name}>
   <h1 class="section-title">{text}</h1>
 
-  {#await projects then project}
+  {#await projects}
+    <p id="loading-message">Cargando...</p>
+  {:then project}
     <section class="container">
       {#each project as { name, description, topics, html_url: htmlUrl, homepage }}
         <article class="card">
@@ -173,6 +175,12 @@
       border: 1px solid red;
       border-radius: var(--border-radius-min);
       background-color: color-mix(in srgb, transparent 90%, red);
+    }
+
+    &:has(noscript) {
+      & #loading-message {
+        display: none;
+      }
     }
   }
 </style>
