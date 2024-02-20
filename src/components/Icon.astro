@@ -6,7 +6,7 @@ const iconsFolder = import.meta.glob("../../public/icons/**/*.svg", {
   eager: true,
 });
 
-const raw = iconsFolder[path].replace("<svg", `<svg icon="${name}"`);
+const raw = iconsFolder[path]?.replace("<svg", `<svg icon="${name}"`);
 ---
 
-<Fragment set:html={raw} />
+{raw && <Fragment set:html={raw} />}

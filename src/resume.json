@@ -72,364 +72,369 @@
   "skills": [
     {
       "name": "Wouter",
-      "isFavorite": true,
       "website": "https://github.com/molefrog/wouter",
       "level": "Intermedio",
-      "keywords": null
+      "keywords": [
+        "front-end"
+      ]
     },
     {
       "name": "Redux",
-      "isFavorite": false,
       "website": "https://redux.js.org",
       "level": "Intermedio",
-      "keywords": null,
-      "iconName": "redux"
+      "keywords": [
+        "front-end"
+      ]
     },
     {
       "name": "Sass",
-      "isFavorite": true,
       "website": "https://sass-lang.com",
       "level": "Intermedio",
-      "keywords": null,
-      "iconName": "sass"
+      "keywords": [
+        "front-end"
+      ]
     },
     {
       "name": "Jquery",
-      "isFavorite": false,
       "website": "https://jquery.com",
       "level": "Básico",
-      "keywords": null,
-      "iconName": "jquery"
+      "keywords": [
+        "front-end"
+      ]
     },
     {
       "name": "Wordpress",
-      "isFavorite": false,
       "website": "https://wordpress.com",
       "level": "Básico",
-      "keywords": null,
-      "iconName": "wordpress"
+      "keywords": [
+        "front-end"
+      ]
     },
     {
       "name": "Boostrap",
-      "isFavorite": false,
       "website": "https://getbootstrap.com",
       "level": "Básico",
-      "keywords": null
+      "keywords": [
+        "front-end"
+      ]
     },
     {
       "name": "React native paper",
-      "isFavorite": false,
       "website": "https://reactnativepaper.com",
       "level": "Básico",
-      "keywords": null
+      "keywords": [
+        "front-end"
+      ]
     },
     {
       "name": "React native",
-      "isFavorite": false,
       "website": "https://reactnative.dev",
       "level": "Básico",
-      "keywords": null
+      "keywords": [
+        "front-end"
+      ]
     },
     {
       "name": "React",
-      "isFavorite": false,
       "website": "https://reactjs.org",
       "level": "Avanzado",
-      "keywords": null,
-      "iconName": "react"
+      "keywords": [
+        "front-end"
+      ]
     },
     {
       "name": "Skeleton",
-      "isFavorite": false,
       "website": "https://getskeleton.com",
       "level": "Básico",
       "keywords": null
     },
     {
       "name": "Materialize",
-      "isFavorite": false,
       "website": "https://materializecss.com",
       "level": "Básico",
-      "keywords": null,
-      "iconName": "materialize"
+      "keywords": [
+        "front-end"
+      ]
     },
     {
       "name": "Git",
-      "isFavorite": true,
       "website": "https://git-scm.com/",
       "level": "Intermedio",
-      "keywords": null,
-      "iconName": "git"
+      "keywords": [
+        "tool"
+      ]
     },
     {
       "name": "GitHub",
-      "isFavorite": true,
       "website": "https://github.com",
       "level": "Intermedio",
-      "keywords": null,
-      "iconName": "github"
+      "keywords": [
+        "tool"
+      ]
     },
     {
       "name": "Sublime Text",
-      "isFavorite": false,
       "website": "https://www.sublimetext.com",
       "level": "Básico",
-      "keywords": null,
-      "iconName": "sublime-text"
+      "keywords": [
+        "tool"
+      ]
     },
     {
       "name": "NetBeans",
-      "isFavorite": false,
       "website": "https://netbeans.apache.org",
       "level": "Básico",
-      "keywords": null
+      "keywords": [
+        "tool"
+      ]
     },
     {
       "name": "Android studio",
-      "isFavorite": false,
       "website": "https://developer.android.com/studio",
       "level": "Básico",
-      "keywords": null,
-      "iconName": "android-studio"
+      "keywords": [
+        "tool"
+      ]
     },
     {
       "name": "Visual studio",
-      "isFavorite": false,
       "website": "https://visualstudio.microsoft.com/es/#vs-section",
       "level": "Básico",
-      "keywords": null,
-      "iconName": "visual-studio"
+      "keywords": [
+        "tool"
+      ]
     },
     {
       "name": "Visual studio code",
-      "isFavorite": true,
       "website": "https://visualstudio.microsoft.com/es/#vscode-section",
       "level": "Intermedio",
-      "keywords": null,
-      "iconName": "visual-studio-code"
+      "keywords": [
+        "tool"
+      ]
     },
     {
       "name": "Pg admin",
-      "isFavorite": false,
       "website": "https://www.pgadmin.org",
       "level": "Intermedio",
-      "keywords": null,
-      "iconName": "pgadmin"
+      "keywords": [
+        "tool"
+      ]
     },
     {
       "name": "PostGreSQL",
-      "isFavorite": false,
       "website": "https://www.postgresql.org",
       "level": "Intermedio",
-      "keywords": null,
-      "iconName": "postgresql"
+      "keywords": [
+        "back-end"
+      ]
     },
     {
       "name": "MongoDB",
-      "isFavorite": false,
       "website": "https://www.mongodb.com",
       "level": "Básico",
-      "keywords": null,
-      "iconName": "mongodb"
+      "keywords": [
+        "back-end"
+      ]
     },
     {
       "name": "MySQL",
-      "isFavorite": false,
       "website": "https://www.mysql.com",
       "level": "Intermedio",
-      "keywords": null,
-      "iconName": "mysql"
+      "keywords": [
+        "back-end"
+      ]
     },
     {
       "name": "phpMyAdmin",
-      "isFavorite": false,
       "website": "https://www.phpmyadmin.net",
       "level": "Intermedio",
-      "keywords": null,
-      "iconName": "phpmyadmin"
+      "keywords": [
+        "tool"
+      ]
     },
     {
       "name": "Oracle",
-      "isFavorite": false,
       "website": "https://www.oracle.com",
       "level": "Básico",
-      "keywords": null,
-      "iconName": "oracle"
+      "keywords": [
+        "back-end"
+      ]
     },
     {
       "name": "Python",
-      "isFavorite": false,
       "website": "https://www.python.org",
       "level": "Básico",
-      "keywords": null,
-      "iconName": "python"
+      "keywords": [
+        "language"
+      ]
     },
     {
       "name": "C Sharp (C#)",
-      "isFavorite": false,
       "website": "https://learn.microsoft.com/en-us/dotnet/csharp",
       "level": "Básico",
-      "keywords": null,
-      "iconName": "c-sharp"
+      "keywords": [
+        "language"
+      ]
     },
     {
-      "name": "Visual basic for applications (VBA)",
-      "isFavorite": false,
+      "name": "VBA (Visual basic for applications)",
       "website": "https://learn.microsoft.com/en-us/office/vba",
       "level": "Intermedio",
-      "keywords": null,
-      "iconName": "vba"
+      "keywords": [
+        "language"
+      ]
     },
     {
       "name": "Java",
-      "isFavorite": false,
       "website": "https://www.java.com",
       "level": "Básico",
-      "keywords": null,
-      "iconName": "java"
+      "keywords": [
+        "language"
+      ]
     },
     {
       "name": "Node",
-      "isFavorite": true,
       "website": "https://nodejs.org",
       "level": "Intermedio",
-      "keywords": null,
-      "iconName": "node"
+      "keywords": [
+        "back-end"
+      ]
     },
     {
       "name": "CSS",
-      "isFavorite": true,
       "website": "https://www.w3.org/Style/CSS",
       "level": "Avanzado",
-      "keywords": null,
-      "iconName": "css"
+      "keywords": [
+        "front-end"
+      ]
     },
     {
       "name": "JavaScript",
-      "isFavorite": true,
       "website": "https://developer.mozilla.org/es/docs/Web/JavaScript",
       "level": "Avanzado",
-      "keywords": null,
-      "iconName": "javascript"
+      "keywords": [
+        "language"
+      ]
     },
     {
       "name": "PHP",
-      "isFavorite": false,
       "website": "https://www.php.net",
       "level": "Básico",
-      "keywords": null,
-      "iconName": "php"
+      "keywords": [
+        "language"
+      ]
     },
     {
       "name": "HTML",
-      "isFavorite": false,
       "website": "https://html.spec.whatwg.org/multipage",
       "level": "Avanzado",
-      "keywords": null,
-      "iconName": "html"
+      "keywords": [
+        "language"
+      ]
     },
     {
       "name": "Supabase",
-      "isFavorite": true,
       "website": "https://supabase.com",
       "level": "Intermedio",
-      "keywords": null,
-      "iconName": "supabase"
+      "keywords": [
+        "back-end"
+      ]
     },
     {
       "name": "Cypress",
-      "isFavorite": true,
       "website": "https://www.cypress.io",
       "level": "Intermedio",
-      "keywords": null,
-      "iconName": "cypress"
+      "keywords": [
+        "front-end"
+      ]
     },
     {
       "name": "Vitest",
-      "isFavorite": false,
       "website": "https://vitest.dev",
       "level": "Intermedio",
-      "keywords": null,
-      "iconName": "vitest"
+      "keywords": [
+        "front-end"
+      ]
     },
     {
       "name": "Vercel",
-      "isFavorite": true,
       "website": "https://vercel.com",
       "level": "Básico",
-      "keywords": null,
-      "iconName": "vercel"
+      "keywords": [
+        "tool"
+      ]
     },
     {
       "name": "Vite",
-      "isFavorite": true,
       "website": "https://vitejs.dev",
       "level": "Intermedio",
-      "keywords": null,
-      "iconName": "vite"
+      "keywords": [
+        "front-end"
+      ]
     },
     {
       "name": "React router dom",
-      "isFavorite": false,
       "website": "https://reactrouter.com",
       "level": "Intermedio",
-      "keywords": null,
-      "iconName": "react-router"
+      "keywords": [
+        "front-end"
+      ]
     },
     {
       "name": "Preact",
-      "isFavorite": true,
       "website": "https://preactjs.com",
       "level": "Intermedio",
-      "keywords": null,
-      "iconName": "preact"
+      "keywords": [
+        "front-end"
+      ]
     },
     {
       "name": "Token CSS",
-      "isFavorite": false,
       "website": "https://tokencss.com",
       "level": "Básico",
-      "keywords": null
+      "keywords": [
+        "front-end"
+      ]
     },
     {
       "name": "Astro",
-      "isFavorite": true,
       "website": "https://astro.build",
       "level": "Intermedio",
-      "keywords": null,
-      "iconName": "astro"
+      "keywords": [
+        "front-end"
+      ]
     },
     {
       "name": "Tailwind",
-      "isFavorite": true,
       "website": "https://tailwindcss.com/",
       "level": "Intermedio",
-      "keywords": null,
-      "iconName": "tailwind"
+      "keywords": [
+        "front-end"
+      ]
     },
     {
       "name": "Netlify",
-      "isFavorite": true,
       "website": "https://www.netlify.com/",
       "level": "Básico",
-      "keywords": null,
-      "iconName": "netlify"
+      "keywords": [
+        "tool"
+      ]
     },
     {
       "name": "Markdown",
-      "isFavorite": true,
       "website": "https://www.markdownguide.org/",
       "level": "Intermedio",
-      "keywords": null,
-      "iconName": "markdown"
+      "keywords": [
+        "language"
+      ]
     },
     {
       "name": "Deno",
-      "isFavorite": true,
       "website": "https://deno.com/",
       "level": "Intermedio",
-      "keywords": null,
-      "iconName": "deno"
+      "keywords": [
+        "back-end"
+      ]
     }
   ],
   "languages": [

@@ -8,33 +8,68 @@ const {
   knowledge: { name, text },
 } = sections;
 const { skills } = await readCV();
+const filters = {
+  "front-end": "front end",
+  "back-end": "back end",
+  tool: "herramientas",
+  language: "lenguages",
+};
 ---
 
 <section id={name}>
   <h1 class="section-title">{text}</h1>
 
-  <section class="card-container">
-    {
-      skills.map(({ website, name, iconName, level }) => {
-        return (
-          <Anchor
-            isExternalLink
-            class="card"
-            aria-label={`${name}, ${level}`}
-            href={website}
-          >
-            {iconName && <Icon name={iconName} url="/icons/knowledge" />}
-
-            <footer class="card-footer">
-              <h1 class="card-title">{name}</h1>
-              <small class="card-level" data-level={level}>
-                {level}
-              </small>
-            </footer>
-          </Anchor>
-        );
-      })
-    }
+  <section id="content">
+    <div id="filters">
+      {
+        Object.entries(filters).map(([id, text]) => {
+          return (
+            <label id="filter-container">
+              <input type="checkbox" id={id} /> {text}
+            </label>
+          );
+        })
+      }
+    </div>
+  
+    <section class="card-container">
+      {
+        skills
+          .sort((a, b) => {
+            const first = a.name.toLowerCase();
+            const second = b.name.toLowerCase();
+  
+            return first.localeCompare(second);
+          })
+          .map(({ website, name, level, keywords }) => {
+            const iconName = name
+              .replace(/\((.*?)\)/)
+              .toLowerCase()
+              .trim()
+              .replaceAll(" ", "-");
+  
+            return (
+              <Anchor
+                isExternalLink
+                class="card"
+                aria-label={`${name}, ${level}`}
+                href={website}
+                data-cat={keywords?.join(" ")}
+              >
+                <Icon name={iconName} url="/icons/knowledge" />
+  
+                <footer class="card-footer">
+                  <h1 class="card-title">{name}</h1>
+  
+                  <small class="card-level" data-level={level}>
+                    {level}
+                  </small>
+                </footer>
+              </Anchor>
+            );
+          })
+      }
+    </section>
   </section>
 </section>
 
@@ -46,6 +81,99 @@ const { skills } = await readCV();
     aspect-ratio: 395 / 233;
     align-content: baseline;
     width: 100%;
+
+    & #content {
+      display: grid;
+      gap: 48px;
+
+      & #filters {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      column-gap: 24px;
+      row-gap: 16px;
+      flex-wrap: wrap;
+
+      &:has(input[type="checkbox"]:checked) {
+        & #filter-container:has(input[type="checkbox"]:not(:checked)) {
+          pointer-events: none;
+        }
+      }
+
+      & #filter-container {
+        box-shadow: 0px 0px 1.5px currentColor;
+        padding: 4px 12px;
+        border-radius: var(--border-radius-max);
+        transition-duration: 0.3s;
+        transition-property: border-color, color, background-color:;
+        transition-timing-function: ease;
+
+        &::first-letter {
+          text-transform: capitalize;
+        }
+
+        &:has(input[type="checkbox"]:not(:checked)) {
+            @media (pointer: fine) {
+            &:hover {
+              background-color: color-mix(
+                in srgb,
+                transparent,
+                var(--current-neon-theme) 15%
+              );
+            }
+          }
+        }
+
+        & input[type="checkbox"] {
+          display: none;
+        }
+
+        &:has(input[type="checkbox"]:checked) {
+          box-shadow: 0px 0px 3px var(--current-neon-theme);
+          text-shadow: 0px 0px 12px var(--current-neon-theme);
+          color: color-mix(
+            in srgb,
+            currentColor,
+            var(--current-neon-theme) 50%
+          );
+        }
+      }
+
+      &:has(input[type="checkbox"]) {
+        &:has(#front-end:checked) {
+          ~ .card-container {
+            .card:not([data-cat*="front-end"]) {
+              display: none;
+            }
+          }
+        }
+
+        &:has(#back-end:checked) {
+          ~ .card-container {
+            .card:not([data-cat*="back-end"]) {
+              display: none;
+            }
+          }
+        }
+
+        &:has(#tool:checked) {
+          ~ .card-container {
+            .card:not([data-cat*="tool"]) {
+              display: none;
+            }
+          }
+        }
+
+        &:has(#language:checked) {
+          ~ .card-container {
+            .card:not([data-cat*="language"]) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
 
     & .card-container {
       display: flex;
@@ -91,7 +219,7 @@ const { skills } = await readCV();
         [icon="github"],
         [icon="vercel"],
         [icon="markdown"] {
-          filter: drop-shadow(0px 0px 4px var(--palette-white));
+          filter: drop-shadow(0px 0px 8px var(--palette-white));
         }
 
         & .card-footer {
@@ -139,6 +267,7 @@ const { skills } = await readCV();
           }
         }
       }
+    }
     }
   }
 </style>
