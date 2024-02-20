@@ -2,11 +2,11 @@
 const { name, url } = Astro.props;
 const path = `../../public${url || "/icons"}/${name}.svg`;
 const iconsFolder = import.meta.glob("../../public/icons/**/*.svg", {
-  as: "raw",
+  query: "raw",
   eager: true,
 });
 
-const raw = iconsFolder[path]?.replace("<svg", `<svg icon="${name}"`);
+const raw = iconsFolder[path]?.default?.replace("<svg", `<svg icon="${name}"`);
 ---
 
 {raw && <Fragment set:html={raw} />}
