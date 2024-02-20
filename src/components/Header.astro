@@ -124,34 +124,46 @@ const {
         color: var(--palette-black);
       }
 
-      @media (prefers-color-scheme: light) {
+      :is([theme="light"]) {
+        svg[icon="moon"] {
+          display: block;
+        }
+
         svg[icon="sun"] {
           display: none;
         }
-
-        #dark-mode-button:checked {
-          ~ svg[icon="moon"] {
-            display: none;
-          }
-
-          ~ svg[icon="sun"] {
-            display: block;
-          }
-        }
       }
 
-      @media (prefers-color-scheme: dark) {
-        & svg[icon="moon"] {
-          display: none;
-        }
-
-        #dark-mode-button:checked {
-          ~ svg[icon="sun"] {
+      &:is(:not([theme])) {
+        @media (prefers-color-scheme: light) {
+          svg[icon="sun"] {
             display: none;
           }
 
-          ~ svg[icon="moon"] {
-            display: block;
+          #dark-mode-button:checked {
+            ~ svg[icon="moon"] {
+              display: none;
+            }
+
+            ~ svg[icon="sun"] {
+              display: block;
+            }
+          }
+        }
+
+        @media (prefers-color-scheme: dark) {
+          & svg[icon="moon"] {
+            display: none;
+          }
+
+          #dark-mode-button:checked {
+            ~ svg[icon="sun"] {
+              display: none;
+            }
+
+            ~ svg[icon="moon"] {
+              display: block;
+            }
           }
         }
       }

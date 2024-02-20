@@ -97,24 +97,66 @@ import { urlDomain } from "./../utils/const";
     --current-neon-theme: var(--palette-neon-blue);
     color-scheme: light; /* In the momeny just work for the scrollbar color theme */
 
-    &:has(#dark-mode-button:checked) {
-      color-scheme: dark;
-      --current-text-theme: var(--palette-white);
-      --current-background-theme: var(--palette-black);
-      --current-neon-theme: var(--palette-neon-green);
-    }
-
-    @media (prefers-color-scheme: dark) {
-      color-scheme: dark;
-      --current-text-theme: var(--palette-white);
-      --current-background-theme: var(--palette-black);
-      --current-neon-theme: var(--palette-neon-green);
-
-      &:has(#dark-mode-button:checked) {
+    &:is(html[theme]) {
+      &:is(html[theme="light"]) {
         color-scheme: light;
         --current-text-theme: var(--palette-black);
         --current-background-theme: var(--palette-white);
         --current-neon-theme: var(--palette-neon-blue);
+
+        &:has(svg[icon="sun"]) {
+          svg[icon="sun"] {
+            display: none !important;
+          }
+        }
+
+        &:has(svg[icon="moon"]) {
+          svg[icon="moon"] {
+            display: block !important;
+          }
+        }
+      }
+
+      &:is(html[theme="dark"]) {
+        color-scheme: dark;
+        --current-text-theme: var(--palette-white);
+        --current-background-theme: var(--palette-black);
+        --current-neon-theme: var(--palette-neon-green);
+
+        &:has(svg[icon="moon"]) {
+          svg[icon="moon"] {
+            display: none !important;
+          }
+        }
+
+        &:has(svg[icon="sun"]) {
+          svg[icon="sun"] {
+            display: block !important;
+          }
+        }
+      }
+    }
+
+    &:is(:not(html[theme])) {
+      &:has(#dark-mode-button:checked) {
+        color-scheme: dark;
+        --current-text-theme: var(--palette-white);
+        --current-background-theme: var(--palette-black);
+        --current-neon-theme: var(--palette-neon-green);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        color-scheme: dark;
+        --current-text-theme: var(--palette-white);
+        --current-background-theme: var(--palette-black);
+        --current-neon-theme: var(--palette-neon-green);
+
+        &:has(#dark-mode-button:checked) {
+          color-scheme: light;
+          --current-text-theme: var(--palette-black);
+          --current-background-theme: var(--palette-white);
+          --current-neon-theme: var(--palette-neon-blue);
+        }
       }
     }
   }
