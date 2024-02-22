@@ -41,14 +41,7 @@ const filters = {
   
             return first.localeCompare(second);
           })
-          .map(({ website, name, level, keywords }) => {
-            const iconName = name
-              .replace(/\((.*?)\)/)
-              .toLowerCase()
-              .trim()
-              .replaceAll(" ", "-");
-  console.log({iconName});
-  
+          .map(({ website, name, level, keywords }) => { 
             return (
               <Anchor
                 isExternalLink
@@ -57,7 +50,7 @@ const filters = {
                 href={website}
                 data-cat={keywords?.join(" ")}
               >
-                <Icon name={iconName} url="/icons/knowledge" />
+                <Icon name={name} />
   
                 <footer class="card-footer">
                   <h1 class="card-title">{name}</h1>
