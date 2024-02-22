@@ -11,7 +11,7 @@ const svgFoundRaw = Object.entries(icons).find(([path]) => {
     .replace(/\((.*?)\)/, "")
     .trim()
     .replaceAll(" ", "-");
-  const isMatch = path.includes(parsedName);
+  const isMatch = path.includes(`${parsedName}.svg`);
 
   return isMatch;
 })?.[1];
