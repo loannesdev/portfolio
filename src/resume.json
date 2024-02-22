@@ -435,6 +435,22 @@
       "keywords": [
         "back-end"
       ]
+    },
+    {
+      "name": "Web components",
+      "website": "https://www.webcomponents.org/",
+      "level": "Intermedio",
+      "keywords": [
+        "front-end"
+      ]
+    },
+    {
+      "name": "Next",
+      "website": "https://nextjs.org/",
+      "level": "Básico",
+      "keywords": [
+        "front-end"
+      ]
     }
   ],
   "languages": [
