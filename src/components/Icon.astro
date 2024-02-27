@@ -1,22 +1,27 @@
 ---
 const { name } = Astro.props;
-const icons = import.meta.glob("../../public/icons/**/*.svg", {
-  query: "raw",
-  eager: true,
-});
 
-const svgFoundRaw = Object.entries(icons).find(([path]) => {
-  const parsedName = name
-    .toLowerCase()
-    .replace(/\((.*?)\)/, "")
-    .trim()
-    .replaceAll(" ", "-");
-  const isMatch = path.includes(`${parsedName}.svg`);
+let raw = null;
 
-  return isMatch;
-})?.[1];
+if (name) {
+  const icons = import.meta.glob("../../public/icons/**/*.svg", {
+    query: "raw",
+    eager: true,
+  });
 
-const raw = svgFoundRaw?.default.replace("<svg", `<svg icon="${name}"`);
+  const svgFoundRaw = Object.entries(icons).find(([path, rawObj]) => {
+    const parsedName = name
+      .toLowerCase()
+      .replace(/\((.*?)\)/, "")
+      .trim()
+      .replaceAll(" ", "-");
+    const isMatch = path.includes(`/${parsedName}.svg`);
+
+    return isMatch;
+  })?.[1];
+
+  raw = svgFoundRaw?.default?.replace("<svg", `<svg icon="${name}"`) ?? null;
+}
 ---
 
 {raw && <Fragment set:html={raw} />}
