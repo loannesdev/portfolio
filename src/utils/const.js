@@ -1,6 +1,6 @@
 import { envVars } from "./scripts";
 
-export const lookingForAJob = true;
+export const lookingForAJob = false;
 
 export const sections = {
   home: {
