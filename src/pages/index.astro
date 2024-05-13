@@ -199,8 +199,8 @@ import { urlDomain } from "./../utils/const";
         --section-scroll-margin-top: 168px;
         max-width: 80ch;
         justify-self: center;
-        width: 100%;
-        display: grid;
+        display: flex;
+        flex-direction: column;
         gap: 160px;
 
         @media (width >= 640px) {
@@ -222,7 +222,6 @@ import { urlDomain } from "./../utils/const";
 </style>
 
 <script>
-  import { darkMode, scrollMarginTopChecker } from "../utils/scripts";
   import { darkMode, scrollMarginTopChecker } from "../utils/scripts";
 
   scrollMarginTopChecker();

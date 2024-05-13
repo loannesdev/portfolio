@@ -73,7 +73,8 @@
 
 <style>
   section[id] {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 24px;
     width: 100%;
     min-height: 25rem;
