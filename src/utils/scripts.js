@@ -4,18 +4,6 @@ export const DOMSelector = string => {
 
 export const envVars = import.meta.env;
 
-export const scrollMarginTopChecker = () => {
-  const header = DOMSelector(".header-container");
-  const main = DOMSelector("body > main");
-
-  new ResizeObserver(([headerEntry]) => {
-    const { contentRect: { top, bottom } } = headerEntry;
-
-    main.style = `--section-scroll-margin-top: ${Math.floor(top + bottom)}px`;
-  })
-    .observe(header);
-};
-
 export const darkMode = () => {
   // Dark mode
   let darkModeValue = localStorage.getItem("theme");

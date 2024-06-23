@@ -73,6 +73,7 @@ import { urlDomain } from "./../utils/const";
       src="https://librecounter.org/counter.svg"
       referrerPolicy="unsafe-url"
       width="0"
+      alt=""
     />
     <Header />
 
@@ -191,20 +192,24 @@ import { urlDomain } from "./../utils/const";
       background-color: var(--current-background-theme);
       color: var(--current-text-theme);
 
+      @media (pointer: coarse) {
+        padding-bottom: 240px;
+      }
+
       & > :global(*) {
         padding-inline: 16px;
       }
 
       & main {
-        --section-scroll-margin-top: 168px;
+        --section-scroll-margin-top: 5rem;
         max-width: 80ch;
         justify-self: center;
         display: flex;
         flex-direction: column;
         gap: 160px;
 
-        @media (width >= 640px) {
-          --section-scroll-margin-top: 80px;
+        @media (pointer: coarse) {
+          --section-scroll-margin-top: 16px;
         }
 
         & :global(section[id]) {
@@ -222,9 +227,8 @@ import { urlDomain } from "./../utils/const";
 </style>
 
 <script>
-  import { darkMode, scrollMarginTopChecker } from "../utils/scripts";
+  import { darkMode } from "../utils/scripts";
 
-  scrollMarginTopChecker();
   window
     .matchMedia("(prefers-color-scheme: dark)")
     .addEventListener("change", () => {
