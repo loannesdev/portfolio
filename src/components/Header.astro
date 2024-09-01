@@ -52,7 +52,7 @@ const {
   <nav class="navigation-list">
     <ul>
       {
-        Object.values(sections).map(({ name, text }) => (
+        sections.map(({ name, text }) => (
           <li>
             <Anchor
               href={"#" + name}
@@ -245,14 +245,13 @@ const {
 
     & > ul {
       display: flex;
-      column-gap: 16px;
-      row-gap: 12px;
+      gap: 12px 8px;
       flex-wrap: wrap;
       justify-content: center;
-      border-radius: var(--border-radius-min);
+      border-radius: var(--border-radius-med);
       background-color: var(--palette-grey);
-      padding: 8px 4px;
-      aspect-ratio: 511 / 37;
+      padding: 12px 8px;
+      align-items: center;
 
       & > li {
         & > :global(a) {

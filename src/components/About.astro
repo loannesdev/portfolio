@@ -2,9 +2,7 @@
 import { readCV } from "../services.js";
 import { sections } from "../utils/const";
 
-const {
-  about: { name, text },
-} = sections;
+const { name, text } = sections.find((elm) => elm.name === "about");
 
 const {
   basics: { summary },

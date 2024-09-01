@@ -3,9 +3,7 @@
   import { github, sections } from "../utils/const";
 
   const projects = readRepos();
-  const {
-    projects: { text, name },
-  } = sections;
+  const { text, name } = sections.find((elm) => elm.name === "projects");
 
   const anchorPropsExternal = {
     target: "_blank",

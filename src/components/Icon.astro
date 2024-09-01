@@ -1,5 +1,5 @@
 ---
-const { name } = Astro.props;
+const { name, folder = "" } = Astro.props;
 
 let raw = null;
 
@@ -15,6 +15,11 @@ if (name) {
       .replace(/\((.*?)\)/, "")
       .trim()
       .replaceAll(" ", "-");
+
+    if (path.length) {
+      return path.includes(`${folder}/${parsedName}.svg`);
+    }
+
     const isMatch = path.includes(`/${parsedName}.svg`);
 
     return isMatch;

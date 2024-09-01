@@ -1,9 +1,7 @@
 ---
 import { sections } from "../utils/const";
 
-const {
-  home: { name },
-} = sections;
+const { name } = sections.find((elm) => elm.name === "home");
 ---
 
 <section id={name}>
@@ -30,6 +28,7 @@ const {
         color-mix(in srgb, transparent 15%, var(--current-neon-theme));
       -webkit-text-stroke: 2px currentColor;
       animation: fade 10s infinite ease;
+      text-wrap: unset;
     }
   }
 

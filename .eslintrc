@@ -54,6 +54,10 @@
 		"semi": [
 			"warn",
 			"always"
+		],
+		"quote-props": [
+			"error",
+			"consistent"
 		]
 	},
 	"env": {
