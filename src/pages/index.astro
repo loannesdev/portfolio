@@ -70,12 +70,13 @@ import { urlDomain } from "./../utils/const";
   </head>
 
   <body>
-    <img
-      src="https://librecounter.org/counter.svg"
-      referrerPolicy="unsafe-url"
-      width="0"
-      alt=""
-    />
+    <a href="https://librecounter.org/referer/show" target="_blank">
+      <img
+        src="https://librecounter.org/unique.svg"
+        referrerPolicy="unsafe-url"
+      />
+    </a>
+
     <Header />
 
     <main>
@@ -103,7 +104,7 @@ import { urlDomain } from "./../utils/const";
     --current-text-theme: var(--palette-black);
     --current-background-theme: var(--palette-white);
     --current-neon-theme: var(--palette-neon-blue);
-    color-scheme: light; /* In the momeny just work for the scrollbar color theme */
+    color-scheme: light; /* In the moment just work for the scrollbar color theme */
 
     &:is(html[theme]) {
       &:is(html[theme="light"]) {
