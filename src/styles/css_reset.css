@@ -41,6 +41,7 @@ textarea {
 p {
   overflow-wrap: break-word;
   text-wrap: pretty;
+  line-height: 1.6;
 }
 
 a:-webkit-any-link {

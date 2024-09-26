@@ -32,7 +32,6 @@ const {
 
 <style>
   section[id] {
-    aspect-ratio: 78 / 23;
     display: grid;
     gap: 12px;
 
@@ -71,6 +70,11 @@ const {
           user-select: none;
         }
       }
+    }
+
+    & :global(strong),
+    .interests-title {
+      color: var(--neon-text-variant);
     }
   }
 </style>
