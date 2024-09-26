@@ -70,7 +70,11 @@ import { urlDomain } from "./../utils/const";
   </head>
 
   <body>
-    <a href="https://librecounter.org/referer/show" target="_blank">
+    <a
+      href="https://librecounter.org/referer/show"
+      target="_blank"
+      class="counter"
+    >
       <img
         src="https://librecounter.org/unique.svg"
         referrerpolicy="unsafe-url"
@@ -230,6 +234,10 @@ import { urlDomain } from "./../utils/const";
             font-family: var(--font-family-title);
           }
         }
+      }
+
+      & .counter {
+        display: none;
       }
     }
   }
