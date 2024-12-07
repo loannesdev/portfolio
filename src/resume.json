@@ -28,7 +28,27 @@
   },
   "work": [
     {
-      "name": "EMCALI",
+      "name": "Justo Pago",
+      "position": "Desarrollador junior full-stack",
+      "url": "https://justopago.com.co/",
+      "startDate": "14-04-2024",
+      "endDate": "29-11-2024",
+      "summary": "Continuamente optimizar e innovar las características y funcionalidades, brindar soporte técnico efectivo al personal de la empresa, colaborar y asistir a los miembros del equipo de tecnología fomentando el trabajo en equipo, y desarrollar propuestas detalladas y atractivas de interfaces de usuario para garantizar una experiencia óptima y fluida.",
+      "highlights": [
+        "React",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Firebase",
+        "Node",
+        "Git",
+        "GitHub",
+        "Visual Studio Code",
+        "Vite"
+      ]
+    },
+    {
+      "name": "Justo Pago",
       "position": "Practicante",
       "url": "https://www.emcali.com.co",
       "startDate": "08-04-2019",
