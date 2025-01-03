@@ -90,197 +90,197 @@ const {
       bottom: 0px;
       top: auto;
     }
-  }
 
-  .contact {
-    display: flex;
-    align-items: center;
-    column-gap: 48px;
-    row-gap: 12px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    & #dark-mode-container {
+    & .contact {
       display: flex;
-      border: 1px solid transparent;
-      background-color: var(--is-dark-mode);
-      padding: 4.8px;
-      border-radius: var(--border-radius-min);
-      justify-content: center;
       align-items: center;
-
-      @media (pointer: fine) {
-        &:hover {
-          border-color: var(--palette-grey);
-        }
-      }
-
-      @media (pointer: coarse) {
-        &:active {
-          border-color: var(--palette-grey);
-        }
-      }
-
-      svg[icon="sun"] {
-        color: yellow;
-        display: block;
-      }
-
-      svg[icon="moon"] {
-        color: var(--palette-black);
-      }
-
-      :is([theme="light"]) {
-        svg[icon="moon"] {
-          display: block;
-        }
-
-        svg[icon="sun"] {
-          display: none;
-        }
-      }
-
-      &:is(:not([theme])) {
-        @media (prefers-color-scheme: light) {
-          svg[icon="sun"] {
-            display: none;
-          }
-
-          #dark-mode-button:checked {
-            ~ svg[icon="moon"] {
-              display: none;
-            }
-
-            ~ svg[icon="sun"] {
-              display: block;
-            }
-          }
-        }
-
-        @media (prefers-color-scheme: dark) {
-          & svg[icon="moon"] {
-            display: none;
-          }
-
-          #dark-mode-button:checked {
-            ~ svg[icon="sun"] {
-              display: none;
-            }
-
-            ~ svg[icon="moon"] {
-              display: block;
-            }
-          }
-        }
-      }
-
-      & #dark-mode-button {
-        display: none;
-      }
-    }
-
-    & .social-container {
-      display: flex;
-      column-gap: 32px;
-      row-gap: 8px;
-      align-items: center;
+      column-gap: 48px;
+      row-gap: 12px;
       flex-wrap: wrap;
       justify-content: center;
 
-      & .social {
+      & #dark-mode-container {
         display: flex;
-        gap: 0.5rem;
+        border: 1px solid transparent;
+        background-color: var(--is-dark-mode);
+        padding: 4.8px;
+        border-radius: var(--border-radius-min);
         justify-content: center;
         align-items: center;
 
-        & :global(a) {
-          display: flex;
-
-          [icon] {
-            fill: var(--palette-white);
-          }
-        }
-      }
-
-      & .download-cv {
-        transition-duration: 0.2s;
-        transition-property: color, font-weight, text-shadow;
-        transition-timing-function: ease;
-        border: 1px dotted var(--current-text-theme);
-        border-radius: var(--border-radius-min);
-        padding: 6px 12px;
-        text-decoration: none;
-        text-align: center;
-        color: currentColor;
-        user-select: none;
-
         @media (pointer: fine) {
           &:hover {
-            color: var(--current-neon-theme);
-            border-style: solid;
-            text-shadow: 0 0 16px var(--current-neon-theme);
-            border-color: var(--current-neon-theme);
+            border-color: var(--palette-grey);
           }
         }
 
         @media (pointer: coarse) {
           &:active {
-            color: var(--current-neon-theme);
-            border-style: solid;
-            text-shadow: 0 0 16px var(--current-neon-theme);
-            border-color: var(--current-neon-theme);
+            border-color: var(--palette-grey);
           }
         }
+
+        svg[icon="sun"] {
+          color: yellow;
+          display: block;
+        }
+
+        svg[icon="moon"] {
+          color: var(--palette-black);
+        }
+
+        :is([theme="light"]) {
+          svg[icon="moon"] {
+            display: block;
+          }
+
+          svg[icon="sun"] {
+            display: none;
+          }
+        }
+
+        &:is(:not([theme])) {
+          @media (prefers-color-scheme: light) {
+            svg[icon="sun"] {
+              display: none;
+            }
+
+            #dark-mode-button:checked {
+              ~ svg[icon="moon"] {
+                display: none;
+              }
+
+              ~ svg[icon="sun"] {
+                display: block;
+              }
+            }
+          }
+
+          @media (prefers-color-scheme: dark) {
+            & svg[icon="moon"] {
+              display: none;
+            }
+
+            #dark-mode-button:checked {
+              ~ svg[icon="sun"] {
+                display: none;
+              }
+
+              ~ svg[icon="moon"] {
+                display: block;
+              }
+            }
+          }
+        }
+
+        & #dark-mode-button {
+          display: none;
+        }
       }
-    }
 
-    & :global([icon]) {
-      height: 32px;
-      width: 32px;
-    }
-  }
+      & .social-container {
+        display: flex;
+        column-gap: 32px;
+        row-gap: 8px;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
 
-  .navigation-list {
-    display: flex;
-    align-items: center;
+        & .social {
+          display: flex;
+          gap: 0.5rem;
+          justify-content: center;
+          align-items: center;
 
-    & > ul {
-      display: flex;
-      gap: 12px 8px;
-      flex-wrap: wrap;
-      justify-content: center;
-      border-radius: var(--border-radius-med);
-      background-color: var(--palette-grey);
-      padding: 12px 8px;
-      align-items: center;
+          & :global(a) {
+            display: flex;
 
-      & > li {
-        & > :global(a) {
-          text-decoration: none;
-          word-break: break-all;
-          border-radius: var(--border-radius-min);
-          padding: 4px 8px;
-          transition-duration: 0.3s;
-          transition-property: color, background-color, linear-gradient;
+            [icon] {
+              fill: var(--palette-white);
+            }
+          }
+        }
+
+        & .download-cv {
+          transition-duration: 0.2s;
+          transition-property: color, font-weight, text-shadow;
           transition-timing-function: ease;
-          --bg-color: color-mix(
-            in srgb,
-            transparent 90%,
-            var(--current-neon-theme)
-          );
+          border: 1px dotted var(--current-text-theme);
+          border-radius: var(--border-radius-min);
+          padding: 6px 12px;
+          text-decoration: none;
+          text-align: center;
           color: currentColor;
+          user-select: none;
 
           @media (pointer: fine) {
             &:hover {
-              background-color: var(--bg-color);
               color: var(--current-neon-theme);
+              border-style: solid;
+              text-shadow: 0 0 16px var(--current-neon-theme);
+              border-color: var(--current-neon-theme);
             }
           }
 
           @media (pointer: coarse) {
             &:active {
-              background-color: var(--bg-color);
-              color: var(--current-background-theme);
+              color: var(--current-neon-theme);
+              border-style: solid;
+              text-shadow: 0 0 16px var(--current-neon-theme);
+              border-color: var(--current-neon-theme);
+            }
+          }
+        }
+      }
+
+      & :global([icon]) {
+        height: 32px;
+        width: 32px;
+      }
+    }
+
+    & .navigation-list {
+      display: flex;
+      align-items: center;
+
+      & > ul {
+        display: flex;
+        gap: 12px 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+        border-radius: var(--border-radius-med);
+        background-color: var(--palette-grey);
+        padding: 12px 8px;
+        align-items: center;
+
+        & > li {
+          & > :global(a) {
+            text-decoration: none;
+            word-break: break-all;
+            border-radius: var(--border-radius-min);
+            padding: 4px 8px;
+            transition-duration: 0.3s;
+            transition-property: color, background-color, linear-gradient;
+            transition-timing-function: ease;
+            --bg-color: color-mix(
+              in srgb,
+              transparent 90%,
+              var(--current-neon-theme)
+            );
+            color: currentColor;
+
+            @media (pointer: fine) {
+              &:hover {
+                background-color: var(--bg-color);
+                color: var(--current-neon-theme);
+              }
+            }
+
+            @media (pointer: coarse) {
+              &:active {
+                background-color: var(--bg-color);
+                color: var(--current-background-theme);
+              }
             }
           }
         }
