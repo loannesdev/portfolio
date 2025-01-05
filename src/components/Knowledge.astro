@@ -7,6 +7,7 @@ import Icon from "./Icon.astro";
 const { name, text } = sections.find((elm) => elm.name === "knowledge");
 const { skills } = await readCV();
 const filters = {
+  all: "todos",
   "front-end": "front end",
   "back-end": "back end",
   tool: "herramientas",
@@ -22,8 +23,14 @@ const filters = {
       {
         Object.entries(filters).map(([id, text]) => {
           return (
-            <label id="filter-container">
-              <input type="checkbox" id={id} /> {text}
+            <label class="filter-opt">
+              <input
+                type="radio"
+                id={id}
+                name="filter"
+                {...{ checked: id === "all" }}
+              />
+              {text}
             </label>
           );
         })
@@ -46,7 +53,7 @@ const filters = {
                 class="card"
                 aria-label={`${name}, ${level}`}
                 href={website}
-                data-cat={keywords?.join(" ")}
+                data-category={keywords?.join(" ")}
               >
                 <Icon name={name} />
 
@@ -87,58 +94,56 @@ const filters = {
         row-gap: 16px;
         flex-wrap: wrap;
 
-        &:has(input[type="checkbox"]:checked) {
-          & #filter-container:has(input[type="checkbox"]:not(:checked)) {
-            pointer-events: none;
-          }
-        }
-
-        & #filter-container {
+        & .filter-opt {
           box-shadow: 0px 0px 1.5px currentColor;
           padding: 4px 12px;
           border-radius: var(--border-radius-max);
-          transition-duration: 0.3s;
-          transition-property: border-color, color, background-color:;
-          transition-timing-function: ease;
+          transition: 0.3s ease;
+          transition-property: border-color, color, background-color, box-shadow,
+            text-shadow;
           cursor: pointer;
           user-select: none;
           word-break: keep-all;
+          border: 1px solid
+            color-mix(in srgb, transparent 90%, var(--current-text-theme));
 
           &::first-letter {
             text-transform: capitalize;
           }
 
-          &:has(input[type="checkbox"]:not(:checked)) {
-              @media (pointer: fine) {
+          & > input {
+            display: none;
+          }
+
+          &:has(> input:not(:checked)) {
+            @media (pointer: fine) {
               &:hover {
                 background-color: color-mix(
                   in srgb,
                   transparent,
                   var(--current-neon-theme) 15%
                 );
+                border-color: color-mix(
+                  in srgb,
+                  transparent 40%,
+                  var(--current-neon-theme)
+                );
               }
             }
           }
 
-          & input[type="checkbox"] {
-            display: none;
-          }
-
-          &:has(input[type="checkbox"]:checked) {
-            box-shadow: 0px 0px 3px var(--current-neon-theme);
-            text-shadow: 0px 0px 12px var(--current-neon-theme);
-            color: color-mix(
-              in srgb,
-              currentColor,
-              var(--current-neon-theme) 50%
-            );
+          &:has(> input:checked) {
+            color: var(--neon-text-variant);
+            border-color: var(--current-neon-theme);
+            box-shadow: 0px 0px 6px var(--current-neon-theme);
+            text-shadow: 0px 0px 1px var(--current-neon-theme);
           }
         }
 
-        &:has(input[type="checkbox"]) {
+        &:has(.filter-opt > input) {
           &:has(#front-end:checked) {
             ~ .card-container {
-              .card:not([data-cat*="front-end"]) {
+              .card:not([data-category*="front-end"]) {
                 display: none;
               }
             }
@@ -146,7 +151,7 @@ const filters = {
 
           &:has(#back-end:checked) {
             ~ .card-container {
-              .card:not([data-cat*="back-end"]) {
+              .card:not([data-category*="back-end"]) {
                 display: none;
               }
             }
@@ -154,7 +159,7 @@ const filters = {
 
           &:has(#tool:checked) {
             ~ .card-container {
-              .card:not([data-cat*="tool"]) {
+              .card:not([data-category*="tool"]) {
                 display: none;
               }
             }
@@ -162,7 +167,7 @@ const filters = {
 
           &:has(#language:checked) {
             ~ .card-container {
-              .card:not([data-cat*="language"]) {
+              .card:not([data-category*="language"]) {
                 display: none;
               }
             }
@@ -183,24 +188,57 @@ const filters = {
           justify-content: center;
           gap: 0.5rem;
           text-decoration: none;
-          padding: 0.3rem;
-          transition-duration: 0.15s;
-          transition-property: border;
-          transition-timing-function: ease;
+          transition: 0.15s ease;
+          transition-property: border, scale, text-shadow;
           border: 1px solid transparent;
           border-radius: var(--border-radius-med);
           text-align: center;
           padding: 12px 16px;
           color: currentColor;
+          scale: 1;
+          position: relative;
+
+          @starting-style {
+            scale: 0;
+          }
+
+          &::after {
+            --icon-size: 28px;
+
+            content: "";
+            background: url("/icons/knowledge/tabler-external-link.svg")
+              no-repeat center;
+            background-size: cover;
+            height: var(--icon-size);
+            width: var(--icon-size);
+            position: absolute;
+            top: calc(var(--icon-size) / 18 * -1);
+            right: calc(var(--icon-size) / 18 * -1);
+            transition: 0.1s ease allow-discrete;
+            transition-property: display, background-image;
+            display: none;
+            filter: brightness(0) saturate(100%) invert(48%) sepia(1%)
+              saturate(0%) hue-rotate(136deg) brightness(91%) contrast(83%);
+          }
 
           @media (pointer: fine) {
             &:hover {
               border-color: var(--palette-grey);
               text-shadow: 1px 1.5px 2px var(--palette-grey);
+
+              &::after {
+                display: block;
+              }
             }
           }
 
           @media (pointer: coarse) {
+            border-color: var(--palette-grey);
+
+            &::after {
+              display: block;
+            }
+
             &:active {
               background-color: var(--palette-grey);
             }

@@ -77,12 +77,18 @@ const {
     position: sticky;
     top: 0px;
 
+    @media (pointer: coarse) {
+      position: fixed;
+      bottom: 0px;
+      top: auto;
+    }
+
     & > div {
       display: flex;
       column-gap: 48px;
       row-gap: 24px;
       justify-content: space-around;
-      padding-block: 16px;
+      padding: 16px;
       font-family: var(--font-family-text);
       flex-wrap: wrap;
       align-items: center;
@@ -90,12 +96,6 @@ const {
       justify-self: center;
       max-width: 1280px;
       margin-inline: auto;
-
-      @media (pointer: coarse) {
-        position: fixed;
-        bottom: 0px;
-        top: auto;
-      }
 
       & .contact {
         display: flex;
