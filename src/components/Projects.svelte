@@ -82,7 +82,7 @@
       column-gap: 0.5rem;
       column-count: auto;
       column-width: 20rem;
-      aspect-ratio: 320 / 300;
+      aspect-ratio: 197 / 246;
 
       & .card {
         border: 0.1rem solid var(--palette-grey);
