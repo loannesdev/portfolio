@@ -27,6 +27,7 @@ const {
                   href={url}
                   isExternalLink
                   aria-label={`Ver cuenta en ${network}`}
+                  data-title={network}
                 >
                   <Icon name={network.toLowerCase()} />
                 </Anchor>
@@ -143,8 +144,7 @@ const {
 
         & .social-container {
           display: flex;
-          column-gap: 32px;
-          row-gap: 8px;
+          gap: 8px 32px;
           align-items: center;
           flex-wrap: wrap;
           justify-content: center;
@@ -156,10 +156,55 @@ const {
             align-items: center;
 
             & :global(a) {
+              --bg-color-tooltip: color-mix(
+                in srgb,
+                var(--current-background-theme) 90%,
+                var(--current-text-theme)
+              );
+
               display: flex;
+              position: relative;
 
               [icon] {
                 fill: var(--palette-white);
+              }
+
+              @media (pointer: fine) {
+                &::before,
+                &::after {
+                  transition: 0.3s ease allow-discrete;
+                  transition-property: scale, display;
+                  scale: 1;
+
+                  @starting-style {
+                    scale: 0;
+                  }
+                }
+
+                &:hover {
+                  &::after {
+                    content: attr(data-title);
+                    position: absolute;
+                    bottom: -42px;
+                    left: -60%;
+                    color: var(--current-text-theme);
+                    background-color: var(--bg-color-tooltip);
+                    padding: 4px 8px;
+                    border-radius: var(--border-radius-min);
+                    font-size: 15px;
+                  }
+
+                  &::before {
+                    content: "";
+                    position: absolute;
+                    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+                    background-color: var(--bg-color-tooltip);
+                    width: 8px;
+                    height: 6px;
+                    bottom: -14px;
+                    left: 40%;
+                  }
+                }
               }
             }
           }
@@ -212,8 +257,6 @@ const {
           flex-wrap: wrap;
           justify-content: center;
           border-radius: var(--border-radius-med);
-          background-color: var(--palette-grey);
-          padding: 12px 8px;
           align-items: center;
 
           & > li {
@@ -221,7 +264,7 @@ const {
               text-decoration: none;
               word-break: break-all;
               border-radius: var(--border-radius-min);
-              padding: 4px 8px;
+              padding: 6px 12px;
               transition-duration: 0.3s;
               transition-property: color, background-color, linear-gradient;
               transition-timing-function: ease;
