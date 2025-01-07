@@ -1,28 +1,28 @@
 import { envVars } from "./scripts";
 
-export const lookingForAJob = true;
+export const lookingForAJob = false;
 
 export const sections = [
   {
     name: "home",
-    text: "Inicio"
+    text: "Inicio",
   },
   {
     name: "about",
-    text: "Sobre mí"
+    text: "Sobre mí",
   },
   {
     name: "knowledge",
-    text: "Conocimientos"
+    text: "Conocimientos",
   },
   {
     name: "projects",
-    text: "Proyectos personales"
+    text: "Proyectos personales",
   },
   {
     name: "suggestions",
-    text: "Recomendaciones"
-  }
+    text: "Recomendaciones",
+  },
 ];
 
 export const github = {
@@ -31,13 +31,13 @@ export const github = {
   path: {
     users: "/users",
     repos: "/repos",
-    contents: "/contents"
+    contents: "/contents",
   },
   cv: {
     name: envVars.PUBLIC_CV_NAME,
-    file: envVars.PUBLIC_CV_FILE
+    file: envVars.PUBLIC_CV_FILE,
   },
-  projects: "https://github.com/loannesdev?tab=repositories"
+  projects: "https://github.com/loannesdev?tab=repositories",
 };
 
 export const urlDomain = "https://loannesdev.netlify.app";
@@ -49,30 +49,30 @@ export const contentCreators = [
     social: [
       {
         key: "website",
-        url: "https://midu.dev/"
+        url: "https://midu.dev/",
       },
       {
         key: "twitter",
-        url: "https://x.com/midudev"
+        url: "https://x.com/midudev",
       },
       {
         key: "twitch",
-        url: "https://www.twitch.tv/midudev"
+        url: "https://www.twitch.tv/midudev",
       },
       {
         key: "youtube",
-        url: "https://www.youtube.com/c/midudev"
+        url: "https://www.youtube.com/c/midudev",
       },
       {
         key: "linkedin",
-        url: "https://linkedin.com/in/midudev"
+        url: "https://linkedin.com/in/midudev",
       },
       {
         key: "instagram",
-        url: "https://www.instagram.com/midu.dev/"
-      }
+        url: "https://www.instagram.com/midu.dev/",
+      },
     ],
-    photo: "https://unavatar.io/twitter/midudev"
+    photo: "https://unavatar.io/twitter/midudev",
   },
   {
     name: "ManzDev",
@@ -80,30 +80,30 @@ export const contentCreators = [
     social: [
       {
         key: "website",
-        url: "https://manz.dev/"
+        url: "https://manz.dev/",
       },
       {
         key: "twitter",
-        url: "https://x.com/manz"
+        url: "https://x.com/manz",
       },
       {
         key: "twitch",
-        url: "https://www.twitch.tv/ManzDev"
+        url: "https://www.twitch.tv/ManzDev",
       },
       {
         key: "youtube",
-        url: "https://www.youtube.com/@ManzDev"
+        url: "https://www.youtube.com/@ManzDev",
       },
       {
         key: "linkedin",
-        url: "https://www.linkedin.com/in/joseromanhdez/"
+        url: "https://www.linkedin.com/in/joseromanhdez/",
       },
       {
         key: "instagram",
-        url: "https://www.instagram.com/manz.dev/"
-      }
+        url: "https://www.instagram.com/manz.dev/",
+      },
     ],
-    photo: "https://unavatar.io/twitter/manz"
+    photo: "https://unavatar.io/twitter/manz",
   },
   {
     name: "Fernando Herrera",
@@ -111,30 +111,30 @@ export const contentCreators = [
     social: [
       {
         key: "website",
-        url: "https://fernando-herrera.com/"
+        url: "https://fernando-herrera.com/",
       },
       {
         key: "twitter",
-        url: "https://x.com/fernando_her85"
+        url: "https://x.com/fernando_her85",
       },
       {
         key: "twitch",
-        url: null
+        url: null,
       },
       {
         key: "youtube",
-        url: null
+        url: null,
       },
       {
         key: "linkedin",
-        url: null
+        url: null,
       },
       {
         key: "instagram",
-        url: "https://www.instagram.com/fernando_her85/"
-      }
+        url: "https://www.instagram.com/fernando_her85/",
+      },
     ],
-    photo: "https://unavatar.io/twitter/fernando_her85"
+    photo: "https://unavatar.io/twitter/fernando_her85",
   },
   {
     name: "UXAnaRangel",
@@ -142,30 +142,30 @@ export const contentCreators = [
     social: [
       {
         key: "website",
-        url: null
+        url: null,
       },
       {
         key: "twitter",
-        url: null
+        url: null,
       },
       {
         key: "twitch",
-        url: "https://www.twitch.tv/UXAnaRangel"
+        url: "https://www.twitch.tv/UXAnaRangel",
       },
       {
         key: "youtube",
-        url: "https://www.youtube.com/@ux.ana.rangel"
+        url: "https://www.youtube.com/@ux.ana.rangel",
       },
       {
         key: "linkedin",
-        url: "https://www.linkedin.com/in/ux-ana-rangel"
+        url: "https://www.linkedin.com/in/ux-ana-rangel",
       },
       {
         key: "instagram",
-        url: "https://www.instagram.com/ux.ana.rangel"
-      }
+        url: "https://www.instagram.com/ux.ana.rangel",
+      },
     ],
-    photo: "https://unavatar.io/UXAnaRangel"
+    photo: "https://unavatar.io/UXAnaRangel",
   },
   {
     name: "Jhey",
@@ -173,30 +173,30 @@ export const contentCreators = [
     social: [
       {
         key: "website",
-        url: "https://jhey.dev/"
+        url: "https://jhey.dev/",
       },
       {
         key: "twitter",
-        url: "https://x.com/jh3yy"
+        url: "https://x.com/jh3yy",
       },
       {
         key: "twitch",
-        url: null
+        url: null,
       },
       {
         key: "youtube",
-        url: "https://www.youtube.com/JheyTompkins"
+        url: "https://www.youtube.com/JheyTompkins",
       },
       {
         key: "linkedin",
-        url: null
+        url: null,
       },
       {
         key: "instagram",
-        url: "https://instagram.com/jh3yyyy"
-      }
+        url: "https://instagram.com/jh3yyyy",
+      },
     ],
-    photo: "https://unavatar.io/twitter/jh3yy"
+    photo: "https://unavatar.io/twitter/jh3yy",
   },
   {
     name: "Adam Argyle",
@@ -204,30 +204,30 @@ export const contentCreators = [
     social: [
       {
         key: "website",
-        url: "https://nerdy.dev/"
+        url: "https://nerdy.dev/",
       },
       {
         key: "twitter",
-        url: "https://x.com/argyleink"
+        url: "https://x.com/argyleink",
       },
       {
         key: "twitch",
-        url: null
+        url: null,
       },
       {
         key: "youtube",
-        url: "https://www.youtube.com/channel/UCBGr3ZMcV5jke40_Wrv3fNA"
+        url: "https://www.youtube.com/channel/UCBGr3ZMcV5jke40_Wrv3fNA",
       },
       {
         key: "linkedin",
-        url: "https://www.linkedin.com/in/adamargyle/"
+        url: "https://www.linkedin.com/in/adamargyle/",
       },
       {
         key: "instagram",
-        url: null
-      }
+        url: null,
+      },
     ],
-    photo: "https://unavatar.io/twitter/argyleink"
+    photo: "https://unavatar.io/twitter/argyleink",
   },
   {
     name: "Una Kravets",
@@ -235,30 +235,30 @@ export const contentCreators = [
     social: [
       {
         key: "website",
-        url: "https://una.im/"
+        url: "https://una.im/",
       },
       {
         key: "twitter",
-        url: "https://x.com/Una"
+        url: "https://x.com/Una",
       },
       {
         key: "twitch",
-        url: null
+        url: null,
       },
       {
         key: "youtube",
-        url: null
+        url: null,
       },
       {
         key: "linkedin",
-        url: "https://www.linkedin.com/in/unakravets/"
+        url: "https://www.linkedin.com/in/unakravets/",
       },
       {
         key: "instagram",
-        url: null
-      }
+        url: null,
+      },
     ],
-    photo: "https://unavatar.io/twitter/Una"
+    photo: "https://unavatar.io/twitter/Una",
   },
   {
     name: "CodelyTV",
@@ -266,30 +266,30 @@ export const contentCreators = [
     social: [
       {
         key: "website",
-        url: "https://codely.com/"
+        url: "https://codely.com/",
       },
       {
         key: "twitter",
-        url: "https://x.com/CodelyTV"
+        url: "https://x.com/CodelyTV",
       },
       {
         key: "twitch",
-        url: "https://www.twitch.tv/codelytv"
+        url: "https://www.twitch.tv/codelytv",
       },
       {
         key: "youtube",
-        url: "https://www.youtube.com/@CodelyTV"
+        url: "https://www.youtube.com/@CodelyTV",
       },
       {
         key: "linkedin",
-        url: "https://linkedin.com/in/codelytv"
+        url: "https://linkedin.com/in/codelytv",
       },
       {
         key: "instagram",
-        url: "https://instagram.com/codelytv"
-      }
+        url: "https://instagram.com/codelytv",
+      },
     ],
-    photo: "https://unavatar.io/codelytv"
+    photo: "https://unavatar.io/codelytv",
   },
   {
     name: "Gentleman Programming",
@@ -297,30 +297,30 @@ export const contentCreators = [
     social: [
       {
         key: "website",
-        url: null
+        url: null,
       },
       {
         key: "twitter",
-        url: "https://x.com/G_Programming"
+        url: "https://x.com/G_Programming",
       },
       {
         key: "twitch",
-        url: "https://www.twitch.tv/gentleman_programming"
+        url: "https://www.twitch.tv/gentleman_programming",
       },
       {
         key: "youtube",
-        url: "https://www.youtube.com/@GentlemanProgramming"
+        url: "https://www.youtube.com/@GentlemanProgramming",
       },
       {
         key: "linkedin",
-        url: null
+        url: null,
       },
       {
         key: "instagram",
-        url: null
-      }
+        url: null,
+      },
     ],
-    photo: "https://unavatar.io/twitter/G_Programming"
+    photo: "https://unavatar.io/twitter/G_Programming",
   },
   {
     name: "Jhonatan Mircha",
@@ -328,30 +328,30 @@ export const contentCreators = [
     social: [
       {
         key: "website",
-        url: "https://jonmircha.com/"
+        url: "https://jonmircha.com/",
       },
       {
         key: "twitter",
-        url: "https://x.com/jonmircha"
+        url: "https://x.com/jonmircha",
       },
       {
         key: "twitch",
-        url: null
+        url: null,
       },
       {
         key: "youtube",
-        url: "https://www.youtube.com/jonmircha"
+        url: "https://www.youtube.com/jonmircha",
       },
       {
         key: "linkedin",
-        url: null
+        url: null,
       },
       {
         key: "instagram",
-        url: null
-      }
+        url: null,
+      },
     ],
-    photo: "https://unavatar.io/twitter/jonmircha"
+    photo: "https://unavatar.io/twitter/jonmircha",
   },
   {
     name: "Juan Villalvazo",
@@ -359,30 +359,30 @@ export const contentCreators = [
     social: [
       {
         key: "website",
-        url: "https://www.juanvillalvazo.com/"
+        url: "https://www.juanvillalvazo.com/",
       },
       {
         key: "twitter",
-        url: "https://x.com/TecMotivacional"
+        url: "https://x.com/TecMotivacional",
       },
       {
         key: "twitch",
-        url: null
+        url: null,
       },
       {
         key: "youtube",
-        url: null
+        url: null,
       },
       {
         key: "linkedin",
-        url: null
+        url: null,
       },
       {
         key: "instagram",
-        url: null
-      }
+        url: null,
+      },
     ],
-    photo: "https://unavatar.io/twitter/TecMotivacional"
+    photo: "https://unavatar.io/twitter/TecMotivacional",
   },
   {
     name: "GNDX",
@@ -390,30 +390,30 @@ export const contentCreators = [
     social: [
       {
         key: "website",
-        url: "https://gndx.dev/"
+        url: "https://gndx.dev/",
       },
       {
         key: "twitter",
-        url: "https://x.com/gndx"
+        url: "https://x.com/gndx",
       },
       {
         key: "twitch",
-        url: "https://www.twitch.tv/gndxdev"
+        url: "https://www.twitch.tv/gndxdev",
       },
       {
         key: "youtube",
-        url: "https://www.youtube.com/@gndx"
+        url: "https://www.youtube.com/@gndx",
       },
       {
         key: "linkedin",
-        url: "https://www.linkedin.com/in/oscarbarajas/"
+        url: "https://www.linkedin.com/in/oscarbarajas/",
       },
       {
         key: "instagram",
-        url: "https://instagram.com/gndx"
-      }
+        url: "https://instagram.com/gndx",
+      },
     ],
-    photo: "https://unavatar.io/twitter/gndx"
+    photo: "https://unavatar.io/twitter/gndx",
   },
   {
     name: "Héctor de León",
@@ -421,30 +421,30 @@ export const contentCreators = [
     social: [
       {
         key: "website",
-        url: "https://hdeleon.net/"
+        url: "https://hdeleon.net/",
       },
       {
         key: "twitter",
-        url: "https://x.com/powerhdeleon"
+        url: "https://x.com/powerhdeleon",
       },
       {
         key: "twitch",
-        url: null
+        url: null,
       },
       {
         key: "youtube",
-        url: "https://www.youtube.com/hdeleonnet"
+        url: "https://www.youtube.com/hdeleonnet",
       },
       {
         key: "linkedin",
-        url: null
+        url: null,
       },
       {
         key: "instagram",
-        url: null
-      }
+        url: null,
+      },
     ],
-    photo: "https://unavatar.io/twitter/powerhdeleon"
+    photo: "https://unavatar.io/twitter/powerhdeleon",
   },
   {
     name: "Goncy",
@@ -452,30 +452,30 @@ export const contentCreators = [
     social: [
       {
         key: "website",
-        url: "https://me.gonzalopozzo.com/"
+        url: "https://me.gonzalopozzo.com/",
       },
       {
         key: "twitter",
-        url: "https://x.com/goncy"
+        url: "https://x.com/goncy",
       },
       {
         key: "twitch",
-        url: "https://www.twitch.tv/goncypozzo"
+        url: "https://www.twitch.tv/goncypozzo",
       },
       {
         key: "youtube",
-        url: "https://www.youtube.com/@goncypozzo"
+        url: "https://www.youtube.com/@goncypozzo",
       },
       {
         key: "linkedin",
-        url: null
+        url: null,
       },
       {
         key: "instagram",
-        url: null
-      }
+        url: null,
+      },
     ],
-    photo: "https://unavatar.io/twitter/goncy"
+    photo: "https://unavatar.io/twitter/goncy",
   },
   {
     name: "Pelao Fredrikson",
@@ -483,30 +483,30 @@ export const contentCreators = [
     social: [
       {
         key: "website",
-        url: "https://peladonerd.com/"
+        url: "https://peladonerd.com/",
       },
       {
         key: "twitter",
-        url: "https://x.com/PeladoNerd"
+        url: "https://x.com/PeladoNerd",
       },
       {
         key: "twitch",
-        url: null
+        url: null,
       },
       {
         key: "youtube",
-        url: "https://www.youtube.com/@PeladoNerd"
+        url: "https://www.youtube.com/@PeladoNerd",
       },
       {
         key: "linkedin",
-        url: null
+        url: null,
       },
       {
         key: "instagram",
-        url: null
-      }
+        url: null,
+      },
     ],
-    photo: "https://unavatar.io/twitter/PeladoNerd"
+    photo: "https://unavatar.io/twitter/PeladoNerd",
   },
   {
     name: "DotCSV",
@@ -514,30 +514,30 @@ export const contentCreators = [
     social: [
       {
         key: "website",
-        url: null
+        url: null,
       },
       {
         key: "twitter",
-        url: "https://x.com/DotCSV"
+        url: "https://x.com/DotCSV",
       },
       {
         key: "twitch",
-        url: null
+        url: null,
       },
       {
         key: "youtube",
-        url: "https://www.youtube.com/dotcsv"
+        url: "https://www.youtube.com/dotcsv",
       },
       {
         key: "linkedin",
-        url: null
+        url: null,
       },
       {
         key: "instagram",
-        url: null
-      }
+        url: null,
+      },
     ],
-    photo: "https://unavatar.io/twitter/DotCSV"
+    photo: "https://unavatar.io/twitter/DotCSV",
   },
   {
     name: "S4vitar",
@@ -545,30 +545,30 @@ export const contentCreators = [
     social: [
       {
         key: "website",
-        url: null
+        url: null,
       },
       {
         key: "twitter",
-        url: "https://x.com/S4vitar"
+        url: "https://x.com/S4vitar",
       },
       {
         key: "twitch",
-        url: "https://www.twitch.tv/s4vitaar"
+        url: "https://www.twitch.tv/s4vitaar",
       },
       {
         key: "youtube",
-        url: "https://www.youtube.com/s4vitar"
+        url: "https://www.youtube.com/s4vitar",
       },
       {
         key: "linkedin",
-        url: null
+        url: null,
       },
       {
         key: "instagram",
-        url: null
-      }
+        url: null,
+      },
     ],
-    photo: "https://unavatar.io/twitter/S4vitar"
+    photo: "https://unavatar.io/twitter/S4vitar",
   },
   {
     name: "Guillermo Rodas",
@@ -576,30 +576,30 @@ export const contentCreators = [
     social: [
       {
         key: "website",
-        url: "https://guillermorodas.com/"
+        url: "https://guillermorodas.com/",
       },
       {
         key: "twitter",
-        url: "https://x.com/rodasdev"
+        url: "https://x.com/rodasdev",
       },
       {
         key: "twitch",
-        url: "https://twitch.tv/guillermorodas"
+        url: "https://twitch.tv/guillermorodas",
       },
       {
         key: "youtube",
-        url: "https://youtube.com/guillermorodas"
+        url: "https://youtube.com/guillermorodas",
       },
       {
         key: "linkedin",
-        url: "https://linkedin.com/guillermorodas"
+        url: "https://linkedin.com/guillermorodas",
       },
       {
         key: "instagram",
-        url: "https://instagram.com/rodasdev"
-      }
+        url: "https://instagram.com/rodasdev",
+      },
     ],
-    photo: "https://unavatar.io/twitter/rodasdev"
+    photo: "https://unavatar.io/twitter/rodasdev",
   },
   {
     name: "Carmen Ansio",
@@ -607,30 +607,30 @@ export const contentCreators = [
     social: [
       {
         key: "website",
-        url: "https://carmenansio.notion.site/Recursos-c-smicos-b76c220d51ec42239830a6c0ae39b2d9"
+        url: "https://carmenansio.notion.site/Recursos-c-smicos-b76c220d51ec42239830a6c0ae39b2d9",
       },
       {
         key: "twitter",
-        url: "https://x.com/carmenansio"
+        url: "https://x.com/carmenansio",
       },
       {
         key: "twitch",
-        url: null
+        url: null,
       },
       {
         key: "youtube",
-        url: "https://www.youtube.com/c/CarmenAnsio"
+        url: "https://www.youtube.com/c/CarmenAnsio",
       },
       {
         key: "linkedin",
-        url: null
+        url: null,
       },
       {
         key: "instagram",
-        url: null
-      }
+        url: null,
+      },
     ],
-    photo: "https://unavatar.io/twitter/carmenansio"
+    photo: "https://unavatar.io/twitter/carmenansio",
   },
   {
     name: "Carlos Azaustre",
@@ -638,30 +638,30 @@ export const contentCreators = [
     social: [
       {
         key: "website",
-        url: "https://carlosazaustre.es/"
+        url: "https://carlosazaustre.es/",
       },
       {
         key: "twitter",
-        url: "https://x.com/carlosazaustre"
+        url: "https://x.com/carlosazaustre",
       },
       {
         key: "twitch",
-        url: "https://twitch.tv/carlosazaustre"
+        url: "https://twitch.tv/carlosazaustre",
       },
       {
         key: "youtube",
-        url: "https://youtube.com/carlosazaustre"
+        url: "https://youtube.com/carlosazaustre",
       },
       {
         key: "linkedin",
-        url: "https://linkedin.com/in/carlosazaustre"
+        url: "https://linkedin.com/in/carlosazaustre",
       },
       {
         key: "instagram",
-        url: "https://instagram.com/carlosazaustre"
-      }
+        url: "https://instagram.com/carlosazaustre",
+      },
     ],
-    photo: "https://unavatar.io/twitter/carlosazaustre"
+    photo: "https://unavatar.io/twitter/carlosazaustre",
   },
   {
     name: "Fazt",
@@ -669,29 +669,29 @@ export const contentCreators = [
     social: [
       {
         key: "website",
-        url: "https://faztweb.com/"
+        url: "https://faztweb.com/",
       },
       {
         key: "twitter",
-        url: "https://twitter.com/fazttech"
+        url: "https://twitter.com/fazttech",
       },
       {
         key: "twitch",
-        url: null
+        url: null,
       },
       {
         key: "youtube",
-        url: "https://youtube.com/fazttech"
+        url: "https://youtube.com/fazttech",
       },
       {
         key: "linkedin",
-        url: "https://www.linkedin.com/in/fazttech"
+        url: "https://www.linkedin.com/in/fazttech",
       },
       {
         key: "instagram",
-        url: "https://www.instagram.com/fazttech/"
-      }
+        url: "https://www.instagram.com/fazttech/",
+      },
     ],
-    photo: "https://unavatar.io/twitter/fazttech"
-  }
+    photo: "https://unavatar.io/twitter/fazttech",
+  },
 ];
