@@ -1,5 +1,6 @@
 ---
 import About from "../components/About.astro";
+import GoUpButton from "../components/GoUpButton.astro";
 import Header from "../components/Header.astro";
 import Home from "../components/Home.astro";
 import Knowledge from "../components/Knowledge.astro";
@@ -77,6 +78,8 @@ import { urlDomain } from "./../utils/const";
       <Projects client:visible={{ rootMargin: "500px" }} />
       <Suggestions />
     </main>
+
+    <GoUpButton />
   </body>
 </html>
 
@@ -149,13 +152,14 @@ import { urlDomain } from "./../utils/const";
       transition-timing-function: ease;
       background-color: var(--current-background-theme);
       color: var(--current-text-theme);
+      position: relative;
 
       @media (pointer: coarse) {
         padding-bottom: 240px;
       }
 
       & > * {
-        padding-inline: 16px;
+        margin-inline: 16px;
       }
 
       & main {

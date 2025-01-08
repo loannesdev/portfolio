@@ -1,0 +1,49 @@
+---
+import Anchor from "./Anchor.astro";
+import Icon from "./Icon.astro";
+---
+
+<Anchor href="#home">
+  <Icon name="tabler-chevron-up" />
+</Anchor>
+
+<style>
+  a {
+    --separation: 32px;
+
+    margin-top: 124dvh;
+    position: sticky;
+    bottom: var(--separation);
+    right: var(--separation);
+    border-radius: var(--border-radius-med);
+    border: 1px solid var(--palette-grey);
+    padding: 6px;
+    width: fit-content;
+    height: fit-content;
+    transition: background-color 0.2s ease-in-out;
+    justify-self: self-end;
+
+    @media (pointer: fine) {
+      &:hover {
+        background-color: var(--palette-grey);
+      }
+    }
+
+    @media (pointer: coarse) {
+      bottom: 90%;
+      background-color: color-mix(
+        in srgb,
+        transparent 10%,
+        var(--current-background-theme)
+      );
+    }
+
+    & > :global(svg) {
+      height: 32px;
+      width: 32px;
+      color: var(--current-text-theme);
+      display: block;
+      stroke-width: 1.75px;
+    }
+  }
+</style>
