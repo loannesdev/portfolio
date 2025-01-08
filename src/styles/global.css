@@ -1,39 +1,19 @@
 @import url("../styles/reset.css");
 
-/* SPACE GROTESK FONT */
+/* Space Grotesk font */
 @font-face {
   font-family: "Space Grotesk";
-  src: url('/fonts/space_grotesk/SpaceGrotesk-Regular.woff2') format('woff2'),
-    url('/fonts/space_grotesk/SpaceGrotesk-Regular.woff') format('woff');
-  font-weight: normal;
+  src: url('/fonts/SpaceGrotesk.woff2') format('woff2');
+  font-weight: 300 700;
   font-style: normal;
   font-display: swap;
 }
 
-/* NUNITO SANS FONT */
+/* Nunito Sans font */
 @font-face {
   font-family: "Nunito Sans";
-  src: url('/fonts/nunito_sans/NunitoSans10pt-Regular.woff2') format('woff2'),
-    url('/fonts/nunito_sans/NunitoSans10pt-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Nunito Sans";
-  src: url('/fonts/nunito_sans/NunitoSans10pt-Bold.woff2') format('woff2'),
-    url('/fonts/nunito_sans/NunitoSans10pt-Bold.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Nunito Sans";
-  src: url('/fonts/nunito_sans/NunitoSans10pt-Black.woff2') format('woff2'),
-    url('/fonts/nunito_sans/NunitoSans10pt-Black.woff') format('woff');
-  font-weight: extrabold;
+  src: url('/fonts/NunitoSans.woff2') format('woff2');
+  font-weight: 200 900;
   font-style: normal;
   font-display: swap;
 }
@@ -54,7 +34,7 @@
   --current-neon-theme: light-dark(var(--palette-neon-blue), var(--palette-neon-green));
   /* In the moment just work for the scrollbar color theme */
   --neon-text-variant: color-mix(in srgb,
-      var(--current-text-theme) 30%,
+      transparent 20%,
       var(--current-neon-theme));
   /* --- */
   --display-icon-dark: block;
