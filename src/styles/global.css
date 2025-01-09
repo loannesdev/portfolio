@@ -19,10 +19,10 @@
 }
 
 :root {
-  --palette-black: #202124;
+  --palette-black: #1d1f23;
   --palette-white: #fafafa;
   --palette-grey: #6565652e;
-  --palette-neon-green: #00ff00;
+  --palette-neon-green: #00ff31;
   --palette-neon-blue: #5b5bfa;
   --font-family-text: "Space Grotesk", sans-serif;
   --font-family-title: "Nunito Sans", sans-serif;
@@ -32,13 +32,12 @@
   --current-text-theme: light-dark(var(--palette-black), var(--palette-white));
   --current-background-theme: light-dark(var(--palette-white), var(--palette-black));
   --current-neon-theme: light-dark(var(--palette-neon-blue), var(--palette-neon-green));
-  /* In the moment just work for the scrollbar color theme */
   --neon-text-variant: color-mix(in srgb,
-      transparent 20%,
+      var(--palette-white) 20%,
       var(--current-neon-theme));
-  /* --- */
   --display-icon-dark: block;
   --display-icon-light: none;
+  --reading-text-color: light-dark(var(--palette-black), color-mix(in srgb, gray 20%, var(--palette-white)));
 
   color-scheme: light dark;
 }

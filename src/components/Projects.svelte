@@ -106,6 +106,7 @@
           font-size: 18px;
           word-break: break-word;
           text-wrap: pretty;
+          color: var(--reading-text-color);
         }
 
         & .topics-container {
