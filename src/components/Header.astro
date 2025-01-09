@@ -286,11 +286,6 @@ const {
                   color: var(--current-neon-theme);
                   text-shadow: 0px 0px 24px var(--current-neon-theme);
                 }
-
-                &:is(.visible) {
-                  background-color: var(--bg-color);
-                  color: var(--current-neon-theme);
-                }
               }
 
               @media (pointer: coarse) {
@@ -298,6 +293,11 @@ const {
                   background-color: var(--bg-color);
                   color: var(--current-background-theme);
                 }
+              }
+
+              &:is(.visible) {
+                background-color: var(--bg-color);
+                color: var(--current-neon-theme);
               }
             }
           }
