@@ -1,6 +1,6 @@
-import { envVars } from "./scripts";
-
 export const lookingForAJob = false;
+
+export const envVars = import.meta.env;
 
 export const sections = [
   {

@@ -1,6 +1,5 @@
 import resume from "./resume.json";
-import { github } from "./utils/const";
-import { envVars } from "./utils/scripts";
+import { envVars, github } from "./utils/const";
 
 const token = envVars.PUBLIC_GITHUB_TOKEN;
 const { api, path, user } = github;

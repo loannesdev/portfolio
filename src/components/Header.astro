@@ -59,6 +59,7 @@ const {
               <Anchor
                 href={"#" + name}
                 aria-label={`Ir a sección ${text.toLowerCase()}`}
+                data-id={name}
               >
                 {text}
               </Anchor>
@@ -261,23 +262,31 @@ const {
 
           & > li {
             & > :global(a) {
-              text-decoration: none;
-              word-break: break-all;
-              border-radius: var(--border-radius-min);
-              padding: 6px 12px;
-              transition-duration: 0.3s;
-              transition-property: color, background-color, linear-gradient;
-              transition-timing-function: ease;
               --bg-color: color-mix(
                 in srgb,
                 transparent 90%,
                 var(--current-neon-theme)
               );
+
+              text-decoration: none;
+              word-break: break-all;
+              border-radius: var(--border-radius-min);
+              padding: 6px 12px;
+              transition: 0.2s ease;
+              transition-property: color, background-color, text-shadow;
               color: currentColor;
               user-select: none;
+              will-change: color, background-color, text-shadow;
+              overflow: hidden;
 
               @media (pointer: fine) {
                 &:hover {
+                  background-color: var(--bg-color);
+                  color: var(--current-neon-theme);
+                  text-shadow: 0px 0px 24px var(--current-neon-theme);
+                }
+
+                &:is(.visible) {
                   background-color: var(--bg-color);
                   color: var(--current-neon-theme);
                 }
@@ -298,6 +307,8 @@ const {
 </style>
 
 <script>
+  import { navHighlight } from "../utils/scripts.js";
+
   // Dark mode
   document.getElementById("dark-mode-button").addEventListener("click", () => {
     const element = document.documentElement;
@@ -307,4 +318,9 @@ const {
     localStorage.setItem("theme", theme);
     element.setAttribute("theme", theme);
   });
+  // ---
+
+  // Active navigation option when the corresponding section is active
+  navHighlight();
+  // ---
 </script>
