@@ -76,8 +76,9 @@ const {
     z-index: 1;
     width: 100%;
     backdrop-filter: blur(24px);
-    position: sticky;
-    top: 0px;
+    position: fixed;
+    inset: 0px;
+    bottom: auto;
 
     @media (pointer: coarse) {
       position: fixed;

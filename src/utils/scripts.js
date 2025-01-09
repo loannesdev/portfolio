@@ -66,7 +66,7 @@ export const navHighlight = () => {
       }
     }
 
-    getNav(currentSection.id).classList.add("visible");
+    getNav(currentSection?.id).classList.add("visible");
   };
 
   window.addEventListener("scroll", () => {
