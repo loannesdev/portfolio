@@ -4,7 +4,7 @@ const { name, folder = "" } = Astro.props;
 let raw = null;
 
 if (name) {
-  const icons = import.meta.glob("../../public/icons/**/*.svg", {
+  const icons = import.meta.glob("../icons/**/*.svg", {
     query: "raw",
     eager: true,
   });
