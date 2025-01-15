@@ -1,8 +1,8 @@
 ---
-import { readCV } from "../services.js";
-import { sections } from "../utils/const.js";
-import Anchor from "./Anchor.astro";
-import Icon from "./Icon.astro";
+import Anchor from "@/components/Anchor.astro";
+import Icon from "@/components/Icon.astro";
+import { readCV } from "@/services";
+import { sections } from "@/utils/const";
 
 const { name, text } = sections.find((elm) => elm.name === "knowledge");
 const { skills } = await readCV();

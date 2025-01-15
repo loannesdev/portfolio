@@ -1,6 +1,6 @@
 <script>
-  import { readRepos } from "../services.js";
-  import { github, sections } from "../utils/const";
+  import { readRepos } from "@/services";
+  import { github, sections } from "@/utils/const";
 
   const projects = readRepos();
   const { text, name } = sections.find((elm) => elm.name === "projects");

@@ -1,8 +1,8 @@
 ---
+import Anchor from "@/components/Anchor.astro";
+import Icon from "@/components/Icon.astro";
+import { contentCreators, sections } from "@/utils/const";
 import Image from "astro/components/Image.astro";
-import { contentCreators, sections } from "../utils/const";
-import Anchor from "./Anchor.astro";
-import Icon from "./Icon.astro";
 
 const { name, text } = sections.find((elm) => elm.name === "suggestions");
 const iconsFolder = "/suggestions";
