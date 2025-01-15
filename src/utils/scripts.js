@@ -75,3 +75,61 @@ export const navHighlight = () => {
 
   onScroll();
 };
+
+export class DateParser {
+  static format(date = "", config = {}) {
+    const parsedDate = new Date(date);
+
+    if (!parsedDate instanceof Date) {
+      return null;
+    }
+
+    return new Intl.DateTimeFormat("es-ES", config).format(parsedDate);
+  }
+
+
+  static relativeTime(startDate = "", endDate = "") {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const diff = end - start;
+
+    if (diff < 0) {
+      return null;
+    }
+
+    const miliseconds = 1000;
+    const seconds = miliseconds * 60;
+    const hours = seconds * 60;
+    const days = hours * 24;
+    const months = days * 30;
+    const years = days * 365;
+    const rtf1 = new Intl.RelativeTimeFormat('es', { style: 'long' });
+    let result = "";
+
+    if (diff < miliseconds) {
+      return "Hace un momento";
+    }
+
+    if (diff < seconds) {
+      return rtf1.format(Math.floor(diff / seconds), "second").replace("dentro de ", "");
+    }
+
+    if (diff < hours) {
+      return rtf1.format(Math.floor(diff / seconds), "minute").replace("dentro de ", "");
+    }
+
+    if (diff < days) {
+      return rtf1.format(Math.floor(diff / hours), "hour").replace("dentro de ", "");
+    }
+
+    if (diff < months) {
+      return rtf1.format(Math.floor(diff / days), "day").replace("dentro de ", "");
+    }
+
+    if (diff < years) {
+      return rtf1.format(Math.floor(diff / months), "month").replace("dentro de ", "");
+    }
+
+    return rtf1.format(Math.floor(diff / years), "year").replace("dentro de ", "");
+  }
+}

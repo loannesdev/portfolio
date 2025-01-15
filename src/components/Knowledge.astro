@@ -73,10 +73,7 @@ const filters = {
 </section>
 
 <style>
-  section[id="knowledge"] {
-    display: grid;
-    gap: 24px;
-    width: 100%;
+  section[id] {
     aspect-ratio: 395 / 368;
     align-content: baseline;
     width: 100%;
@@ -263,7 +260,7 @@ const filters = {
             gap: 3px;
 
             & .card-title {
-              font-family: var(--font-family-title);
+              font-family: var(--font-title);
               font-weight: 600;
               font-size: 16.8px;
             }
@@ -282,7 +279,7 @@ const filters = {
                 transparent var(--color-transparency),
                 var(--color-level)
               );
-              font-family: var(--font-family-text);
+              font-family: var(--font-text);
             }
 
             & [data-level="básico" i] {

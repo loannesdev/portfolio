@@ -1,0 +1,155 @@
+---
+import { work } from "../resume.json";
+import { sections } from "../utils/const";
+import { DateParser } from "../utils/scripts";
+
+const { name, text } = sections.find((elm) => elm.name === "experience");
+---
+
+<section id={name}>
+  <h2 class="section-title">{text}</h2>
+
+  <ul class="time-line">
+    {
+      work.map((experience) => {
+        const {
+          name: companyName,
+          summary,
+          endDate,
+          position,
+          startDate,
+        } = experience;
+
+        const parsedStartDate = DateParser.format(startDate, {
+          month: "short",
+          year: "numeric",
+        });
+
+        const parsedEndDate = endDate
+          ? DateParser.format(endDate, {
+              month: "short",
+              year: "numeric",
+            })
+          : "Actualidad";
+
+        const relative =
+          startDate && endDate
+            ? `(${DateParser.relativeTime(startDate, endDate)})`
+            : null;
+
+        return (
+          <li class:list={["time-line-element", !endDate && "current"]}>
+            <hgroup>
+              <h1>
+                {position}
+                &bull;
+                <span>{companyName}</span>
+              </h1>
+              <h2>
+                {parsedStartDate} - {parsedEndDate} {relative}
+              </h2>
+            </hgroup>
+
+            <p>{summary}</p>
+          </li>
+        );
+      })
+    }
+  </ul>
+</section>
+
+<style>
+  section[id] {
+    & .time-line {
+      display: flex;
+      flex-direction: column;
+
+      & .time-line-element {
+        --dot-size: 15px;
+        --active-experience-color: color-mix(
+          in srgb,
+          var(--current-text-theme) 10%,
+          gray
+        );
+
+        position: relative;
+        padding-left: calc(var(--dot-size) * 2);
+
+        &::before {
+          content: "";
+          background-color: color-mix(
+            in srgb,
+            transparent 0%,
+            var(--current-background-theme)
+          );
+          border: 3px solid var(--active-experience-color);
+          width: var(--dot-size);
+          height: var(--dot-size);
+          position: absolute;
+          top: 0;
+          left: 0;
+          border-radius: 50%;
+          z-index: 1;
+          transition: 0.2s ease;
+          transition-property: background-color, border-color;
+        }
+
+        &::after {
+          content: "";
+          background-color: var(--active-experience-color);
+          width: 5px;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: calc(var(--dot-size) / 2);
+          border-radius: 72px;
+          transition: 0.2s ease background-color;
+        }
+
+        &:not(:last-child) {
+          padding-bottom: 32px;
+        }
+
+        &:is(.current) {
+          --active-experience-color: color-mix(
+            in srgb,
+            transparent 20%,
+            var(--current-neon-theme)
+          );
+        }
+
+        & > hgroup {
+          margin-bottom: 12px;
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          font-family: var(--font-title);
+
+          & > * {
+            &::first-letter {
+              text-transform: capitalize;
+            }
+          }
+
+          & > h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            line-height: 0.9;
+          }
+
+          & > h2 {
+            font-size: 1.2rem;
+            color: var(--active-experience-color);
+            transition: 0.2s ease color;
+          }
+        }
+
+        & > p {
+          font-size: 1.1rem;
+          text-wrap: pretty;
+          color: var(--reading-text-color);
+        }
+      }
+    }
+  }
+</style>

@@ -71,13 +71,6 @@
 
 <style>
   section[id] {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    width: 100%;
-    min-height: 25rem;
-    place-content: baseline;
-
     & .container {
       column-gap: 0.5rem;
       column-count: auto;
@@ -99,7 +92,7 @@
           font-size: 24px;
           text-align: center;
           font-weight: bold;
-          font-family: var(--font-family-title);
+          font-family: var(--font-title);
         }
 
         & .description-card {
@@ -117,7 +110,7 @@
           & .topics-title {
             font-size: 1.15rem;
             font-weight: bold;
-            font-family: var(--font-family-title);
+            font-family: var(--font-title);
           }
 
           & .topics-group {

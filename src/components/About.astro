@@ -11,9 +11,9 @@ const {
 ---
 
 <section id={name}>
-  <section class="paragraph-container">
-    <h1 class="section-title">{text}</h1>
+  <h1 class="section-title">{text}</h1>
 
+  <section class="paragraph-container">
     <Fragment set:html={summary} />
   </section>
 
@@ -33,7 +33,6 @@ const {
 <style>
   section[id] {
     display: grid;
-    gap: 12px;
 
     & .paragraph-container {
       display: flex;
@@ -48,8 +47,10 @@ const {
     }
 
     & .interests-container {
+      margin-top: 12px;
+
       & .interests-title {
-        font-family: var(--font-family-title);
+        font-family: var(--font-title);
         font-size: large;
         font-weight: 800;
       }

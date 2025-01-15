@@ -24,8 +24,8 @@
   --palette-grey: #6565652e;
   --palette-neon-green: #00ff31;
   --palette-neon-blue: #5b5bfa;
-  --font-family-text: "Space Grotesk", sans-serif;
-  --font-family-title: "Nunito Sans", sans-serif;
+  --font-text: "Space Grotesk", sans-serif;
+  --font-title: "Nunito Sans", sans-serif;
   --border-radius-min: 4px;
   --border-radius-med: 6px;
   --border-radius-max: 32px;

@@ -11,13 +11,14 @@ export const sections = [
     name: "about",
     text: "Sobre mí",
   },
-  {
-    name: "knowledge",
-    text: "Conocimientos",
-  },
+  { name: "experience", text: "Experiencia" },
   {
     name: "projects",
     text: "Proyectos personales",
+  },
+  {
+    name: "knowledge",
+    text: "Conocimientos",
   },
   {
     name: "suggestions",
