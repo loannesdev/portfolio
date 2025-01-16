@@ -1,4 +1,6 @@
 <script>
+  import GithubIcon from "@/icons/github.svg?raw";
+  import ExternalLinkIcon from "@/icons/tabler-external-link.svg?raw";
   import { readRepos } from "@/services";
   import { github, sections } from "@/utils/const";
 
@@ -48,11 +50,15 @@
 
           <footer class="footer-card">
             {#if htmlUrl && htmlUrl.length}
-              <a href={htmlUrl} {...anchorPropsExternal}>Repositorio</a>
+              <a href={htmlUrl} {...anchorPropsExternal}>
+                {@html GithubIcon} Repositorio
+              </a>
             {/if}
 
             {#if homepage && homepage.length}
-              <a href={homepage} {...anchorPropsExternal}>Ver página</a>
+              <a href={homepage} {...anchorPropsExternal}>
+                {@html ExternalLinkIcon} Demo
+              </a>
             {/if}
           </footer>
         </article>
@@ -78,7 +84,7 @@
 
       & .card {
         border: 0.1rem solid var(--palette-grey);
-        padding: 0.5rem 0.8rem;
+        padding: 16px;
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
@@ -90,7 +96,7 @@
         & .title-card {
           font-size: 24px;
           text-align: center;
-          font-weight: bold;
+          font-weight: 800;
           font-family: var(--font-title);
         }
 
@@ -99,6 +105,7 @@
           word-break: break-word;
           text-wrap: pretty;
           color: var(--reading-text-color);
+          font-weight: 100;
         }
 
         & .topics-container {
@@ -118,31 +125,37 @@
             flex-wrap: wrap;
 
             & .topic {
-              background-color: var(--palette-grey);
-              padding: 0.15rem 0.5rem;
+              background-color: color-mix(
+                in srgb,
+                transparent 97%,
+                var(--current-text-theme)
+              );
+              padding: 4px 8px;
               border-radius: var(--border-radius-min);
               margin: 0;
+              font-weight: 100;
             }
           }
         }
 
         & .footer-card {
           display: flex;
-          justify-content: center;
           flex-wrap: wrap;
           word-break: keep-all;
-          gap: 1rem;
+          gap: 12px;
 
           & > a {
             --button-text-shadow: 0px 0px 16px var(--current-neon-theme);
-            padding: 0.3rem 0.6rem;
+            padding: 8px 16px;
             border: 0.1rem solid var(--palette-grey);
             text-decoration: none;
-            transition-duration: 0.2s;
+            transition: 0.2s ease;
             transition-property: color, background-color, border-color;
-            transition-timing-function: ease;
             border-radius: var(--border-radius-min);
             color: currentColor;
+            display: flex;
+            align-items: center;
+            gap: 6px;
 
             @media (pointer: fine) {
               &:hover {
@@ -156,6 +169,14 @@
                 border-color: var(--current-neon-theme);
                 color: var(--current-neon-theme);
               }
+            }
+
+            & > :global(svg) {
+              height: 24px;
+              width: 24px;
+              transition: 0.2 ease;
+              transition-property: color, stroke;
+              color: currentColor;
             }
           }
         }
