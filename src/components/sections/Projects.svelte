@@ -9,17 +9,15 @@
     target: "_blank",
     rel: "noreferrer noopener",
   };
-
-  const errorMsg = `
-  <p id="error-message">
-      ¡Uy!, parece que algo falló, aun así puedes visitar mi cuenta en <strong
-        ><a href=${github.projects} ${Object.entries(anchorPropsExternal)
-          .map(([key, value]) => `${key} = "${value}"`)
-          .join(" ")}>GitHub</a></strong
-      > para revizar mis proyectos.
-  </p>
-    `;
 </script>
+
+{#snippet errorMessage()}
+  <p id="error-message">
+    ¡Uy!, parece que algo falló, aun así puedes visitar mi cuenta en <strong
+      ><a href={github.projects} {...anchorPropsExternal}>GitHub</a></strong
+    > para revizar mis proyectos.
+  </p>
+{/snippet}
 
 <section id={name}>
   <h1 class="section-title">{text}</h1>
@@ -61,21 +59,22 @@
       {/each}
     </section>
   {:catch}
-    {@html errorMsg}
+    {@render errorMessage()}
   {/await}
 
   <noscript>
-    {@html errorMsg}
+    {@render errorMessage()}
   </noscript>
 </section>
 
 <style>
   section[id] {
+    aspect-ratio: 197 / 246;
+
     & .container {
       column-gap: 0.5rem;
       column-count: auto;
       column-width: 20rem;
-      aspect-ratio: 197 / 246;
 
       & .card {
         border: 0.1rem solid var(--palette-grey);
