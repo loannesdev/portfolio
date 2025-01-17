@@ -112,10 +112,12 @@ const {
           display: flex;
           border: 1px solid transparent;
           background-color: var(--is-dark-mode);
-          padding: 4.8px;
+          padding: 4px;
           border-radius: var(--border-radius-min);
           justify-content: center;
           align-items: center;
+          transition: border-color 0.2s ease;
+          user-select: none;
 
           @media (pointer: fine) {
             &:hover {
@@ -166,6 +168,10 @@ const {
 
               display: flex;
               position: relative;
+
+              [icon] {
+                color: var(--current-text-theme);
+              }
 
               @media (pointer: fine) {
                 &::before,
@@ -304,7 +310,7 @@ const {
 </style>
 
 <script>
-  import { navHighlight } from "./../../utils/scripts";
+  import { navHighlight } from "./../utils/scripts";
 
   // Dark mode
   document.getElementById("dark-mode-button").addEventListener("click", () => {
