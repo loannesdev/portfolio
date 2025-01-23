@@ -19,11 +19,11 @@ export const sections = [
   {
     name: "knowledge",
     text: "Conocimientos",
-  },
+  }/* ,
   {
     name: "suggestions",
     text: "Recomendaciones",
-  },
+  }, */
 ];
 
 export const github = {
