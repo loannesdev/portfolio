@@ -160,9 +160,6 @@ export class DateParser {
     const difference = parsedDynamicDate - parsedLocalDate;
     const diffHours = difference / (1000 * 60 * 60);
 
-
-    console.log({ dynamicDate, localDate, diffHours, difference, parsedDynamicDate, parsedLocalDate });
-
     return diffHours;
   }
 }

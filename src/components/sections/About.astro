@@ -2,7 +2,6 @@
 import { readCV } from "@/services";
 import { sections } from "@/utils/const";
 import Anchor from "../Anchor.astro";
-import { DateParser } from "@/utils/scripts";
 
 const { name, text } = sections.find((elm) => elm.name === "about");
 
@@ -10,9 +9,6 @@ const {
   basics: { summary },
   interests,
 } = await readCV();
-
-const hoursDiff = DateParser.timeDiference();
-const sLetter = hoursDiff > 1 ? "s" : "";
 ---
 
 <section id={name}>
@@ -33,13 +29,7 @@ const sLetter = hoursDiff > 1 ? "s" : "";
       Cali, Colombia
     </Anchor>
 
-    <span class="time-zone">
-      &bull; {
-        (hoursDiff === 0 && "Estamos en la misma zona horaria") ||
-          (hoursDiff > 0 && `Vas adelantado por ${hoursDiff} hora${sLetter}`) ||
-          (hoursDiff < 0 && `Vas atrasado por ${hoursDiff} hora${sLetter}`)
-      }
-    </span>
+    <span class="time-zone"></span>
   </div>
 
   <section class="interests-container">
@@ -132,5 +122,21 @@ const sLetter = hoursDiff > 1 ? "s" : "";
 </style>
 
 <script>
+  import { DateParser } from "@/utils/scripts";
   import "./../ColoredTag";
+
+  const hoursDiff = DateParser.timeDiference();
+  const sLetter = hoursDiff > 1 ? "s" : "";
+  const timeZoneElement = document.querySelector(".time-zone");
+  let timeZoneText = "Estamos en la misma zona horaria";
+
+  if (hoursDiff > 0) {
+    timeZoneText = `Vas adelantado por ${hoursDiff} hora${sLetter}`;
+  }
+
+  if (hoursDiff < 0) {
+    timeZoneText = `Vas atrasado por ${hoursDiff} hora${sLetter}`;
+  }
+
+  timeZoneElement.innerHTML = `&#8226; ${timeZoneText}`;
 </script>
