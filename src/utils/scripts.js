@@ -132,4 +132,34 @@ export class DateParser {
 
     return rtf1.format(Math.floor(diff / years), "year").replace("dentro de ", "");
   }
+
+  static timeDiference() {
+    const date = new Date();
+    const opt = {
+      hour12: true,
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      month: "2-digit",
+      day: "2-digit",
+      year: "numeric",
+    };
+
+    const localDate = new Intl.DateTimeFormat("en-US", {
+      ...opt,
+      timeZone: "America/Bogota",
+    }).format(date);
+    const dynamicTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const dynamicDate = new Intl.DateTimeFormat("en-US", {
+      ...opt,
+      timeZone: dynamicTimeZone,
+    }).format(date);
+
+    const parsedLocalDate = new Date(localDate).getTime();
+    const parsedDynamicDate = new Date(dynamicDate).getTime();
+    const difference = parsedDynamicDate - parsedLocalDate;
+    const diffHours = difference / (1000 * 60 * 60);
+
+    return diffHours;
+  }
 }

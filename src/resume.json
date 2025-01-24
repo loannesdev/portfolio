@@ -6,7 +6,7 @@
     "email": "zsevaxt@gmail.com",
     "phone": null,
     "url": "https://loannesdev.netlify.app",
-    "summary": "<p>Me llama bastante la atención la programación y sus características; cómo son el testing, arquitectura, prácticas de codificación, lenguajes de programación, diseño. A menudo trato de estar al día con las nuevas tecnologías, aprendiendo de manera autodidacta la mayor parte del tiempo.</p> <p>Mi enfoque actual es el <strong>desarrollo web front-end</strong> y su ecosistema (HTML semántico y accesibilidad, CSS avanzado, maquetación, interacción, entre otras cosas) pero esto no significa que no pueda ser polivalente en algún momento, cómo puede ser la rama de desarrollo móvil, escritorio o el internet de las cosas (IoT).</p>",
+    "summary": "<p>Soy alguien que tiene un gran interés por la programación desde que inicie mis estudios em el <strong><a href='https://www.sena.edu.co/es-co/sena/paginas/quienessomos.aspx' target='_blank' rel='noreferrer noopener'>SENA</a></strong> en el <strong>2017</strong>, aprendiendo gran parte de lo que sé de manera autodidacta.</p> <p>Actualmente, me enfoco en el <strong>desarrollo web front-end</strong> y su ecosistema, incluyendo HTML semántico y accesibilidad, CSS avanzado, maquetación e interacción. Sin embargo, estoy abierto a explorar otras áreas, como el desarrollo móvil, de escritorio o el internet de las cosas (IoT), para ser más polivalente y versátil en mi carrera.</p>",
     "location": {
       "city": "Cali",
       "countryCode": "CO",
@@ -493,7 +493,7 @@
   ],
   "interests": [
     {
-      "name": "Ciclomontañismo",
+      "name": "Ciclismo (Ciclomontañismo)",
       "keywords": [
         "MTB",
         "Doble suspension",
@@ -517,7 +517,7 @@
       ]
     },
     {
-      "name": "Computación",
+      "name": "Hardware",
       "keywords": [
         "Armado de computadores",
         "Pc master race",
@@ -534,6 +534,14 @@
         "Exploración espacial",
         "Astronomía"
       ]
+    },
+    {
+      "name": "Películas / series",
+      "keywords": []
+    },
+    {
+      "name": "Astronomía",
+      "keywords": []
     }
   ],
   "references": null,

@@ -1,6 +1,8 @@
 ---
 import { readCV } from "@/services";
 import { sections } from "@/utils/const";
+import Anchor from "../Anchor.astro";
+import { DateParser } from "@/utils/scripts";
 
 const { name, text } = sections.find((elm) => elm.name === "about");
 
@@ -8,6 +10,9 @@ const {
   basics: { summary },
   interests,
 } = await readCV();
+
+const hoursDiff = DateParser.timeDiference();
+const sLetter = hoursDiff > 1 ? "s" : "";
 ---
 
 <section id={name}>
@@ -17,8 +22,28 @@ const {
     <Fragment set:html={summary} />
   </section>
 
+  <div class="location">
+    <h1 class="location-title">Ubicación</h1>
+
+    <Anchor
+      isExternalLink
+      href="https://maps.app.goo.gl/kzraGrPbge2W5JAMA"
+      class="location-link"
+    >
+      Cali, Colombia
+    </Anchor>
+
+    <span class="time-zone">
+      &bull; {
+        (hoursDiff === 0 && "Estamos en la misma zona horaria") ||
+          (hoursDiff > 0 && `Vas adelantado por ${hoursDiff} hora${sLetter}`) ||
+          (hoursDiff < 0 && `Vas atrasado por ${hoursDiff} hora${sLetter}`)
+      }
+    </span>
+  </div>
+
   <section class="interests-container">
-    <h2 class="interests-title">Algunos de mis intereses son:</h2>
+    <h1 class="interests-title">Algunos de mis intereses son</h1>
 
     <div class="interests-tags">
       {
@@ -46,13 +71,36 @@ const {
       }
     }
 
+    & .location {
+      margin-top: 48px;
+      font-size: 1.2rem;
+
+      & .location-title {
+        font-size: 1.3rem;
+        font-family: var(--font-title);
+        font-weight: 800;
+        margin-bottom: 4px;
+      }
+
+      & .location-link {
+        font-size: 1.5rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+      }
+
+      & .time-zone {
+        color: var(--reading-text-color);
+      }
+    }
+
     & .interests-container {
-      margin-top: 12px;
+      margin-top: 24px;
 
       & .interests-title {
         font-family: var(--font-title);
-        font-size: large;
+        font-size: 1.3rem;
         font-weight: 800;
+        margin-bottom: 4px;
       }
 
       & .interests-tags {
@@ -62,7 +110,7 @@ const {
 
         & colored-tag {
           border-radius: var(--border-radius-min);
-          font-size: 14.5px;
+          font-size: 1rem;
           padding: 4px 12px;
           border: 1px solid currentColor;
           background-color: color-mix(
@@ -76,7 +124,8 @@ const {
     }
 
     & :global(strong),
-    .interests-title {
+    .interests-title,
+    .location-title {
       color: var(--neon-text-variant);
     }
   }
