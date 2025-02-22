@@ -1,9 +1,9 @@
 ---
 import Icon from "@/components/Icon.astro";
-import profilePhotoAVIF from "@/images/profile-photo.avif";
-import profilePhotoWEBP from "@/images/profile-photo.webp";
 import { basics } from "@/resume.json";
 import { Image } from "astro:assets";
+// import profilePhotoAVIF from "./images/profile-photo.avif";
+// import profilePhotoWEBP from "./images/profile-photo.webp";
 
 const {
   location: { city, region, country },
@@ -12,9 +12,9 @@ const {
 
 <section class="profile-wrapper">
   <picture>
-    <source srcset={profilePhotoWEBP.src} type="image/webp" />
+    <source srcset="/images/profile-photo.avif" type="image/avif" />
     <Image
-      src={profilePhotoAVIF}
+      src="/images/profile-photo.webp"
       alt="Foto de perfil"
       width="200"
       height="200"
