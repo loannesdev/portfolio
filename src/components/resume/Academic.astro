@@ -1,0 +1,55 @@
+---
+import Anchor from "@/components/Anchor.astro";
+import { education } from "@/resume.json";
+import { DateParser } from "@/utils/scripts";
+---
+
+<section class="academic-background">
+  <h1 class="subtitle">Formación académica</h1>
+
+  <section class="list-studies">
+    {
+      education.map((education) => {
+        const { institution, url, area, startDate, endDate, location } =
+          education;
+        const startMonth = DateParser.format(startDate, { month: "long" });
+        const endMonth = DateParser.format(endDate, { month: "long" });
+        const startDateText = `${startMonth}, ${new Date(startDate).getFullYear()}`;
+        const endDateText = `${endMonth}, ${new Date(endDate).getFullYear()}`;
+
+        return (
+          <article>
+            <h1>
+              {area} &bull;
+              <Anchor href={url} isExternalLink>
+                {institution}
+              </Anchor>
+            </h1>
+            <h2>
+              {startDateText} - {endDateText} ({location})
+            </h2>
+          </article>
+        );
+      })
+    }
+  </section>
+</section>
+
+<style>
+  .academic-background {
+    & article {
+      & h1 {
+        font-size: 1.3rem;
+        font-weight: 700;
+      }
+
+      & h2 {
+        font-size: 1.05rem;
+
+        &::first-letter {
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+</style>

@@ -1,0 +1,99 @@
+---
+import Anchor from "@/components/Anchor.astro";
+import { work } from "@/resume.json";
+import { DateParser } from "@/utils/scripts";
+---
+
+<section class="experience-wrapper">
+  <h1 class="subtitle">Experiencia</h1>
+
+  <ul class="experience-list">
+    {
+      work.map((experience) => {
+        const {
+          name,
+          position,
+          url,
+          startDate,
+          endDate,
+          industry,
+          location,
+          summary,
+        } = experience;
+        const startMonth = DateParser.format(startDate, { month: "long" });
+        const endMonth = DateParser.format(endDate, { month: "long" });
+        const startDateText = `${startMonth}, ${new Date(startDate).getFullYear()}`;
+        const endDateText = `${endMonth}, ${new Date(endDate).getFullYear()}`;
+        const timeDifference = DateParser.relativeTime(startDate, endDate);
+
+        return (
+          <li class="experience-item">
+            <hgroup>
+              <h1>
+                {position} en{" "}
+                <Anchor href={url} isExternalLink>
+                  {name}
+                </Anchor>
+              </h1>
+              <h2>
+                {startDateText} - {endDateText}
+                &bull; {timeDifference} ({location}) &bull; {industry}
+              </h2>
+            </hgroup>
+
+            <div class="responsibilities">
+              <h1>Responsabilidades</h1>
+              <p>{summary}</p>
+            </div>
+          </li>
+        );
+      })
+    }
+  </ul>
+</section>
+
+<style>
+  .experience-wrapper {
+    & .experience-list {
+      display: flex;
+      gap: 28px;
+      flex-direction: column;
+      list-style: disc;
+      padding-inline-start: 16px;
+
+      & .experience-item {
+        display: list-item;
+
+        & hgroup {
+          line-height: 1;
+          margin-bottom: 20px;
+
+          & h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+          }
+
+          & h2 {
+            font-size: 1.05rem;
+
+            &::first-letter {
+              text-transform: uppercase;
+            }
+          }
+        }
+
+        & .responsibilities {
+          & h1 {
+            font-size: 1.2rem;
+            font-weight: 700;
+          }
+
+          & p {
+            font-size: var(--paragraph-size);
+          }
+        }
+      }
+    }
+  }
+</style>

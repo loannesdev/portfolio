@@ -1,4 +1,9 @@
 ---
+interface Props {
+  name: string;
+  folder?: string;
+}
+
 const { name, folder = "" } = Astro.props;
 
 let raw = null;

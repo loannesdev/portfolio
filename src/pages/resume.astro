@@ -1,0 +1,84 @@
+---
+import Header from "@/components/resume/Header.astro";
+import GeneralLayout from "@/layouts/GeneralLayout.astro";
+import Profile from "@/components/resume/Profile.astro";
+import Summary from "@/components/resume/Summary.astro";
+import Experience from "@/components/resume/Experience.astro";
+import Knowledge from "@/components/resume/Knowledge.astro";
+import Academic from "@/components/resume/Academic.astro";
+import Languages from "@/components/resume/Languages.astro";
+---
+
+<GeneralLayout title="CV - Sebastian Cortes">
+  <main>
+    <Header />
+    <Profile />
+    <Summary />
+    <Experience />
+    <Knowledge />
+    <Academic />
+    <Languages />
+  </main>
+</GeneralLayout>
+
+<style>
+  /* Reset --- */
+  :global(a) {
+    color: currentColor;
+  }
+  /* --- */
+
+  :root {
+    color-scheme: light;
+  }
+
+  @media print {
+    @page {
+      size: auto;
+      /* Remove header and footer from the printed page --- */
+      margin-top: 0;
+      margin-bottom: 0;
+      /* --- */
+      margin: 2mm 4mm;
+    }
+
+    body {
+      margin: 0;
+    }
+  }
+
+  body {
+    & main {
+      --paragraph-size: 1.15rem;
+
+      display: flex;
+      flex-direction: column;
+      padding: 32px;
+      min-height: 100dvh;
+      align-content: baseline;
+      gap: 42px;
+      max-width: 1024px;
+      margin-inline: auto;
+      background-color: var(--current-background-theme);
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      container: profile-wrapper / inline-size;
+    }
+  }
+
+  :global(.subtitle) {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+</style>
+
+<script>
+  // document.addEventListener("DOMContentLoaded", () => {
+  //   print();
+  // });
+
+  // window.addEventListener("afterprint", () => {
+  //   history.back();
+  // });
+</script>

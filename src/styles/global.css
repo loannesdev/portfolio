@@ -38,14 +38,13 @@
   --display-icon-dark: block;
   --display-icon-light: none;
   --reading-text-color: light-dark(var(--palette-black), color-mix(in srgb, gray 20%, var(--palette-white)));
+  --scroll-bg-color: color-mix(in srgb, transparent 90%, var(--current-text-theme));
+  --scroll-bar-color: color-mix(in srgb, transparent 60%, var(--current-text-theme));
 
   color-scheme: light dark;
 }
 
 * {
-  --scroll-bg-color: color-mix(in srgb, transparent 98%, var(--current-text-theme));
-  --scroll-bar-color: color-mix(in srgb, transparent 80%, var(--current-text-theme));
-
   scrollbar-width: auto;
   scrollbar-color: var(--scroll-bar-color) var(--scroll-bg-color);
 }

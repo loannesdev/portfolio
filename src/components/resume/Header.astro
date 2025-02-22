@@ -1,0 +1,40 @@
+---
+import Anchor from "@/components/Anchor.astro";
+import { basics } from "@/resume.json";
+
+const { email, phone, profiles } = basics;
+
+const linkedinProfile = profiles.find((elm) => elm.network === "LinkedIn");
+const parsedLinkedinLink = linkedinProfile.url.replace("https://", "");
+const githubProfile = profiles.find((elm) => elm.network === "GitHub");
+const parsedGithubLink = githubProfile.url.replace("https://", "");
+---
+
+<header class="header-wrapper">
+  <ul>
+    <li>{email}</li>&bull;
+    <li>{phone}</li>&bull;
+    <li>
+      <Anchor isExternalLink href={linkedinProfile.url}>
+        {parsedLinkedinLink}
+      </Anchor>
+    </li>&bull;
+    <li>
+      <Anchor isExternalLink href={githubProfile.url}>
+        {parsedGithubLink}
+      </Anchor>
+    </li>
+  </ul>
+</header>
+
+<style>
+  .header-wrapper {
+    & ul {
+      display: flex;
+      gap: 6px 12px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+</style>

@@ -113,10 +113,12 @@ const {
       }
     }
 
-    & :global(strong),
-    .interests-title,
-    .location-title {
+    & :global(strong, .interests-title, .location-title) {
       color: var(--neon-text-variant);
+    }
+
+    & :global(a) {
+      color: currentColor;
     }
   }
 </style>

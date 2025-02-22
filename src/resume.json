@@ -4,7 +4,7 @@
     "label": "Desarrollador web front-end",
     "image": null,
     "email": "zsevaxt@gmail.com",
-    "phone": null,
+    "phone": "+57 302 668 5507",
     "url": "https://loannesdev.netlify.app",
     "summary": "<p>Soy alguien que tiene un gran interés por la programación desde que inicie mis estudios em el <strong><a href='https://www.sena.edu.co/es-co/sena/paginas/quienessomos.aspx' target='_blank' rel='noreferrer noopener'>SENA</a></strong> en el <strong>2017</strong>, aprendiendo gran parte de lo que sé de manera autodidacta.</p> <p>Actualmente, me enfoco en el <strong>desarrollo web front-end</strong> y su ecosistema, incluyendo HTML semántico y accesibilidad, CSS avanzado, maquetación e interacción. Sin embargo, estoy abierto a explorar otras áreas, como el desarrollo móvil, de escritorio o el internet de las cosas (IoT), para ser más polivalente y versátil en mi carrera.</p>",
     "location": {
@@ -22,7 +22,7 @@
       {
         "network": "LinkedIn",
         "username": "sebastian-cc",
-        "url": "https://www.linkedin.com/in/sebastian-cc"
+        "url": "https://linkedin.com/in/sebastian-cc"
       },
       {
         "network": "CodePen",
@@ -53,10 +53,12 @@
         "Create React App",
         "Jira",
         "Gather"
-      ]
+      ],
+      "location": "Cali, Colombia",
+      "industry": "Construcción"
     },
     {
-      "name": "EMCALI EICE ESP",
+      "name": "EMCALI",
       "position": "Practicante",
       "url": "https://www.emcali.com.co",
       "startDate": "2019-04-08",
@@ -65,7 +67,9 @@
       "highlights": [
         "Visual basic for applications (VBA)",
         "Excel avanzado"
-      ]
+      ],
+      "location": "Cali, Colombia",
+      "industry": "Servicios públicos"
     }
   ],
   "volunteer": null,
@@ -78,7 +82,8 @@
       "startDate": "2017-07-17",
       "endDate": "2019-11-14",
       "score": null,
-      "courses": null
+      "courses": null,
+      "location": "Cali, Colombia"
     }
   ],
   "awards": null,

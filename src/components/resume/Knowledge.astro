@@ -1,0 +1,54 @@
+---
+import Anchor from "../Anchor.astro";
+---
+
+<section class="knowledge-wrapper">
+  <h1 class="subtitle">Conocimientos</h1>
+
+  <ul class="list-techs">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+    <li>Git</li>
+    <li>GitHub</li>
+    <li>React</li>
+    <li>Node</li>
+    <li>PostgreSQL</li>
+    <li>MySQL</li>
+    <li>MongoDB</li>
+    <li>Tailwind</li>
+    <li>Deno</li>
+    <li>Astro</li>
+    <li>Svelte</li>
+  </ul>
+
+  <em class="advice" hidden>
+    Visita <Anchor isExternalLink href="https://loannesdev.netlify.app"
+      >loannesdev.netlify.app</Anchor
+    >para ver todas las tecnologías que conozco
+  </em>
+</section>
+
+<style>
+  .knowledge-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    & .list-techs {
+      display: grid;
+      gap: 4px 32px;
+      list-style: inside;
+      grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+      font-size: 1.1rem;
+    }
+
+    & .advice {
+      margin-top: 24px;
+      align-self: self-end;
+
+      @media print {
+        display: block;
+      }
+    }
+  }
+</style>

@@ -1,0 +1,104 @@
+---
+import Icon from "@/components/Icon.astro";
+import profilePhotoAVIF from "@/images/profile-photo.avif";
+import profilePhotoWEBP from "@/images/profile-photo.webp";
+import { basics } from "@/resume.json";
+import { Image } from "astro:assets";
+
+const {
+  location: { city, region, country },
+} = basics;
+---
+
+<section class="profile-wrapper">
+  <picture>
+    <source srcset={profilePhotoWEBP.src} type="image/webp" />
+    <Image
+      src={profilePhotoAVIF}
+      alt="Foto de perfil"
+      width="200"
+      height="200"
+      loading="eager"
+    />
+  </picture>
+
+  <div class="profile-info">
+    <hgroup>
+      <h1>Juan Sebastian Cortes Castillo</h1>
+      <h2>Desarrollador web front-end</h2>
+    </hgroup>
+
+    <div class="location-wrapper">
+      <Icon name="location-pointer" folder="/resume" />
+      <span>{city}, {region}, {country}</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .profile-wrapper {
+    display: flex;
+    gap: 32px;
+    transition: gap 0.2s ease;
+
+    @container profile-wrapper (width <= 640px) {
+      gap: 18px;
+    }
+
+    & picture {
+      height: fit-content;
+      border-radius: 12px;
+      overflow: hidden;
+
+      & img {
+        object-fit: cover;
+        display: flex;
+        aspect-ratio: 1 / 1;
+      }
+    }
+
+    & .profile-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: fit-content;
+      gap: 12px;
+
+      & hgroup {
+        & h1,
+        h2 {
+          text-transform: uppercase;
+        }
+
+        & h1 {
+          font-size: clamp(1.8rem, 5vw, 2.5rem);
+          font-weight: 700;
+          line-height: 1;
+          margin-bottom: 12px;
+          letter-spacing: 6px;
+        }
+
+        & h2 {
+          letter-spacing: 4px;
+          font-size: 1.1rem;
+          font-size: clamp(0.9rem, 2vw, 1.1rem);
+        }
+      }
+
+      & .location-wrapper {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+
+        & :global(svg) {
+          height: 24px;
+          width: 24px;
+        }
+
+        & span {
+          font-size: clamp(0.85rem, 2vw, 1.1rem);
+        }
+      }
+    }
+  }
+</style>
