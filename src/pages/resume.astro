@@ -7,6 +7,11 @@ import Experience from "@/components/resume/Experience.astro";
 import Knowledge from "@/components/resume/Knowledge.astro";
 import Academic from "@/components/resume/Academic.astro";
 import Languages from "@/components/resume/Languages.astro";
+import { lookingForAJob } from "@/utils/const";
+
+if (!lookingForAJob) {
+  return Astro.redirect("/");
+}
 ---
 
 <GeneralLayout title="CV - Sebastian Cortes">
