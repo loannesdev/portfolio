@@ -2,8 +2,6 @@
 import Icon from "@/components/Icon.astro";
 import { basics } from "@/resume.json";
 import { Image } from "astro:assets";
-// import profilePhotoAVIF from "./images/profile-photo.avif";
-// import profilePhotoWEBP from "./images/profile-photo.webp";
 
 const {
   location: { city, region, country },
@@ -36,21 +34,37 @@ const {
 </section>
 
 <style>
+  & {
+    container: adjust-mobile / inline-size;
+  }
+
   .profile-wrapper {
     display: flex;
-    gap: 32px;
-    transition: gap 0.2s ease;
+    gap: clamp(24px, 4vw, 32px);
+    transition: 0.2s ease;
+    transition-property: gap;
 
-    @container profile-wrapper (width <= 640px) {
-      gap: 18px;
+    @container adjust-mobile (width <= 480px) {
+      flex-direction: column;
+
+      & picture {
+        align-self: center;
+      }
+
+      & .profile-info {
+        text-align: center;
+
+        & .location-wrapper {
+          align-self: center;
+        }
+      }
     }
 
     & picture {
       height: fit-content;
-      border-radius: 12px;
-      overflow: hidden;
 
       & img {
+        border-radius: 12px;
         object-fit: cover;
         display: flex;
         aspect-ratio: 1 / 1;
