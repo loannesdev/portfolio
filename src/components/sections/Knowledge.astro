@@ -13,6 +13,26 @@ const filters = {
   tool: "herramientas",
   language: "lenguages",
 };
+const excludedTechs = [
+  "netbeans",
+  "materialize",
+  "pg admin",
+  "phpmyadmin",
+  "react native paper",
+  "skeleton",
+  "sublime text",
+  "token css",
+  "visual studio",
+  "visual studio code",
+];
+const parsedSkills = skills
+  .sort((a, b) => {
+    const first = a.name.toLowerCase();
+    const second = b.name.toLowerCase();
+
+    return first.localeCompare(second);
+  })
+  .filter(({ name }) => !excludedTechs.includes(name.toLowerCase()));
 ---
 
 <section id={name}>
@@ -39,34 +59,27 @@ const filters = {
 
     <section class="card-container">
       {
-        skills
-          .sort((a, b) => {
-            const first = a.name.toLowerCase();
-            const second = b.name.toLowerCase();
+        parsedSkills.map(({ website, name, level, keywords }) => {
+          return (
+            <Anchor
+              isExternalLink
+              class="card"
+              aria-label={`${name}, ${level}`}
+              href={website}
+              data-category={keywords?.join(" ")}
+            >
+              <Icon name={name} />
 
-            return first.localeCompare(second);
-          })
-          .map(({ website, name, level, keywords }) => {
-            return (
-              <Anchor
-                isExternalLink
-                class="card"
-                aria-label={`${name}, ${level}`}
-                href={website}
-                data-category={keywords?.join(" ")}
-              >
-                <Icon name={name} />
+              <footer class="card-footer">
+                <h1 class="card-title">{name}</h1>
 
-                <footer class="card-footer">
-                  <h1 class="card-title">{name}</h1>
-
-                  <small class="card-level" data-level={level}>
-                    {level}
-                  </small>
-                </footer>
-              </Anchor>
-            );
-          })
+                <small class="card-level" data-level={level}>
+                  {level}
+                </small>
+              </footer>
+            </Anchor>
+          );
+        })
       }
     </section>
   </section>
@@ -185,7 +198,7 @@ const filters = {
           justify-content: center;
           gap: 0.5rem;
           text-decoration: none;
-          transition: 0.15s ease;
+          transition: 0.2s ease;
           transition-property: border, scale, text-shadow;
           border: 1px solid transparent;
           border-radius: var(--border-radius-med);
