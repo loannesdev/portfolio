@@ -33,6 +33,25 @@
   },
   "work": [
     {
+      "name": "Sistema Copres SAS",
+      "position": "Auxiliar de sistemas",
+      "url": null,
+      "startDate": "2024-10-14",
+      "endDate": "2025-01-14",
+      "summary": "Me encargé del desarrollo de nuevas interfaces tomando como base diseños previamente establecidos, así como la modificación de componentes y diseños de la aplicación.",
+      "highlights": [
+        "Svelte",
+        "Tailwind",
+        "Syncfusion",
+        "Node",
+        "Git",
+        "GitHub",
+        "Vite"
+      ],
+      "location": "San Juan de Pasto, Colombia (remoto)",
+      "industry": "Tecnología"
+    },
+    {
       "name": "Justo Pago",
       "position": "Desarrollador junior full-stack",
       "url": "https://justopago.com.co/",
