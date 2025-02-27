@@ -4,6 +4,12 @@ import { sections } from "@/utils/const";
 import { DateParser } from "@/utils/scripts";
 
 const { name, text } = sections.find((elm) => elm.name === "experience");
+const orderedExperience = work.toSorted((a, b) => {
+  const aEndDate = new Date(a.endDate).getTime();
+  const bEndDate = new Date(b.endDate).getTime();
+
+  return bEndDate - aEndDate;
+});
 ---
 
 <section id={name}>
@@ -11,7 +17,7 @@ const { name, text } = sections.find((elm) => elm.name === "experience");
 
   <section class="time-line">
     {
-      work.map((experience) => {
+      orderedExperience.map((experience) => {
         const {
           name: companyName,
           summary,

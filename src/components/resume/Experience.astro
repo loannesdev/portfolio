@@ -2,6 +2,13 @@
 import Anchor from "@/components/Anchor.astro";
 import { work } from "@/resume.json";
 import { DateParser } from "@/utils/scripts";
+
+const orderedExperience = work.toSorted((a, b) => {
+  const aEndDate = new Date(a.endDate).getTime();
+  const bEndDate = new Date(b.endDate).getTime();
+
+  return bEndDate - aEndDate;
+});
 ---
 
 <section class="experience-wrapper">
@@ -9,7 +16,7 @@ import { DateParser } from "@/utils/scripts";
 
   <ul class="experience-list">
     {
-      work.map((experience) => {
+      orderedExperience.map((experience) => {
         const {
           name,
           position,
@@ -72,6 +79,10 @@ import { DateParser } from "@/utils/scripts";
             font-size: 1.3rem;
             font-weight: 700;
             margin-bottom: 8px;
+
+            & a {
+              text-decoration: underline;
+            }
           }
 
           & h2 {
