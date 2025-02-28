@@ -39,8 +39,7 @@ const {
         {
           lookingForAJob && (
             <Anchor
-              href="/CV/CV_es.pdf"
-              download="CV - Sebastian Cortes.pdf"
+              href="/resume"
               aria-label="Descargar CV"
               class="download-cv"
             >
@@ -69,8 +68,6 @@ const {
       </ul>
     </nav>
   </div>
-
-  <!-- <a href="/resume">imprimir CV</a> -->
 </header>
 
 <style>
@@ -216,10 +213,9 @@ const {
           }
 
           & .download-cv {
-            transition-duration: 0.2s;
-            transition-property: color, font-weight, text-shadow;
-            transition-timing-function: ease;
-            border: 1px dotted var(--current-text-theme);
+            transition: 0.2s ease;
+            transition-property: color, border-style, text-shadow;
+            border: 1px dashed var(--current-text-theme);
             border-radius: var(--border-radius-min);
             padding: 6px 12px;
             text-decoration: none;

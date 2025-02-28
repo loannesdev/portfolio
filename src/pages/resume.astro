@@ -16,6 +16,8 @@ if (!lookingForAJob) {
 
 <GeneralLayout title="CV - Sebastian Cortes">
   <main>
+    <a href="/" class="go-back" type="button">Ir al inicio</a>
+
     <Header />
     <Profile />
     <Summary />
@@ -45,10 +47,12 @@ if (!lookingForAJob) {
       margin-bottom: 0;
       /* --- */
       margin: 2mm 4mm;
+      /* transform: scale(0.9); */
     }
 
     body {
       margin: 0;
+      zoom: 90%;
     }
   }
 
@@ -66,6 +70,30 @@ if (!lookingForAJob) {
       margin-inline: auto;
       background-color: var(--current-background-theme);
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+      & .go-back {
+        font-family: var(--font-text);
+        width: fit-content;
+        padding: 6px 12px;
+        border-radius: var(--border-radius-min);
+        transition: 0.2s ease;
+        transition-property: color, border-style, text-shadow;
+        cursor: pointer;
+        border: 1px dashed currentColor;
+        background-color: transparent;
+        text-decoration: none;
+
+        @media print {
+          display: none;
+        }
+
+        &:is(:hover, :focus) {
+          color: var(--current-neon-theme);
+          border-color: var(--current-neon-theme);
+          border-style: solid;
+          text-shadow: 0 0 16px var(--current-neon-theme);
+        }
+      }
     }
   }
 
@@ -78,11 +106,13 @@ if (!lookingForAJob) {
 </style>
 
 <script>
-  // document.addEventListener("DOMContentLoaded", () => {
-  //   print();
-  // });
+  document.addEventListener("DOMContentLoaded", () => {
+    print();
+  });
 
-  // window.addEventListener("afterprint", () => {
-  //   history.back();
-  // });
+  window.onafterprint = () => {
+    setTimeout(() => {
+      location.replace("/");
+    }, 100);
+  };
 </script>

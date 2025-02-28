@@ -1,4 +1,4 @@
-export const lookingForAJob = false;
+export const lookingForAJob = true;
 
 export const envVars = import.meta.env;
 
