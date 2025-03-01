@@ -107,7 +107,9 @@ if (!lookingForAJob) {
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    print();
+    setTimeout(() => {
+      print();
+    }, 200);
   });
 
   window.onafterprint = () => {
