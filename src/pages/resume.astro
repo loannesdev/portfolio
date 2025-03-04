@@ -106,11 +106,18 @@ if (!lookingForAJob) {
 </style>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(() => {
-      print();
-    }, 200);
-  });
+  document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+      const profilePhoto = document.querySelector("img.profile-photo");
+
+      if (profilePhoto) {
+        print();
+        console.log("holi");
+      }
+    },
+    { once: true },
+  );
 
   window.onafterprint = () => {
     const isMobileDevice =
