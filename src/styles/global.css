@@ -51,11 +51,12 @@
 
 button {
   padding: 8px 16px;
-  background-color: transparent;
+  background-color: var(--current-background-theme);
   border: 1px solid color-mix(in srgb, transparent 80%, var(--current-text-theme));
   transition: 0.2s ease;
   transition-property: border-color, color;
   border-radius: var(--border-radius-min);
+  width: fit-content;
 
   @media (pointer: fine) {
     &:hover {
@@ -83,6 +84,7 @@ button {
   opacity: 0%;
   overscroll-behavior-y: none;
   margin: auto;
+  background-color: var(--current-background-theme);
 
   &:popover-open {
     opacity: 100%;

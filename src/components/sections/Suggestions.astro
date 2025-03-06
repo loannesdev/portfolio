@@ -61,7 +61,9 @@ import Image from "astro/components/Image.astro";
 
 <style>
   section {
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 
     & .content-creators {
       display: flex;
@@ -69,7 +71,6 @@ import Image from "astro/components/Image.astro";
       gap: 24px;
 
       & > h1 {
-        margin-bottom: 8px;
         font-size: 1.5rem;
         font-weight: 600;
       }

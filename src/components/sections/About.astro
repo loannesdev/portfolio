@@ -194,17 +194,12 @@ const {
     padding: 32px;
 
     & .close-btn {
-      align-self: self-end;
       position: sticky;
       top: 0;
       background-color: var(--current-background-theme);
       z-index: 1;
-    }
-
-    &:popover-open {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
+      margin-bottom: 32px;
+      overflow: hidden;
     }
   }
 </style>
