@@ -147,7 +147,7 @@
           & > a {
             --button-text-shadow: 0px 0px 16px var(--current-neon-theme);
             padding: 8px 16px;
-            border: 0.1rem solid var(--palette-grey);
+            border: 1px solid var(--palette-grey);
             text-decoration: none;
             transition: 0.2s ease;
             transition-property: color, background-color, border-color;

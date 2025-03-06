@@ -8,6 +8,10 @@ const orderedExperience = work.toSorted((a, b) => {
   const aEndDate = new Date(a.endDate).getTime();
   const bEndDate = new Date(b.endDate).getTime();
 
+  if (!bEndDate) {
+    return aEndDate - bEndDate;
+  }
+
   return bEndDate - aEndDate;
 });
 ---
@@ -86,29 +90,28 @@ const orderedExperience = work.toSorted((a, b) => {
     & .time-line {
       display: flex;
       flex-direction: column;
+      position: relative;
 
       & .time-line-element {
-        --dot-size: 15px;
+        --dot-size: 14px;
         --active-experience-color: color-mix(
           in srgb,
           var(--current-text-theme) 10%,
           gray
         );
+        --circle-border-size: 1px;
 
         position: relative;
-        padding-left: calc(var(--dot-size) * 2.5);
+        padding-left: calc(var(--dot-size) * 2);
         display: flex;
         flex-direction: column;
         gap: 16px;
 
+        /* Circle --- */
         &::before {
           content: "";
-          background-color: color-mix(
-            in srgb,
-            transparent 0%,
-            var(--current-background-theme)
-          );
-          border: 3px solid var(--active-experience-color);
+          background-color: transparent;
+          border: var(--circle-border-size) solid var(--active-experience-color);
           width: var(--dot-size);
           height: var(--dot-size);
           position: absolute;
@@ -119,18 +122,24 @@ const orderedExperience = work.toSorted((a, b) => {
           transition: 0.2s ease;
           transition-property: background-color, border-color;
         }
+        /* --- */
 
+        /* Line --- */
         &::after {
           content: "";
-          background-color: var(--active-experience-color);
-          width: 5px;
-          height: 100%;
+          border-right: var(--circle-border-size) solid
+            var(--active-experience-color);
+          width: calc(
+            calc(var(--dot-size) / 2) + calc(var(--circle-border-size) / 2)
+          );
+          height: calc(100% - calc(var(--dot-size)));
           position: absolute;
           top: 0;
-          left: calc(var(--dot-size) / 2);
-          border-radius: 72px;
+          left: 0;
           transition: 0.2s ease background-color;
+          margin-top: calc(var(--dot-size) + var(--circle-border-size));
         }
+        /* --- */
 
         &:not(:last-child) {
           padding-bottom: 64px;

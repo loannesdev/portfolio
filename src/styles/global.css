@@ -48,3 +48,59 @@
   scrollbar-width: auto;
   scrollbar-color: var(--scroll-bar-color) var(--scroll-bg-color);
 }
+
+button {
+  padding: 8px 16px;
+  background-color: transparent;
+  border: 1px solid color-mix(in srgb, transparent 80%, var(--current-text-theme));
+  transition: 0.2s ease;
+  transition-property: border-color, color;
+  border-radius: var(--border-radius-min);
+
+  @media (pointer: fine) {
+    &:hover {
+      border-color: var(--current-neon-theme);
+      color: var(--current-neon-theme);
+    }
+  }
+
+  @media (pointer: coarse) {
+    &:active {
+      border-color: var(--current-neon-theme);
+      color: var(--current-neon-theme);
+    }
+  }
+}
+
+[popover] {
+  border: 1px solid gray;
+  border-radius: 12px;
+  max-height: 80dvh;
+  max-width: 80dvw;
+  transition: 0.2s ease-in-out;
+  transition-property: opacity, display;
+  transition-behavior: allow-discrete;
+  opacity: 0%;
+  overscroll-behavior-y: none;
+  margin: auto;
+
+  &:popover-open {
+    opacity: 100%;
+
+    @starting-style {
+      opacity: 0%;
+    }
+
+    &::backdrop {
+      backdrop-filter: blur(24px);
+    }
+  }
+}
+
+html {
+  & :has(:popover-open) {
+    &:not([popover]) {
+      overflow: hidden;
+    }
+  }
+}

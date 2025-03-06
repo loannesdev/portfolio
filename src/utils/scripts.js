@@ -1,9 +1,5 @@
 import { sections } from "../utils/const";
 
-export const DOMSelector = (string) => {
-  return document.querySelector(string);
-};
-
 export const darkMode = () => {
   // Dark mode
   let darkModeValue = localStorage.getItem("theme");
@@ -42,7 +38,7 @@ const getNav = (sectionId = "") => {
   const navList = document.querySelectorAll(".navigation-list>ul>li>a");
 
   const navElement = Object.values(navList).find(
-    (elm) => elm.getAttribute("data-id") === sectionId
+    (elm) => elm.dataset.id === sectionId
   );
 
   return navElement;

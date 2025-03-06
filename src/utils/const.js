@@ -19,11 +19,7 @@ export const sections = [
   {
     name: "knowledge",
     text: "Conocimientos",
-  }/* ,
-  {
-    name: "suggestions",
-    text: "Recomendaciones",
-  }, */
+  }
 ];
 
 export const github = {
@@ -73,7 +69,7 @@ export const contentCreators = [
         url: "https://www.instagram.com/midu.dev/",
       },
     ],
-    photo: "https://unavatar.io/twitter/midudev",
+    photo: "https://unavatar.io/x/midudev",
   },
   {
     name: "ManzDev",
@@ -104,7 +100,7 @@ export const contentCreators = [
         url: "https://www.instagram.com/manz.dev/",
       },
     ],
-    photo: "https://unavatar.io/twitter/manz",
+    photo: "https://unavatar.io/x/manz",
   },
   {
     name: "Fernando Herrera",
@@ -135,7 +131,7 @@ export const contentCreators = [
         url: "https://www.instagram.com/fernando_her85/",
       },
     ],
-    photo: "https://unavatar.io/twitter/fernando_her85",
+    photo: "https://unavatar.io/x/fernando_her85",
   },
   {
     name: "UXAnaRangel",
@@ -197,7 +193,7 @@ export const contentCreators = [
         url: "https://instagram.com/jh3yyyy",
       },
     ],
-    photo: "https://unavatar.io/twitter/jh3yy",
+    photo: "https://unavatar.io/x/jh3yy",
   },
   {
     name: "Adam Argyle",
@@ -228,7 +224,7 @@ export const contentCreators = [
         url: null,
       },
     ],
-    photo: "https://unavatar.io/twitter/argyleink",
+    photo: "https://unavatar.io/x/argyleink",
   },
   {
     name: "Una Kravets",
@@ -259,7 +255,7 @@ export const contentCreators = [
         url: null,
       },
     ],
-    photo: "https://unavatar.io/twitter/Una",
+    photo: "https://unavatar.io/x/Una",
   },
   {
     name: "CodelyTV",
@@ -321,7 +317,7 @@ export const contentCreators = [
         url: null,
       },
     ],
-    photo: "https://unavatar.io/twitter/G_Programming",
+    photo: "https://unavatar.io/x/G_Programming",
   },
   {
     name: "Jhonatan Mircha",
@@ -352,7 +348,7 @@ export const contentCreators = [
         url: null,
       },
     ],
-    photo: "https://unavatar.io/twitter/jonmircha",
+    photo: "https://unavatar.io/x/jonmircha",
   },
   {
     name: "Juan Villalvazo",
@@ -383,7 +379,7 @@ export const contentCreators = [
         url: null,
       },
     ],
-    photo: "https://unavatar.io/twitter/TecMotivacional",
+    photo: "https://unavatar.io/x/TecMotivacional",
   },
   {
     name: "GNDX",
@@ -414,7 +410,7 @@ export const contentCreators = [
         url: "https://instagram.com/gndx",
       },
     ],
-    photo: "https://unavatar.io/twitter/gndx",
+    photo: "https://unavatar.io/x/gndx",
   },
   {
     name: "Héctor de León",
@@ -445,7 +441,7 @@ export const contentCreators = [
         url: null,
       },
     ],
-    photo: "https://unavatar.io/twitter/powerhdeleon",
+    photo: "https://unavatar.io/x/powerhdeleon",
   },
   {
     name: "Goncy",
@@ -476,7 +472,7 @@ export const contentCreators = [
         url: null,
       },
     ],
-    photo: "https://unavatar.io/twitter/goncy",
+    photo: "https://unavatar.io/x/goncy",
   },
   {
     name: "Pelao Fredrikson",
@@ -507,7 +503,7 @@ export const contentCreators = [
         url: null,
       },
     ],
-    photo: "https://unavatar.io/twitter/PeladoNerd",
+    photo: "https://unavatar.io/x/PeladoNerd",
   },
   {
     name: "DotCSV",
@@ -538,7 +534,7 @@ export const contentCreators = [
         url: null,
       },
     ],
-    photo: "https://unavatar.io/twitter/DotCSV",
+    photo: "https://unavatar.io/x/DotCSV",
   },
   {
     name: "S4vitar",
@@ -569,7 +565,7 @@ export const contentCreators = [
         url: null,
       },
     ],
-    photo: "https://unavatar.io/twitter/S4vitar",
+    photo: "https://unavatar.io/x/S4vitar",
   },
   {
     name: "Guillermo Rodas",
@@ -600,7 +596,7 @@ export const contentCreators = [
         url: "https://instagram.com/rodasdev",
       },
     ],
-    photo: "https://unavatar.io/twitter/rodasdev",
+    photo: "https://unavatar.io/x/rodasdev",
   },
   {
     name: "Carmen Ansio",
@@ -631,7 +627,7 @@ export const contentCreators = [
         url: null,
       },
     ],
-    photo: "https://unavatar.io/twitter/carmenansio",
+    photo: "https://unavatar.io/x/carmenansio",
   },
   {
     name: "Carlos Azaustre",
@@ -662,7 +658,7 @@ export const contentCreators = [
         url: "https://instagram.com/carlosazaustre",
       },
     ],
-    photo: "https://unavatar.io/twitter/carlosazaustre",
+    photo: "https://unavatar.io/x/carlosazaustre",
   },
   {
     name: "Fazt",
@@ -693,6 +689,6 @@ export const contentCreators = [
         url: "https://www.instagram.com/fazttech/",
       },
     ],
-    photo: "https://unavatar.io/twitter/fazttech",
+    photo: "https://unavatar.io/x/fazttech",
   },
 ];

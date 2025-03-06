@@ -1,18 +1,13 @@
 ---
 import Anchor from "@/components/Anchor.astro";
 import Icon from "@/components/Icon.astro";
-import { contentCreators, sections } from "@/utils/const";
+import { contentCreators } from "@/utils/const";
 import Image from "astro/components/Image.astro";
-
-const { name, text } = sections.find((elm) => elm.name === "suggestions");
-const iconsFolder = "/suggestions";
 ---
 
-<section id={name}>
-  <h1 class="section-title">{text}</h1>
-
-  <article class="information-source-wrapper">
-    <h2>Creadores de contenido y más</h2>
+<section>
+  <article class="content-creators">
+    <h1>Creadores de contenido</h1>
 
     <ul class="information-list">
       {
@@ -49,7 +44,7 @@ const iconsFolder = "/suggestions";
                             isExternalLink
                             aria-label={`Enlace a ${key}`}
                           >
-                            <Icon name={iconName} folder={iconsFolder} />
+                            <Icon name={iconName} folder="/suggestions" />
                           </Anchor>
                         );
                       })}
@@ -65,17 +60,17 @@ const iconsFolder = "/suggestions";
 </section>
 
 <style>
-  #suggestions {
+  section {
     display: grid;
 
-    & .section-title {
-      margin-bottom: 24px;
-    }
+    & .content-creators {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
 
-    & .information-source-wrapper {
-      & > h2 {
+      & > h1 {
         margin-bottom: 8px;
-        font-size: 24px;
+        font-size: 1.5rem;
         font-weight: 600;
       }
 

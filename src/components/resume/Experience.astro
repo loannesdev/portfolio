@@ -7,6 +7,10 @@ const orderedExperience = work.toSorted((a, b) => {
   const aEndDate = new Date(a.endDate).getTime();
   const bEndDate = new Date(b.endDate).getTime();
 
+  if (!bEndDate) {
+    return aEndDate - bEndDate;
+  }
+
   return bEndDate - aEndDate;
 });
 ---
@@ -30,7 +34,9 @@ const orderedExperience = work.toSorted((a, b) => {
         const startMonth = DateParser.format(startDate, { month: "long" });
         const endMonth = DateParser.format(endDate, { month: "long" });
         const startDateText = `${startMonth}, ${new Date(startDate).getFullYear()}`;
-        const endDateText = `${endMonth}, ${new Date(endDate).getFullYear()}`;
+        const endDateText = endDate
+          ? `${endMonth}, ${new Date(endDate).getFullYear()}`
+          : "Actualidad";
         const timeDifference = DateParser.relativeTime(startDate, endDate);
 
         return (
