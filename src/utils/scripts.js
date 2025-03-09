@@ -159,3 +159,18 @@ export class DateParser {
     return diffHours;
   }
 }
+
+export const orderExperience = (experience = []) => {
+  const orderedExperience = experience.toSorted((a, b) => {
+    const aEndDate = new Date(a.endDate).getTime();
+    const bEndDate = new Date(b.endDate).getTime();
+
+    if (!bEndDate) {
+      return aEndDate - bEndDate;
+    }
+
+    return bEndDate - aEndDate;
+  });
+
+  return orderedExperience
+}

@@ -1,18 +1,9 @@
 ---
 import Anchor from "@/components/Anchor.astro";
 import { work } from "@/resume.json";
-import { DateParser } from "@/utils/scripts";
+import { DateParser, orderExperience } from "@/utils/scripts";
 
-const orderedExperience = work.toSorted((a, b) => {
-  const aEndDate = new Date(a.endDate).getTime();
-  const bEndDate = new Date(b.endDate).getTime();
-
-  if (!bEndDate) {
-    return aEndDate - bEndDate;
-  }
-
-  return bEndDate - aEndDate;
-});
+const orderedExperience = orderExperience(work);
 ---
 
 <section class="experience-wrapper">

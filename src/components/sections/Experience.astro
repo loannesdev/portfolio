@@ -1,19 +1,10 @@
 ---
 import { work } from "@/resume.json";
 import { sections } from "@/utils/const";
-import { DateParser } from "@/utils/scripts";
+import { DateParser, orderExperience } from "@/utils/scripts";
 
 const { name, text } = sections.find((elm) => elm.name === "experience");
-const orderedExperience = work.toSorted((a, b) => {
-  const aEndDate = new Date(a.endDate).getTime();
-  const bEndDate = new Date(b.endDate).getTime();
-
-  if (!bEndDate) {
-    return aEndDate - bEndDate;
-  }
-
-  return bEndDate - aEndDate;
-});
+const orderedExperience = orderExperience(work);
 ---
 
 <section id={name}>
