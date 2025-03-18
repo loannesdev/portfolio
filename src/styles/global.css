@@ -30,7 +30,7 @@
   --border-radius-med: 6px;
   --border-radius-max: 32px;
   --current-text-theme: light-dark(var(--palette-black), var(--palette-white));
-  --current-background-theme: light-dark(var(--palette-white), var(--palette-black));
+  --current-background-theme: light-dark(#f2f2f2, var(--palette-black));
   --current-neon-theme: light-dark(var(--palette-neon-blue), var(--palette-neon-green));
   --neon-text-variant: color-mix(in srgb,
       var(--palette-white) 20%,
