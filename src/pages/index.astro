@@ -28,7 +28,7 @@ import GeneralLayout from "@/layouts/GeneralLayout.astro";
     <Home />
     <About />
     <Experience />
-    <Projects client:load />
+    <Projects client:only="svelte" />
     <Knowledge />
   </main>
 </GeneralLayout>
@@ -64,11 +64,23 @@ import GeneralLayout from "@/layouts/GeneralLayout.astro";
       scroll-margin-top: var(--section-scroll-margin-top);
 
       & :global(.section-title) {
-        font-size: 2rem;
-        font-weight: 900;
-        font-family: var(--font-title);
-        color: color-mix(in srgb, transparent 10%, var(--current-text-theme));
         margin-bottom: 24px;
+        width: fit-content;
+
+        & :global(a) {
+          text-decoration: underline transparent;
+          transition: text-decoration-color 0.4s ease;
+          color: color-mix(in srgb, transparent 20%, var(--current-text-theme));
+          font-size: 2.75rem;
+          font-weight: 900;
+          font-family: var(--font-title);
+        }
+
+        &:is(:hover, :focus-within, :active) {
+          & :global(a) {
+            text-decoration-color: var(--current-neon-theme);
+          }
+        }
       }
     }
   }

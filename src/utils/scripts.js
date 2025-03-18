@@ -83,7 +83,6 @@ export class DateParser {
     return new Intl.DateTimeFormat("es-ES", config).format(parsedDate);
   }
 
-
   static relativeTime(startDate = "", endDate = "") {
     const start = new Date(startDate);
     const end = new Date(endDate);

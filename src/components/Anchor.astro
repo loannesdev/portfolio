@@ -1,10 +1,16 @@
 ---
-const { isExternalLink, ...attr } = Astro.props;
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"a"> {
+  isExternalLink?: boolean;
+}
+
+const { isExternalLink, ...attributes } = Astro.props;
 ---
 
 <a
-  {...attr}
-  {...(isExternalLink && { target: "_blank", rel: "noreferrer noopener" })}
+  {...attributes}
+  {...isExternalLink && { target: "_blank", rel: "noreferrer noopener" }}
 >
   <slot />
 </a>

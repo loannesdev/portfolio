@@ -22,7 +22,9 @@
 {/snippet}
 
 <section id={name}>
-  <h1 class="section-title">{text}</h1>
+  <h1 class="section-title">
+    <a {anchorPropsExternal} href={`#${name}`}>{text}</a>
+  </h1>
 
   {#await projects}
     <p id="loading-message">Cargando...</p>

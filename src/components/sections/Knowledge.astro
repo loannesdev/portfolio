@@ -36,7 +36,11 @@ const parsedSkills = skills
 ---
 
 <section id={name}>
-  <h1 class="section-title">{text}</h1>
+  <h1 class="section-title">
+    <Anchor href={`#${name}`}>
+      {text}
+    </Anchor>
+  </h1>
 
   <section id="content">
     <div id="filters">

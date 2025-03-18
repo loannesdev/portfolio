@@ -1,7 +1,7 @@
 ---
 import { readCV } from "@/services";
 import { sections } from "@/utils/const";
-import Anchor from "../Anchor.astro";
+import Anchor from "@/components/Anchor.astro";
 import Icon from "../Icon.astro";
 import Suggestions from "@/components/sections/Suggestions.astro";
 
@@ -14,7 +14,11 @@ const {
 ---
 
 <section id={name}>
-  <h1 class="section-title">{text}</h1>
+  <h1 class="section-title">
+    <Anchor href={`#${name}`}>
+      {text}
+    </Anchor>
+  </h1>
 
   <section class="paragraph-container">
     <Fragment set:html={summary} />

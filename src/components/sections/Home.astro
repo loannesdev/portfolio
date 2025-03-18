@@ -5,8 +5,8 @@ const { name } = sections.find((elm) => elm.name === "home");
 ---
 
 <section id={name}>
-  <h2 class="title-one">Soy<br />Sebastian Cortes,</h2>
-  <h1 class="title-two">Programador web front-end</h1>
+  <h2 class="aux-title">Soy<br />Sebastian Cortes,</h2>
+  <h1 class="main-title">Programador web front-end</h1>
 </section>
 
 <style>
@@ -15,19 +15,19 @@ const { name } = sections.find((elm) => elm.name === "home");
     align-content: center;
     height: 100dvh;
 
-    & .title-one {
+    & .aux-title {
       font-size: clamp(1.2rem, 3vw, 2rem);
     }
 
-    & .title-two {
+    & .main-title {
       font-size: clamp(2rem, 5vw, 3.75rem);
       font-family: var(--font-title);
       font-weight: 800;
       color: var(--current-neon-theme);
-      text-shadow: 0px 0px 48px
-        color-mix(in srgb, transparent 15%, var(--current-neon-theme));
+      text-shadow: 0px 0px 64px
+        color-mix(in srgb, transparent 20%, var(--current-neon-theme));
       -webkit-text-stroke: 2px currentColor;
-      animation: fade 8s infinite ease;
+      animation: fade 6s infinite ease alternate;
       text-wrap: unset;
     }
   }
@@ -37,7 +37,7 @@ const { name } = sections.find((elm) => elm.name === "home");
       text-shadow: 0px 0px 24px currentColor;
     }
     75% {
-      text-shadow: 0px 0px 48px currentColor;
+      text-shadow: 0px 0px 64px currentColor;
     }
   }
 </style>
