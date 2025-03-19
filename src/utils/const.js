@@ -37,7 +37,7 @@ export const github = {
   projects: "https://github.com/loannesdev?tab=repositories",
 };
 
-export const urlDomain = "https://loannesdev.netlify.app";
+export const urlDomain = "https://loannes.dev";
 
 export const contentCreators = [
   {
