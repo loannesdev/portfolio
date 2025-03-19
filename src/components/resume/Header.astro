@@ -10,7 +10,7 @@ const githubProfile = profiles.find((elm) => elm.network === "GitHub");
 const parsedGithubLink = githubProfile.url.replace("https://", "");
 ---
 
-<header class="header-wrapper">
+<address class="header-wrapper">
   <ul>
     <li>{email}</li>&bull;
     <li>{phone}</li>&bull;
@@ -25,7 +25,7 @@ const parsedGithubLink = githubProfile.url.replace("https://", "");
       </Anchor>
     </li>
   </ul>
-</header>
+</address>
 
 <style>
   .header-wrapper {
