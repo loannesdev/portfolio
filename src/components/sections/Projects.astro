@@ -1,78 +1,67 @@
-<script>
-  import GithubIcon from "@/icons/github.svg?raw";
-  import ExternalLinkIcon from "@/icons/tabler-external-link.svg?raw";
-  import { readRepos } from "@/services";
-  import { github, sections } from "@/utils/const";
+---
+import { readRepos } from "@/services";
+import { sections } from "@/utils/const";
+import Anchor from "../Anchor.astro";
+import Icon from "../Icon.astro";
 
-  const projects = readRepos();
-  const { text, name } = sections.find((elm) => elm.name === "projects");
-
-  const anchorPropsExternal = {
-    target: "_blank",
-    rel: "noreferrer noopener",
-  };
-</script>
-
-{#snippet errorMessage()}
-  <p id="error-message">
-    ¡Uy!, parece que algo falló, aun así puedes visitar mi cuenta en <strong
-      ><a href={github.projects} {...anchorPropsExternal}>GitHub</a></strong
-    > para revizar mis proyectos.
-  </p>
-{/snippet}
+const projects = await readRepos();
+const { text, name } = sections.find((elm) => elm.name === "projects");
+---
 
 <section id={name}>
   <h1 class="section-title">
-    <a {anchorPropsExternal} href={`#${name}`}>{text}</a>
+    <Anchor href={`#${name}`}>{text}</Anchor>
   </h1>
 
-  {#await projects}
-    <p id="loading-message">Cargando...</p>
-  {:then project}
-    <section class="container">
-      {#each project as { name, description, topics, html_url: htmlUrl, homepage }}
-        <article class="card">
-          <h1 class="title-card">{name}</h1>
+  <section class="container">
+    {
+      projects.map((project) => {
+        const {
+          name,
+          description,
+          topics,
+          html_url: htmlUrl,
+          homepage,
+        } = project;
 
-          {#if description && description.length}
-            <p class="description-card">{description}</p>
-          {/if}
+        return (
+          <article class="card">
+            <h1 class="title-card">{name}</h1>
 
-          {#if topics.length}
-            <section class="topics-container">
-              <h2 class="topics-title">Tecnologías usadas</h2>
+            {description && Boolean(description.length) && (
+              <p class="description-card">{description}</p>
+            )}
 
-              <ul class="topics-group">
-                {#each topics as tech}
-                  <li class="topic">{tech}</li>
-                {/each}
-              </ul>
-            </section>
-          {/if}
+            {Boolean(topics.length) && (
+              <section class="topics-container">
+                <h2 class="topics-title">Tecnologías usadas</h2>
 
-          <footer class="footer-card">
-            {#if htmlUrl && htmlUrl.length}
-              <a href={htmlUrl} {...anchorPropsExternal}>
-                {@html GithubIcon} Repositorio
-              </a>
-            {/if}
+                <ul class="topics-group">
+                  {topics.map((tech) => (
+                    <li class="topic">{tech}</li>
+                  ))}
+                </ul>
+              </section>
+            )}
 
-            {#if homepage && homepage.length}
-              <a href={homepage} {...anchorPropsExternal}>
-                {@html ExternalLinkIcon} Demo
-              </a>
-            {/if}
-          </footer>
-        </article>
-      {/each}
-    </section>
-  {:catch}
-    {@render errorMessage()}
-  {/await}
+            <footer class="footer-card">
+              {Boolean(htmlUrl.length) && (
+                <Anchor href={htmlUrl} isExternalLink>
+                  <Icon name="github" /> Repositorio
+                </Anchor>
+              )}
 
-  <noscript>
-    {@render errorMessage()}
-  </noscript>
+              {homepage && Boolean(homepage.length) && (
+                <Anchor href={homepage} isExternalLink>
+                  <Icon name="tabler-external-link" /> Demo
+                </Anchor>
+              )}
+            </footer>
+          </article>
+        );
+      })
+    }
+  </section>
 </section>
 
 <style>
@@ -182,19 +171,6 @@
             }
           }
         }
-      }
-    }
-
-    & #error-message {
-      padding: 4px 8px;
-      border: 1px solid red;
-      border-radius: var(--border-radius-min);
-      background-color: color-mix(in srgb, transparent 90%, red);
-    }
-
-    &:has(noscript) {
-      & #loading-message {
-        display: none;
       }
     }
   }

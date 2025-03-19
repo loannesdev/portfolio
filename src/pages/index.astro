@@ -3,7 +3,7 @@ import About from "@/components/sections/About.astro";
 import Header from "@/components/Header.astro";
 import Home from "@/components/sections/Home.astro";
 import Knowledge from "@/components/sections/Knowledge.astro";
-import Projects from "@/components/sections/Projects.svelte";
+import Projects from "@/components/sections/Projects.astro";
 import "@/styles/global.css";
 import Experience from "@/components/sections/Experience.astro";
 import GeneralLayout from "@/layouts/GeneralLayout.astro";
@@ -28,7 +28,7 @@ import GeneralLayout from "@/layouts/GeneralLayout.astro";
     <Home />
     <About />
     <Experience />
-    <Projects client:only="svelte" />
+    <Projects />
     <Knowledge />
   </main>
 </GeneralLayout>
