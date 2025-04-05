@@ -7,6 +7,7 @@ import Projects from "@/components/sections/Projects.astro";
 import "@/styles/global.css";
 import Experience from "@/components/sections/Experience.astro";
 import GeneralLayout from "@/layouts/GeneralLayout.astro";
+import GoUpButton from "@/components/GoUpButton.astro";
 ---
 
 <GeneralLayout>
@@ -31,17 +32,16 @@ import GeneralLayout from "@/layouts/GeneralLayout.astro";
     <Projects />
     <Knowledge />
   </main>
+
+  <GoUpButton />
 </GeneralLayout>
 
 <style>
   body {
-    display: grid;
-    padding-bottom: 80px;
-    position: relative;
+    --go-up-button-display: none;
 
-    @media (pointer: coarse) {
-      padding-bottom: 240px;
-    }
+    display: grid;
+    position: relative;
 
     & > * {
       margin-inline: 16px;
@@ -55,6 +55,11 @@ import GeneralLayout from "@/layouts/GeneralLayout.astro";
     display: flex;
     flex-direction: column;
     gap: 20rem;
+    padding-bottom: 80px;
+
+    @media (pointer: coarse) {
+      padding-bottom: 240px;
+    }
 
     @media (pointer: coarse) {
       --section-scroll-margin-top: 18px;
@@ -85,8 +90,23 @@ import GeneralLayout from "@/layouts/GeneralLayout.astro";
     }
   }
 
-  .counter {
+  & .counter {
     display: none;
+  }
+
+  @supports (animation-timeline: scroll()) {
+    body {
+      animation-timeline: scroll(root);
+      animation-name: show-btn;
+      animation-range: 0 124dvh;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes show-btn {
+      to {
+        --go-up-button-display: block;
+      }
+    }
   }
 </style>
 
