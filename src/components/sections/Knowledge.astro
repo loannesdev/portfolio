@@ -110,7 +110,7 @@ const parsedSkills = skills
 
         & .filter-opt {
           box-shadow: 0px 0px 1.5px currentColor;
-          padding: 4px 12px;
+          padding: 10px 20px;
           border-radius: var(--border-radius-max);
           transition: 0.3s ease;
           transition-property: border-color, color, background-color, box-shadow,
@@ -118,8 +118,7 @@ const parsedSkills = skills
           cursor: pointer;
           user-select: none;
           word-break: keep-all;
-          border: 1px solid
-            color-mix(in srgb, transparent 90%, var(--current-text-theme));
+          border: 1px solid var(--palette-grey);
 
           &::first-letter {
             text-transform: capitalize;
@@ -134,22 +133,22 @@ const parsedSkills = skills
               &:hover {
                 background-color: color-mix(
                   in srgb,
-                  transparent,
-                  var(--current-neon-theme) 15%
+                  transparent 99%,
+                  var(--current-neon-theme)
                 );
                 border-color: color-mix(
                   in srgb,
-                  transparent 40%,
+                  transparent 0%,
                   var(--current-neon-theme)
                 );
+                color: var(--neon-text-variant);
               }
             }
           }
 
           &:has(> input:checked) {
             color: var(--neon-text-variant);
-            border-color: var(--current-neon-theme);
-            box-shadow: 0px 0px 6px var(--current-neon-theme);
+            box-shadow: 0px 0px 24px var(--current-neon-theme);
             text-shadow: 0px 0px 1px var(--current-neon-theme);
           }
         }

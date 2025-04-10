@@ -27,7 +27,7 @@ const {
                   href={url}
                   isExternalLink
                   aria-label={`Ver cuenta en ${network}`}
-                  data-title={network}
+                  data-title={`${network}`}
                 >
                   <Icon name={network.toLowerCase()} />
                 </Anchor>
@@ -78,6 +78,7 @@ const {
     position: sticky;
     inset: 0px;
     bottom: auto;
+    border: 1px solid var(--palette-grey);
 
     @media (pointer: coarse) {
       position: fixed;
@@ -189,7 +190,7 @@ const {
 
                 &:hover {
                   &::after {
-                    content: attr(data-title);
+                    content: attr(data-title) "🡵";
                     position: absolute;
                     bottom: -42px;
                     left: -60%;
@@ -197,7 +198,7 @@ const {
                     background-color: var(--bg-color-tooltip);
                     padding: 4px 8px;
                     border-radius: var(--border-radius-min);
-                    font-size: 15px;
+                    font-size: 1rem;
                   }
 
                   &::before {
@@ -218,9 +219,10 @@ const {
           & .download-cv {
             transition: 0.2s ease;
             transition-property: color, border-style, text-shadow;
-            border: 1px dashed var(--current-text-theme);
+            border: 1px dashed
+              color-mix(in srgb, transparent 40%, var(--current-text-theme));
             border-radius: var(--border-radius-min);
-            padding: 6px 12px;
+            padding: 8px 14px;
             text-decoration: none;
             text-align: center;
             color: currentColor;
@@ -247,8 +249,8 @@ const {
         }
 
         & :global([icon]) {
-          height: 32px;
-          width: 32px;
+          height: 2rem;
+          width: 2rem;
         }
       }
 
@@ -274,14 +276,14 @@ const {
 
               text-decoration: none;
               word-break: break-all;
-              border-radius: var(--border-radius-min);
-              padding: 6px 12px;
+              border-radius: var(--border-radius-med);
+              padding: 8px 14px;
               transition: 0.2s ease;
               transition-property: color, background-color, text-shadow;
               color: currentColor;
               user-select: none;
               will-change: color, background-color, text-shadow;
-              overflow: hidden;
+              display: flex;
 
               @media (pointer: fine) {
                 &:hover {
