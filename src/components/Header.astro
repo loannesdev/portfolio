@@ -74,23 +74,25 @@ const {
   .header-container {
     z-index: 2;
     width: 100%;
-    backdrop-filter: blur(24px);
+    backdrop-filter: blur(32px);
     position: sticky;
     inset: 0px;
     bottom: auto;
-    border: 1px solid var(--palette-grey);
+    border-bottom: 1px solid var(--palette-grey);
 
     @media (pointer: coarse) {
       position: fixed;
       bottom: 0px;
       top: auto;
+      border: 0;
+      border-top: 1px solid var(--palette-grey);
     }
 
     & > div {
       display: flex;
       gap: 24px 64px;
       justify-content: space-around;
-      padding: 16px;
+      padding: 24px;
       font-family: var(--font-text);
       flex-wrap: wrap;
       align-items: center;
@@ -101,6 +103,7 @@ const {
 
       @media (pointer: coarse) {
         row-gap: 32px;
+        padding: 18px;
       }
 
       & .contact {
