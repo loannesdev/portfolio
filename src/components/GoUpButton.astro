@@ -3,11 +3,15 @@ import Anchor from "@/components/Anchor.astro";
 import Icon from "@/components/Icon.astro";
 ---
 
-<Anchor href="#home">
+<Anchor href="#home" class="go-up-btn">
   <Icon name="tabler-chevron-up" />
 </Anchor>
 
 <style>
+  body {
+    --button-inactive-value: none;
+  }
+
   a {
     --separation: 24px;
 
@@ -20,7 +24,7 @@ import Icon from "@/components/Icon.astro";
     height: fit-content;
     transition: background-color 0.2s ease-in-out;
     place-self: end;
-    display: var(--go-up-button-display);
+    display: var(--button-inactive-value);
 
     @media (pointer: fine) {
       &:hover {
@@ -43,6 +47,21 @@ import Icon from "@/components/Icon.astro";
       color: var(--current-text-theme);
       display: block;
       stroke-width: 1.75px;
+    }
+  }
+
+  @supports (animation-timeline: scroll()) {
+    body {
+      animation-timeline: scroll();
+      animation-name: show-btn;
+      animation-range: 0 124dvh;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes show-btn {
+      to {
+        --button-inactive-value: block;
+      }
     }
   }
 </style>

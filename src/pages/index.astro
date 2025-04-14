@@ -38,8 +38,6 @@ import GoUpButton from "@/components/GoUpButton.astro";
 
 <style>
   body {
-    --go-up-button-display: none;
-
     display: grid;
     position: relative;
 
@@ -92,21 +90,6 @@ import GoUpButton from "@/components/GoUpButton.astro";
 
   & .counter {
     display: none;
-  }
-
-  @supports (animation-timeline: scroll()) {
-    body {
-      animation-timeline: scroll(root);
-      animation-name: show-btn;
-      animation-range: 0 124dvh;
-      animation-fill-mode: forwards;
-    }
-
-    @keyframes show-btn {
-      to {
-        --go-up-button-display: block;
-      }
-    }
   }
 </style>
 
