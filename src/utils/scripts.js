@@ -1,5 +1,7 @@
 import { sections } from "../utils/const";
 
+let timeout = null;
+
 export const darkMode = () => {
   // Dark mode
   let darkModeValue = localStorage.getItem("theme");
@@ -45,15 +47,21 @@ const getNav = (sectionId = "") => {
 };
 
 export const navHighlight = () => {
+  let currentSection = null;
   const stringIdSections = sections.map((elm) => `#${elm.name}`).join(",");
   const sectionElements = document.querySelectorAll(stringIdSections);
-  let currentSection = null;
+
+  // Get the top margin of the main sections to calculate the scroll-margin-top value ---
+  const sectionScrollmarginTop = getComputedStyle(document.querySelector("main")).getPropertyValue("--section-scroll-margin-top").replace(/[a-zA-Z]/g, "");
+  const rootfontSize = getComputedStyle(document.documentElement).fontSize.replace(/[a-zA-Z]/g, "");
+  const topMarginPixels = Number(sectionScrollmarginTop) * Number(rootfontSize);
+  // ---
 
   const onScroll = () => {
     for (const section of sectionElements) {
       const rect = section.getBoundingClientRect();
 
-      if (rect.top < 100) {
+      if (rect.top <= (topMarginPixels + 24)) {
         if (currentSection && currentSection?.id !== section.id) {
           getNav(currentSection.id).classList.remove("visible");
         }
@@ -66,7 +74,9 @@ export const navHighlight = () => {
   };
 
   window.addEventListener("scroll", () => {
-    onScroll();
+    clearTimeout(timeout);
+
+    timeout = setTimeout(onScroll, 80);
   });
 
   onScroll();
