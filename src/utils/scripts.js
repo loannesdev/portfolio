@@ -76,7 +76,7 @@ export const navHighlight = () => {
   window.addEventListener("scroll", () => {
     clearTimeout(timeout);
 
-    timeout = setTimeout(onScroll, 80);
+    timeout = setTimeout(onScroll, 50);
   });
 
   onScroll();
