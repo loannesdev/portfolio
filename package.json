@@ -5,15 +5,16 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "dev:preview": "astro build & astro preview",
+    "dev:preview": "astro build && astro preview",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "phoenix:windows": "del /f pnpm-lock.yaml & rd /s /q node_modules & pnpm install",
+    "phoenix:windows": "del /f pnpm-lock.yaml && rd /s /q node_modules && pnpm install",
     "host": "astro dev --host"
   },
   "dependencies": {
+    "@astrojs/netlify": "^6.3.2",
     "astro": "5.7.10"
   },
   "engines": {
@@ -26,5 +27,5 @@
     "eslint-config-standard": "17.1.0",
     "eslint-plugin-astro": "1.3.1"
   },
-  "packageManager": "pnpm@9.15.9"
+  "packageManager": "pnpm@10.10.0"
 }
