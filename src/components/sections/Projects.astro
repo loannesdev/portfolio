@@ -6,6 +6,7 @@ import Icon from "../Icon.astro";
 
 const projects = await readRepos();
 const { text, name } = sections.find((elm) => elm.name === "projects");
+export const prerender = false;
 ---
 
 <section id={name}>
