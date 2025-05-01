@@ -6,7 +6,6 @@ import Icon from "../Icon.astro";
 
 const projects = await readRepos();
 const { text, name } = sections.find((elm) => elm.name === "projects");
-export const prerender = false;
 ---
 
 <section id={name}>
@@ -75,7 +74,8 @@ export const prerender = false;
       column-width: 20rem;
 
       & .card {
-        border: 0.1rem solid var(--palette-grey);
+        border: 1px solid
+          color-mix(in srgb, transparent 90%, var(--current-neon-theme));
         padding: 16px;
         display: flex;
         flex-direction: column;
@@ -84,6 +84,11 @@ export const prerender = false;
         margin-bottom: 0.5rem;
         break-inside: avoid;
         border-radius: var(--border-radius-med);
+        background-color: color-mix(
+          in srgb,
+          transparent 80%,
+          var(--palette-grey)
+        );
 
         & .title-card {
           font-size: 24px;
@@ -119,7 +124,7 @@ export const prerender = false;
             & .topic {
               background-color: color-mix(
                 in srgb,
-                transparent 97%,
+                transparent 92%,
                 var(--current-text-theme)
               );
               padding: 4px 8px;

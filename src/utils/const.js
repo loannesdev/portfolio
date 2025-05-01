@@ -14,7 +14,7 @@ export const sections = [
   { name: "experience", text: "Experiencia" },
   {
     name: "projects",
-    text: "Proyectos personales",
+    text: "Proyectos",
   },
   {
     name: "knowledge",
