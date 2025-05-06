@@ -70,6 +70,8 @@ const {
 
 <style>
   section[id] {
+    --about-paragraph-gap: 1lh;
+
     display: grid;
 
     & :global(strong, .interests-title, .location-title) {
@@ -83,7 +85,7 @@ const {
     & .paragraph-container {
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: var(--about-paragraph-gap);
 
       & > :global(p) {
         font-size: 1.2rem;
@@ -94,7 +96,7 @@ const {
   }
 
   .location {
-    margin-top: 24px;
+    margin-top: var(--about-paragraph-gap);
     font-size: 1.2rem;
 
     & .location-title {
@@ -116,7 +118,7 @@ const {
   }
 
   .interests-container {
-    margin-top: 24px;
+    margin-top: var(--about-paragraph-gap);
 
     & .interests-title {
       font-family: var(--font-title);
@@ -146,7 +148,7 @@ const {
   }
 
   .suggestions-btn {
-    margin-top: 48px;
+    margin-top: calc(var(--about-paragraph-gap) * 2);
     transition: background-color 0.2s ease;
     padding: 12px 24px;
     display: flex;

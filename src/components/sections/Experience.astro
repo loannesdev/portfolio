@@ -83,6 +83,8 @@ const orderedExperience = orderExperience(work);
 
 <style>
   section[id] {
+    --experience-paragraph-gap: 1lh;
+
     & .time-line {
       display: flex;
       flex-direction: column;
@@ -101,7 +103,7 @@ const orderedExperience = orderExperience(work);
         padding-left: calc(var(--dot-size) * 2);
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: var(--experience-paragraph-gap);
 
         /* Circle --- */
         &::before {
@@ -178,7 +180,6 @@ const orderedExperience = orderExperience(work);
           font-size: 1.1rem;
           text-wrap: pretty;
           color: var(--reading-text-color);
-          margin-top: 8px;
         }
 
         & .experience-highlights {
