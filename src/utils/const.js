@@ -691,4 +691,35 @@ export const contentCreators = [
     ],
     photo: "https://unavatar.io/x/fazttech",
   },
+  {
+    name: "TryCatch.tv",
+    role: "Arquitecto de software, AWS Community Builder, creador de contenido",
+    social: [
+      {
+        key: "website",
+        url: "https://trycatch.tv/",
+      },
+      {
+        key: "twitter",
+        url: "https://x.com/TryCatch_tv",
+      },
+      {
+        key: "twitch",
+        url: "https://www.twitch.tv/TryCatch_tv",
+      },
+      {
+        key: "youtube",
+        url: "https://www.youtube.com/@trycatch_tv",
+      },
+      {
+        key: "linkedin",
+        url: "https://www.linkedin.com/company/81959782",
+      },
+      {
+        key: "instagram",
+        url: "https://instagram.com/trycatch_tv",
+      },
+    ],
+    photo: "https://unavatar.io/x/TryCatch_tv",
+  }
 ];
