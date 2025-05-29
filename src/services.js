@@ -9,7 +9,7 @@ const headers = {
   Accept: "application/vnd.github+json"
 };
 
-const dontShow = ["manfred", "loannesdev", "to-do-list", "console-js"];
+const dontShow = ["manfred", "loannesdev", "to-do-list", "console-js", "portfolio"];
 
 export const readRepos = async () => {
   const url = `${api}${path.users}/${user}${path.repos}?type=public`;
