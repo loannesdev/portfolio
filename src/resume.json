@@ -508,6 +508,14 @@
       "keywords": [
         "front-end"
       ]
+    },
+    {
+      "name": "Firebase",
+      "website": "https://firebase.google.com/",
+      "level": "Básico",
+      "keywords": [
+        "back-end"
+      ]
     }
   ],
   "languages": [
