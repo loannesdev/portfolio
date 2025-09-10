@@ -1,3 +1,6 @@
 [build]
   command = "pnpm build"
   publish = "dist"
+
+[images]
+  remote_images = ["https://unavatar.io/*"]

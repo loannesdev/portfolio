@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "dev:preview": "astro build && astro preview",
+    "dev:preview:netlify": "astro build && netlify dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
