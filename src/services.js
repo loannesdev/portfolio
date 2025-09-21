@@ -28,6 +28,7 @@ export const readRepos = async () => {
 
       return null;
     });
+    console.log({ filteredData });
 
     return filteredData;
   } catch {
