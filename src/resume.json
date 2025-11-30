@@ -516,6 +516,14 @@
       "keywords": [
         "back-end"
       ]
+    },
+    {
+      "name": "Cloudflare",
+      "website": "https://www.cloudflare.com/",
+      "level": "Básico",
+      "keywords": [
+        "tool"
+      ]
     }
   ],
   "languages": [
