@@ -75,6 +75,7 @@ const totalExperience = calculateTotalExperience(work);
 
         const isCurrentWorkExperince =
           !endDate || (!mainWorkExperience?.endDate && !haveDot);
+        const showCompanyName = previousCompanyName !== currentCompanyName;
 
         return (
           <article
@@ -86,7 +87,7 @@ const totalExperience = calculateTotalExperience(work);
           >
             <header class="experience-header">
               <hgroup>
-                <h1 class="company-name">{companyName}</h1>
+                {showCompanyName && <h1 class="company-name">{companyName}</h1>}
                 <h2 class="job-title">{position} </h2>
               </hgroup>
 
