@@ -183,3 +183,60 @@ export const orderExperience = (experience = []) => {
 
   return orderedExperience
 }
+
+export class TextParser {
+  static normalize(text = "") {
+    if (typeof text !== "string") {
+      throw new Error("'text' must be a string");
+    }
+
+    const auxText = text.trim() || "";
+
+    if (!auxText || !auxText.length) {
+      return "";
+    }
+
+    return auxText
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "") // remove accents
+      .replace(/[^a-z0-9\s]/g, "") // remove special characters
+  }
+}
+
+export const calculateTotalExperience = (workArray = []) => {
+  if (!Array.isArray(workArray) || workArray.length === 0) {
+    return "0 meses";
+  }
+
+  let totalMonths = 0;
+
+  for (const job of workArray) {
+    const { startDate, endDate } = job;
+
+    if (!startDate) continue;
+
+    const start = new Date(startDate);
+    const end = endDate ? new Date(endDate) : new Date();
+
+    // Calcular la diferencia en meses
+    const yearsDiff = end.getFullYear() - start.getFullYear();
+    const monthsDiff = end.getMonth() - start.getMonth();
+    const months = yearsDiff * 12 + monthsDiff;
+
+    totalMonths += months;
+  }
+
+  const years = Math.floor(totalMonths / 12);
+  const remainingMonths = totalMonths % 12;
+
+  if (years === 0) {
+    return `${remainingMonths} ${remainingMonths === 1 ? 'mes' : 'meses'}`;
+  }
+
+  if (remainingMonths === 0) {
+    return `${years} ${years === 1 ? 'año' : 'años'}`;
+  }
+
+  return `${years} ${years === 1 ? 'año' : 'años'} y ${remainingMonths} ${remainingMonths === 1 ? 'mes' : 'meses'}`;
+};

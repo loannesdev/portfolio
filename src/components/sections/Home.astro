@@ -5,14 +5,13 @@ const { name } = sections.find((elm) => elm.name === "home");
 ---
 
 <section id={name}>
-  <h2 class="aux-title">Soy<br />Sebastian Cortes,</h2>
-  <h1 class="main-title">Programador web front-end</h1>
+  <h1 class="aux-title">Soy<br />Sebastian Cortes,</h1>
+  <h2 class="main-title">Programador web front-end</h2>
 </section>
 
 <style>
   section[id] {
-    display: grid;
-    align-content: center;
+    justify-content: center;
     height: 100dvh;
 
     & .aux-title {

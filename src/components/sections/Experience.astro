@@ -1,11 +1,17 @@
 ---
 import { work } from "@/resume.json";
 import { sections } from "@/utils/const";
-import { DateParser, orderExperience } from "@/utils/scripts";
+import {
+  DateParser,
+  orderExperience,
+  TextParser,
+  calculateTotalExperience,
+} from "@/utils/scripts";
 import Anchor from "../Anchor.astro";
 
 const { name, text } = sections.find((elm) => elm.name === "experience");
 const orderedExperience = orderExperience(work);
+const totalExperience = calculateTotalExperience(work);
 ---
 
 <section id={name}>
@@ -15,9 +21,14 @@ const orderedExperience = orderExperience(work);
     </Anchor>
   </h1>
 
+  <span class="total-experience">
+    <strong>{totalExperience}</strong>
+    de experiencia
+  </span>
+
   <section class="time-line">
     {
-      orderedExperience.map((experience) => {
+      orderedExperience.map((experience, index, array) => {
         const {
           name: companyName,
           summary,
@@ -39,25 +50,52 @@ const orderedExperience = orderExperience(work);
             })
           : "Actualidad";
 
-        const relative =
-          startDate && endDate
-            ? `(${DateParser.relativeTime(startDate, endDate)})`
-            : null;
+        let relative = `(${DateParser.relativeTime(startDate, endDate)})`;
+
+        if (startDate && !endDate) {
+          relative = `(${DateParser.relativeTime(startDate, new Date().toISOString())})`;
+        }
+
+        if (!startDate && !endDate) {
+          relative = null;
+        }
+
+        const previousCompanyName = TextParser.normalize(
+          array?.[index - 1]?.name,
+        );
+        const currentCompanyName = TextParser.normalize(companyName);
+        const mainWorkExperience = array.find(
+          (elm) => elm.name === companyName,
+        );
+        let haveDot = true;
+
+        if (previousCompanyName && previousCompanyName === currentCompanyName) {
+          haveDot = false;
+        }
+
+        const isCurrentWorkExperince =
+          !endDate || (!mainWorkExperience?.endDate && !haveDot);
 
         return (
-          <article class:list={["time-line-element", !endDate && "current"]}>
-            <hgroup>
-              <h1>
-                {position}
-                &bull;
-                <span>{companyName}</span>
-              </h1>
-              <h2>
-                {parsedStartDate} - {parsedEndDate} {relative}
-              </h2>
-            </hgroup>
+          <article
+            class:list={[
+              "time-line-element",
+              isCurrentWorkExperince && "current-experience",
+              haveDot && "dot",
+            ]}
+          >
+            <header class="experience-header">
+              <hgroup>
+                <h1 class="company-name">{companyName}</h1>
+                <h2 class="job-title">{position} </h2>
+              </hgroup>
 
-            <p>{summary}</p>
+              <h3 class="work-time">
+                {parsedStartDate} - {parsedEndDate} {relative}
+              </h3>
+            </header>
+
+            {summary && summary.length && <p>{summary}</p>}
 
             {Boolean(highlights?.length) && (
               <div class="experience-highlights">
@@ -85,6 +123,13 @@ const orderedExperience = orderExperience(work);
   section[id] {
     --experience-paragraph-gap: 1lh;
 
+    & .total-experience {
+      font-size: 1.26rem;
+      color: var(--reading-text-color);
+      margin-block: 0 24px;
+      font-style: italic;
+    }
+
     & .time-line {
       display: flex;
       flex-direction: column;
@@ -105,23 +150,6 @@ const orderedExperience = orderExperience(work);
         flex-direction: column;
         gap: var(--experience-paragraph-gap);
 
-        /* Circle --- */
-        &::before {
-          content: "";
-          background-color: transparent;
-          border: var(--circle-border-size) solid var(--active-experience-color);
-          width: var(--dot-size);
-          height: var(--dot-size);
-          position: absolute;
-          top: 0;
-          left: 0;
-          border-radius: 50%;
-          z-index: 1;
-          transition: 0.2s ease;
-          transition-property: background-color, border-color;
-        }
-        /* --- */
-
         /* Line --- */
         &::after {
           content: "";
@@ -130,20 +158,48 @@ const orderedExperience = orderExperience(work);
           width: calc(
             calc(var(--dot-size) / 2) + calc(var(--circle-border-size) / 2)
           );
-          height: calc(100% - calc(var(--dot-size)));
+          height: calc(100% - var(--dot-size));
           position: absolute;
-          top: 0;
+          bottom: 0;
           left: 0;
           transition: 0.2s ease background-color;
           margin-top: calc(var(--dot-size) + var(--circle-border-size));
         }
         /* --- */
 
+        &:is(.dot) {
+          /* Circle --- */
+          &::before {
+            content: "";
+            background-color: transparent;
+            border: var(--circle-border-size) solid
+              var(--active-experience-color);
+            width: var(--dot-size);
+            height: var(--dot-size);
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
+            z-index: 1;
+            transition: 0.2s ease;
+            transition-property: background-color, border-color;
+          }
+          /* --- */
+        }
+
+        &:is(:not(.dot)) {
+          /* Line --- */
+          &::after {
+            height: 100%;
+          }
+          /* --- */
+        }
+
         &:not(:last-child) {
           padding-bottom: 64px;
         }
 
-        &:is(.current) {
+        &:is(.current-experience) {
           --active-experience-color: color-mix(
             in srgb,
             transparent 20%,
@@ -151,29 +207,41 @@ const orderedExperience = orderExperience(work);
           );
         }
 
-        & > hgroup {
+        & .experience-header {
           display: flex;
           flex-direction: column;
           gap: 4px;
           font-family: var(--font-title);
 
-          & > * {
-            &::first-letter {
-              text-transform: capitalize;
-            }
+          & > hgroup {
+            display: flex;
+            flex-direction: column;
           }
+        }
 
-          & > h1 {
-            font-size: 1.5rem;
-            font-weight: bold;
-            line-height: 0.9;
+        & :is(.company-name, .job-title, .work-time) {
+          &::first-letter {
+            text-transform: capitalize;
           }
+        }
 
-          & > h2 {
-            font-size: 1.2rem;
-            color: var(--active-experience-color);
-            transition: 0.2s ease color;
-          }
+        & .company-name {
+          font-size: 1.5rem;
+          font-weight: 800;
+          line-height: 0.9;
+        }
+
+        & .job-title {
+          font-size: 1.3rem;
+          letter-spacing: 0.5px;
+          font-weight: 400;
+        }
+
+        & .work-time {
+          font-size: 1.2rem;
+          color: var(--active-experience-color);
+          transition: 0.2s ease color;
+          font-weight: 300;
         }
 
         & > p {
