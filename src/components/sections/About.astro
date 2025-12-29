@@ -93,11 +93,11 @@ const {
         color: var(--reading-text-color);
       }
     }
-  }
 
-  .location {
-    margin-top: var(--about-paragraph-gap);
-    font-size: 1.2rem;
+    & .location {
+      margin-top: var(--about-paragraph-gap);
+      font-size: 1.2rem;
+    }
 
     & .location-title {
       font-size: 1.3rem;
@@ -115,10 +115,10 @@ const {
     & .time-zone {
       color: var(--reading-text-color);
     }
-  }
 
-  .interests-container {
-    margin-top: var(--about-paragraph-gap);
+    & .interests-container {
+      margin-top: var(--about-paragraph-gap);
+    }
 
     & .interests-title {
       font-family: var(--font-title);
@@ -131,74 +131,74 @@ const {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
+    }
 
-      & colored-tag {
-        border-radius: var(--border-radius-min);
-        font-size: 1rem;
-        padding: 4px 12px;
-        border: 1px solid currentColor;
-        background-color: color-mix(
-          in srgb,
-          transparent 90%,
-          var(--current-text-theme)
-        );
-        user-select: none;
+    & colored-tag {
+      border-radius: var(--border-radius-min);
+      font-size: 1rem;
+      padding: 4px 12px;
+      border: 1px solid currentColor;
+      background-color: color-mix(
+        in srgb,
+        transparent 90%,
+        var(--current-text-theme)
+      );
+      user-select: none;
+    }
+
+    & .suggestions-btn {
+      margin-top: calc(var(--about-paragraph-gap) * 2);
+      transition: background-color 0.2s ease;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: currentColor;
+      background-color: var(--current-background-theme);
+
+      & :global(svg) {
+        height: 28px;
+        width: 28px;
+        transition: 0.2s ease;
+        transition-property: transform, stroke-width;
       }
-    }
-  }
 
-  .suggestions-btn {
-    margin-top: calc(var(--about-paragraph-gap) * 2);
-    transition: background-color 0.2s ease;
-    padding: 12px 24px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    color: currentColor;
-    background-color: var(--current-background-theme);
+      @media (pointer: fine) {
+        &:hover {
+          background-color: color-mix(
+            in srgb,
+            transparent 95%,
+            var(--current-neon-theme)
+          );
 
-    & :global(svg) {
-      height: 28px;
-      width: 28px;
-      transition: 0.2s ease;
-      transition-property: transform, stroke-width;
-    }
+          & :global(svg) {
+            stroke-width: 1.5px;
+            transform: scale(1.2) translate(6px, -2px);
+          }
+        }
+      }
 
-    @media (pointer: fine) {
-      &:hover {
-        background-color: color-mix(
-          in srgb,
-          transparent 95%,
-          var(--current-neon-theme)
-        );
+      @media (pointer: coarse) {
+        &:active {
+          background-color: color-mix(
+            in srgb,
+            transparent 95%,
+            var(--current-neon-theme)
+          );
 
-        & :global(svg) {
-          stroke-width: 1.5px;
-          transform: scale(1.2) translate(6px, -2px);
+          & :global(svg) {
+            stroke-width: 1.5px;
+            transform: scale(1.2);
+          }
         }
       }
     }
 
-    @media (pointer: coarse) {
-      &:active {
-        background-color: color-mix(
-          in srgb,
-          transparent 95%,
-          var(--current-neon-theme)
-        );
-
-        & :global(svg) {
-          stroke-width: 1.5px;
-          transform: scale(1.2);
-        }
-      }
+    & .suggestions-section {
+      padding: 32px;
     }
-  }
-
-  .suggestions-section {
-    padding: 32px;
 
     & .close-btn {
       position: sticky;

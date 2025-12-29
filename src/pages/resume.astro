@@ -70,29 +70,29 @@ if (!lookingForAJob) {
       margin-inline: auto;
       background-color: var(--current-background-theme);
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
 
-      & .go-back {
-        font-family: var(--font-text);
-        width: fit-content;
-        padding: 6px 12px;
-        border-radius: var(--border-radius-min);
-        transition: 0.2s ease;
-        transition-property: color, border-style, text-shadow;
-        cursor: pointer;
-        border: 1px dashed currentColor;
-        background-color: transparent;
-        text-decoration: none;
+    & .go-back {
+      font-family: var(--font-text);
+      width: fit-content;
+      padding: 6px 12px;
+      border-radius: var(--border-radius-min);
+      transition: 0.2s ease;
+      transition-property: color, border-style, text-shadow;
+      cursor: pointer;
+      border: 1px dashed currentColor;
+      background-color: transparent;
+      text-decoration: none;
 
-        @media print {
-          display: none;
-        }
+      @media print {
+        display: none;
+      }
 
-        &:is(:hover, :focus) {
-          color: var(--current-neon-theme);
-          border-color: var(--current-neon-theme);
-          border-style: solid;
-          text-shadow: 0 0 16px var(--current-neon-theme);
-        }
+      &:is(:hover, :focus) {
+        color: var(--current-neon-theme);
+        border-color: var(--current-neon-theme);
+        border-style: solid;
+        text-shadow: 0 0 16px var(--current-neon-theme);
       }
     }
   }
@@ -112,7 +112,7 @@ if (!lookingForAJob) {
       const profilePhoto = document.querySelector("img.profile-photo");
 
       if (profilePhoto) {
-        print();
+        // print();
       }
     },
     { once: true },
