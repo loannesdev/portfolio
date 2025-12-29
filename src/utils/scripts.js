@@ -1,92 +1,140 @@
 import { sections } from "../utils/const";
 
-let timeout = null;
+export class SystemUtilities {
+  static darkMode() {
+    // Dark mode
+    let darkModeValue = localStorage.getItem("theme");
+    const systemInDarkMode = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
 
-export const darkMode = () => {
-  // Dark mode
-  let darkModeValue = localStorage.getItem("theme");
-  const systemInDarkMode = window.matchMedia(
-    "(prefers-color-scheme: dark)"
-  ).matches;
-
-  if (systemInDarkMode && !darkModeValue) {
-    darkModeValue = "dark";
-  }
-
-  if (!darkModeValue) {
-    document.documentElement.setAttribute("theme", "light");
-    localStorage.setItem("theme", "light");
-  }
-
-  if (darkModeValue) {
-    document.documentElement.setAttribute("theme", darkModeValue);
-    localStorage.setItem("theme", darkModeValue);
-  }
-};
-
-export const getParsedAttributes = (attr = {}) => {
-  const attributesObject = Object.values(attr);
-  const parsedAttributes = {};
-
-  for (const iterator of attributesObject) {
-    const { name, value } = iterator;
-    Object.assign(parsedAttributes, { [name]: value });
-  }
-
-  return parsedAttributes;
-};
-
-const getNav = (sectionId = "") => {
-  const navList = document.querySelectorAll(".navigation-list>ul>li>a");
-
-  const navElement = Object.values(navList).find(
-    (elm) => elm.dataset.id === sectionId
-  );
-
-  return navElement;
-};
-
-export const navHighlight = () => {
-  let currentSection = null;
-  const stringIdSections = sections.map((elm) => `#${elm.name}`).join(",");
-  const sectionElements = document.querySelectorAll(stringIdSections);
-
-  // Get the top margin of the main sections to calculate the scroll-margin-top value ---
-  const sectionScrollmarginTop = getComputedStyle(document.querySelector("main")).getPropertyValue("--section-scroll-margin-top").replace(/[a-zA-Z]/g, "");
-  const rootfontSize = getComputedStyle(document.documentElement).fontSize.replace(/[a-zA-Z]/g, "");
-  const topMarginPixels = Number(sectionScrollmarginTop) * Number(rootfontSize);
-  // ---
-
-  const onScroll = () => {
-    for (const section of sectionElements) {
-      const rect = section.getBoundingClientRect();
-
-      if (rect.top <= (topMarginPixels + 24)) {
-        if (currentSection && currentSection?.id !== section.id) {
-          getNav(currentSection.id).classList.remove("visible");
-        }
-
-        currentSection = section;
-      }
+    if (systemInDarkMode && !darkModeValue) {
+      darkModeValue = "dark";
     }
 
-    getNav(currentSection?.id).classList.add("visible");
+    if (!darkModeValue) {
+      document.documentElement.setAttribute("theme", "light");
+      localStorage.setItem("theme", "light");
+    }
+
+    if (darkModeValue) {
+      document.documentElement.setAttribute("theme", darkModeValue);
+      localStorage.setItem("theme", darkModeValue);
+    }
   };
 
-  window.addEventListener("scroll", () => {
-    clearTimeout(timeout);
+  static getNav(sectionId = "") {
+    const navList = document.querySelectorAll(".navigation-link");
 
-    timeout = setTimeout(onScroll, 50);
-  });
+    const navElement = Object.values(navList).find(
+      (elm) => elm.dataset.id === sectionId
+    );
 
-  onScroll();
-};
+    return navElement;
+  }
+
+  static debounce(func, delay = 50) {
+    let timeout = null;
+
+    return (...args) => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func(...args), delay);
+    };
+  }
+
+  static navHighlight() {
+    let currentSection = null;
+    const stringIdSections = sections.map((elm) => `#${elm.name}`).join(",");
+    const sectionElements = document.querySelectorAll(stringIdSections);
+
+    // Get the top margin of the main sections to calculate the scroll-margin-top value ---
+    const sectionScrollmarginTop = getComputedStyle(document.querySelector("main")).getPropertyValue("--section-scroll-margin-top").replace(/[a-zA-Z]/g, "");
+    const rootfontSize = getComputedStyle(document.documentElement).fontSize.replace(/[a-zA-Z]/g, "");
+    const topMarginPixels = Number(sectionScrollmarginTop) * Number(rootfontSize);
+    // ---
+
+    const onScroll = () => {
+      for (const section of sectionElements) {
+        const rect = section.getBoundingClientRect();
+
+        if (rect.top <= (topMarginPixels + 24)) {
+          if (currentSection && currentSection?.id !== section.id) {
+            this.getNav(currentSection.id).classList.remove("visible");
+          }
+
+          currentSection = section;
+        }
+      }
+
+      this.getNav(currentSection?.id).classList.add("visible");
+    };
+
+    const debouncedScroll = this.debounce(onScroll, 10);
+    window.addEventListener("scroll", debouncedScroll);
+
+    onScroll();
+  }
+}
+
+export class ResumeUtilities {
+  static calculateTotalExperience(workArray = []) {
+    if (!Array.isArray(workArray) || workArray.length === 0) {
+      return "0 meses";
+    }
+
+    let totalMonths = 0;
+
+    for (const job of workArray) {
+      const { startDate, endDate } = job;
+
+      if (!startDate) continue;
+
+      const start = new Date(startDate);
+      const end = endDate ? new Date(endDate) : new Date();
+
+      // Calcular la diferencia en meses
+      const yearsDiff = end.getFullYear() - start.getFullYear();
+      const monthsDiff = end.getMonth() - start.getMonth();
+      const months = yearsDiff * 12 + monthsDiff;
+
+      totalMonths += months;
+    }
+
+    const years = Math.floor(totalMonths / 12);
+    const remainingMonths = totalMonths % 12;
+
+    if (years === 0) {
+      return `${remainingMonths} ${remainingMonths === 1 ? 'mes' : 'meses'}`;
+    }
+
+    if (remainingMonths === 0) {
+      return `${years} ${years === 1 ? 'año' : 'años'}`;
+    }
+
+    return `${years} ${years === 1 ? 'año' : 'años'} y ${remainingMonths} ${remainingMonths === 1 ? 'mes' : 'meses'}`;
+  }
+
+  static orderExperience(experience = []) {
+    const orderedExperience = experience.toSorted((a, b) => {
+      const aEndDate = new Date(a.endDate).getTime();
+      const bEndDate = new Date(b.endDate).getTime();
+
+      if (!bEndDate) {
+        return aEndDate - bEndDate;
+      }
+
+      return bEndDate - aEndDate;
+    });
+
+    return orderedExperience
+  }
+}
 
 export class DateParser {
   static format(date = "", config = {}) {
     const parsedDate = new Date(date);
 
-    if (!parsedDate instanceof Date) {
+    if (!(parsedDate instanceof Date) || isNaN(parsedDate)) {
       return null;
     }
 
@@ -102,40 +150,28 @@ export class DateParser {
       return null;
     }
 
-    const miliseconds = 1000;
-    const seconds = miliseconds * 60;
-    const hours = seconds * 60;
-    const days = hours * 24;
-    const months = days * 30;
-    const years = days * 365;
-    const rtf1 = new Intl.RelativeTimeFormat('es', { style: 'long' });
-    let result = "";
+    const units = [
+      { threshold: 1000 * 60 * 60 * 24 * 365, unit: "year", divisor: 1000 * 60 * 60 * 24 * 365 },
+      { threshold: 1000 * 60 * 60 * 24 * 30, unit: "month", divisor: 1000 * 60 * 60 * 24 * 30 },
+      { threshold: 1000 * 60 * 60 * 24, unit: "day", divisor: 1000 * 60 * 60 * 24 },
+      { threshold: 1000 * 60 * 60, unit: "hour", divisor: 1000 * 60 * 60 },
+      { threshold: 1000 * 60, unit: "minute", divisor: 1000 * 60 },
+      { threshold: 1000, unit: "second", divisor: 1000 },
+    ];
 
-    if (diff < miliseconds) {
+    if (diff < 1000) {
       return "Hace un momento";
     }
 
-    if (diff < seconds) {
-      return rtf1.format(Math.floor(diff / seconds), "second").replace("dentro de ", "");
+    const rtf = new Intl.RelativeTimeFormat('es', { style: 'long' });
+
+    for (const { threshold, unit, divisor } of units) {
+      if (diff >= threshold) {
+        return rtf.format(-Math.floor(diff / divisor), unit);
+      }
     }
 
-    if (diff < hours) {
-      return rtf1.format(Math.floor(diff / seconds), "minute").replace("dentro de ", "");
-    }
-
-    if (diff < days) {
-      return rtf1.format(Math.floor(diff / hours), "hour").replace("dentro de ", "");
-    }
-
-    if (diff < months) {
-      return rtf1.format(Math.floor(diff / days), "day").replace("dentro de ", "");
-    }
-
-    if (diff < years) {
-      return rtf1.format(Math.floor(diff / months), "month").replace("dentro de ", "");
-    }
-
-    return rtf1.format(Math.floor(diff / years), "year").replace("dentro de ", "");
+    return "Hace un momento";
   }
 
   static timeDiference() {
@@ -169,30 +205,15 @@ export class DateParser {
   }
 }
 
-export const orderExperience = (experience = []) => {
-  const orderedExperience = experience.toSorted((a, b) => {
-    const aEndDate = new Date(a.endDate).getTime();
-    const bEndDate = new Date(b.endDate).getTime();
-
-    if (!bEndDate) {
-      return aEndDate - bEndDate;
-    }
-
-    return bEndDate - aEndDate;
-  });
-
-  return orderedExperience
-}
-
 export class TextParser {
   static normalize(text = "") {
     if (typeof text !== "string") {
       throw new Error("'text' must be a string");
     }
 
-    const auxText = text.trim() || "";
+    const auxText = text.trim();
 
-    if (!auxText || !auxText.length) {
+    if (!auxText) {
       return "";
     }
 
@@ -203,40 +224,3 @@ export class TextParser {
       .replace(/[^a-z0-9\s]/g, "") // remove special characters
   }
 }
-
-export const calculateTotalExperience = (workArray = []) => {
-  if (!Array.isArray(workArray) || workArray.length === 0) {
-    return "0 meses";
-  }
-
-  let totalMonths = 0;
-
-  for (const job of workArray) {
-    const { startDate, endDate } = job;
-
-    if (!startDate) continue;
-
-    const start = new Date(startDate);
-    const end = endDate ? new Date(endDate) : new Date();
-
-    // Calcular la diferencia en meses
-    const yearsDiff = end.getFullYear() - start.getFullYear();
-    const monthsDiff = end.getMonth() - start.getMonth();
-    const months = yearsDiff * 12 + monthsDiff;
-
-    totalMonths += months;
-  }
-
-  const years = Math.floor(totalMonths / 12);
-  const remainingMonths = totalMonths % 12;
-
-  if (years === 0) {
-    return `${remainingMonths} ${remainingMonths === 1 ? 'mes' : 'meses'}`;
-  }
-
-  if (remainingMonths === 0) {
-    return `${years} ${years === 1 ? 'año' : 'años'}`;
-  }
-
-  return `${years} ${years === 1 ? 'año' : 'años'} y ${remainingMonths} ${remainingMonths === 1 ? 'mes' : 'meses'}`;
-};

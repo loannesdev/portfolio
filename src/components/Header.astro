@@ -59,6 +59,7 @@ const {
                 href={"#" + name}
                 aria-label={`Ir a sección ${text.toLowerCase()}`}
                 data-id={name}
+                class="navigation-link"
               >
                 {text}
               </Anchor>
@@ -316,7 +317,7 @@ const {
 </style>
 
 <script>
-  import { navHighlight } from "./../utils/scripts";
+  import { SystemUtilities } from "@/utils/scripts";
 
   // Dark mode
   document.getElementById("dark-mode-button").addEventListener("click", () => {
@@ -330,6 +331,6 @@ const {
   // ---
 
   // Active navigation option when the corresponding section is active
-  navHighlight();
+  SystemUtilities.navHighlight();
   // ---
 </script>

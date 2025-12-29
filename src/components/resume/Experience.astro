@@ -1,9 +1,9 @@
 ---
 import Anchor from "@/components/Anchor.astro";
 import { work } from "@/resume.json";
-import { DateParser, orderExperience } from "@/utils/scripts";
+import { DateParser, ResumeUtilities } from "@/utils/scripts";
 
-const orderedExperience = orderExperience(work);
+const orderedExperience = ResumeUtilities.orderExperience(work);
 ---
 
 <section class="experience-wrapper">

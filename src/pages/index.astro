@@ -97,13 +97,13 @@ import GoUpButton from "@/components/GoUpButton.astro";
 </style>
 
 <script>
-  import { darkMode } from "../utils/scripts";
+  import { darkMode, SystemUtilities } from "../utils/scripts";
 
   window
     .matchMedia("(prefers-color-scheme: dark)")
     .addEventListener("change", () => {
-      darkMode();
+      SystemUtilities.darkMode();
     });
 
-  darkMode();
+  SystemUtilities.darkMode();
 </script>

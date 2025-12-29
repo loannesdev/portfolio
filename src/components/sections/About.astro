@@ -215,13 +215,13 @@ const {
   import { DateParser } from "@/utils/scripts";
   import "./../ColoredTag";
 
-  const hoursDiff = DateParser.timeDiference();
+  const hoursDiff = Math.abs(DateParser.timeDiference());
   const sLetter = hoursDiff > 1 ? "s" : "";
   const timeZoneElement = document.querySelector(".time-zone");
-  let timeZoneText = "Estamos en la misma zona horaria";
   const closeSuggestionsBtn = document.querySelector(
     ".suggestions-section .close-btn",
   );
+  let timeZoneText = "Estamos en la misma zona horaria";
 
   if (hoursDiff > 0) {
     timeZoneText = `Vas adelantado por ${hoursDiff} hora${sLetter}`;

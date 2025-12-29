@@ -1,17 +1,12 @@
 ---
 import { work } from "@/resume.json";
 import { sections } from "@/utils/const";
-import {
-  DateParser,
-  orderExperience,
-  TextParser,
-  calculateTotalExperience,
-} from "@/utils/scripts";
+import { DateParser, ResumeUtilities, TextParser } from "@/utils/scripts";
 import Anchor from "../Anchor.astro";
 
 const { name, text } = sections.find((elm) => elm.name === "experience");
-const orderedExperience = orderExperience(work);
-const totalExperience = calculateTotalExperience(work);
+const orderedExperience = ResumeUtilities.orderExperience(work);
+const totalExperience = ResumeUtilities.calculateTotalExperience(work);
 ---
 
 <section id={name}>
@@ -137,13 +132,13 @@ const totalExperience = calculateTotalExperience(work);
       position: relative;
 
       & .time-line-element {
-        --dot-size: 14px;
+        --dot-size: 16px;
         --active-experience-color: color-mix(
           in srgb,
           var(--current-text-theme) 10%,
           gray
         );
-        --circle-border-size: 1px;
+        --circle-border-size: 2px;
 
         position: relative;
         padding-left: calc(var(--dot-size) * 2);
@@ -159,7 +154,9 @@ const totalExperience = calculateTotalExperience(work);
           width: calc(
             calc(var(--dot-size) / 2) + calc(var(--circle-border-size) / 2)
           );
-          height: calc(100% - var(--dot-size));
+          height: calc(
+            100% - calc(var(--dot-size) + calc(var(--circle-border-size) * 2))
+          );
           position: absolute;
           bottom: 0;
           left: 0;
