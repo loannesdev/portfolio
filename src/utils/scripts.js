@@ -77,9 +77,9 @@ export class SystemUtilities {
 }
 
 export class ResumeUtilities {
-  static calculateTotalExperience(workArray = []) {
+  static calculateTotalExperience(workArray = [], returnAsNumber = false) {
     if (!Array.isArray(workArray) || workArray.length === 0) {
-      return "0 meses";
+      return returnAsNumber ? 0 : "0 meses";
     }
 
     let totalMonths = 0;
@@ -98,6 +98,10 @@ export class ResumeUtilities {
       const months = yearsDiff * 12 + monthsDiff;
 
       totalMonths += months;
+    }
+
+    if (returnAsNumber) {
+      return Math.round((totalMonths / 12) * 10) / 10;
     }
 
     const years = Math.floor(totalMonths / 12);

@@ -1,10 +1,19 @@
+---
+import { ResumeUtilities } from "@/utils/scripts";
+import { work } from "@/resume.json";
+
+const experience = ResumeUtilities.calculateTotalExperience(work, true);
+const years = Math.floor(experience);
+let experienceString = `+${years} año${years > 1 ? "s" : ""}`;
+---
+
 <section class="summary-wrapper">
   <p>
-    Tengo <strong>+1 año</strong> de experiencia en desarrollo web con enfoque en
-    front-end, aunque también he participado en desarrollos en back-end para apoyar
-    a mis compañeros en el desarrollo. Soy muy orientado a ser autodidacta y trato
-    de aprender y mejorar constantemente y siempre intento ayudar en lo que pueda
-    a los demás.
+    Tengo <strong>{experienceString}</strong> de experiencia en desarrollo web con
+    enfoque en front-end, aunque también he participado en desarrollos en back-end
+    para apoyar a mis compañeros en el desarrollo. Soy muy orientado a ser autodidacta
+    y trato de aprender y mejorar constantemente y siempre intento ayudar en lo que
+    pueda a los demás.
   </p>
 </section>
 

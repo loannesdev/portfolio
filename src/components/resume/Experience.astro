@@ -45,10 +45,12 @@ const orderedExperience = ResumeUtilities.orderExperience(work);
               </h2>
             </hgroup>
 
-            <div class="responsibilities">
-              <h1>Responsabilidades</h1>
-              <p>{summary}</p>
-            </div>
+            {summary?.length && (
+              <div class="responsibilities">
+                <h1>Responsabilidades</h1>
+                <p>{summary}</p>
+              </div>
+            )}
           </li>
         );
       })
@@ -70,7 +72,10 @@ const orderedExperience = ResumeUtilities.orderExperience(work);
 
         & hgroup {
           line-height: 1;
-          margin-bottom: 20px;
+
+          &:is(:not(:last-child)) {
+            margin-bottom: 20px;
+          }
 
           & h1 {
             font-size: 1.3rem;
